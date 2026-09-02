@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDAIC Part I Flashcards</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="site-header">
+  <div class="site-title">🩺 EDAIC Part I Flashcards</div>
+  <div class="site-subtitle">Tap a card to flip · Switch decks above · Filter by topic below</div>
+</div>
+
+<div class="deck-tabs" id="deckTabs"></div>
+<div class="deck-subtitle" id="deckSubtitle"></div>
+
+<div class="chips" id="chips"></div>
+<div class="progress" id="progress"></div>
+
+<div id="app-root">
+  <div class="scene">
+    <div class="card" id="card">
+      <div class="face front">
+        <div class="tag" id="tagFront">TOPIC</div>
+        <div class="qtext" id="qtext">Question</div>
+        <div class="hint">tap to reveal answer</div>
+      </div>
+      <div class="face back">
+        <div class="tag" id="tagBack">TOPIC</div>
+        <div class="atext" id="atext">Answer</div>
+        <div class="hint">tap to flip back</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn nav big" id="prevBtn">‹</button>
+    <button class="btn shuffle" id="shuffleBtn">🔀 Shuffle</button>
+    <button class="btn nav big" id="nextBtn">›</button>
+  </div>
+</div>
+
+<footer>EDAIC Part I revision · Built with Claude · Add new decks in /decks and list them below</footer>
+
+<!--
+  TO ADD A NEW DECK:
+  1. Create /decks/deckN-topic.js following the same window.DECKS.push({...}) pattern
+     as the files below (id, title, emoji, subtitle, colors, cards[]).
+  2. Add one <script> line for it here, in the order you want the tabs to appear.
+  That's the only edit needed — app.js and style.css are deck-agnostic.
+-->
+<script src="decks/deck1-cvs-core.js"></script>
+<script src="decks/deck2-cvs-mechanisms.js"></script>
+<script src="decks/deck3-respiratory.js"></script>
+
+<script src="app.js"></script>
+</body>
+</html>
