@@ -1,0 +1,81 @@
+window.DECKS = window.DECKS || [];
+window.DECKS.push({
+  id: "formulas",
+  title: "Formulas",
+  emoji: "🧮",
+  subtitle: "Every equation and number worth memorising for the exam",
+  colors: {
+    front1: "#334155", front2: "#0f766e",
+    back1: "#fef3c7", back2: "#fed7aa", backText: "#1c1917",
+    chips: ["#0f766e","#334155","#5ab0ff","#7bd88f","#ffd93d","#ff9a3d","#ff6b9d","#b98bff"]
+  },
+  cards: [
+    {cat:"Cardiovascular", q:"Cardiac output", a:"CO = HR × SV. Normal about 5 L/min. Cardiac index = CO / BSA, normal 2.5–4.0 L/min/m²."},
+    {cat:"Cardiovascular", q:"Stroke volume and ejection fraction", a:"SV = EDV − ESV (about 70 ml). EF = SV / EDV, normal 55–70%."},
+    {cat:"Cardiovascular", q:"Mean arterial pressure", a:"MAP = DBP + ⅓(SBP − DBP), i.e. diastolic plus one third of pulse pressure. Also MAP ≈ CO × SVR."},
+    {cat:"Cardiovascular", q:"Systemic vascular resistance", a:"SVR = 80 × (MAP − CVP) / CO, in dyn·s·cm⁻⁵. Normal 900–1200."},
+    {cat:"Cardiovascular", q:"Pulmonary vascular resistance", a:"PVR = 80 × (mPAP − PAWP) / CO. Normal 50–150 dyn·s·cm⁻⁵."},
+    {cat:"Cardiovascular", q:"Coronary perfusion pressure", a:"CPP = aortic diastolic pressure − LVEDP."},
+    {cat:"Cardiovascular", q:"Laplace's law", a:"For a cylinder: T = P × r. For a sphere: T = P × r / 2. Explains why dilated ventricles have higher wall tension and why small alveoli would collapse without surfactant."},
+    {cat:"Cardiovascular", q:"Oxygen delivery (DO2)", a:"DO2 = CO × CaO2 × 10. Normal about 1000 ml/min. Oxygen consumption (VO2) is about 250 ml/min, giving an extraction ratio of roughly 25%."},
+    {cat:"Cardiovascular", q:"Arterial oxygen content (CaO2)", a:"CaO2 = (1.34 × Hb × SaO2) + (0.023 × PaO2 in kPa). Normal about 20 ml/100 ml. Note how little is dissolved."},
+    {cat:"Cardiovascular", q:"Fick principle for cardiac output", a:"CO = VO2 / (CaO2 − CvO2). Oxygen consumption divided by the arteriovenous oxygen difference."},
+
+    {cat:"Respiratory", q:"Alveolar gas equation", a:"PAO2 = FiO2 × (Patm − PH2O) − PaCO2 / R. In kPa on air: PAO2 ≈ 0.21 × (101 − 6.3) − PaCO2/0.8 ≈ 20 − 1.25 × PaCO2."},
+    {cat:"Respiratory", q:"A–a gradient", a:"A–a = PAO2 − PaO2. Normal <2 kPa in the young, rising with age (roughly age/4 + 4 in mmHg). Widened by shunt, V/Q mismatch and diffusion defects; normal in hypoventilation."},
+    {cat:"Respiratory", q:"Bohr equation (dead space fraction)", a:"Vd/Vt = (PaCO2 − PECO2) / PaCO2. Normal about 0.3."},
+    {cat:"Respiratory", q:"Shunt equation", a:"Qs/Qt = (CcO2 − CaO2) / (CcO2 − CvO2). Normal physiological shunt 2–5%."},
+    {cat:"Respiratory", q:"Minute and alveolar ventilation", a:"MV = RR × Vt (about 5–6 L/min). Alveolar ventilation = RR × (Vt − Vd)."},
+    {cat:"Respiratory", q:"Fick's law of diffusion", a:"Diffusion ∝ (A × ΔP × solubility) / (thickness × √MW). Area and gradient help; thickness and molecular weight hinder."},
+    {cat:"Respiratory", q:"Compliance and resistance", a:"Compliance = ΔV / ΔP (lung about 200 ml/cmH2O; lung plus chest wall about 100). Resistance = ΔP / flow."},
+    {cat:"Respiratory", q:"Normal lung volumes (70 kg adult)", a:"Vt 500 ml, IRV 3000, ERV 1100, RV 1200, FRC 2300–3000, VC 4500, TLC 6000. Anatomical dead space about 2 ml/kg (150 ml)."},
+    {cat:"Respiratory", q:"Oxygen flux and the oxygen cascade", a:"Cascade in kPa: inspired 21 → humidified 20 → alveolar 13.3 → arterial 13 → capillary 5 → mitochondrial 1–3."},
+
+    {cat:"Renal & fluids", q:"Clearance", a:"Clearance = (Urine concentration × urine flow) / plasma concentration. Cl = Vd × k."},
+    {cat:"Renal & fluids", q:"Filtration fraction", a:"FF = GFR / renal plasma flow ≈ 125 / 625 ≈ 20%."},
+    {cat:"Renal & fluids", q:"Fractional excretion of sodium", a:"FENa = [(urine Na × plasma Cr) / (plasma Na × urine Cr)] × 100. <1% pre-renal, >2% ATN."},
+    {cat:"Renal & fluids", q:"Anion gap", a:"AG = (Na+ + K+) − (Cl⁻ + HCO3⁻). Normal 10–18 mmol/L (8–16 without potassium)."},
+    {cat:"Renal & fluids", q:"Plasma osmolality", a:"Calculated ≈ 2 × Na+ + urea + glucose (mmol/L). Normal 275–295 mosmol/kg. Osmolar gap = measured − calculated, normally <10."},
+    {cat:"Renal & fluids", q:"Henderson–Hasselbalch equation", a:"pH = pKa + log([HCO3⁻] / (0.03 × PaCO2 in mmHg)), with pKa 6.1."},
+    {cat:"Renal & fluids", q:"Body fluid compartments (70 kg)", a:"TBW 42 L (60%); ICF 28 L; ECF 14 L, of which interstitial 10.5 L and plasma 3.5 L. Blood volume about 70 ml/kg adult, 80 ml/kg child, 90 ml/kg neonate."},
+    {cat:"Renal & fluids", q:"Paediatric maintenance fluid (4-2-1 rule)", a:"4 ml/kg/h for the first 10 kg, 2 ml/kg/h for the next 10 kg, 1 ml/kg/h thereafter."},
+    {cat:"Renal & fluids", q:"Parkland formula for burns", a:"4 ml × body weight (kg) × %TBSA burned of crystalloid in 24 hours, half in the first 8 hours from the time of injury."},
+
+    {cat:"Neuro", q:"Cerebral perfusion pressure", a:"CPP = MAP − ICP (or CVP if higher). Normal 70–80 mmHg; target 60–70 in traumatic brain injury."},
+    {cat:"Neuro", q:"Key cerebral numbers", a:"CBF 50 ml/100 g/min (15% of CO). CMRO2 3–3.5 ml/100 g/min (20% of body O2). ICP 5–15 mmHg. CSF volume 150 ml, produced 0.35 ml/min (500 ml/day)."},
+    {cat:"Neuro", q:"Nernst equation", a:"E = (61 / z) × log([ion outside] / [ion inside]) at 37°C, giving the equilibrium potential for a single ion."},
+
+    {cat:"Physics", q:"Hagen–Poiseuille equation", a:"Flow = (π × ΔP × r⁴) / (8 × η × l). Laminar flow only."},
+    {cat:"Physics", q:"Reynolds number", a:"Re = (ρ × v × d) / η. Above about 2000 predicts turbulent flow."},
+    {cat:"Physics", q:"Ohm's law and its physiological analogue", a:"V = I × R. Physiologically, pressure = flow × resistance."},
+    {cat:"Physics", q:"Ideal gas law", a:"PV = nRT. Combines Boyle's, Charles' and Gay-Lussac's laws."},
+    {cat:"Physics", q:"Cylinder contents from pressure (Boyle's law)", a:"For oxygen: contents = cylinder volume × (gauge pressure / atmospheric pressure). A size E oxygen cylinder holds about 680 L at 137 bar. Not valid for nitrous oxide."},
+    {cat:"Physics", q:"Doppler equation", a:"Velocity = (c × Δf) / (2 × f₀ × cos θ). Angle matters — error grows sharply as the angle of insonation increases."},
+    {cat:"Physics", q:"Beer–Lambert law", a:"Absorption is proportional to concentration (Beer) and to path length (Lambert). Underpins pulse oximetry and capnography."},
+    {cat:"Physics", q:"Wave equation for ultrasound", a:"c = f × λ. Higher frequency gives better resolution but less penetration."},
+    {cat:"Physics", q:"Useful pressure conversions", a:"1 atm = 101.3 kPa = 760 mmHg = 1033 cmH2O ≈ 1 bar. 1 kPa = 7.5 mmHg. 1 mmHg = 1.36 cmH2O."},
+
+    {cat:"Pharmacology", q:"Loading and maintenance dose", a:"Loading dose = target concentration × Vd. Maintenance rate = target concentration × clearance."},
+    {cat:"Pharmacology", q:"Half-life and elimination rate constant", a:"t½ = 0.693 / k, and k = Cl / Vd. So t½ = 0.693 × Vd / Cl."},
+    {cat:"Pharmacology", q:"Volume of distribution", a:"Vd = total amount of drug in body / plasma concentration."},
+    {cat:"Pharmacology", q:"Hepatic extraction ratio", a:"ER = (Ca − Cv) / Ca. High (>0.7) means flow-dependent clearance; low (<0.3) means capacity-dependent."},
+    {cat:"Pharmacology", q:"Henderson–Hasselbalch for drug ionisation", a:"For a weak acid: pH = pKa + log([A⁻]/[HA]). At pH = pKa the drug is 50% ionised. Acids are un-ionised in acid; bases are un-ionised in alkali."},
+    {cat:"Pharmacology", q:"Therapeutic index", a:"TI = LD50 / ED50 (or TD50/ED50). A high index means a wide safety margin."},
+    {cat:"Pharmacology", q:"Percentage solutions and dilutions", a:"1% = 10 mg/ml. 1:1000 = 1 mg/ml. 1:200,000 = 5 micrograms/ml. So 0.5% bupivacaine = 5 mg/ml."},
+    {cat:"Pharmacology", q:"Maximum local anaesthetic doses", a:"Lidocaine 3 mg/kg (7 with adrenaline). Bupivacaine and levobupivacaine 2 mg/kg. Ropivacaine 3 mg/kg. Prilocaine 6 mg/kg (8–9 with adrenaline)."},
+
+    {cat:"Statistics", q:"Standard error of the mean", a:"SEM = SD / √n. Describes precision of the mean, not spread of the data."},
+    {cat:"Statistics", q:"Confidence interval", a:"95% CI = mean ± 1.96 × SEM. Significant if it excludes zero (differences) or 1 (ratios)."},
+    {cat:"Statistics", q:"Sensitivity, specificity, PPV and NPV", a:"Sensitivity = TP/(TP+FN). Specificity = TN/(TN+FP). PPV = TP/(TP+FP). NPV = TN/(TN+FN). PPV and NPV depend on prevalence."},
+    {cat:"Statistics", q:"Likelihood ratios", a:"Positive LR = sensitivity / (1 − specificity). Negative LR = (1 − sensitivity) / specificity."},
+    {cat:"Statistics", q:"Number needed to treat and risk measures", a:"Absolute risk reduction = control risk − treatment risk. NNT = 1 / ARR. Relative risk = treatment risk / control risk."},
+    {cat:"Statistics", q:"Power and error", a:"Power = 1 − beta, conventionally ≥0.8. Alpha is the type I error rate, conventionally 0.05."},
+
+    {cat:"Numbers to know", q:"Key cardiovascular values", a:"CO 5 L/min · SV 70 ml · EF 55–70% · CVP 0–8 mmHg · PAWP 6–12 · mPAP 15 · SVR 900–1200 · blood volume 70 ml/kg."},
+    {cat:"Numbers to know", q:"Key respiratory values", a:"Vt 500 ml · FRC 2300–3000 ml · anatomical dead space 2 ml/kg · Vd/Vt 0.3 · shunt 2–5% · compliance 200 ml/cmH2O (lung)."},
+    {cat:"Numbers to know", q:"Key renal values", a:"RBF 1000–1250 ml/min (20–25% CO) · GFR 125 ml/min · filtration fraction 20% · urine output ≥0.5 ml/kg/h · glucose threshold 10–11 mmol/L."},
+    {cat:"Numbers to know", q:"Key blood gas values", a:"pH 7.35–7.45 · PaO2 10.6–13.3 kPa · PaCO2 4.7–6.0 kPa · HCO3 22–26 mmol/L · base excess ±2 · lactate <2 mmol/L."},
+    {cat:"Numbers to know", q:"Key MAC and solubility values", a:"MAC: desflurane 6.6, sevoflurane 2.0, isoflurane 1.15, halothane 0.75, N2O 105. Blood:gas: desflurane 0.42, N2O 0.47, sevoflurane 0.69, isoflurane 1.4, halothane 2.4."},
+    {cat:"Numbers to know", q:"Key resuscitation doses", a:"Adrenaline 1 mg IV in arrest; 500 micrograms IM in anaphylaxis. Amiodarone 300 mg after the third shock. Defibrillation 150 J biphasic. Lipid emulsion 1.5 ml/kg then 15 ml/kg/h. Dantrolene 2.5 mg/kg."}
+  ]
+});

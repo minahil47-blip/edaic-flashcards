@@ -1,9 +1,9 @@
 window.DECKS = window.DECKS || [];
 window.DECKS.push({
-  id: "mixed-mcq",
-  title: "Mixed MCQ",
+  id: "mcq1",
+  title: "MCQ 1",
   emoji: "🎯",
-  subtitle: "50 high-yield true/false stems · Part I basic sciences + Part II clinical",
+  subtitle: "Mixed true/false · 50 stems · Part I basic sciences + Part II clinical",
   colors: {
     front1: "#ffb020", front2: "#ff5e3a",
     back1: "#d6c7ff", back2: "#a8e6ff", backText: "#241a4d",
