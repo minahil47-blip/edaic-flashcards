@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nerve Action Potential &amp; Reflexes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="notes.css">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+
+  <header class="top">
+    <h1>Nerve AP &amp; reflexes</h1>
+    <p>The neuronal action potential and why it differs from the cardiac one, then monosynaptic versus polysynaptic reflexes and what happens to them in spinal cord injury.</p>
+  </header>
+
+  <!-- ============ NEURONAL AP ============ -->
+  <section class="card">
+    <h2 class="kicker">The neuronal action potential</h2>
+    <p class="sub">Resting membrane potential <b>−70 mV</b>, threshold <b>−55 mV</b>, peak <b>+30 mV</b>. Total duration only about <b>1–2 ms</b> — a fraction of the cardiac action potential.</p>
+
+    <div class="plot">
+      <svg viewBox="0 0 620 300" role="img" aria-label="Neuronal action potential showing resting potential, threshold, depolarisation, repolarisation and hyperpolarisation phases">
+        <g font-family="Public Sans, sans-serif">
+          <path d="M60,250 H560" stroke="#5C6E66" stroke-width="1.5" fill="none"/>
+          <path d="M60,30 V250" stroke="#5C6E66" stroke-width="1.5" fill="none"/>
+          <g font-size="12.5" fill="#5C6E66" text-anchor="end">
+            <text x="54" y="50">+30</text>
+            <text x="54" y="128">0</text>
+            <text x="54" y="192">−55</text>
+            <text x="54" y="216">−70</text>
+          </g>
+          <text x="26" y="140" font-size="13" font-weight="600" fill="#5C6E66" text-anchor="middle" transform="rotate(-90 26 140)">mV</text>
+
+          <!-- threshold + rmp lines -->
+          <path d="M60,188 H560" stroke="#A8123E" stroke-width="1.4" stroke-dasharray="6 5" fill="none"/>
+          <text x="500" y="182" font-size="12.5" font-weight="700" fill="#A8123E">threshold −55</text>
+          <path d="M60,212 H560" stroke="#5C6E66" stroke-width="1.2" stroke-dasharray="4 5" fill="none"/>
+          <text x="500" y="236" font-size="12.5" font-weight="700" fill="#5C6E66">RMP −70</text>
+
+          <!-- trace -->
+          <path d="M70,212 H150 C170,212 178,196 190,188
+                   C205,178 215,60 232,46 C248,34 262,44 274,60
+                   C292,86 300,180 312,212 C320,232 330,236 342,232
+                   C356,228 366,220 380,214 C420,208 470,212 550,212"
+                fill="none" stroke="#173A2E" stroke-width="3.2" stroke-linecap="round"/>
+
+          <!-- phase markers -->
+          <g font-size="16" font-weight="800" fill="#A8123E">
+            <text x="196" y="176">1</text>
+            <text x="222" y="72">2</text>
+            <text x="300" y="132">3</text>
+            <text x="336" y="256">4</text>
+            <text x="440" y="204">5</text>
+          </g>
+          <text x="248" y="26" font-size="13" font-weight="700" fill="#5C6E66" text-anchor="middle">peak potential +30</text>
+        </g>
+      </svg>
+    </div>
+
+    <ol class="phases">
+      <li><div class="num">1</div><div>
+        <p class="pname">Depolarisation to threshold</p>
+        <p class="pbody">A stimulus depolarises the membrane. At <b>−55 mV</b> the <b>fast voltage-gated Na⁺ channels open</b> and Na⁺ floods in.</p>
+      </div></li>
+      <li><div class="num">2</div><div>
+        <p class="pname">Rapid depolarisation — the spike</p>
+        <p class="pbody">Regenerative Na⁺ entry drives the membrane to about <b>+30 mV</b>. All-or-none: once threshold is reached the amplitude is fixed.</p>
+      </div></li>
+      <li><div class="num">3</div><div>
+        <p class="pname">Repolarisation</p>
+        <p class="pbody">Na⁺ channels <b>inactivate</b> and voltage-gated <b>K⁺ channels open</b>, so K⁺ efflux restores the negative interior.</p>
+      </div></li>
+      <li><div class="num">4</div><div>
+        <p class="pname">Hyperpolarisation (undershoot)</p>
+        <p class="pbody">K⁺ channels are slow to close, so efflux continues past the resting potential. This period underlies the <b>relative refractory period</b>.</p>
+      </div></li>
+      <li><div class="num">5</div><div>
+        <p class="pname">Return to resting potential</p>
+        <p class="pbody">The <b>Na⁺/K⁺ ATPase</b> (3 Na⁺ out, 2 K⁺ in) restores the ionic gradients. RMP is set mainly by K⁺ permeability, keeping the inside more negative.</p>
+      </div></li>
+    </ol>
+
+    <div class="note">
+      <h3>The key contrast with cardiac muscle</h3>
+      <ul>
+        <li>The neuronal action potential has <b>no plateau phase</b>, so it lasts 1–2 ms rather than 200–300 ms.</li>
+        <li>Its refractory period is therefore very short — which is precisely why <b>neurones CAN be tetanised and cardiac muscle cannot</b>.</li>
+        <li>Skeletal muscle inherits this: rapid repeated stimulation produces summation and tetanic contraction.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ REFLEXES ============ -->
+  <section class="card">
+    <h2 class="kicker">Monosynaptic vs polysynaptic reflexes</h2>
+
+    <div class="scroll">
+      <table class="w2">
+        <thead><tr><th></th><th>Monosynaptic</th><th>Polysynaptic</th></tr></thead>
+        <tbody>
+          <tr><th>Synapses</th><td class="c2"><b>One</b></td><td class="c3"><b>Two or more</b></td></tr>
+          <tr><th>Interneurone</th><td class="c2">Absent</td><td class="c3">Present</td></tr>
+          <tr><th>Speed</th><td class="c2"><b>Very fast</b></td><td class="c3">Slower</td></tr>
+          <tr><th>Reflex arc</th><td class="c2">Sensory → motor neurone</td><td class="c3">Sensory → interneurone → motor</td></tr>
+          <tr><th>Complexity</th><td class="c2">Simple</td><td class="c3">Complex</td></tr>
+          <tr><th>Function</th><td class="c2">Maintains <b>muscle tone and posture</b></td><td class="c3"><b>Protective</b> and co-ordinated</td></tr>
+          <tr><th>Examples</th><td class="c2"><b>Stretch reflex</b> — knee jerk, ankle jerk</td><td class="c3"><b>Withdrawal (flexor) reflex</b>, crossed extensor reflex — e.g. touching something hot</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note blue">
+      <h3>The stretch reflex, step by step</h3>
+      <ul>
+        <li>Tapping the patellar tendon <b>stretches the quadriceps</b>.</li>
+        <li>The <b>muscle spindle</b> detects the stretch and fires impulses along Ia afferents to the spinal cord.</li>
+        <li>The sensory neurone synapses <b>directly</b> on the α-motor neurone — releasing <b>glutamate</b>, producing an <b>EPSP</b>.</li>
+        <li>The quadriceps contracts and the leg extends.</li>
+        <li>Simultaneously an inhibitory interneurone releases <b>glycine</b> onto the antagonist's motor neurone — an <b>IPSP</b> — relaxing the hamstrings. This is <b>reciprocal inhibition</b>.</li>
+      </ul>
+    </div>
+
+    <div class="note hook">
+      <h3>Three facts worth having ready</h3>
+      <ul>
+        <li><b>All autonomic reflexes are polysynaptic</b>, as are all nociceptive (pain) withdrawal reflexes.</li>
+        <li>The <b>ankle jerk</b> is initiated by stretch of the <b>gastrocnemius</b> (S1–S2). The knee jerk is L3–L4.</li>
+        <li>Glutamate is the main <b>excitatory</b> transmitter (EPSP); <b>glycine</b> is the main inhibitory transmitter in the spinal cord, GABA in the brain (IPSP).</li>
+      </ul>
+    </div>
+
+    <div class="note warn">
+      <h3>Spinal shock — the sequence</h3>
+      <ul>
+        <li>Immediately after cord transection, <b>all reflexes below the lesion are lost</b> — flaccid areflexia, loss of tone, and loss of autonomic reflexes.</li>
+        <li><b>Eventually reflexes return and become exaggerated</b> — hyper-reflexia, spasticity, clonus and an upgoing plantar, because descending inhibition has been removed.</li>
+        <li>Polysynaptic reflexes also become exaggerated. The transition typically takes days to weeks.</li>
+        <li>Practical relevance: this is the same denervation process that makes <b>suxamethonium dangerous after about 24–48 hours</b> in spinal cord injury, through extrajunctional receptor proliferation.</li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="src">Built from handwritten pages IMG_0980, IMG_0981 and IMG_0990 (your page cites Dr Podcast p.72).</p>
+  <footer>High yield notes · EDAIC revision</footer>
+</div>
+</body>
+</html>

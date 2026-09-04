@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lung Volumes, Capacities &amp; Measurement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="notes.css">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+
+  <header class="top">
+    <h1>Lung volumes &amp; capacities</h1>
+    <p>The four volumes, the four capacities, and the single rule that tells you which of them spirometry can and cannot measure.</p>
+  </header>
+
+  <!-- ============ SPIROGRAM ============ -->
+  <section class="card">
+    <h2 class="kicker">The spirogram</h2>
+    <p class="sub">A <b>volume</b> cannot be subdivided. A <b>capacity</b> is two or more volumes added together. Everything below follows from that.</p>
+
+    <div class="plot">
+      <svg viewBox="0 0 620 380" role="img" aria-label="Spirogram showing tidal volume, inspiratory and expiratory reserve volumes and residual volume, with the capacities they combine to form">
+        <g font-family="Public Sans, sans-serif">
+          <!-- baseline axes -->
+          <path d="M46,350 H420" stroke="#5C6E66" stroke-width="1.5" fill="none"/>
+          <path d="M46,20 V350" stroke="#5C6E66" stroke-width="1.5" fill="none"/>
+
+          <!-- bands: RV 1200, ERV 1100, VT 500, IRV 3000  (total 5800) -->
+          <rect x="60" y="300" width="300" height="50" fill="#E4DCEE" stroke="#7A3B9E" stroke-width="1.2"/>
+          <rect x="60" y="254" width="300" height="46" fill="#EAF4F8" stroke="#1B5FA8" stroke-width="1.2"/>
+          <rect x="60" y="232" width="300" height="22" fill="#FDEFF3" stroke="#A8123E" stroke-width="1.2"/>
+          <rect x="60" y="106" width="300" height="126" fill="#EAF3EC" stroke="#0E7A66" stroke-width="1.2"/>
+
+          <g font-size="13" font-weight="700" text-anchor="middle">
+            <text x="210" y="330" fill="#5B3E7E">RV 1200</text>
+            <text x="210" y="282" fill="#17558F">ERV 1100</text>
+            <text x="210" y="248" fill="#8A0F33">V&#8348; 500</text>
+            <text x="210" y="175" fill="#0B6353">IRV 3000</text>
+          </g>
+
+          <!-- tidal breathing squiggle -->
+          <path d="M60,254 q10,-22 20,0 q10,22 20,0 q10,-22 20,0 q10,22 20,0 q10,-22 20,0"
+                fill="none" stroke="#A8123E" stroke-width="2" />
+
+          <!-- capacity brackets on the right -->
+          <g stroke="#5C6E66" stroke-width="1.6" fill="none">
+            <path d="M378,106 H392 V232 H378"/>
+            <path d="M410,106 H424 V254 H410"/>
+            <path d="M446,254 H460 V350 H446"/>
+            <path d="M478,106 H492 V350 H478"/>
+            <path d="M510,20 H524 V350 H510"/>
+          </g>
+          <g font-size="12.5" font-weight="700" fill="#173A2E">
+            <text x="396" y="172">IC 3500</text>
+            <text x="428" y="186">VC 4600</text>
+            <text x="464" y="306">FRC 2300</text>
+            <text x="496" y="232">TLC 5800</text>
+          </g>
+          <text x="46" y="14" font-size="12.5" font-weight="600" fill="#5C6E66">volume (mL)</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Volume</th><th>Definition</th><th>Normal adult</th></tr></thead>
+        <tbody>
+          <tr><th>Tidal volume (V<sub>T</sub>)</th><td class="c5">Air moved in or out during <b>quiet</b> breathing</td><td class="c5"><b>500 mL</b> (≈7 mL/kg)</td></tr>
+          <tr><th>Inspiratory reserve (IRV)</th><td class="c4">Maximum <b>extra</b> volume inspired after a normal inspiration</td><td class="c4"><b>3000 mL</b></td></tr>
+          <tr><th>Expiratory reserve (ERV)</th><td class="c2">Maximum <b>extra</b> volume expired after a normal expiration</td><td class="c2"><b>1100 mL</b></td></tr>
+          <tr><th>Residual volume (RV)</th><td class="c3">Air remaining after <b>maximal</b> expiration</td><td class="c3"><b>1200 mL</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="scroll" style="margin-top:14px">
+      <table class="w1">
+        <thead><tr><th>Capacity</th><th>Formula</th><th>Normal adult</th></tr></thead>
+        <tbody>
+          <tr><th>Inspiratory capacity (IC)</th><td class="c4">V<sub>T</sub> + IRV</td><td class="c4"><b>3500 mL</b></td></tr>
+          <tr><th>Functional residual capacity (FRC)</th><td class="c3">ERV + RV</td><td class="c3"><b>2300 mL</b></td></tr>
+          <tr><th>Vital capacity (VC)</th><td class="c1">IRV + V<sub>T</sub> + ERV</td><td class="c1"><b>4600 mL</b></td></tr>
+          <tr><th>Total lung capacity (TLC)</th><td class="c5">VC + RV = FRC + IC</td><td class="c5"><b>5800 mL</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><div class="v">500</div><div class="n">V&#8348; (mL)</div></div>
+      <div class="fact"><div class="v">3000</div><div class="n">IRV (mL)</div></div>
+      <div class="fact"><div class="v">1100</div><div class="n">ERV (mL)</div></div>
+      <div class="fact"><div class="v">1200</div><div class="n">RV (mL)</div></div>
+    </div>
+  </section>
+
+  <!-- ============ SPIROMETRY RULE ============ -->
+  <section class="card">
+    <h2 class="kicker">What spirometry can and cannot measure</h2>
+
+    <div class="note">
+      <h3>The one rule</h3>
+      <ul>
+        <li><b>If it contains residual volume, simple spirometry cannot measure it.</b></li>
+        <li><b>Can measure:</b> V<sub>T</sub>, IRV, ERV, IC and VC.</li>
+        <li><b>Cannot measure:</b> <b>RV, FRC and TLC</b> — because RV is, by definition, the gas you cannot breathe out and therefore cannot be captured in a spirometer.</li>
+      </ul>
+    </div>
+
+    <div class="note hook">
+      <h3>So how do you get them?</h3>
+      <ul>
+        <li>Measure <b>FRC</b> by an indirect method, then derive the rest by arithmetic:</li>
+        <li><b>RV = FRC − ERV</b></li>
+        <li><b>TLC = FRC + IC</b> (or VC + RV)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ METHODS ============ -->
+  <section class="card">
+    <h2 class="kicker">Measuring FRC — three methods</h2>
+
+    <div class="scroll">
+      <table class="w2">
+        <thead><tr><th>Method</th><th>Principle</th><th>Limitation</th></tr></thead>
+        <tbody>
+          <tr>
+            <th>Helium dilution</th>
+            <td class="c2">Closed circuit; an inert, insoluble tracer equilibrates through the communicating lung. Helium is detected by <b>thermal conductivity</b></td>
+            <td class="c2"><b>Underestimates</b> when gas is trapped or poorly ventilated — the tracer never reaches it</td>
+          </tr>
+          <tr>
+            <th>Nitrogen washout</th>
+            <td class="c4">The patient breathes 100% oxygen; all resident nitrogen is washed out and its total volume measured</td>
+            <td class="c4"><b>Also underestimates</b> with trapped or poorly communicating gas</td>
+          </tr>
+          <tr>
+            <th>Body plethysmography</th>
+            <td class="c1">Uses <b>Boyle's law</b> (P₁V₁ = P₂V₂) in a sealed box to measure <b>total thoracic gas volume</b></td>
+            <td class="c1"><b>Includes trapped gas</b> — so it is the method of choice in severe obstruction, and reads higher than the dilution methods</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note blue">
+      <h3>The helium dilution equation</h3>
+      <ul>
+        <li><b>FRC = (C₁ × V₁) / C₂ − V₁</b></li>
+        <li>C₁ = initial helium concentration · V₁ = initial spirometer volume · C₂ = final (equilibrated) helium concentration.</li>
+        <li>Then <b>RV = FRC − ERV</b> and <b>TLC = FRC + IC</b>.</li>
+      </ul>
+    </div>
+
+    <div class="note warn">
+      <h3>The examinable comparison</h3>
+      <ul>
+        <li>In a patient with emphysema and large bullae, <b>plethysmography gives a much larger FRC than helium dilution</b>. The <b>difference between the two is the volume of trapped gas</b> — a neat way of quantifying it, and a favourite question.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ GAS ANALYSIS ============ -->
+  <section class="card">
+    <h2 class="kicker">Which analyser for which gas</h2>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Gas</th><th>Measured by</th><th>Used in</th></tr></thead>
+        <tbody>
+          <tr><th>Helium</th><td class="c2"><b>Thermal conductivity</b>; mass spectrometry</td><td class="c2">Helium dilution</td></tr>
+          <tr><th>Nitrogen</th><td class="c4">Mass spectrometry / nitrogen analyser</td><td class="c4">Nitrogen washout</td></tr>
+          <tr><th>Oxygen</th><td class="c1"><b>Paramagnetic analyser</b>; fuel cell; polarographic (Clark) electrode</td><td class="c1">Routine gas monitoring</td></tr>
+          <tr><th>Argon, xenon</th><td class="c3">Mass spectrometry</td><td class="c3">Tracer studies</td></tr>
+          <tr><th>CO₂ and volatile agents</th><td class="c5">Infrared absorption</td><td class="c5">Capnography, agent monitoring</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <h3>The trap</h3>
+      <ul>
+        <li><b>Infrared absorption needs a molecule made of two DIFFERENT atoms.</b> So it works for CO₂, N₂O and volatiles — but <b>never</b> for oxygen, nitrogen, helium or argon.</li>
+        <li>Oxygen is measured <b>paramagnetically</b> because it has two unpaired electrons and is attracted into a magnetic field.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING CAPACITY ============ -->
+  <section class="card">
+    <h2 class="kicker">Closing capacity</h2>
+    <div class="note pur">
+      <ul>
+        <li><b>Closing capacity = residual volume + closing volume.</b></li>
+        <li><b>Closing volume</b> is the lung volume at which small <b>dependent airways begin to close</b> during expiration, because they lack cartilage and depend on radial traction to stay open.</li>
+        <li>Closing capacity <b>rises with age</b>. It exceeds FRC at about <b>age 44 supine</b> and about <b>age 66 erect</b> — from that point onwards some airways close during normal tidal breathing, causing shunt and explaining the age-related fall in PaO₂.</li>
+        <li>FRC <b>falls</b> with supine position, anaesthesia (by about 20%), obesity and pregnancy — all of which push FRC below closing capacity and worsen oxygenation. Closing capacity itself is unchanged by position.</li>
+        <li>Measured by the <b>single-breath nitrogen washout</b> (Fowler's method) or a tracer bolus technique.</li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="src">Built from Lung_Volumes_and_Cardio_EDAIC_Updated.pdf, pages 2–3.</p>
+  <footer>High yield notes · EDAIC revision</footer>
+</div>
+</body>
+</html>

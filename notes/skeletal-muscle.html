@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sarcomere &amp; Muscle Fibre Types</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="notes.css">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+
+  <header class="top">
+    <h1>Sarcomere &amp; fibre types</h1>
+    <p>The bands and lines of the sarcomere, which of them change during contraction, and the slow versus fast fibre comparison.</p>
+  </header>
+
+  <!-- ============ SARCOMERE ============ -->
+  <section class="card">
+    <h2 class="kicker">The sarcomere</h2>
+    <p class="sub">The functional unit of skeletal muscle: the segment <b>between two Z lines</b>.</p>
+
+    <div class="plot">
+      <svg viewBox="0 0 620 260" role="img" aria-label="Diagram of a sarcomere showing Z lines, thick myosin and thin actin filaments, and the A, I, H bands and M line">
+        <g font-family="Public Sans, sans-serif">
+          <!-- Z lines -->
+          <path d="M70,50 V170" stroke="#A8123E" stroke-width="4"/>
+          <path d="M550,50 V170" stroke="#A8123E" stroke-width="4"/>
+          <text x="70" y="40" font-size="14" font-weight="800" fill="#A8123E" text-anchor="middle">Z</text>
+          <text x="550" y="40" font-size="14" font-weight="800" fill="#A8123E" text-anchor="middle">Z</text>
+
+          <!-- thin filaments (actin) from each Z -->
+          <g stroke="#1B5FA8" stroke-width="3.4" stroke-linecap="round">
+            <path d="M70,72 H260"/><path d="M70,96 H260"/><path d="M70,124 H260"/><path d="M70,148 H260"/>
+            <path d="M360,72 H550"/><path d="M360,96 H550"/><path d="M360,124 H550"/><path d="M360,148 H550"/>
+          </g>
+
+          <!-- thick filaments (myosin) centre -->
+          <g stroke="#0E7A66" stroke-width="7" stroke-linecap="round">
+            <path d="M180,84 H440"/><path d="M180,110 H440"/><path d="M180,136 H440"/>
+          </g>
+          <!-- M line -->
+          <path d="M310,70 V150" stroke="#B4690E" stroke-width="3.4"/>
+          <text x="310" y="62" font-size="13" font-weight="800" fill="#B4690E" text-anchor="middle">M</text>
+
+          <!-- band brackets -->
+          <g stroke="#5C6E66" stroke-width="1.6" fill="none">
+            <path d="M180,190 V198 H440 V190"/>
+            <path d="M70,218 V226 H180 V218"/>
+            <path d="M440,218 V226 H550 V218"/>
+            <path d="M260,164 V172 H360 V164"/>
+          </g>
+          <g font-size="13" font-weight="700">
+            <text x="310" y="214" fill="#0B6353" text-anchor="middle">A band — full myosin length</text>
+            <text x="125" y="242" fill="#17558F" text-anchor="middle">I band</text>
+            <text x="495" y="242" fill="#17558F" text-anchor="middle">I band</text>
+            <text x="310" y="188" fill="#8A6C22" text-anchor="middle">H zone</text>
+          </g>
+          <g font-size="12.5" font-weight="700">
+            <text x="596" y="90" fill="#17558F" text-anchor="end">actin (thin)</text>
+            <text x="596" y="116" fill="#0B6353" text-anchor="end">myosin (thick)</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Feature</th><th>Definition</th><th>On contraction</th></tr></thead>
+        <tbody>
+          <tr><th>Z line</th><td class="c5">Junction between neighbouring <b>actin</b> filaments. The region between two Z lines is the sarcomere</td><td class="c5"><b>Move closer together</b></td></tr>
+          <tr><th>A band</th><td class="c4">The <b>full length of the myosin</b> filament (includes the region overlapped by actin)</td><td class="c4"><b>Unchanged</b> — myosin does not shorten</td></tr>
+          <tr><th>I band</th><td class="c2"><b>Actin only</b>, the part free of overlap by myosin — spanning across the Z line</td><td class="c2"><b>Shortens</b></td></tr>
+          <tr><th>H zone</th><td class="c1"><b>Myosin only</b>, the part not overlapped by actin</td><td class="c1"><b>Shortens</b></td></tr>
+          <tr><th>M line</th><td class="c3">Middle of the sarcomere — junction between myosin filaments, <b>without cross-bridges</b></td><td class="c3">Stays central</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <h3>The sliding filament rule</h3>
+      <ul>
+        <li><b>The filaments do not shorten — they slide past each other.</b> So the <b>A band never changes</b>, while the <b>I band and H zone both shorten</b> and the Z lines converge.</li>
+        <li>Mnemonic: the two bands that shorten are the ones that contain <b>only one</b> filament type (I = actin only, H = myosin only). The A band contains both, so overlap increasing does not change its length.</li>
+      </ul>
+    </div>
+
+    <div class="note blue">
+      <h3>The proteins</h3>
+      <ul>
+        <li><b>Thick filament = myosin</b>, with <b>myosin binding protein C</b>; produces the dark A band.</li>
+        <li><b>Thin filament = actin</b>, with <b>tropomyosin</b> coiling around it and <b>troponin</b> attached; anchored to form the Z line.</li>
+        <li><b>Myosin binding protein C</b> binds at one end to the thick filament and at the other to actin.</li>
+        <li><b>Troponin C binds calcium</b> → tropomyosin moves → myosin heads access their actin binding sites → cross-bridge cycling. Smooth muscle has no troponin and uses <b>calmodulin</b> instead.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ FIBRE TYPES ============ -->
+  <section class="card">
+    <h2 class="kicker">Muscle fibre types</h2>
+
+    <div class="scroll">
+      <table class="w2">
+        <thead><tr><th></th><th>Type I<br>slow oxidative</th><th>Type IIa<br>fast oxidative-glycolytic</th><th>Type IIb<br>fast glycolytic</th></tr></thead>
+        <tbody>
+          <tr><th>Contraction speed</th><td class="c5"><b>Slow</b></td><td class="c1"><b>Fast</b></td><td class="c2"><b>Fastest</b></td></tr>
+          <tr><th>Myosin ATPase activity</th><td class="c5">Low</td><td class="c1">High</td><td class="c2">High</td></tr>
+          <tr><th>Metabolism</th><td class="c5"><b>Aerobic / oxidative</b></td><td class="c1">Both — oxidative and glycolytic</td><td class="c2"><b>Anaerobic / glycolytic</b></td></tr>
+          <tr><th>Fatigue resistance</th><td class="c5"><b>High</b> — steady, continuous activity</td><td class="c1">Moderate — progressively recruited</td><td class="c2"><b>Low</b></td></tr>
+          <tr><th>Firing frequency</th><td class="c5">Low</td><td class="c1">Higher</td><td class="c2"><b>High-frequency impulses</b></td></tr>
+          <tr><th>Fibre size</th><td class="c5">Small — <b>high surface-to-volume ratio</b></td><td class="c1">Intermediate</td><td class="c2"><b>Large — poor surface-to-volume ratio</b></td></tr>
+          <tr><th>Capillary supply</th><td class="c5"><b>Rich</b></td><td class="c1">Good</td><td class="c2"><b>Poor</b></td></tr>
+          <tr><th>Myoglobin &amp; mitochondria</th><td class="c5"><b>High</b> → <b>red</b> muscle</td><td class="c1">Moderate → red/pink</td><td class="c2"><b>Low</b> → <b>white</b> muscle</td></tr>
+          <tr><th>Typical role</th><td class="c5">Posture, endurance</td><td class="c1">Sustained powerful activity</td><td class="c2">Short bursts of maximal power</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note hook">
+      <h3>One line to hold it together</h3>
+      <ul>
+        <li><b>Red = slow = oxidative = fatigue-resistant.</b> Rich in myoglobin, mitochondria and capillaries, small fibres, low myosin ATPase.</li>
+        <li><b>White = fast = glycolytic = fatigues quickly.</b> Large fibres, poor blood supply, little myoglobin, high myosin ATPase.</li>
+        <li>Type IIa sits between the two and is progressively recruited as effort increases — the <b>size principle</b>: small type I motor units fire first, large type II units last.</li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="src">Built from handwritten pages IMG_0994 and IMG_0995 (your page cites p.80).</p>
+  <footer>High yield notes · EDAIC revision</footer>
+</div>
+</body>
+</html>

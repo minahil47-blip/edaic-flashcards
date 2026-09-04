@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Cardiac Cycle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="notes.css">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+
+  <header class="top">
+    <h1>The cardiac cycle</h1>
+    <p>Seven phases, the pressure–volume loop, the heart sounds and the CVP waveform — all lined up against the ECG that triggers them.</p>
+  </header>
+
+  <!-- ============ ECG TIMING ============ -->
+  <section class="card">
+    <h2 class="kicker">What each ECG feature triggers</h2>
+    <p class="sub">The ECG is the electrical <b>cause</b>; everything mechanical follows it. Fix this mapping first.</p>
+
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>ECG</th><th>Electrical event</th><th>Mechanical consequence</th></tr></thead>
+        <tbody>
+          <tr><th>P wave</th><td class="c2">Atrial depolarisation</td><td class="c2">Atrial contraction — the "atrial kick"</td></tr>
+          <tr><th>PR interval</th><td class="c2">AV nodal delay</td><td class="c2">Allows ventricular filling to complete before systole</td></tr>
+          <tr><th>QRS</th><td class="c5">Ventricular depolarisation</td><td class="c5">Ventricular contraction begins → <b>S1</b> at the end of QRS</td></tr>
+          <tr><th>ST segment</th><td class="c5">Plateau (phase 2), ventricles fully depolarised</td><td class="c5">Ejection</td></tr>
+          <tr><th>T wave</th><td class="c4">Ventricular repolarisation</td><td class="c4">Relaxation → <b>S2</b> at the end of the T wave</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note hook">
+      <h3>The two heart sounds</h3>
+      <ul>
+        <li><b>S1</b> — beginning of systole. Ventricular pressure exceeds atrial pressure, so the <b>AV valves (mitral + tricuspid) close</b>. Coincides with the end of the QRS. It marks the start of <b>isovolumetric contraction</b>.</li>
+        <li><b>S2</b> — end of systole. <b>Aortic and pulmonary valves close</b> at the end of the T wave. It marks the start of <b>isovolumetric relaxation</b> and therefore the beginning of diastole.</li>
+        <li>So: <b>S1 → IVC</b>, <b>S2 → IVR</b>. Systole is the interval between them.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SEVEN PHASES ============ -->
+  <section class="card">
+    <h2 class="kicker">The phases, in order</h2>
+    <p class="sub">Lettered to match the pressure–volume loop below: <b>A</b> mitral closure, <b>B</b> aortic opening, <b>C</b> aortic closure, <b>D</b> mitral opening.</p>
+
+    <ol class="phases">
+      <li><div class="num">1</div><div>
+        <p class="pname">Late diastole — passive filling <em>(D → A)</em></p>
+        <p class="pbody">AV valves <b>open</b>, semilunar valves closed. About <b>80% of ventricular filling is passive</b>. The P wave then triggers atrial contraction — the <b>atrial kick</b> — supplying the last portion and completing <b>EDV ≈ 120–130 ml</b>.</p>
+      </div></li>
+      <li><div class="num">2</div><div>
+        <p class="pname">Isovolumetric contraction (IVC) <em>(A → B)</em></p>
+        <p class="pbody">Triggered by the <b>QRS</b>. All four valves are shut, so <b>volume is constant</b> while pressure rises steeply. Begins as LV pressure exceeds LA pressure, closing the mitral valve (<b>S1</b>). Ends at about <b>80 mmHg</b>, when the aortic valve opens. Produces the <b>c wave</b> of the CVP trace.</p>
+      </div></li>
+      <li><div class="num">3</div><div>
+        <p class="pname">Rapid ejection <em>(B → C)</em></p>
+        <p class="pbody">Aortic and pulmonary valves open. Corresponds to the <b>ST segment</b>. Peak LV pressure about <b>120 mmHg</b>; roughly <b>70% of the stroke volume</b> is ejected in this early phase, the remainder during reduced ejection.</p>
+      </div></li>
+      <li><div class="num">4</div><div>
+        <p class="pname">Point C — end of ejection</p>
+        <p class="pbody">The <b>T wave</b> (repolarisation) is underway. <b>ESV ≈ 50 ml</b>, so <b>SV = EDV − ESV ≈ 70 ml</b>.</p>
+      </div></li>
+      <li><div class="num">5</div><div>
+        <p class="pname">Isovolumetric relaxation (IVR) <em>(C → D)</em></p>
+        <p class="pbody">Ventricle relaxes, pressure falls, all valves shut again. Aortic valve closure gives <b>S2</b> and the <b>dicrotic notch</b> on the arterial trace. Ends when LV pressure falls below atrial pressure — the mitral valve opens and diastole proper begins. Ends with the <b>v wave</b> of the CVP trace.</p>
+      </div></li>
+      <li><div class="num">6</div><div>
+        <p class="pname">Rapid then reduced filling <em>(D onward)</em></p>
+        <p class="pbody">Mitral and tricuspid open, ventricles fill rapidly down the pressure gradient, then more slowly (diastasis).</p>
+      </div></li>
+      <li><div class="num">7</div><div>
+        <p class="pname">Atrial systole — the last third</p>
+        <p class="pbody">Contributes about <b>10% of filling at rest</b>, but up to <b>40% at high heart rates</b> when diastole is short. This is why losing the atrial kick (AF) is so poorly tolerated in stiff ventricles — AS, HCM, diastolic dysfunction.</p>
+      </div></li>
+    </ol>
+  </section>
+
+  <!-- ============ PV LOOP ============ -->
+  <section class="card">
+    <h2 class="kicker">The pressure–volume loop</h2>
+    <p class="sub">Read it <b>anticlockwise</b> from A. The four corners are the four valve events.</p>
+
+    <div class="plot">
+      <svg viewBox="0 0 620 400" role="img" aria-label="Left ventricular pressure volume loop with points A to D marking mitral closure, aortic opening, aortic closure and mitral opening">
+        <g font-family="Public Sans, sans-serif">
+          <!-- axes -->
+          <path d="M70,340 H560" stroke="#5C6E66" stroke-width="1.6" fill="none"/>
+          <path d="M70,340 V40" stroke="#5C6E66" stroke-width="1.6" fill="none"/>
+          <text x="315" y="378" font-size="13" font-weight="600" fill="#5C6E66" text-anchor="middle">LV volume (ml)</text>
+          <text x="26" y="190" font-size="13" font-weight="600" fill="#5C6E66" text-anchor="middle" transform="rotate(-90 26 190)">LV pressure (mmHg)</text>
+
+          <!-- gridline labels -->
+          <g font-size="12" fill="#5C6E66" text-anchor="end">
+            <text x="64" y="104">120</text>
+            <text x="64" y="200">80</text>
+            <text x="64" y="296">20</text>
+            <text x="64" y="344">0</text>
+          </g>
+          <g font-size="12" fill="#5C6E66" text-anchor="middle">
+            <text x="200" y="358">50 (ESV)</text>
+            <text x="430" y="358">130 (EDV)</text>
+          </g>
+          <path d="M70,100 H560" stroke="#DCE2DC" stroke-width="1" fill="none"/>
+          <path d="M70,196 H560" stroke="#DCE2DC" stroke-width="1" fill="none"/>
+
+          <!-- loop: A(430,300) -> B(430,196) -> C(200,120) -> D(200,300) -> A -->
+          <path d="M430,300 L430,196" stroke="#173A2E" stroke-width="3.2" fill="none"/>
+          <path d="M430,196 C400,120 300,104 200,120" stroke="#A8123E" stroke-width="3.2" fill="none"/>
+          <path d="M200,120 L200,300" stroke="#173A2E" stroke-width="3.2" fill="none"/>
+          <path d="M200,300 C260,312 360,306 430,300" stroke="#1B5FA8" stroke-width="3.2" fill="none"/>
+
+          <!-- direction arrows -->
+          <path d="M430,250 l-5,10 l10,0 z" fill="#173A2E"/>
+          <path d="M300,109 l10,-3 l-3,10 z" fill="#A8123E"/>
+          <path d="M200,215 l-5,-10 l10,0 z" fill="#173A2E"/>
+          <path d="M330,306 l-10,3 l3,-10 z" fill="#1B5FA8"/>
+
+          <!-- corner points -->
+          <circle cx="430" cy="300" r="6" fill="#173A2E"/><text x="446" y="316" font-size="15" font-weight="800" fill="#173A2E">A</text>
+          <circle cx="430" cy="196" r="6" fill="#173A2E"/><text x="446" y="192" font-size="15" font-weight="800" fill="#173A2E">B</text>
+          <circle cx="200" cy="120" r="6" fill="#173A2E"/><text x="176" y="112" font-size="15" font-weight="800" fill="#173A2E">C</text>
+          <circle cx="200" cy="300" r="6" fill="#173A2E"/><text x="176" y="316" font-size="15" font-weight="800" fill="#173A2E">D</text>
+
+          <!-- annotations -->
+          <g font-size="12.5" font-weight="600">
+            <text x="452" y="252" fill="#173A2E">IVC</text>
+            <text x="452" y="268" fill="#5C6E66">S1 · mitral shuts</text>
+            <text x="300" y="86" fill="#A8123E" text-anchor="middle">Ejection — ST segment</text>
+            <text x="96" y="200" fill="#173A2E">IVR</text>
+            <text x="86" y="216" fill="#5C6E66">S2 · aortic</text>
+            <text x="92" y="232" fill="#5C6E66">shuts</text>
+            <text x="315" y="330" fill="#1B5FA8" text-anchor="middle">Filling — mitral open</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Point</th><th>Valve event</th><th>Marks</th></tr></thead>
+        <tbody>
+          <tr><th>A</th><td class="c5">Mitral <b>closes</b> (LV pressure &gt; LA)</td><td class="c5">S1 · start of IVC · end of diastole</td></tr>
+          <tr><th>B</th><td class="c1">Aortic <b>opens</b> (LV &gt; aortic, ~80 mmHg)</td><td class="c1">Start of ejection</td></tr>
+          <tr><th>C</th><td class="c4">Aortic <b>closes</b> (LV &lt; aortic)</td><td class="c4">S2 · dicrotic notch · start of IVR · ESV ≈ 50 ml</td></tr>
+          <tr><th>D</th><td class="c2">Mitral <b>opens</b> (LA &gt; LV)</td><td class="c2">Start of filling</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><div class="v">120–130 ml</div><div class="n">EDV</div></div>
+      <div class="fact"><div class="v">50 ml</div><div class="n">ESV</div></div>
+      <div class="fact"><div class="v">~70 ml</div><div class="n">stroke volume</div></div>
+      <div class="fact"><div class="v">55–70%</div><div class="n">ejection fraction</div></div>
+    </div>
+
+    <div class="note blue">
+      <h3>How the loop changes</h3>
+      <ul>
+        <li><b>↑ Preload</b> — loop widens to the right, SV rises (Frank–Starling).</li>
+        <li><b>↑ Afterload</b> — loop gets taller and narrower; ESV rises, SV falls.</li>
+        <li><b>↑ Contractility</b> — the end-systolic pressure–volume relationship steepens; ESV falls, SV rises.</li>
+        <li>The <b>area inside the loop</b> is stroke work.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ PRESSURES ============ -->
+  <section class="card">
+    <h2 class="kicker">The numbers</h2>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Chamber / event</th><th>Pressure</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><th>Atrial pressure during atrial contraction</th><td class="c2">0–5 mmHg</td><td class="c2">Left atrial slightly higher than right</td></tr>
+          <tr><th>Aortic valve opens</th><td class="c1">~80 mmHg</td><td class="c1">i.e. at the aortic diastolic pressure</td></tr>
+          <tr><th>Peak LV systolic pressure</th><td class="c5">~120 mmHg</td><td class="c5">Maximum LV pressure the ventricle can generate is far higher (~300 mmHg)</td></tr>
+          <tr><th>Peak RV systolic pressure</th><td class="c4">20–25 mmHg</td><td class="c4">Pulmonary circulation is a low-pressure system</td></tr>
+          <tr><th>LV end-diastolic pressure</th><td class="c2">5–12 mmHg</td><td class="c2">Rises in failure and in stiff ventricles</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn">
+      <h3>One figure to be careful with</h3>
+      <ul>
+        <li>Your page lists <b>"max LV pressure 300 mmHg"</b> next to <b>"peak LV systolic 120 mmHg"</b>. Both are right but they are different quantities: 120 mmHg is the <b>normal working</b> peak, while ~300 mmHg is the theoretical <b>maximum isovolumetric pressure</b> the LV can develop against a closed outflow. Only the 120 figure is the one to quote for a normal cycle.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CVP WAVEFORM ============ -->
+  <section class="card">
+    <h2 class="kicker">The CVP / JVP waveform</h2>
+    <p class="sub">Three positive waves (<b>a, c, v</b>) and two descents (<b>x, y</b>). Each maps onto a phase above.</p>
+
+    <div class="plot">
+      <svg viewBox="0 0 620 300" role="img" aria-label="Central venous pressure waveform showing a, c and v waves with x and y descents, aligned beneath an ECG trace">
+        <g font-family="Public Sans, sans-serif">
+          <!-- CVP trace -->
+          <path d="M40,150 C60,150 70,88 92,88 C112,88 118,140 138,140
+                   C152,140 158,104 176,104 C196,104 200,150 220,178
+                   C238,200 252,196 268,190
+                   C300,178 320,96 348,96 C372,96 380,150 400,186
+                   C418,214 438,208 456,200
+                   C486,190 500,150 520,150 H580"
+                fill="none" stroke="#173A2E" stroke-width="3.2" stroke-linecap="round"/>
+
+          <!-- wave labels -->
+          <g font-size="19" font-weight="800">
+            <text x="86" y="74" fill="#A8123E">a</text>
+            <text x="170" y="90" fill="#B4690E">c</text>
+            <text x="342" y="82" fill="#1B5FA8">v</text>
+          </g>
+          <g font-size="17" font-weight="800">
+            <text x="238" y="222" fill="#7A3B9E">x</text>
+            <text x="428" y="230" fill="#0E7A66">y</text>
+          </g>
+
+          <!-- systole / diastole markers -->
+          <path d="M176,240 H400" stroke="#5C6E66" stroke-width="1.4" stroke-dasharray="5 5" fill="none"/>
+          <text x="288" y="236" font-size="13" font-weight="700" fill="#5C6E66" text-anchor="middle">systole</text>
+          <text x="480" y="236" font-size="13" font-weight="700" fill="#5C6E66" text-anchor="middle">diastole</text>
+          <path d="M176,232 V248 M400,232 V248" stroke="#5C6E66" stroke-width="1.4" fill="none"/>
+
+          <!-- ECG below -->
+          <path d="M40,282 H70 q6,-14 12,0 H150 L162,282 168,258 176,294 184,282
+                   H300 q10,-16 20,0 H430 L442,282 448,258 456,294 464,282 H580"
+                fill="none" stroke="#A8123E" stroke-width="2.2" stroke-linecap="round"/>
+          <g font-size="12.5" font-weight="700" fill="#A8123E">
+            <text x="70" y="268">P</text>
+            <text x="166" y="252">R</text>
+            <text x="304" y="268">T</text>
+          </g>
+
+          <!-- leader lines from ECG to CVP -->
+          <path d="M76,262 V96" stroke="#C4CCC4" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
+          <path d="M170,258 V112" stroke="#C4CCC4" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
+          <path d="M312,262 V104" stroke="#C4CCC4" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
+
+          <text x="310" y="26" font-size="13" font-weight="700" fill="#5C6E66" text-anchor="middle">a follows P · c follows R · v follows T</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Wave</th><th>Cause</th><th>Abnormalities</th></tr></thead>
+        <tbody>
+          <tr><th>a wave</th><td class="c2">Atrial contraction</td><td class="c2"><b>Absent</b> in AF. <b>Cannon a waves</b> in complete heart block / AV dissociation. Large a waves in tricuspid stenosis, pulmonary hypertension</td></tr>
+          <tr><th>c wave</th><td class="c5">Tricuspid bulging into the atrium during <b>isovolumetric contraction</b></td><td class="c5">—</td></tr>
+          <tr><th>x descent</th><td class="c4">Atrial relaxation in mid-systole, with downward pull of the valve ring</td><td class="c4"><b>Exaggerated</b> in constrictive pericarditis and tamponade. <b>Reduced or absent</b> in tricuspid regurgitation and RV dysfunction</td></tr>
+          <tr><th>v wave</th><td class="c1">Rapid atrial filling against a closed tricuspid, ending as <b>IVR</b> finishes</td><td class="c1"><b>Giant v waves</b> in tricuspid regurgitation</td></tr>
+          <tr><th>y descent</th><td class="c3">Early ventricular filling once the tricuspid opens</td><td class="c3"><b>Exaggerated</b> in constrictive pericarditis. <b>Blunted</b> in tamponade</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note pur">
+      <h3>Your sticky-note summary, in one block</h3>
+      <ul>
+        <li><b>v = rapid filling of the right atrium</b> against a closed tricuspid valve. <b>↑ v = tricuspid regurgitation</b> (giant v waves).</li>
+        <li><b>x descent = right atrial relaxation, in mid-systole.</b> <b>↑ x = constrictive pericarditis.</b> <b>↓ or absent x = tricuspid regurgitation / RV dysfunction</b> — hence "x is absent in tricuspid incompetence".</li>
+        <li><b>y descent = early ventricular filling.</b> <b>↑ y = constrictive pericarditis.</b> <b>↓ y = cardiac tamponade.</b></li>
+        <li>Sequence against the ECG: <b>a follows P</b>, <b>c follows R</b>, <b>v follows T</b>.</li>
+      </ul>
+    </div>
+
+    <div class="note">
+      <h3>The classic discriminator</h3>
+      <ul>
+        <li><b>Constrictive pericarditis:</b> prominent x AND y descents — the "M" or "W" pattern.</li>
+        <li><b>Tamponade:</b> prominent x descent but <b>blunted y</b> — filling is impeded throughout diastole, so early filling cannot occur.</li>
+        <li><b>Tricuspid regurgitation:</b> the x descent is lost and replaced by a giant fused c-v wave.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ LOADING CONDITIONS ============ -->
+  <section class="card">
+    <h2 class="kicker">Preload, afterload &amp; contractility</h2>
+    <p class="sub">Three independent levers on stroke volume. Each moves the PV loop in its own characteristic way.</p>
+
+    <div class="scroll">
+      <table class="w2">
+        <thead><tr><th></th><th>Definition</th><th>Effect of increasing it</th></tr></thead>
+        <tbody>
+          <tr><th>Preload</th><td class="c2">Ventricular fibre stretch at end-diastole — clinically related to <b>EDV / EDP</b></td><td class="c2">↑ EDV → <b>↑ SV</b> via Frank–Starling, within physiological limits</td></tr>
+          <tr><th>Afterload</th><td class="c5">The load the ventricle ejects against — for the LV, aortic pressure and <b>SVR</b></td><td class="c5"><b>↑ ESV → ↓ SV</b></td></tr>
+          <tr><th>Contractility</th><td class="c4">Intrinsic force generation, independent of loading</td><td class="c4"><b>↓ ESV → ↑ SV and ↑ EF</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="scroll" style="margin-top:14px">
+      <table class="w1">
+        <thead><tr><th></th><th>Systolic failure</th><th>Diastolic failure</th></tr></thead>
+        <tbody>
+          <tr><th>Primary problem</th><td class="c5">↓ contractility, impaired <b>ejection</b></td><td class="c3">Impaired relaxation, <b>↓ compliance</b></td></tr>
+          <tr><th>Ejection fraction</th><td class="c5"><b>↓</b></td><td class="c3"><b>Preserved / normal</b></td></tr>
+          <tr><th>LV end-systolic volume</th><td class="c5">↑</td><td class="c3">Normal or ↓</td></tr>
+          <tr><th>Filling pressure</th><td class="c5">↑</td><td class="c3"><b>↑↑</b> despite impaired filling</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note hook">
+      <h3>What changes during exercise</h3>
+      <ul>
+        <li><b>Heart rate ↑↑</b> and <b>contractility ↑</b> — the dominant contributors.</li>
+        <li><b>Stroke volume ↑</b>, <b>LVESV ↓</b>, LVEDV maintained at a higher filling level.</li>
+        <li><b>Cardiac output ↑↑</b>, approaching <b>~20 L/min</b> in strenuous exercise (higher still in trained athletes).</li>
+        <li><b>Oxygen consumption ↑ substantially</b> — and because the myocardium already extracts ~70% of delivered oxygen at rest, the extra demand must be met almost entirely by <b>increased coronary flow</b>.</li>
+      </ul>
+    </div>
+
+    <div class="note warn">
+      <h3>One arithmetic check</h3>
+      <ul>
+        <li>Your page records SV as about <b>80 mL</b>, but with <b>EDV 120</b> and <b>ESV 50</b> the arithmetic gives <b>70 mL</b>. EF is then 70/120 ≈ <b>58%</b>. All three figures are approximate normals, so quote <b>EDV 120 · ESV 50 · SV 70 · EF 55–70%</b> as an internally consistent set.</li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="src">Built from handwritten pages IMG_0982–0985, plus the cardiovascular add-on from Lung_Volumes_and_Cardio_EDAIC_Updated.pdf.</p>
+  <footer>High yield notes · EDAIC revision</footer>
+</div>
+</body>
+</html>

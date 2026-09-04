@@ -1,0 +1,110 @@
+/* Shared house style for High Yield Notes pages.
+   Kept separate from ../style.css, which stays deck-agnostic for the flashcard app. */
+
+:root{
+  --page:#EAEDE7;
+  --card:#FFFFFF;
+  --plot:#F0F6F3;
+  --ink:#152420;
+  --soft:#5C6E66;
+  --hair:#DCE2DC;
+  --trace:#173A2E;
+  --crimson:#A8123E;
+  --blue:#1B5FA8;
+  --purple:#7A3B9E;
+  --green:#0E7A66;
+  --amber:#B4690E;
+  --orange:#B5651D;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--page);color:var(--ink);
+  font-family:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.55;
+}
+.wrap{max-width:840px;margin:0 auto;padding:20px 14px 60px}
+
+.backlink{
+  display:inline-block;margin:0 0 14px;padding:8px 15px;
+  border-radius:9px;background:var(--trace);color:#fff;
+  text-decoration:none;font-size:14px;font-weight:600;
+}
+.backlink:hover{background:#245243}
+
+header.top{background:var(--trace);color:#fff;border-radius:14px;padding:22px 20px 20px;margin-bottom:18px}
+header.top h1{
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+  font-size:clamp(26px,6.6vw,40px);line-height:1.03;letter-spacing:-.02em;margin:0 0 10px;
+}
+header.top p{margin:0;color:#BFD6C7;font-size:15px;max-width:56ch}
+
+section.card{background:var(--card);border-radius:14px;padding:18px 16px 20px;margin-bottom:18px}
+.kicker{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(20px,5vw,26px);letter-spacing:-.015em;margin:0 0 4px}
+.sub{margin:0 0 16px;color:var(--soft);font-size:14.5px}
+.sub b{color:var(--ink);font-weight:600}
+
+.plot{background:var(--plot);border-radius:10px;padding:10px 6px 4px;margin:0 0 16px}
+.plot svg{display:block;width:100%;height:auto}
+
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:14.2px}
+table.w1{min-width:560px}
+table.w2{min-width:680px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--hair);vertical-align:top}
+thead th{font-size:12.5px;color:var(--soft);font-weight:600;border-bottom:1.5px solid #C4CCC4}
+tbody th{font-weight:600;width:22%}
+td.c1{background:#FBF3E9}
+td.c2{background:#EAF4F8}
+td.c3{background:#F1EBF7}
+td.c4{background:#EAF3EC}
+td.c5{background:#FDEFF3}
+.pill{display:inline-block;font-size:11.5px;font-weight:800;color:#fff;border-radius:20px;padding:1px 7px;margin-right:5px}
+
+ol.phases{list-style:none;margin:0;padding:0}
+ol.phases li{display:grid;grid-template-columns:38px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--hair)}
+ol.phases li:first-child{border-top:none}
+.num{
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:14px;
+  color:#fff;background:var(--trace);border-radius:8px;width:34px;height:34px;
+  display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.1;
+}
+.pname{font-weight:700;font-size:15.5px;margin:0 0 2px}
+.pbody{margin:0;font-size:14.8px;color:#39433D}
+.pbody em{font-style:normal;color:var(--soft)}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(126px,1fr));gap:8px;margin:14px 0 0}
+.fact{background:#F1F4F1;border-radius:9px;padding:9px 11px}
+.fact .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:19px;line-height:1.1}
+.fact .n{font-size:12.5px;color:var(--soft);margin-top:2px}
+
+.note{border-left:4px solid var(--crimson);background:#FDEFF3;border-radius:0 9px 9px 0;padding:13px 14px;margin:16px 0 0;font-size:14.6px}
+.note h3{font-family:"Bricolage Grotesque",sans-serif;font-size:16px;margin:0 0 6px;font-weight:700}
+.note ul{margin:0;padding-left:18px}
+.note li{margin:5px 0}
+.note li b{color:var(--crimson)}
+.note.hook{background:#EAF3EC;border-left-color:var(--green)}
+.note.hook h3{color:var(--green)}
+.note.hook li b{color:var(--green)}
+.note.blue{background:#EAF4F8;border-left-color:var(--blue)}
+.note.blue h3{color:var(--blue)}
+.note.blue li b{color:var(--blue)}
+.note.warn{background:#FFF7EC;border-left-color:var(--amber)}
+.note.warn h3{color:var(--amber)}
+.note.warn li b{color:var(--amber)}
+.note.pur{background:#F1EBF7;border-left-color:var(--purple)}
+.note.pur h3{color:var(--purple)}
+.note.pur li b{color:var(--purple)}
+
+.src{font-size:12.5px;color:var(--soft);margin-top:14px;font-style:italic}
+
+footer{color:var(--soft);font-size:13px;text-align:center;padding-top:6px}
+
+@media print{
+  body{background:#fff}
+  .wrap{max-width:none;padding:0}
+  section.card{page-break-inside:avoid;border:1px solid #ddd;margin-bottom:12px}
+  header.top{background:#fff;color:#000;border:1px solid #ddd}
+  header.top p{color:#444}
+  .backlink{display:none}
+}
