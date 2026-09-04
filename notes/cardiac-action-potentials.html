@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cardiac Action Potentials — Fast, Slow, Myocyte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --page:#E8E8E3;
+    --card:#FFFFFF;
+    --plot:#FDF2EE;
+    --grid:#F2CCBF;
+    --gridbold:#E4A18C;
+    --ink:#16202E;
+    --soft:#5A6474;
+    --hair:#DDDDD6;
+    --na:#1B5FA8;
+    --ca:#7A3B9E;
+    --k:#0E7A66;
+    --cl:#7C8798;
+    --crimson:#A8123E;
+    --trace:#14213D;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--page);
+    color:var(--ink);
+    font-family:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16px;
+    line-height:1.55;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:20px 14px 60px}
+
+  /* ---------- masthead ---------- */
+  header.top{
+    background:var(--trace);
+    color:#fff;
+    border-radius:14px;
+    padding:22px 20px 20px;
+    margin-bottom:18px;
+  }
+  header.top h1{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-weight:800;
+    font-size:clamp(27px,7vw,42px);
+    line-height:1.02;
+    letter-spacing:-.02em;
+    margin:0 0 10px;
+  }
+  header.top p{margin:0;color:#B9C6D8;font-size:15px;max-width:52ch}
+  .pulse{display:block;width:100%;height:34px;margin-top:14px;opacity:.9}
+
+  /* ---------- cards ---------- */
+  section.card{
+    background:var(--card);
+    border-radius:14px;
+    padding:18px 16px 20px;
+    margin-bottom:18px;
+  }
+  .kicker{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-weight:700;
+    font-size:clamp(20px,5vw,27px);
+    letter-spacing:-.015em;
+    margin:0 0 4px;
+  }
+  .sub{margin:0 0 16px;color:var(--soft);font-size:14.5px}
+  .sub b{color:var(--ink);font-weight:600}
+
+  /* ---------- plot ---------- */
+  .plot{
+    background:var(--plot);
+    border-radius:10px;
+    padding:6px 4px 2px;
+    margin:0 0 16px;
+  }
+  .plot svg{display:block;width:100%;height:auto}
+  .tracepath{fill:none;stroke:var(--trace);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+  .axis{stroke:#9AA3B2;stroke-width:1.6}
+  .dash{stroke-dasharray:7 6;stroke-width:1.8;fill:none}
+  .lbl{font-family:"Public Sans",sans-serif;font-size:17px;fill:var(--soft);font-weight:500}
+  .lbl-b{font-family:"Public Sans",sans-serif;font-size:17.5px;font-weight:700}
+  .ph{font-family:"Bricolage Grotesque",sans-serif;font-size:25px;font-weight:800;fill:var(--crimson)}
+  .ion{font-family:"Public Sans",sans-serif;font-size:17px;font-weight:700}
+
+  /* ---------- phase list ---------- */
+  ol.phases{list-style:none;margin:0;padding:0;counter-reset:none}
+  ol.phases li{
+    display:grid;
+    grid-template-columns:34px 1fr;
+    gap:12px;
+    padding:11px 0;
+    border-top:1px solid var(--hair);
+  }
+  ol.phases li:first-child{border-top:none}
+  .num{
+    font-family:"Bricolage Grotesque",sans-serif;
+    font-weight:800;font-size:22px;color:var(--crimson);
+    line-height:1.15;text-align:center;
+  }
+  .pname{font-weight:700;font-size:15.5px;margin:0 0 2px}
+  .pbody{margin:0;font-size:15px;color:#39424F}
+  .pbody em{font-style:normal;color:var(--soft)}
+  .tag{
+    display:inline-block;font-size:12.5px;font-weight:700;
+    padding:1px 7px;border-radius:5px;margin-left:6px;vertical-align:1px;
+    background:#F2EDF7;color:var(--ca);
+  }
+  .tag.ecg{background:#FBE7EC;color:var(--crimson)}
+  i.na{color:var(--na);font-style:normal;font-weight:700}
+  i.ca{color:var(--ca);font-style:normal;font-weight:700}
+  i.k{color:var(--k);font-style:normal;font-weight:700}
+  i.cl{color:var(--cl);font-style:normal;font-weight:700}
+
+  /* ---------- key facts strip ---------- */
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:8px;margin:14px 0 0}
+  .fact{background:#F5F6F8;border-radius:9px;padding:9px 11px}
+  .fact .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:20px;line-height:1.1}
+  .fact .n{font-size:12.5px;color:var(--soft);margin-top:2px}
+
+  /* ---------- table ---------- */
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14.5px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--hair);vertical-align:top}
+  thead th{font-size:13px;color:var(--soft);font-weight:600;border-bottom:1.5px solid #C9CDD4}
+  tbody th{font-weight:600;width:31%}
+  td.fast{background:#F4F8FC}
+  td.slow{background:#FBF4F8}
+
+  /* ---------- callouts ---------- */
+  .note{
+    border-left:4px solid var(--crimson);
+    background:#FDF4F6;
+    border-radius:0 9px 9px 0;
+    padding:13px 14px;margin:16px 0 0;font-size:14.8px;
+  }
+  .note h3{font-family:"Bricolage Grotesque",sans-serif;font-size:16.5px;margin:0 0 6px;font-weight:700}
+  .note ul{margin:0;padding-left:18px}
+  .note li{margin:5px 0}
+  .note li b{color:var(--crimson)}
+
+  .hook{background:#F0F4F1;border-left:4px solid var(--k)}
+  .hook h3{color:var(--k)}
+  .hook li b{color:var(--k)}
+
+  .auto{display:grid;grid-template-columns:1fr;gap:10px;margin-top:6px}
+  .auto div{background:#F5F6F8;border-radius:9px;padding:11px 12px;font-size:14.5px}
+  .auto b{display:block;margin-bottom:2px}
+  @media(min-width:620px){.auto{grid-template-columns:1fr 1fr}}
+
+  footer{color:var(--soft);font-size:13px;text-align:center;padding-top:6px}
+
+  .backlink{
+    display:inline-block;margin:0 0 14px;padding:8px 15px;
+    border-radius:9px;background:var(--trace);color:#fff;
+    text-decoration:none;font-size:14px;font-weight:600;
+  }
+  .backlink:hover{background:#24334f}
+  @media print{.backlink{display:none}}
+
+  @media print{
+    body{background:#fff}
+    .wrap{max-width:none;padding:0}
+    section.card{page-break-inside:avoid;border:1px solid #ddd;margin-bottom:12px}
+    header.top{background:#fff;color:#000;border:1px solid #ddd}
+    header.top p{color:#444}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+
+  <header class="top">
+    <h1>Cardiac action potentials</h1>
+    <p>One sheet for the three traces you keep mixing up: the fast working myocyte, the slow SA nodal pacemaker, and how they line up against the ECG.</p>
+    <svg class="pulse" viewBox="0 0 600 34" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,24 H70 L82,24 88,10 96,30 104,24 H150 L162,24 168,10 176,30 184,24 H240
+               L252,24 258,10 266,30 274,24 H330 L342,24 348,10 356,30 364,24 H420
+               L432,24 438,10 446,30 454,24 H510 L522,24 528,10 536,30 544,24 H600"
+            fill="none" stroke="#7FD4B8" stroke-width="2.4" stroke-linejoin="round"/>
+    </svg>
+  </header>
+
+  <!-- ============ HERO COMPARISON ============ -->
+  <section class="card">
+    <h2 class="kicker">The two shapes, same voltage scale</h2>
+    <p class="sub">Everything else follows from this picture: the myocyte sits still at <b>−90&nbsp;mV</b> until something wakes it. The node never sits still at all — it climbs to its own threshold and fires again.</p>
+
+    <div class="plot">
+      <svg viewBox="0 0 620 330" role="img" aria-label="Ventricular myocyte and SA nodal action potentials overlaid on the same millivolt scale">
+        <defs>
+          <pattern id="gfine" width="10" height="10" patternUnits="userSpaceOnUse">
+            <path d="M10 0 L0 0 0 10" fill="none" stroke="#F2CCBF" stroke-width="0.7"/>
+          </pattern>
+          <pattern id="gbold" width="50" height="50" patternUnits="userSpaceOnUse">
+            <rect width="50" height="50" fill="url(#gfine)"/>
+            <path d="M50 0 L0 0 0 50" fill="none" stroke="#E4A18C" stroke-width="1.4"/>
+          </pattern>
+        </defs>
+        <rect x="56" y="18" width="552" height="278" fill="url(#gbold)"/>
+        <rect x="56" y="18" width="552" height="278" fill="none" stroke="#E4A18C" stroke-width="1.4"/>
+
+        <!-- y axis ticks: y = 30 + (40 - V)*1.857 -->
+        <g class="lbl" text-anchor="end">
+          <text x="50" y="72">+20</text>
+          <text x="50" y="109">0</text>
+          <text x="50" y="184">−40</text>
+          <text x="50" y="221">−60</text>
+          <text x="50" y="277">−90</text>
+        </g>
+        <text class="lbl" x="14" y="175" transform="rotate(-90 14 175)" text-anchor="middle">mV</text>
+
+        <!-- ventricular -->
+        <path class="tracepath" stroke="#14213D"
+          d="M62,271 H120 C126,200 132,95 140,67 C147,80 151,98 159,105
+             C215,111 300,113 350,126 C392,148 420,235 448,268 C455,273 462,271 470,271 H604"/>
+        <!-- nodal -->
+        <path class="tracepath" stroke="#A8123E" stroke-width="3"
+          d="M62,216 C110,212 165,201 214,179 C229,158 244,113 262,96
+             C282,124 312,192 342,215 C356,223 366,226 376,226
+             C412,222 462,208 508,179 C523,158 538,113 556,96
+             C576,124 590,180 604,206"/>
+
+        <text class="lbl-b" x="150" y="52" fill="#14213D">Ventricular myocyte</text>
+        <text class="lbl-b" x="290" y="252" fill="#A8123E">SA node</text>
+        <text class="lbl" x="470" y="300" fill="#14213D">flat until stimulated</text>
+        <text class="lbl" x="120" y="300" fill="#A8123E">never flat — always drifting up</text>
+      </svg>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><div class="v">−90 → +20</div><div class="n">myocyte swing</div></div>
+      <div class="fact"><div class="v">−60 → ≈0</div><div class="n">nodal swing</div></div>
+      <div class="fact"><div class="v">Na⁺</div><div class="n">myocyte upstroke</div></div>
+      <div class="fact"><div class="v">Ca²⁺</div><div class="n">nodal upstroke</div></div>
+    </div>
+  </section>
+
+  <!-- ============ FAST AP ============ -->
+  <section class="card">
+    <h2 class="kicker">Fast AP — ventricular myocyte</h2>
+    <p class="sub">Also called the <b>non-pacemaker</b> or <b>working myocardial</b> AP. Fast Na⁺ channels, a long plateau, and a refractory period almost as long as the contraction itself.</p>
+
+    <div class="plot">
+      <svg viewBox="0 0 620 360" role="img" aria-label="Ventricular myocyte action potential with phases zero to four, ion movements and refractory periods">
+        <rect x="56" y="18" width="552" height="278" fill="url(#gbold)"/>
+        <rect x="56" y="18" width="552" height="278" fill="none" stroke="#E4A18C" stroke-width="1.4"/>
+
+        <g class="lbl" text-anchor="end">
+          <text x="50" y="72">+20</text>
+          <text x="50" y="109">0</text>
+          <text x="50" y="240">−70</text>
+          <text x="50" y="277">−90</text>
+        </g>
+        <text class="lbl" x="14" y="175" transform="rotate(-90 14 175)" text-anchor="middle">mV</text>
+
+        <!-- threshold line -->
+        <path class="dash" stroke="#A8123E" d="M62,234 H604"/>
+        <text class="lbl" x="516" y="228" fill="#A8123E">TP −70</text>
+        <text class="lbl" x="62" y="291" fill="#5A6474">RMP −90</text>
+
+        <path class="tracepath"
+          d="M62,271 H120 C126,200 132,95 140,67 C147,80 151,98 159,105
+             C215,111 300,113 350,126 C392,148 420,235 448,268 C455,273 462,271 470,271 H604"/>
+
+        <!-- phase numbers -->
+        <text class="ph" x="126" y="62">0</text>
+        <text class="ph" x="160" y="88">1</text>
+        <text class="ph" x="250" y="100">2</text>
+        <text class="ph" x="404" y="180">3</text>
+        <text class="ph" x="520" y="262">4</text>
+
+        <!-- ion annotations -->
+        <text class="ion" x="60" y="46" fill="#1B5FA8">Na⁺ in</text>
+        <text class="ion" x="182" y="76" fill="#0E7A66">K⁺ out</text>
+        <text class="ion" x="182" y="96" fill="#7C8798">Cl⁻ in</text>
+        <text class="ion" x="240" y="146" fill="#7A3B9E">L-type Ca²⁺ in</text>
+        <text class="ion" x="240" y="166" fill="#0E7A66">balanced by K⁺ out</text>
+        <text class="ion" x="424" y="206" fill="#0E7A66">K⁺ out</text>
+        <text class="ion" x="424" y="226" fill="#7A3B9E">Ca²⁺ closed</text>
+        <text class="ion" x="480" y="292" fill="#1B5FA8">3 Na⁺ out</text>
+        <text class="ion" x="480" y="312" fill="#0E7A66">2 K⁺ in</text>
+
+        <!-- refractory brackets -->
+        <path d="M124,326 H392 M124,320 V332 M392,320 V332" stroke="#A8123E" stroke-width="2" fill="none"/>
+        <path d="M396,326 H452 M396,320 V332 M452,320 V332" stroke="#7C8798" stroke-width="2" fill="none"/>
+        <text class="lbl-b" x="196" y="350" fill="#A8123E">ARP ≈ 250 ms</text>
+        <text class="lbl" x="398" y="350" fill="#7C8798">RRP ≈ 50 ms</text>
+      </svg>
+    </div>
+
+    <ol class="phases">
+      <li><div class="num">0</div><div>
+        <p class="pname">Rapid depolarisation<span class="tag ecg">QRS</span></p>
+        <p class="pbody">Stimulus drags the membrane to threshold <b>−70&nbsp;mV</b> → <i class="na">fast Na⁺ channels</i> fly open → Na⁺ rushes in. At about <b>+20&nbsp;mV</b> they inactivate and close. <em>Steep, brief, all-or-none.</em></p>
+      </div></li>
+      <li><div class="num">1</div><div>
+        <p class="pname">Early rapid repolarisation</p>
+        <p class="pbody">A small notch back down to ≈&nbsp;0&nbsp;mV. Transient outward <i class="k">K⁺ efflux</i> starts, with a little <i class="cl">Cl⁻ entry</i>; <i class="ca">Ca²⁺</i> channels are just beginning to open.</p>
+      </div></li>
+      <li><div class="num">2</div><div>
+        <p class="pname">Plateau — the signature of cardiac muscle<span class="tag ecg">ST</span></p>
+        <p class="pbody">Lasts about <b>200&nbsp;ms</b>. Inward <i class="ca">L-type Ca²⁺</i> current is balanced by outward <i class="k">K⁺</i>, so voltage holds flat. This Ca²⁺ triggers Ca-induced Ca release from the SR → contraction.</p>
+      </div></li>
+      <li><div class="num">3</div><div>
+        <p class="pname">Rapid repolarisation<span class="tag ecg">T wave</span></p>
+        <p class="pbody"><i class="ca">Ca²⁺ channels close</i> while delayed-rectifier <i class="k">K⁺ channels open</i> → K⁺ efflux dominates → membrane falls back to <b>−90&nbsp;mV</b>.</p>
+      </div></li>
+      <li><div class="num">4</div><div>
+        <p class="pname">Resting membrane potential — restoration<span class="tag">diastole</span></p>
+        <p class="pbody">IK1 holds the RMP steady at −90. Ionic gradients are reset by the <i class="na">Na⁺/K⁺ ATPase</i> (3&nbsp;Na⁺ out, 2&nbsp;K⁺ in) and the <i class="ca">Na⁺–Ca²⁺ exchanger</i> (3&nbsp;Na⁺ in, 1&nbsp;Ca²⁺ out). No spontaneous drift — it waits.</p>
+      </div></li>
+    </ol>
+
+    <div class="note">
+      <h3>Why the heart cannot tetanise</h3>
+      <ul>
+        <li>The <b>absolute refractory period</b> (≈250&nbsp;ms) covers phases 0, 1, 2 and most of 3 — no stimulus of any strength will fire a second AP.</li>
+        <li>The <b>relative refractory period</b> (≈50&nbsp;ms) runs from late phase 3 into early 4 — only a stronger-than-normal stimulus works.</li>
+        <li>Because the ARP lasts almost as long as the contraction, the muscle has already relaxed before it can be re-excited. <b>No summation, no tetany</b> — which is exactly what a pump needs.</li>
+      </ul>
+    </div>
+
+    <div class="note hook">
+      <h3>Atrial and Purkinje myocytes — same plan, different lengths</h3>
+      <ul>
+        <li><b>Atrial:</b> shorter (~150&nbsp;ms), triangular, poorly developed plateau — larger transient outward K⁺ current cuts it short.</li>
+        <li><b>Purkinje:</b> the longest AP and the steepest phase 0 (fastest conduction, ~4&nbsp;m/s). It has a slow phase 4 drift, which is why it can act as a latent pacemaker at 15–40/min.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SLOW AP ============ -->
+  <section class="card">
+    <h2 class="kicker">Slow AP — SA node, pacemaker, nodal</h2>
+    <p class="sub">Same trace, three names. Its defining feature is <b>phase 4</b>: the membrane refuses to stay put, so it needs no external stimulus at all.</p>
+
+    <div class="plot">
+      <svg viewBox="0 0 620 350" role="img" aria-label="SA nodal pacemaker action potential over two cycles with phases four, zero and three">
+        <rect x="56" y="18" width="552" height="278" fill="url(#gbold)"/>
+        <rect x="56" y="18" width="552" height="278" fill="none" stroke="#E4A18C" stroke-width="1.4"/>
+
+        <g class="lbl" text-anchor="end">
+          <text x="50" y="76">+10</text>
+          <text x="50" y="109">0</text>
+          <text x="50" y="184">−40</text>
+          <text x="50" y="221">−60</text>
+        </g>
+        <text class="lbl" x="14" y="175" transform="rotate(-90 14 175)" text-anchor="middle">mV</text>
+
+        <path class="dash" stroke="#A8123E" d="M62,179 H604"/>
+        <text class="lbl" x="524" y="173" fill="#A8123E">TP −40</text>
+        <path class="dash" stroke="#5A6474" d="M62,226 H604"/>
+        <text class="lbl" x="500" y="246" fill="#5A6474">MDP −60</text>
+
+        <path class="tracepath" stroke="#A8123E"
+          d="M62,222 C110,218 165,205 214,179 C229,158 244,113 262,96
+             C282,124 312,192 342,215 C356,223 366,226 376,226
+             C412,222 462,208 508,179 C523,158 538,113 556,96
+             C576,124 590,180 604,206"/>
+
+        <text class="ph" x="140" y="196">4</text>
+        <text class="ph" x="222" y="120">0</text>
+        <text class="ph" x="316" y="150">3</text>
+        <text class="ph" x="430" y="196">4</text>
+
+        <text class="ion" x="76" y="256" fill="#1B5FA8">funny current I&#402; : Na⁺ in</text>
+        <text class="ion" x="76" y="276" fill="#0E7A66">K⁺ efflux falling</text>
+        <text class="ion" x="76" y="296" fill="#7A3B9E">then T-type Ca²⁺ in</text>
+        <text class="ion" x="248" y="62" fill="#7A3B9E">L-type Ca²⁺ in</text>
+        <text class="ion" x="330" y="86" fill="#0E7A66">K⁺ out, Ca²⁺ closed</text>
+        <text class="lbl" x="112" y="322" fill="#5A6474">spontaneous diastolic depolarisation → automaticity</text>
+      </svg>
+    </div>
+
+    <ol class="phases">
+      <li><div class="num">4</div><div>
+        <p class="pname">Slow diastolic depolarisation — the pre-potential</p>
+        <p class="pbody">There is <b>no true resting potential</b>. From the maximum diastolic potential of <b>−60&nbsp;mV</b> the membrane drifts steadily up to <b>−40&nbsp;mV</b>: the <i class="na">funny current I&#402;</i> lets Na⁺ leak in through HCN channels, <i class="k">K⁺ efflux fades</i>, and near −50&nbsp;mV <i class="ca">T-type Ca²⁺</i> channels add the final push. Inside becomes progressively more positive. <em>This slope sets the heart rate.</em></p>
+      </div></li>
+      <li><div class="num">0</div><div>
+        <p class="pname">Depolarisation — slow, and that is the point</p>
+        <p class="pbody">At threshold <b>−40&nbsp;mV</b>, <i class="ca">L-type Ca²⁺</i> channels open and carry the upstroke. Because Ca²⁺ channels are slow to open and slow to conduct, the slope is <b>much less steep</b> than a myocyte's — hence slow conduction through the node. Peak reaches roughly <b>0 to +10&nbsp;mV</b>. Fast Na⁺ channels play no role: at −60&nbsp;mV they are permanently inactivated.</p>
+      </div></li>
+      <li><div class="num">3</div><div>
+        <p class="pname">Repolarisation</p>
+        <p class="pbody"><i class="ca">Ca²⁺ channels close</i>, <i class="k">K⁺ channels open</i> → K⁺ efflux brings the membrane back down to −60&nbsp;mV, where phase 4 immediately begins again.</p>
+      </div></li>
+      <li><div class="num">—</div><div>
+        <p class="pname">Missing on purpose: phases 1 and 2</p>
+        <p class="pbody">No overshoot notch and no plateau. The whole AP is shorter and rounder — and there is no plateau to correspond to an ST segment, because nodal tissue is far too small to register on the surface ECG at all.</p>
+      </div></li>
+    </ol>
+
+    <div class="note">
+      <h3>Autonomic control — all of it acts on the phase 4 slope</h3>
+      <div class="auto">
+        <div><b style="color:var(--crimson)">Sympathetic → faster</b>
+          Noradrenaline → β1 → cAMP rises → more I&#402; and more Ca²⁺ current → <b>steeper phase 4</b>, threshold reached sooner → heart rate rises.</div>
+        <div><b style="color:var(--na)">Parasympathetic → slower</b>
+          ACh → M2 → opens K(ACh) channels and lowers cAMP → <b>more negative MDP + flatter phase 4</b> → longer climb to threshold → heart rate falls.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMPARISON ============ -->
+  <section class="card">
+    <h2 class="kicker">Side by side</h2>
+    <p class="sub">The column you can reconstruct the whole topic from.</p>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th></th><th>Fast — ventricular myocyte</th><th>Slow — SA / AV node</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Baseline</th><td class="fast">True RMP, stable at −90&nbsp;mV</td><td class="slow">No RMP; max diastolic potential −60&nbsp;mV</td></tr>
+          <tr><th>Threshold</th><td class="fast">−70&nbsp;mV</td><td class="slow">−40&nbsp;mV</td></tr>
+          <tr><th>Phase 0 carried by</th><td class="fast">Fast Na⁺ channels</td><td class="slow">L-type Ca²⁺ channels</td></tr>
+          <tr><th>Upstroke slope</th><td class="fast">Very steep (~200–500 V/s)</td><td class="slow">Shallow (~1–10 V/s)</td></tr>
+          <tr><th>Peak</th><td class="fast">≈ +20&nbsp;mV</td><td class="slow">≈ 0 to +10&nbsp;mV</td></tr>
+          <tr><th>Phases present</th><td class="fast">0, 1, 2, 3, 4</td><td class="slow">0, 3, 4 only</td></tr>
+          <tr><th>Plateau</th><td class="fast">Yes, ~200&nbsp;ms, L-type Ca²⁺</td><td class="slow">Absent</td></tr>
+          <tr><th>Automaticity</th><td class="fast">None — needs a stimulus</td><td class="slow">Yes, intrinsic ~100/min (≈70 after vagal tone)</td></tr>
+          <tr><th>Conduction velocity</th><td class="fast">Fast (0.3–1&nbsp;m/s; Purkinje ~4)</td><td class="slow">Slow (0.02–0.1&nbsp;m/s) → AV delay</td></tr>
+          <tr><th>Refractoriness</th><td class="fast">Voltage-dependent; ARP ≈250&nbsp;ms</td><td class="slow">Time-dependent; recovery outlasts repolarisation</td></tr>
+          <tr><th>ECG correlate</th><td class="fast">0→QRS, 2→ST, 3→T</td><td class="slow">Too small to appear on surface ECG</td></tr>
+          <tr><th>Blocked by</th><td class="fast">Class I antiarrhythmics (Na⁺ channel blockers)</td><td class="slow">Class IV (verapamil, diltiazem), β-blockers, ivabradine on I&#402;</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ CORRECTIONS ============ -->
+  <section class="card">
+    <h2 class="kicker">Four things to fix in your notes</h2>
+    <p class="sub">Your pages are solid — these are the spots where the labels drifted, and all four are commonly examined.</p>
+    <div class="note">
+      <ul>
+        <li>Your slow-AP page has <b>phase 0 driven by T-type Ca²⁺</b>. It is the other way round: <b>T-type belongs to late phase 4</b> (around −50&nbsp;mV), and <b>L-type carries phase 0</b> from −40&nbsp;mV. The page also says "baseline drift due to slow L Ca" — that drift is I&#402; plus T-type, not L.</li>
+        <li>You wrote the nodal peak as <b>+20&nbsp;mV</b>. That is the ventricular figure. Nodal overshoot is only about <b>0 to +10&nbsp;mV</b> — the Ca²⁺ current is too small to drive it higher.</li>
+        <li>"Hyperpolarisation" is crossed out on your page and it should stay crossed out. Phase 4 in the node is <b>depolarising</b>, not hyperpolarising. What is true is that I&#402; is <b>activated by</b> hyperpolarisation — that is the odd behaviour it is named for.</li>
+        <li>Your phase 1 lists "Ca in" alongside K out and Cl in. Phase 1 is essentially the <b>transient outward K⁺ current</b> (with some Cl⁻); Ca²⁺ entry is what defines <b>phase 2</b>.</li>
+      </ul>
+    </div>
+    <div class="note hook">
+      <h3>Quick recall hooks</h3>
+      <ul>
+        <li><b>Na is fast, Ca is slow.</b> Whichever ion carries phase 0 tells you the conduction velocity of that tissue.</li>
+        <li><b>Only the node has a phase 4 slope</b>, and everything that changes heart rate changes that slope.</li>
+        <li><b>Plateau = ST = no tetany.</b> One structure explains the ECG segment and the mechanics.</li>
+        <li><b>3 out, 2 in</b> for the Na⁺/K⁺ pump; <b>3 in, 1 out</b> for the Na⁺–Ca²⁺ exchanger.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>Consolidated from your notebook pages · fast AP, nodal AP, working myocyte</footer>
+</div>
+</body>
+</html>
