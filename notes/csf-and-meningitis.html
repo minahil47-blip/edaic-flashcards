@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSF — Composition and Meningitis Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --page:#E8E8E3;
+    --card:#FFFFFF;
+    --plot:#EEF4FD;
+    --ink:#16202E;
+    --soft:#5A6474;
+    --hair:#DDDDD6;
+    --crimson:#A8123E;
+    --trace:#14213D;
+    --bact:#A8123E;
+    --viral:#1B5FA8;
+    --tb:#7A3B9E;
+    --k:#0E7A66;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--page);color:var(--ink);
+    font-family:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16px;line-height:1.55;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:20px 14px 60px}
+
+  .backlink{
+    display:inline-block;margin:0 0 14px;padding:8px 15px;
+    border-radius:9px;background:var(--trace);color:#fff;
+    text-decoration:none;font-size:14px;font-weight:600;
+  }
+  .backlink:hover{background:#24334f}
+
+  header.top{background:var(--trace);color:#fff;border-radius:14px;padding:22px 20px 20px;margin-bottom:18px}
+  header.top h1{
+    font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+    font-size:clamp(27px,7vw,42px);line-height:1.02;letter-spacing:-.02em;margin:0 0 10px;
+  }
+  header.top p{margin:0;color:#B9C6D8;font-size:15px;max-width:54ch}
+
+  section.card{background:var(--card);border-radius:14px;padding:18px 16px 20px;margin-bottom:18px}
+  .kicker{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(20px,5vw,27px);letter-spacing:-.015em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--soft);font-size:14.5px}
+  .sub b{color:var(--ink);font-weight:600}
+
+  .plot{background:var(--plot);border-radius:10px;padding:10px 6px 4px;margin:0 0 16px}
+  .plot svg{display:block;width:100%;height:auto}
+  .dlbl{font-family:"Public Sans",sans-serif;font-size:15px;fill:var(--soft);font-weight:600}
+  .dlbl-b{font-family:"Public Sans",sans-serif;font-size:16px;font-weight:700}
+
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{border-collapse:collapse;width:100%;font-size:14.5px}
+  table.wide{min-width:640px}
+  table.mid{min-width:520px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--hair);vertical-align:top}
+  thead th{font-size:13px;color:var(--soft);font-weight:600;border-bottom:1.5px solid #C9CDD4}
+  tbody th{font-weight:600;width:26%}
+  td.hi{background:#FDF4F6;font-weight:600}
+  td.lo{background:#EEF4FD;font-weight:600}
+  td.same{background:#F5F6F8}
+  th.cb{color:var(--bact)}
+  th.cv{color:var(--viral)}
+  th.ct{color:var(--tb)}
+  .arrow{font-weight:800}
+  .up{color:var(--crimson)}
+  .down{color:var(--viral)}
+
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:8px;margin:14px 0 0}
+  .fact{background:#F5F6F8;border-radius:9px;padding:9px 11px}
+  .fact .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:20px;line-height:1.1}
+  .fact .n{font-size:12.5px;color:var(--soft);margin-top:2px}
+
+  .note{border-left:4px solid var(--crimson);background:#FDF4F6;border-radius:0 9px 9px 0;padding:13px 14px;margin:16px 0 0;font-size:14.8px}
+  .note h3{font-family:"Bricolage Grotesque",sans-serif;font-size:16.5px;margin:0 0 6px;font-weight:700}
+  .note ul{margin:0;padding-left:18px}
+  .note li{margin:5px 0}
+  .note li b{color:var(--crimson)}
+  .hook{background:#F0F4F1;border-left:4px solid var(--k)}
+  .hook h3{color:var(--k)}
+  .hook li b{color:var(--k)}
+  .warn{background:#FFF7EC;border-left:4px solid #B4690E}
+  .warn h3{color:#B4690E}
+  .warn li b{color:#B4690E}
+
+  footer{color:var(--soft);font-size:13px;text-align:center;padding-top:6px}
+
+  @media print{
+    body{background:#fff}
+    .wrap{max-width:none;padding:0}
+    section.card{page-break-inside:avoid;border:1px solid #ddd;margin-bottom:12px}
+    header.top{background:#fff;color:#000;border:1px solid #ddd}
+    header.top p{color:#444}
+    .backlink{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+
+  <header class="top">
+    <h1>CSF: composition and meningitis</h1>
+    <p>What is in cerebrospinal fluid and how it differs from plasma, then the four-column table that separates bacterial, viral and tuberculous meningitis.</p>
+  </header>
+
+  <!-- ============ PRODUCTION & CIRCULATION ============ -->
+  <section class="card">
+    <h2 class="kicker">Production, circulation, absorption</h2>
+    <p class="sub">Only <b>150 ml</b> exists at any moment, but <b>500 ml</b> is made each day — so the whole volume turns over <b>three to four times daily</b>.</p>
+
+    <div class="plot">
+      <svg viewBox="0 0 620 190" role="img" aria-label="Flow diagram of CSF from choroid plexus through ventricles and subarachnoid space to arachnoid granulations">
+        <defs>
+          <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+            <path d="M0,0 L8,3.2 L0,6.4 z" fill="#5A6474"/>
+          </marker>
+        </defs>
+        <g font-family="Public Sans, sans-serif">
+          <rect x="8" y="66" width="120" height="56" rx="10" fill="#14213D"/>
+          <text class="dlbl-b" x="68" y="90" fill="#fff" text-anchor="middle">Choroid</text>
+          <text class="dlbl-b" x="68" y="109" fill="#fff" text-anchor="middle">plexus</text>
+
+          <path d="M132,94 H176" stroke="#5A6474" stroke-width="2.2" marker-end="url(#ah)" fill="none"/>
+
+          <rect x="180" y="60" width="128" height="68" rx="10" fill="#DCE7F7" stroke="#1B5FA8" stroke-width="1.6"/>
+          <text class="dlbl-b" x="244" y="84" fill="#14213D" text-anchor="middle">Lateral →</text>
+          <text class="dlbl-b" x="244" y="103" fill="#14213D" text-anchor="middle">3rd → 4th</text>
+          <text class="dlbl" x="244" y="120" fill="#5A6474" text-anchor="middle">ventricles</text>
+
+          <path d="M312,94 H356" stroke="#5A6474" stroke-width="2.2" marker-end="url(#ah)" fill="none"/>
+
+          <rect x="360" y="60" width="126" height="68" rx="10" fill="#E7DCF7" stroke="#7A3B9E" stroke-width="1.6"/>
+          <text class="dlbl-b" x="423" y="88" fill="#14213D" text-anchor="middle">Subarachnoid</text>
+          <text class="dlbl-b" x="423" y="107" fill="#14213D" text-anchor="middle">space</text>
+
+          <path d="M490,94 H534" stroke="#5A6474" stroke-width="2.2" marker-end="url(#ah)" fill="none"/>
+
+          <rect x="500" y="60" width="112" height="68" rx="10" fill="#D9F0E6" stroke="#0E7A66" stroke-width="1.6"/>
+          <text class="dlbl-b" x="556" y="84" fill="#14213D" text-anchor="middle">Arachnoid</text>
+          <text class="dlbl-b" x="556" y="103" fill="#14213D" text-anchor="middle">granulations</text>
+          <text class="dlbl" x="556" y="120" fill="#5A6474" text-anchor="middle">→ venous sinus</text>
+
+          <text class="dlbl" x="68" y="40" fill="#5A6474" text-anchor="middle">active secretion</text>
+          <text class="dlbl" x="244" y="40" fill="#5A6474" text-anchor="middle">via foramina</text>
+          <text class="dlbl" x="556" y="40" fill="#5A6474" text-anchor="middle">bulk flow, pressure-dependent</text>
+          <text class="dlbl" x="310" y="168" fill="#5A6474" text-anchor="middle">0.35 ml/min · 500 ml/day · 150 ml total volume · turns over 3–4× daily</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><div class="v">150 ml</div><div class="n">total volume</div></div>
+      <div class="fact"><div class="v">500 ml/day</div><div class="n">production</div></div>
+      <div class="fact"><div class="v">5–15 mmHg</div><div class="n">normal pressure</div></div>
+      <div class="fact"><div class="v">1.003–1.008</div><div class="n">specific gravity</div></div>
+    </div>
+
+    <div class="note hook">
+      <h3>Why specific gravity matters to you</h3>
+      <ul>
+        <li>CSF specific gravity <b>1.003–1.008</b> is the reference against which spinal solutions are called <b>hyperbaric, isobaric or hypobaric</b>.</li>
+        <li>Heavy bupivacaine (with 8% dextrose) sinks in CSF; plain bupivacaine is roughly isobaric at body temperature. This — with patient position — is the main determinant of block spread.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CSF vs PLASMA ============ -->
+  <section class="card">
+    <h2 class="kicker">CSF versus plasma</h2>
+    <p class="sub">CSF is an <b>active secretion</b>, not a filtrate — which is why it is not simply dilute plasma. The differences that get examined are <b>protein, glucose, potassium and chloride</b>.</p>
+
+    <div class="scroll">
+      <table class="mid">
+        <thead>
+          <tr><th></th><th>CSF</th><th>Plasma</th><th>Direction</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Protein</th><td class="lo">0.15–0.45 g/L</td><td>60–80 g/L</td><td><span class="arrow down">↓↓↓</span> ~200× lower</td></tr>
+          <tr><th>Glucose</th><td class="lo">2.5–4.5 mmol/L</td><td>3.5–5.5 mmol/L</td><td><span class="arrow down">↓</span> ratio ≈ 0.6</td></tr>
+          <tr><th>Potassium</th><td class="lo">2.8–3.0 mmol/L</td><td>3.5–5.0 mmol/L</td><td><span class="arrow down">↓</span></td></tr>
+          <tr><th>Calcium</th><td class="lo">1.1–1.3 mmol/L</td><td>2.2–2.6 mmol/L</td><td><span class="arrow down">↓</span> total (ionised similar)</td></tr>
+          <tr><th>Chloride</th><td class="hi">115–125 mmol/L</td><td>95–105 mmol/L</td><td><span class="arrow up">↑</span></td></tr>
+          <tr><th>Magnesium</th><td class="hi">1.1–1.2 mmol/L</td><td>0.8–1.0 mmol/L</td><td><span class="arrow up">↑</span></td></tr>
+          <tr><th>Sodium</th><td class="same">140–145 mmol/L</td><td>135–145 mmol/L</td><td>≈ same</td></tr>
+          <tr><th>Osmolality</th><td class="same">~295 mosmol/kg</td><td>~295 mosmol/kg</td><td>iso-osmolar</td></tr>
+          <tr><th>pH</th><td class="lo">7.33</td><td>7.40</td><td><span class="arrow down">↓</span> slightly acidic</td></tr>
+          <tr><th>PCO₂</th><td class="hi">6.6 kPa (50 mmHg)</td><td>5.3 kPa (40 mmHg)</td><td><span class="arrow up">↑</span></td></tr>
+          <tr><th>Cells</th><td class="same">0–5 lymphocytes/mm³</td><td>—</td><td>no polymorphs, no RBC</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <h3>The four that carry the marks</h3>
+      <ul>
+        <li><b>Protein is the headline</b> — roughly 200 times lower than plasma. The blood–brain barrier excludes it, so a raised CSF protein means barrier breakdown.</li>
+        <li><b>Glucose sits at about 60% of plasma</b> — which is why a CSF glucose is meaningless without a paired plasma sample. Always take them together.</li>
+        <li><b>Potassium is lower and tightly regulated</b>, staying near 2.9 mmol/L even when plasma potassium swings — active transport, not filtration.</li>
+        <li><b>Chloride is higher</b> than plasma, balancing the low protein to preserve electroneutrality.</li>
+      </ul>
+    </div>
+
+    <div class="note hook">
+      <h3>Why CSF pH matters for ventilation</h3>
+      <ul>
+        <li>CO₂ crosses the blood–brain barrier freely; <b>H⁺ and HCO₃⁻ do not</b>. So an acute rise in PaCO₂ acidifies CSF quickly and stimulates the central chemoreceptors on the ventral medulla.</li>
+        <li>Because CSF has almost <b>no protein buffer</b>, its pH shifts more for a given CO₂ change than blood does — making it a sensitive ventilatory sensor.</li>
+        <li>Over 24–48 hours HCO₃⁻ is transported into CSF to normalise pH — the basis of the blunted CO₂ drive in <b>chronic CO₂ retention</b>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ MENINGITIS TABLE ============ -->
+  <section class="card">
+    <h2 class="kicker">CSF in meningitis</h2>
+    <p class="sub">The single most examined table in neuro-infection. Read it in this order: <b>cell type → glucose → protein</b>. Those three almost always give you the answer.</p>
+
+    <div class="scroll">
+      <table class="wide">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Normal</th>
+            <th class="cb">Bacterial</th>
+            <th class="cv">Viral</th>
+            <th class="ct">Tuberculous</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>Appearance</th><td>Clear, colourless</td><td class="hi">Turbid, purulent</td><td class="lo">Clear</td><td class="same">Clear or slightly cloudy; fibrin web on standing</td></tr>
+          <tr><th>Opening pressure</th><td>5–15 mmHg</td><td class="hi">↑↑</td><td class="lo">Normal or mildly ↑</td><td class="same">↑↑</td></tr>
+          <tr><th>White cell count</th><td>0–5 /mm³</td><td class="hi">1000–5000+ /mm³</td><td class="lo">50–1000 /mm³</td><td class="same">50–500 /mm³</td></tr>
+          <tr><th>Predominant cell</th><td>Lymphocytes</td><td class="hi"><b>Neutrophils</b></td><td class="lo"><b>Lymphocytes</b></td><td class="same"><b>Lymphocytes</b><br><em>(neutrophils early)</em></td></tr>
+          <tr><th>Protein</th><td>0.15–0.45 g/L</td><td class="hi">↑↑ &gt;1 g/L</td><td class="lo">Normal or mildly ↑ (&lt;1)</td><td class="same">↑↑↑ 1–5 g/L <em>(highest)</em></td></tr>
+          <tr><th>Glucose (CSF:plasma)</th><td>&gt;0.6</td><td class="hi">↓↓ &lt;0.4</td><td class="lo"><b>Normal</b></td><td class="same">↓↓ &lt;0.4</td></tr>
+          <tr><th>Lactate</th><td>&lt;2 mmol/L</td><td class="hi">&gt;3.5 mmol/L</td><td class="lo">Normal</td><td class="same">↑</td></tr>
+          <tr><th>Microbiology</th><td>Sterile</td><td class="hi">Gram stain &amp; culture; antigen testing</td><td class="lo">Viral PCR (enterovirus, HSV, VZV)</td><td class="same">ZN stain (low yield), culture 6 wks, PCR/GeneXpert, ADA</td></tr>
+          <tr><th>Onset</th><td>—</td><td class="hi">Hours</td><td class="lo">Days</td><td class="same">Weeks — insidious</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <h3>The discriminators</h3>
+      <ul>
+        <li><b>Glucose separates viral from the rest.</b> Viral meningitis characteristically leaves glucose NORMAL; bacterial, TB and fungal all consume it.</li>
+        <li><b>Cell type separates bacterial from TB/viral.</b> Neutrophils point bacterial; lymphocytes point viral or TB — though TB and early bacterial meningitis can both show neutrophils.</li>
+        <li><b>Protein separates TB.</b> A very high protein (1–5 g/L) with lymphocytes, low glucose and a subacute history is TB until proven otherwise. The fibrin web on standing is classic.</li>
+        <li><b>Partially treated bacterial meningitis</b> is the great mimic — prior antibiotics shift it towards lymphocytes with a negative Gram stain, resembling viral or TB. Always ask what antibiotics were given.</li>
+      </ul>
+    </div>
+
+    <div class="note hook">
+      <h3>Two patterns worth knowing alongside</h3>
+      <ul>
+        <li><b>Guillain–Barré syndrome:</b> albuminocytological dissociation — high protein with a NORMAL cell count. Appears after about a week.</li>
+        <li><b>Subarachnoid haemorrhage:</b> xanthochromia (bilirubin from lysed red cells), best detected by spectrophotometry at least 12 hours after onset. A traumatic tap clears across successive bottles; SAH does not.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ LP SAFETY ============ -->
+  <section class="card">
+    <h2 class="kicker">Lumbar puncture — the safety points</h2>
+    <div class="note warn">
+      <h3>Contraindications</h3>
+      <ul>
+        <li><b>Raised ICP with mass effect or focal signs</b> — risk of coning. Image first if there are focal neurological signs, seizures, reduced or fluctuating consciousness, papilloedema or immunosuppression.</li>
+        <li><b>Coagulopathy or therapeutic anticoagulation</b>, and platelets below roughly 50 ×10⁹/L.</li>
+        <li><b>Local infection at the puncture site</b>, and cardiovascular instability.</li>
+      </ul>
+    </div>
+    <div class="note">
+      <ul>
+        <li><b>Never delay antibiotics for the LP.</b> In suspected bacterial meningitis, take blood cultures and give antibiotics immediately; CSF cell counts, protein, glucose and PCR remain informative for hours afterwards even as culture yield falls.</li>
+        <li>Adult cord ends at <b>L1–L2</b>, so use <b>L3–4 or L4–5</b>. Tuffier's line marks approximately L4 but is unreliable and often reads a space too high.</li>
+        <li>Layers traversed: skin → subcutaneous fat → supraspinous ligament → interspinous ligament → ligamentum flavum → epidural space → dura → arachnoid → CSF.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>High yield notes · EDAIC revision</footer>
+</div>
+</body>
+</html>

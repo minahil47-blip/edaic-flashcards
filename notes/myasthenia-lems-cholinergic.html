@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Myasthenia Gravis vs LEMS vs Cholinergic Crisis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --page:#E8E8E3;
+    --card:#FFFFFF;
+    --plot:#F3F1FA;
+    --ink:#16202E;
+    --soft:#5A6474;
+    --hair:#DDDDD6;
+    --crimson:#A8123E;
+    --trace:#14213D;
+    --mg:#A8123E;
+    --le:#1B5FA8;
+    --ch:#B4690E;
+    --k:#0E7A66;
+    --ca:#7A3B9E;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--page);color:var(--ink);
+    font-family:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16px;line-height:1.55;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:20px 14px 60px}
+
+  .backlink{
+    display:inline-block;margin:0 0 14px;padding:8px 15px;
+    border-radius:9px;background:var(--trace);color:#fff;
+    text-decoration:none;font-size:14px;font-weight:600;
+  }
+  .backlink:hover{background:#24334f}
+
+  header.top{background:var(--trace);color:#fff;border-radius:14px;padding:22px 20px 20px;margin-bottom:18px}
+  header.top h1{
+    font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+    font-size:clamp(26px,6.6vw,40px);line-height:1.02;letter-spacing:-.02em;margin:0 0 10px;
+  }
+  header.top p{margin:0;color:#B9C6D8;font-size:15px;max-width:54ch}
+
+  section.card{background:var(--card);border-radius:14px;padding:18px 16px 20px;margin-bottom:18px}
+  .kicker{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(20px,5vw,27px);letter-spacing:-.015em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--soft);font-size:14.5px}
+  .sub b{color:var(--ink);font-weight:600}
+
+  .plot{background:var(--plot);border-radius:10px;padding:10px 6px 4px;margin:0 0 16px}
+  .plot svg{display:block;width:100%;height:auto}
+  .dlbl{font-family:"Public Sans",sans-serif;font-size:14.5px;fill:var(--soft);font-weight:600}
+  .dlbl-b{font-family:"Public Sans",sans-serif;font-size:15.5px;font-weight:700}
+
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{border-collapse:collapse;width:100%;font-size:14.5px}
+  table.wide{min-width:660px}
+  table.mid{min-width:520px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--hair);vertical-align:top}
+  thead th{font-size:13px;color:var(--soft);font-weight:600;border-bottom:1.5px solid #C9CDD4}
+  tbody th{font-weight:600;width:25%}
+  td.mg{background:#FDF4F6}
+  td.le{background:#EEF4FD}
+  td.ch{background:#FFF7EC}
+  th.hmg{color:var(--mg)}
+  th.hle{color:var(--le)}
+  th.hch{color:var(--ch)}
+  td b{font-weight:700}
+
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:14px 0 0}
+  .fact{background:#F5F6F8;border-radius:9px;padding:9px 11px}
+  .fact .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:18px;line-height:1.1}
+  .fact .n{font-size:12.5px;color:var(--soft);margin-top:2px}
+
+  .note{border-left:4px solid var(--crimson);background:#FDF4F6;border-radius:0 9px 9px 0;padding:13px 14px;margin:16px 0 0;font-size:14.8px}
+  .note h3{font-family:"Bricolage Grotesque",sans-serif;font-size:16.5px;margin:0 0 6px;font-weight:700}
+  .note ul{margin:0;padding-left:18px}
+  .note li{margin:5px 0}
+  .note li b{color:var(--crimson)}
+  .hook{background:#F0F4F1;border-left:4px solid var(--k)}
+  .hook h3{color:var(--k)}
+  .hook li b{color:var(--k)}
+  .warn{background:#FFF7EC;border-left:4px solid var(--ch)}
+  .warn h3{color:var(--ch)}
+  .warn li b{color:var(--ch)}
+  .blue{background:#EEF4FD;border-left:4px solid var(--le)}
+  .blue h3{color:var(--le)}
+  .blue li b{color:var(--le)}
+
+  footer{color:var(--soft);font-size:13px;text-align:center;padding-top:6px}
+
+  @media print{
+    body{background:#fff}
+    .wrap{max-width:none;padding:0}
+    section.card{page-break-inside:avoid;border:1px solid #ddd;margin-bottom:12px}
+    header.top{background:#fff;color:#000;border:1px solid #ddd}
+    header.top p{color:#444}
+    .backlink{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+
+  <header class="top">
+    <h1>Myasthenia, LEMS &amp; cholinergic crisis</h1>
+    <p>Three conditions at the same synapse. One is postsynaptic, one is presynaptic, and one is too much of the treatment — and each behaves completely differently under anaesthesia.</p>
+  </header>
+
+  <!-- ============ SITE OF LESION ============ -->
+  <section class="card">
+    <h2 class="kicker">Where each lesion sits</h2>
+    <p class="sub">Fix the anatomy first and almost everything else follows: <b>where</b> the problem is predicts the antibody, the exercise response, and the relaxant sensitivity.</p>
+
+    <div class="plot">
+      <svg viewBox="0 0 620 250" role="img" aria-label="Neuromuscular junction showing presynaptic calcium channel lesion in LEMS, postsynaptic receptor lesion in myasthenia, and excess acetylcholine in cholinergic crisis">
+        <g font-family="Public Sans, sans-serif">
+          <!-- nerve terminal -->
+          <path d="M40,26 H250 A26,26 0 0 1 276,52 V96 A26,26 0 0 1 250,122 H40 Z" fill="#DCE7F7" stroke="#1B5FA8" stroke-width="1.8"/>
+          <text class="dlbl-b" x="150" y="60" fill="#14213D" text-anchor="middle">Presynaptic nerve terminal</text>
+          <text class="dlbl" x="150" y="82" fill="#5A6474" text-anchor="middle">voltage-gated Ca²⁺ channels →</text>
+          <text class="dlbl" x="150" y="102" fill="#5A6474" text-anchor="middle">ACh vesicle release</text>
+
+          <!-- LEMS marker -->
+          <circle cx="292" cy="74" r="15" fill="#1B5FA8"/>
+          <text x="292" y="80" fill="#fff" font-size="15" font-weight="800" text-anchor="middle">1</text>
+          <text class="dlbl-b" x="316" y="60" fill="#1B5FA8">LEMS</text>
+          <text class="dlbl" x="316" y="80" fill="#5A6474">antibody vs P/Q-type Ca²⁺ channel</text>
+          <text class="dlbl" x="316" y="99" fill="#5A6474">→ too little ACh released</text>
+
+          <!-- cleft -->
+          <rect x="40" y="128" width="236" height="34" fill="#F5F1E4" stroke="#C9BE96" stroke-width="1.4"/>
+          <text class="dlbl-b" x="150" y="150" fill="#7A5B12" text-anchor="middle">Synaptic cleft · acetylcholinesterase</text>
+
+          <circle cx="292" cy="145" r="15" fill="#B4690E"/>
+          <text x="292" y="151" fill="#fff" font-size="15" font-weight="800" text-anchor="middle">3</text>
+          <text class="dlbl-b" x="316" y="140" fill="#B4690E">Cholinergic crisis</text>
+          <text class="dlbl" x="316" y="159" fill="#5A6474">esterase blocked → ACh floods → depolarising block</text>
+
+          <!-- muscle membrane -->
+          <path d="M40,168 H250 A26,26 0 0 1 276,194 V214 A26,26 0 0 1 250,240 H40 Z" fill="#F7DCE4" stroke="#A8123E" stroke-width="1.8"/>
+          <text class="dlbl-b" x="150" y="196" fill="#14213D" text-anchor="middle">Postsynaptic muscle membrane</text>
+          <text class="dlbl" x="150" y="217" fill="#5A6474" text-anchor="middle">nicotinic ACh receptors</text>
+
+          <circle cx="292" cy="205" r="15" fill="#A8123E"/>
+          <text x="292" y="211" fill="#fff" font-size="15" font-weight="800" text-anchor="middle">2</text>
+          <text class="dlbl-b" x="316" y="198" fill="#A8123E">Myasthenia gravis</text>
+          <text class="dlbl" x="316" y="217" fill="#5A6474">antibody vs ACh receptor → fewer working receptors</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><div class="v">Presynaptic</div><div class="n">LEMS — Ca²⁺ channel</div></div>
+      <div class="fact"><div class="v">Postsynaptic</div><div class="n">MG — ACh receptor</div></div>
+      <div class="fact"><div class="v">The cleft</div><div class="n">cholinergic — excess ACh</div></div>
+    </div>
+  </section>
+
+  <!-- ============ MAIN COMPARISON ============ -->
+  <section class="card">
+    <h2 class="kicker">Myasthenia gravis vs LEMS</h2>
+    <p class="sub">If you remember only one line: <b>myasthenia gets worse with use, LEMS gets better.</b> Nearly every other difference is downstream of the presynaptic versus postsynaptic lesion.</p>
+
+    <div class="scroll">
+      <table class="wide">
+        <thead>
+          <tr><th></th><th class="hmg">Myasthenia gravis</th><th class="hle">Lambert–Eaton (LEMS)</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Lesion site</th><td class="mg"><b>Postsynaptic</b> — muscle membrane</td><td class="le"><b>Presynaptic</b> — nerve terminal</td></tr>
+          <tr><th>Antibody</th><td class="mg">Nicotinic <b>ACh receptor</b> (85%); MuSK in ~5%</td><td class="le"><b>P/Q-type voltage-gated Ca²⁺ channel</b></td></tr>
+          <tr><th>Mechanism</th><td class="mg">Receptor blockade, complement damage, increased turnover → fewer functioning receptors</td><td class="le">Reduced Ca²⁺ entry → fewer ACh vesicles released per impulse</td></tr>
+          <tr><th>Effect of exercise</th><td class="mg"><b>Worse</b> — fatigability is the hallmark</td><td class="le"><b>Better</b> — post-tetanic facilitation as Ca²⁺ accumulates</td></tr>
+          <tr><th>Distribution</th><td class="mg"><b>Ocular first</b> (ptosis, diplopia) in 50–60%; then bulbar, then limb</td><td class="le"><b>Proximal limbs first</b>, legs before arms; ocular and bulbar mild or absent</td></tr>
+          <tr><th>Reflexes</th><td class="mg">Preserved</td><td class="le"><b>Reduced or absent</b>; may return after sustained contraction</td></tr>
+          <tr><th>Autonomic features</th><td class="mg">Absent</td><td class="le"><b>Common</b> — dry mouth, constipation, impotence</td></tr>
+          <tr><th>Association</th><td class="mg"><b>Thymoma</b> 10–15%, thymic hyperplasia; other autoimmune disease</td><td class="le"><b>Small cell lung cancer</b> in 50–60% — often precedes the diagnosis</td></tr>
+          <tr><th>Repetitive nerve stimulation</th><td class="mg"><b>Decrement</b> at low frequency (2–3 Hz)</td><td class="le"><b>Increment</b> at high frequency (20–50 Hz) or after exercise</td></tr>
+          <tr><th>Anticholinesterase response</th><td class="mg"><b>Good</b> — pyridostigmine works</td><td class="le"><b>Poor</b> — 3,4-diaminopyridine is used instead</td></tr>
+          <tr><th>Suxamethonium</th><td class="mg"><b>Resistant</b> — needs a larger dose</td><td class="le"><b>Sensitive</b></td></tr>
+          <tr><th>Non-depolarising relaxant</th><td class="mg"><b>Very sensitive</b> — reduce to 10–20% or avoid</td><td class="le"><b>Very sensitive</b> — even more profound and prolonged</td></tr>
+          <tr><th>Treatment</th><td class="mg">Pyridostigmine, steroids, azathioprine, thymectomy; IVIG or plasma exchange in crisis</td><td class="le">Treat the underlying tumour; 3,4-diaminopyridine, IVIG, immunosuppression</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note hook">
+      <h3>The relaxant table is the examinable core</h3>
+      <ul>
+        <li><b>Myasthenia is the counter-intuitive one:</b> RESISTANT to suxamethonium but EXQUISITELY SENSITIVE to non-depolarisers. Fewer receptors means more suxamethonium is needed to depolarise enough of them, while the reduced safety margin means a tiny dose of rocuronium produces profound block.</li>
+        <li><b>LEMS is sensitive to everything.</b> Both classes, profoundly and unpredictably.</li>
+        <li>In both, use <b>quantitative neuromuscular monitoring</b>, avoid relaxants where you can (TIVA with remifentanil, or regional), and titrate to twitch response rather than to weight.</li>
+        <li>Sugammadex is useful in myasthenia, but it does <b>not</b> remove the need for monitoring — residual weakness is disease, not just drug.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CRISES ============ -->
+  <section class="card">
+    <h2 class="kicker">Myasthenic vs cholinergic crisis</h2>
+    <p class="sub">Both present as a weak myasthenic patient in respiratory failure. The difference is <b>too little</b> versus <b>too much</b> acetylcholine — and the muscarinic signs give it away.</p>
+
+    <div class="scroll">
+      <table class="mid">
+        <thead>
+          <tr><th></th><th class="hmg">Myasthenic crisis</th><th class="hch">Cholinergic crisis</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Cause</th><td class="mg"><b>Undertreatment</b>, or a trigger: infection, surgery, pregnancy, tapering steroids, or a precipitating drug</td><td class="ch"><b>Overtreatment</b> with anticholinesterase; or organophosphate poisoning</td></tr>
+          <tr><th>Mechanism</th><td class="mg">Too few functioning receptors</td><td class="ch">ACh excess → persistent depolarising block</td></tr>
+          <tr><th>Pupils</th><td class="mg">Normal or dilated</td><td class="ch"><b>Miosis</b></td></tr>
+          <tr><th>Secretions</th><td class="mg">Normal</td><td class="ch"><b>Profuse</b> — salivation, lacrimation, bronchorrhoea</td></tr>
+          <tr><th>Fasciculations</th><td class="mg">Absent</td><td class="ch"><b>Present</b></td></tr>
+          <tr><th>Heart rate</th><td class="mg">Tachycardia</td><td class="ch"><b>Bradycardia</b></td></tr>
+          <tr><th>Gut</th><td class="mg">Normal</td><td class="ch">Cramps, diarrhoea, vomiting</td></tr>
+          <tr><th>Edrophonium test</th><td class="mg"><b>Improves</b></td><td class="ch"><b>Worsens</b></td></tr>
+          <tr><th>Management</th><td class="mg">Support ventilation; IVIG or plasma exchange; increase immunosuppression; treat the trigger</td><td class="ch"><b>Stop the anticholinesterase</b>; atropine for muscarinic effects; pralidoxime if organophosphate; ventilate</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note warn">
+      <h3>Cholinergic excess — the two receptor families</h3>
+      <ul>
+        <li><b>Muscarinic (SLUDGE / DUMBBELS):</b> Salivation, Lacrimation, Urination, Defecation, GI cramps, Emesis — plus <b>bradycardia, bronchorrhoea, bronchospasm and miosis</b>. These are the ones atropine reverses.</li>
+        <li><b>Nicotinic:</b> fasciculations, cramps, then weakness and paralysis. <b>Atropine does not touch these</b> — that is why ventilation is the priority and pralidoxime is needed to reactivate the enzyme in organophosphate poisoning.</li>
+        <li><b>CNS:</b> anxiety, confusion, seizures, coma.</li>
+        <li>The classic killer is <b>bronchorrhoea with bronchospasm</b> — patients drown in secretions. Give atropine in escalating doses titrated to drying of secretions, not to heart rate.</li>
+      </ul>
+    </div>
+
+    <div class="note blue">
+      <h3>The edrophonium (Tensilon) test</h3>
+      <ul>
+        <li>Edrophonium is a very short-acting anticholinesterase (onset 30 s, duration about 5–10 min). It <b>improves</b> myasthenic crisis and <b>worsens</b> cholinergic crisis.</li>
+        <li>It is now rarely performed — the risk of precipitating severe bradycardia or worsening a cholinergic crisis outweighs the benefit, and antibody testing plus electrophysiology have largely replaced it.</li>
+        <li>If it is done: have <b>atropine drawn up</b>, full monitoring and resuscitation facilities available.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ ANAESTHETIC ============ -->
+  <section class="card">
+    <h2 class="kicker">Anaesthetic management of myasthenia</h2>
+    <div class="note">
+      <h3>Preoperative</h3>
+      <ul>
+        <li>Assess <b>bulbar and respiratory function</b> — vital capacity, ability to swallow and cough, and existing ventilatory support.</li>
+        <li>Optimise treatment and consider IVIG or plasma exchange before major surgery. Decide with the neurologist whether to continue pyridostigmine on the day.</li>
+        <li><b>Osserman criteria</b> predict the need for postoperative ventilation: disease duration over 6 years, coexisting respiratory disease, pyridostigmine over 750 mg/day, and vital capacity under 2.9 L.</li>
+      </ul>
+    </div>
+    <div class="note hook">
+      <h3>Intraoperative and postoperative</h3>
+      <ul>
+        <li><b>Regional or local anaesthesia where possible.</b> Amide local anaesthetics are preferred; esters rely on plasma cholinesterase, which anticholinesterases inhibit.</li>
+        <li>If general anaesthesia is needed, favour <b>TIVA with remifentanil and no relaxant</b>, or volatile alone — volatiles themselves provide useful relaxation and potentiate any blocker given.</li>
+        <li>If a relaxant is unavoidable, use a <b>small dose of a short-acting non-depolariser with quantitative train-of-four monitoring</b>, and reverse with sugammadex where an aminosteroid was used.</li>
+        <li>Plan for <b>possible postoperative ventilation</b> and a higher level of care. Avoid drugs that worsen weakness: aminoglycosides, magnesium, beta blockers, quinolones, phenytoin.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>High yield notes · EDAIC revision</footer>
+</div>
+</body>
+</html>
