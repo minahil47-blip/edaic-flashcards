@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nephron &amp; Renal Physiology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --page:#EAEDE7;
+    --card:#FFFFFF;
+    --plot:#F0F6F3;
+    --ink:#152420;
+    --soft:#5C6E66;
+    --hair:#DCE2DC;
+    --na:#B5651D;
+    --k:#7A3B9E;
+    --cl:#3E7CB1;
+    --water:#1B7A9E;
+    --ca:#A8123E;
+    --hco3:#0E7A66;
+    --trace:#173A2E;
+    --cortex:#F4EFE2;
+    --medulla:#E4DCEE;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--page);color:var(--ink);
+    font-family:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16px;line-height:1.55;
+  }
+  .wrap{max-width:840px;margin:0 auto;padding:20px 14px 60px}
+
+  .backlink{
+    display:inline-block;margin:0 0 14px;padding:8px 15px;
+    border-radius:9px;background:var(--trace);color:#fff;
+    text-decoration:none;font-size:14px;font-weight:600;
+  }
+  .backlink:hover{background:#245243}
+
+  header.top{
+    background:var(--trace);color:#fff;border-radius:14px;
+    padding:22px 20px 20px;margin-bottom:18px;
+  }
+  header.top h1{
+    font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+    font-size:clamp(26px,7vw,40px);line-height:1.03;letter-spacing:-.02em;margin:0 0 10px;
+  }
+  header.top p{margin:0;color:#BFD6C7;font-size:15px;max-width:56ch}
+
+  section.card{background:var(--card);border-radius:14px;padding:18px 16px 20px;margin-bottom:18px}
+  .kicker{
+    font-family:"Bricolage Grotesque",sans-serif;font-weight:700;
+    font-size:clamp(20px,5vw,26px);letter-spacing:-.015em;margin:0 0 4px;
+  }
+  .sub{margin:0 0 16px;color:var(--soft);font-size:14.5px}
+  .sub b{color:var(--ink);font-weight:600}
+
+  .plot{background:var(--plot);border-radius:10px;padding:8px 4px 4px;margin:0 0 16px}
+  .plot svg{display:block;width:100%;height:auto}
+
+  ol.phases{list-style:none;margin:0;padding:0}
+  ol.phases li{display:grid;grid-template-columns:38px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--hair)}
+  ol.phases li:first-child{border-top:none}
+  .num{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:14px;
+    color:#fff;background:var(--trace);border-radius:8px;width:34px;height:34px;
+    display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.1}
+  .pname{font-weight:700;font-size:15.5px;margin:0 0 2px}
+  .pbody{margin:0;font-size:14.8px;color:#39433D}
+  .pbody em{font-style:normal;color:var(--soft)}
+
+  i.na{color:var(--na);font-style:normal;font-weight:700}
+  i.k{color:var(--k);font-style:normal;font-weight:700}
+  i.cl{color:var(--cl);font-style:normal;font-weight:700}
+  i.wt{color:var(--water);font-style:normal;font-weight:700}
+  i.ca{color:var(--ca);font-style:normal;font-weight:700}
+  i.hco{color:var(--hco3);font-style:normal;font-weight:700}
+
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(126px,1fr));gap:8px;margin:14px 0 0}
+  .fact{background:#F1F4F1;border-radius:9px;padding:9px 11px}
+  .fact .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:19px;line-height:1.1}
+  .fact .n{font-size:12.5px;color:var(--soft);margin-top:2px}
+
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{border-collapse:collapse;width:100%;min-width:640px;font-size:14.2px}
+  table.mid{min-width:540px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--hair);vertical-align:top}
+  thead th{font-size:12.5px;color:var(--soft);font-weight:600;border-bottom:1.5px solid #C4CCC4}
+  tbody th{font-weight:600;width:20%}
+  td.pct{background:#FBF3E9}
+  td.dl{background:#EAF4F8}
+  td.tal{background:#FDEFF3}
+  td.dct{background:#F1EBF7}
+  td.cd{background:#EAF3EC}
+  .pill{display:inline-block;font-size:11.5px;font-weight:800;color:#fff;border-radius:20px;padding:1px 7px;margin-right:5px}
+  .b1{background:var(--na)} .b2{background:var(--k)} .b3{background:var(--hco3)} .b4{background:var(--cl)}
+
+  .note{border-left:4px solid var(--na);background:#FBF3E9;border-radius:0 9px 9px 0;padding:13px 14px;margin:16px 0 0;font-size:14.6px}
+  .note h3{font-family:"Bricolage Grotesque",sans-serif;font-size:16px;margin:0 0 6px;font-weight:700}
+  .note ul{margin:0;padding-left:18px}
+  .note li{margin:5px 0}
+  .note li b{color:var(--na)}
+  .hydro{background:#EAF4F8;border-left-color:var(--water)}
+  .hydro h3{color:var(--water)}
+  .hydro li b{color:var(--water)}
+  .diur{background:#F1EBF7;border-left-color:var(--k)}
+  .diur h3{color:var(--k)}
+  .diur li b{color:var(--k)}
+  .crim{background:#FDEFF3;border-left-color:var(--ca)}
+  .crim h3{color:var(--ca)}
+  .crim li b{color:var(--ca)}
+
+  footer{color:var(--soft);font-size:13px;text-align:center;padding-top:6px}
+
+  @media print{
+    body{background:#fff}
+    .wrap{max-width:none;padding:0}
+    section.card{page-break-inside:avoid;border:1px solid #ddd;margin-bottom:12px}
+    header.top{background:#fff;color:#000;border:1px solid #ddd}
+    header.top p{color:#444}
+    .backlink{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+
+  <header class="top">
+    <h1>Nephron &amp; renal physiology</h1>
+    <p>One map for the whole functional unit: where filtrate goes, which ion is reabsorbed in which segment, how the medulla stays salty, and where every diuretic class actually works.</p>
+  </header>
+
+  <!-- ============ NEPHRON MAP ============ -->
+  <section class="card">
+    <h2 class="kicker">The nephron, cortex to papilla</h2>
+    <p class="sub">Everything in this sheet is anchored to <b>where</b> it happens. Cortex holds the glomeruli and convoluted tubules; the medulla is where the loop of Henle and collecting duct build and use a salt gradient. Sodium reabsorption falls steeply along the tubule — <b>65% → 25% → 5% → 3%</b> — which is exactly why loop diuretics are the most powerful.</p>
+
+    <div class="plot">
+      <svg viewBox="0 0 620 470" role="img" aria-label="Schematic nephron showing glomerulus, proximal tubule, loop of Henle, distal tubule and collecting duct with transporters and diuretic sites of action">
+        <g font-family="Public Sans, sans-serif">
+
+          <!-- cortex / medulla bands -->
+          <rect x="8" y="18" width="228" height="150" rx="8" fill="#F4EFE2"/>
+          <rect x="8" y="168" width="228" height="284" rx="8" fill="#E4DCEE"/>
+          <text x="20" y="38" font-size="12" font-weight="700" fill="#8A6C22">CORTEX</text>
+          <text x="20" y="188" font-size="12" font-weight="700" fill="#6D4A94">MEDULLA</text>
+
+          <!-- glomerulus -->
+          <circle cx="62" cy="72" r="24" fill="#FBD9E2" stroke="#A8123E" stroke-width="2"/>
+          <circle cx="62" cy="72" r="12" fill="none" stroke="#A8123E" stroke-width="1.6"/>
+          <path d="M22,62 H38" stroke="#A8123E" stroke-width="3.6" fill="none"/>
+          <path d="M22,84 H38" stroke="#5C6E66" stroke-width="2.4" fill="none"/>
+          <text x="62" y="113" font-size="12.5" font-weight="700" fill="#A8123E" text-anchor="middle">glomerulus</text>
+
+          <!-- PCT -->
+          <path d="M86,72 q14,-16 28,0 q14,16 28,0 q14,-16 26,4"
+                fill="none" stroke="#B5651D" stroke-width="9" stroke-linecap="round"/>
+          <text x="140" y="48" font-size="12.5" font-weight="700" fill="#B5651D" text-anchor="middle">PCT</text>
+
+          <!-- descending limb -->
+          <path d="M168,76 C176,120 172,200 170,300" fill="none" stroke="#7FB8D4" stroke-width="6" stroke-linecap="round"/>
+          <text x="122" y="250" font-size="11.5" font-weight="700" fill="#1B7A9E" text-anchor="middle">thin</text>
+          <text x="122" y="265" font-size="11.5" font-weight="700" fill="#1B7A9E" text-anchor="middle">descending</text>
+
+          <!-- loop bottom -->
+          <path d="M170,300 q0,44 24,44 q24,0 24,-44" fill="none" stroke="#7A3B9E" stroke-width="7" stroke-linecap="round"/>
+
+          <!-- thick ascending limb -->
+          <path d="M218,300 C220,220 216,150 212,126" fill="none" stroke="#7A3B9E" stroke-width="10" stroke-linecap="round"/>
+          <text x="252" y="242" font-size="11.5" font-weight="700" fill="#7A3B9E">thick</text>
+          <text x="252" y="257" font-size="11.5" font-weight="700" fill="#7A3B9E">ascending</text>
+
+          <!-- DCT -->
+          <path d="M212,126 q16,-18 30,-2 q14,16 28,-2" fill="none" stroke="#0E7A66" stroke-width="8" stroke-linecap="round"/>
+          <text x="242" y="102" font-size="12.5" font-weight="700" fill="#0E7A66" text-anchor="middle">DCT</text>
+
+          <!-- collecting duct -->
+          <path d="M270,122 C282,190 280,320 278,438" fill="none" stroke="#3E7CB1" stroke-width="11" stroke-linecap="round"/>
+          <text x="298" y="424" font-size="12.5" font-weight="700" fill="#3E7CB1">collecting duct</text>
+          <text x="278" y="458" font-size="11.5" font-weight="600" fill="#5C6E66" text-anchor="middle">→ urine</text>
+
+          <!-- numbered site markers -->
+          <circle cx="160" cy="72" r="13" fill="#B5651D"/>
+          <text x="160" y="77" fill="#fff" font-size="13" font-weight="800" text-anchor="middle">1</text>
+          <circle cx="216" cy="222" r="13" fill="#7A3B9E"/>
+          <text x="216" y="227" fill="#fff" font-size="13" font-weight="800" text-anchor="middle">2</text>
+          <circle cx="272" cy="118" r="13" fill="#0E7A66"/>
+          <text x="272" y="123" fill="#fff" font-size="13" font-weight="800" text-anchor="middle">3</text>
+          <circle cx="279" cy="330" r="13" fill="#3E7CB1"/>
+          <text x="279" y="335" fill="#fff" font-size="13" font-weight="800" text-anchor="middle">4</text>
+
+          <!-- right-hand annotations -->
+          <g font-size="13" font-weight="600" fill="#5C6E66">
+
+            <text x="326" y="46" font-size="14.5" font-weight="700" fill="#B5651D">1 · Proximal tubule — 65–70% Na⁺</text>
+            <text x="326" y="66">Na⁺/H⁺ exchange · SGLT2 glucose · amino acids</text>
+            <text x="326" y="84">HCO₃⁻ via carbonic anhydrase · phosphate (PTH)</text>
+            <text x="326" y="102" fill="#A8123E">acetazolamide · SGLT2 inhibitors · mannitol</text>
+
+            <text x="326" y="146" font-size="14.5" font-weight="700" fill="#0E7A66">3 · Distal tubule — 5–8% Na⁺</text>
+            <text x="326" y="166">Na⁺–Cl⁻ cotransporter (NCC)</text>
+            <text x="326" y="184">Ca²⁺ reabsorbed here under PTH control</text>
+            <text x="326" y="202" fill="#A8123E">thiazides</text>
+
+            <text x="326" y="246" font-size="14.5" font-weight="700" fill="#7A3B9E">2 · Thick ascending limb — 25% Na⁺</text>
+            <text x="326" y="266">Na⁺–K⁺–2Cl⁻ (NKCC2) · water impermeable</text>
+            <text x="326" y="284">lumen-positive → paracellular Ca²⁺ and Mg²⁺</text>
+            <text x="326" y="302" fill="#A8123E">loop diuretics — most potent</text>
+
+            <text x="326" y="346" font-size="14.5" font-weight="700" fill="#3E7CB1">4 · Collecting duct — 2–3% Na⁺</text>
+            <text x="326" y="366">ENaC (aldosterone) · K⁺ out via ROMK</text>
+            <text x="326" y="384">AQP2 water channels (ADH) · H⁺ secretion</text>
+            <text x="326" y="402" fill="#A8123E">amiloride · spironolactone · vaptans</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><div class="v">180 L/day</div><div class="n">filtered</div></div>
+      <div class="fact"><div class="v">1–1.5 L/day</div><div class="n">excreted</div></div>
+      <div class="fact"><div class="v">~99%</div><div class="n">water reabsorbed</div></div>
+      <div class="fact"><div class="v">1200 mOsm</div><div class="n">papilla tip</div></div>
+    </div>
+  </section>
+
+  <!-- ============ FILTRATION BASICS ============ -->
+  <section class="card">
+    <h2 class="kicker">Filtration — before anything is "reabsorbed"</h2>
+    <p class="sub">The glomerulus is a sieve, not a pump. What crosses into Bowman's space becomes the starting filtrate every downstream segment works on.</p>
+    <ol class="phases">
+      <li><div class="num">In</div><div>
+        <p class="pname">Afferent arteriole → glomerular capillary tuft</p>
+        <p class="pbody">Blood enters at relatively high pressure. Water and small solutes (Na⁺, K⁺, Cl⁻, HCO₃⁻, glucose, amino acids, urea) are pushed across; <b>cells and large plasma proteins stay in the blood.</b> The barrier is fenestrated endothelium, basement membrane and podocyte slits — and it is <b>negatively charged</b>, which restricts albumin further.</p>
+      </div></li>
+      <li><div class="num">Out</div><div>
+        <p class="pname">Efferent arteriole → peritubular capillaries / vasa recta</p>
+        <p class="pbody">Blood that didn't get filtered leaves via the efferent arteriole, which then branches into the <b>peritubular capillaries</b> (around cortical tubules) and the <b>vasa recta</b> (running alongside the loop of Henle). Everything reabsorbed by the tubule is picked up here and returned to the systemic circulation.</p>
+      </div></li>
+      <li><div class="num">GFR</div><div>
+        <p class="pname">What controls how much gets filtered</p>
+        <p class="pbody"><b>Afferent constriction</b> → ↓ flow into glomerulus → ↓GFR. <b>Efferent constriction</b> → blood backs up in the glomerulus → ↑ pressure → ↑GFR (until it's severe, then ↓GFR). This afferent/efferent balance is exactly what ACE inhibitors and NSAIDs disturb.</p>
+      </div></li>
+      <li><div class="num">Nos</div><div>
+        <p class="pname">The numbers</p>
+        <p class="pbody">GFR <b>125 ml/min</b> (180 L/day). Renal blood flow <b>1000–1250 ml/min</b>, about 20–25% of cardiac output. Filtration fraction = GFR/renal plasma flow ≈ <b>20%</b>. Net filtration pressure ≈ 55 − (15 + 30) = <b>10 mmHg</b>. Autoregulated between a MAP of roughly <b>80–180 mmHg</b>.</p>
+      </div></li>
+    </ol>
+
+    <div class="note hydro">
+      <h3>Measuring it</h3>
+      <ul>
+        <li><b>Inulin</b> is the gold standard — freely filtered, neither secreted nor reabsorbed.</li>
+        <li><b>Creatinine clearance overestimates</b> GFR by 10–20%, because creatinine is also secreted by the proximal tubule.</li>
+        <li><b>PAH clearance</b> measures renal plasma flow, being almost completely cleared in a single pass.</li>
+        <li>Serum creatinine is insensitive early: GFR must fall by roughly <b>50%</b> before it rises above the normal range.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SEGMENT BY SEGMENT ============ -->
+  <section class="card">
+    <h2 class="kicker">Segment by segment — what leaves where</h2>
+    <p class="sub">Read this as filtrate flowing top to bottom, cortex → medulla → back to cortex → medulla again.</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Segment</th><th>Na⁺</th><th>Reabsorbs</th><th>Transporter</th><th>Water</th><th>Key feature</th></tr></thead>
+        <tbody>
+          <tr>
+            <th><span class="pill b1">1</span>PCT</th><td class="pct"><b>65–70%</b></td>
+            <td class="pct"><i class="na">Na⁺</i> (with glucose, amino acids), <i class="hco">HCO₃⁻</i>, most K⁺, phosphate, <i class="wt">~65–70% of water</i>. <b>Secretes</b> organic acids and bases</td>
+            <td class="pct">NHE3, SGLT2, carbonic anhydrase</td>
+            <td class="pct">High — isosmotic</td>
+            <td class="pct">Glucose/AA reabsorption is transporter-limited (saturable) — a Tm defect spills glucose into urine. Threshold ≈ 10–11 mmol/L</td>
+          </tr>
+          <tr>
+            <th>Descending thin limb</th><td class="dl">—</td>
+            <td class="dl">Water only</td>
+            <td class="dl">Aquaporin-1</td>
+            <td class="dl">High — impermeable to NaCl</td>
+            <td class="dl">Filtrate gets progressively <b>more concentrated</b> as it dips into the salty medulla</td>
+          </tr>
+          <tr>
+            <th><span class="pill b2">2</span>Thick ascending limb</th><td class="tal"><b>25%</b></td>
+            <td class="tal"><i class="na">Na⁺</i>, <i class="k">K⁺</i>, <i class="cl">2 Cl⁻</i>; also <i class="ca">Ca²⁺</i>, Mg²⁺ paracellular</td>
+            <td class="tal">NKCC2; K⁺ recycles via ROMK</td>
+            <td class="tal">Impermeable</td>
+            <td class="tal">The "diluting segment" — filtrate leaves <b>dilute</b>, while pumped-out NaCl builds medullary hypertonicity. Lumen-positive potential drives the divalent cations</td>
+          </tr>
+          <tr>
+            <th><span class="pill b3">3</span>DCT</th><td class="dct"><b>5–8%</b></td>
+            <td class="dct"><i class="na">Na⁺</i> + <i class="cl">Cl⁻</i>; <i class="ca">Ca²⁺</i> reabsorption tuned by PTH</td>
+            <td class="dct">NCC; TRPV5 for calcium</td>
+            <td class="dct">Impermeable</td>
+            <td class="dct">Macula densa here senses NaCl and drives tubuloglomerular feedback on GFR</td>
+          </tr>
+          <tr>
+            <th><span class="pill b4">4</span>Collecting duct</th><td class="cd"><b>2–3%</b></td>
+            <td class="cd">Principal cells: <i class="na">Na⁺</i> in / <i class="k">K⁺</i> out. Intercalated cells: H⁺ or HCO₃⁻ (acid–base)</td>
+            <td class="cd">ENaC + ROMK (aldosterone); AQP2 (ADH); H⁺ ATPase</td>
+            <td class="cd">Variable — <b>ADH</b> dependent</td>
+            <td class="cd">Final fine-tuning: how concentrated the urine ends up depends entirely on ADH here</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <h3>Loop of Henle in one line</h3>
+      <ul>
+        <li><b>Descending limb</b> = water leaves, salt stays → filtrate concentrates.</li>
+        <li><b>Ascending limb</b> = salt leaves, water stays → filtrate dilutes.</li>
+        <li>Net effect: filtrate enters the loop isosmotic (~300), reaches ~1200 at the bottom, and leaves the loop <b>dilute</b> (~100) — even though the surrounding medulla stays hypertonic.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ COUNTERCURRENT ============ -->
+  <section class="card">
+    <h2 class="kicker">Countercurrent multiplier &amp; exchanger</h2>
+    <p class="sub">This is the mechanism that lets the kidney make urine <b>more concentrated than plasma</b> — the loop builds the gradient, the vasa recta preserves it.</p>
+
+    <ol class="phases">
+      <li><div class="num">1</div><div>
+        <p class="pname">Countercurrent multiplier — loop of Henle</p>
+        <p class="pbody">Descending and ascending limbs run parallel but carry flow in <b>opposite directions</b>. The TAL actively pumps <i class="na">NaCl</i> out without water following, raising interstitial osmolarity. Because the descending limb is water-permeable, it equilibrates with that same interstitium — so filtrate re-entering the loop is already more concentrated than before. Repeating this stepwise along the loop's length <b>multiplies</b> a small single effect into a steep 300→1200 mOsm/L gradient from cortex to papilla.</p>
+      </div></li>
+      <li><div class="num">2</div><div>
+        <p class="pname">Countercurrent exchanger — vasa recta</p>
+        <p class="pbody">The vasa recta run alongside the loop, also as hairpin loops, also with opposite-direction flow. As blood descends into the hypertonic medulla it loses water and gains salt; as it ascends back out it regains that water and loses the salt. <em>The exchanger doesn't build the gradient — it just carries oxygen and nutrients through the medulla without washing the gradient away.</em></p>
+      </div></li>
+      <li><div class="num">3</div><div>
+        <p class="pname">Urea recycling</p>
+        <p class="pbody">The inner medullary collecting duct is permeable to urea, which adds to medullary osmolarity and contributes roughly <b>half</b> of the final papillary gradient alongside NaCl.</p>
+      </div></li>
+      <li><div class="num">4</div><div>
+        <p class="pname">Where ADH fits in</p>
+        <p class="pbody">None of this concentrates the urine itself unless the collecting duct is water-permeable. <b>ADH (vasopressin)</b> inserts aquaporin-2 channels into principal cells, letting water leave the collecting duct down the gradient the loop already built — so final urine osmolarity tracks ADH, not the loop.</p>
+      </div></li>
+    </ol>
+
+    <div class="note hydro">
+      <h3>Why it matters clinically</h3>
+      <ul>
+        <li><b>Loop diuretics</b> knock out the multiplier at its source (TAL) — they blunt the whole gradient, so they're the most powerful diuretic class, and they impair both concentrating AND diluting ability.</li>
+        <li><b>Long thin loops (juxtamedullary nephrons)</b> reach deep into the medulla and build the steepest gradient — these are the nephrons that let you concentrate urine maximally when dehydrated.</li>
+        <li>A <b>washed-out medullary gradient</b> (e.g. from loop diuretic overuse, or high renal blood flow) is why you can't concentrate urine even with normal ADH.</li>
+        <li>The medulla is relatively <b>hypoxic</b> — high metabolic demand from the TAL with low blood flow — which is why it is the first tissue to suffer in ischaemic ATN.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ DIURETICS ============ -->
+  <section class="card">
+    <h2 class="kicker">Diuretics — mapped onto the nephron</h2>
+    <p class="sub">Same segment order as above. Potency tracks the <b>fraction of sodium handled at that site</b> — that single idea explains the whole ranking.</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Class</th><th>Site</th><th>Target</th><th>Na⁺ lost</th><th>Notable effects</th></tr></thead>
+        <tbody>
+          <tr>
+            <th>Osmotic<br><em>mannitol</em></th><td class="pct">PCT + descending limb</td>
+            <td class="pct">Non-reabsorbed solute holds water in the tubule</td><td class="pct">Variable</td>
+            <td class="pct">↑ water excretion, little effect on Na⁺. Uses: raised ICP, IOP. <b>Expands ECF first</b> — dangerous in cardiac failure and pulmonary oedema; contraindicated in established anuria. Risk of rebound</td>
+          </tr>
+          <tr>
+            <th>Carbonic anhydrase inhibitor<br><em>acetazolamide</em></th><td class="pct">PCT</td>
+            <td class="pct">Blocks <i class="hco">HCO₃⁻</i> reabsorption</td><td class="pct">~5%</td>
+            <td class="pct">Mild, self-limiting diuresis with <b>hyperchloraemic metabolic acidosis</b> and hypokalaemia. Used more for glaucoma, altitude sickness and metabolic alkalosis than for diuresis</td>
+          </tr>
+          <tr>
+            <th>SGLT2 inhibitor<br><em>dapagliflozin, empagliflozin</em></th><td class="pct">PCT</td>
+            <td class="pct">Blocks SGLT2 glucose reabsorption</td><td class="pct">Osmotic</td>
+            <td class="pct">Glycosuric osmotic diuresis with cardiorenal benefit. <b>Euglycaemic DKA</b> is the anaesthetic concern — withhold about 3 days before surgery</td>
+          </tr>
+          <tr>
+            <th>Loop<br><em>furosemide, bumetanide</em></th><td class="tal">Thick ascending limb</td>
+            <td class="tal">Blocks NKCC2 (<i class="na">Na⁺</i>/<i class="k">K⁺</i>/<i class="cl">2Cl⁻</i>)</td><td class="tal"><b>20–25%<br>most potent</b></td>
+            <td class="tal">Abolishes the medullary gradient. Hypokalaemia, <b>hypocalcaemia</b>, hypomagnesaemia, hypochloraemic metabolic alkalosis, hyperuricaemia, ototoxicity. Venodilates before diuresis in acute pulmonary oedema. Still works at low GFR</td>
+          </tr>
+          <tr>
+            <th>Thiazide<br><em>bendroflumethiazide, indapamide</em></th><td class="dct">DCT</td>
+            <td class="dct">Blocks NCC (<i class="na">Na⁺</i>/<i class="cl">Cl⁻</i>)</td><td class="dct">5–8%</td>
+            <td class="dct">Hypokalaemia, <b>hyponatraemia</b> (classically in the elderly), <b>hypercalcaemia</b>, hyperglycaemia, hyperuricaemia, hyperlipidaemia. Ineffective once GFR &lt; 30 ml/min</td>
+          </tr>
+          <tr>
+            <th>K⁺-sparing<br><em>amiloride, triamterene</em></th><td class="cd">Collecting duct</td>
+            <td class="cd">Blocks ENaC directly on principal cells</td><td class="cd">2–3%</td>
+            <td class="cd">Weak diuresis, spares K⁺. <b>Hyperkalaemia</b> — care with ACE inhibitors or ARBs</td>
+          </tr>
+          <tr>
+            <th>Aldosterone antagonist<br><em>spironolactone, eplerenone</em></th><td class="cd">Collecting duct</td>
+            <td class="cd">Blocks the mineralocorticoid receptor</td><td class="cd">2–3%</td>
+            <td class="cd"><b>Hyperkalaemia</b>, gynaecomastia (spironolactone; eplerenone is more selective). Mortality benefit in heart failure. Slow onset over days</td>
+          </tr>
+          <tr>
+            <th>Vasopressin antagonist<br><em>tolvaptan</em></th><td class="cd">Collecting duct</td>
+            <td class="cd">Blocks the <b>V2 receptor</b>, so AQP2 is not inserted</td><td class="cd">Aquaresis</td>
+            <td class="cd">Water excretion without much Na⁺ loss — used in SIADH and hypervolaemic hyponatraemia. Risk of <b>over-rapid sodium correction</b>. <em>Lithium causes the same end-effect as an unwanted toxicity, producing nephrogenic diabetes insipidus</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note diur">
+      <h3>One memory hook</h3>
+      <ul>
+        <li>Move from PCT to collecting duct and the diuretics get <b>progressively weaker but more selective</b>: mannitol and acetazolamide are mild; furosemide (TAL) is the strongest because it cripples the countercurrent gradient itself; thiazides (DCT) are moderate; spironolactone/amiloride (collecting duct) are the weakest but protect K⁺.</li>
+        <li>Loop and thiazide diuretics act from <b>inside the lumen</b> — they are secreted into the filtrate by the organic acid transporter in the PCT. That is why they lose effect in renal failure, where uraemic anions compete for that transporter.</li>
+      </ul>
+    </div>
+
+    <div class="note crim">
+      <h3>The calcium trap — worth its own line</h3>
+      <ul>
+        <li><b>Loop diuretics LOSE calcium.</b> They abolish the lumen-positive potential that drives paracellular Ca²⁺ reabsorption in the TAL — which is why furosemide is used in <b>hypercalcaemia</b> (after rehydration).</li>
+        <li><b>Thiazides RETAIN calcium.</b> They enhance distal Ca²⁺ reabsorption — hence <b>hypercalcaemia</b> as a side effect, and their use in recurrent calcium stones and osteoporosis.</li>
+        <li>Mnemonic: <b>Loops Lose, Thiazides Take.</b></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ HORMONES ============ -->
+  <section class="card">
+    <h2 class="kicker">Hormonal control</h2>
+    <div class="scroll">
+      <table class="mid">
+        <thead><tr><th>Hormone</th><th>Site</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><th>Aldosterone</th><td class="cd">Collecting duct principal cells</td><td class="cd">↑ ENaC and Na⁺/K⁺ ATPase → Na⁺ and water retention, K⁺ and H⁺ loss</td></tr>
+          <tr><th>ADH (vasopressin)</th><td class="cd">Collecting duct, V2</td><td class="cd">Inserts aquaporin-2 → water reabsorption. V1 elsewhere causes vasoconstriction. Most sensitive stimulus is plasma osmolality from ~280 mosmol/kg</td></tr>
+          <tr><th>Angiotensin II</th><td class="pct">Efferent arteriole, PCT</td><td class="pct">Efferent constriction maintains GFR; stimulates PCT Na⁺ reabsorption and aldosterone release</td></tr>
+          <tr><th>ANP / BNP</th><td class="dct">Collecting duct, afferent arteriole</td><td class="dct">Afferent dilation ↑ GFR; inhibits Na⁺ reabsorption and renin — the natural counterweight to RAAS</td></tr>
+          <tr><th>PTH</th><td class="dct">PCT and DCT</td><td class="dct">↑ Ca²⁺ reabsorption (DCT), ↓ phosphate reabsorption (PCT), activates vitamin D</td></tr>
+          <tr><th>Renin trigger</th><td class="tal">Juxtaglomerular apparatus</td><td class="tal">Released by ↓ renal perfusion pressure, ↓ distal tubular Na⁺ at the macula densa, and sympathetic β1 stimulation</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note crim">
+      <h3>Perioperative points that get asked</h3>
+      <ul>
+        <li><b>ACE inhibitor + NSAID + hypovolaemia</b> is the classic AKI triad: NSAIDs block afferent vasodilation while ACE inhibitors block efferent constriction, so filtration pressure collapses.</li>
+        <li><b>SGLT2 inhibitors</b> should be withheld about 3 days preoperatively — a normal glucose does not exclude euglycaemic DKA.</li>
+        <li><b>Spironolactone with an ACE inhibitor</b> in a patient given suxamethonium is a real hyperkalaemia risk.</li>
+        <li><b>Neither dopamine nor loop diuretics prevent or treat AKI.</b> Diuretics may help manage fluid overload, but only maintaining perfusion pressure and euvolaemia protects the kidney.</li>
+        <li>Drugs to avoid or dose-adjust in renal impairment: morphine (M6G accumulates), pethidine (norpethidine), gabapentin, and renally cleared relaxants. <b>Atracurium and cisatracurium are preferred</b>; remifentanil is unaffected.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>Consolidated renal physiology sheet · nephron segments, countercurrent mechanism, diuretic sites of action</footer>
+</div>
+</body>
+</html>
