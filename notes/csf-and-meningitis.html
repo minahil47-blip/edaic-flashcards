@@ -117,44 +117,57 @@
     <p class="sub">Only <b>150 ml</b> exists at any moment, but <b>500 ml</b> is made each day — so the whole volume turns over <b>three to four times daily</b>.</p>
 
     <div class="plot">
-      <svg viewBox="0 0 620 180" role="img" aria-label="Flow diagram of CSF from choroid plexus through ventricles and subarachnoid space to arachnoid granulations">
+      <svg viewBox="0 0 620 556" role="img" aria-label="CSF circulation pathway from choroid plexus through the lateral ventricles, foramen of Monro, third ventricle, aqueduct of Sylvius, fourth ventricle, foramina of Luschka and Magendie, subarachnoid space and arachnoid granulations to the superior sagittal sinus">
         <defs>
-          <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
-            <path d="M0,0 L8,3.2 L0,6.4 z" fill="#5A6474"/>
+          <marker id="ah" markerWidth="10" markerHeight="10" refX="7.5" refY="3.4" orient="auto">
+            <path d="M0,0 L8,3.4 L0,6.8 z" fill="#5A6474"/>
           </marker>
         </defs>
-        <g font-family="Public Sans, sans-serif" font-size="14" font-weight="700">
-          <rect x="8" y="58" width="124" height="66" rx="10" fill="#14213D"/>
-          <text x="70" y="88" fill="#fff" text-anchor="middle">Choroid</text>
-          <text x="70" y="106" fill="#fff" text-anchor="middle">plexus</text>
+        <g font-family="Public Sans, sans-serif">
 
-          <path d="M137,91 H160" stroke="#5A6474" stroke-width="2.2" marker-end="url(#ah)" fill="none"/>
+          <!-- 1 choroid plexus -->
+          <rect x="20" y="12" width="300" height="48" rx="10" fill="#14213D"/>
+          <text x="170" y="34" font-size="14.5" font-weight="700" fill="#fff" text-anchor="middle">Choroid plexus</text>
+          <text x="170" y="52" font-size="12.5" font-weight="600" fill="#B9C6D8" text-anchor="middle">ependymal cells — active secretion</text>
+          <path d="M170,60 V82" stroke="#5A6474" stroke-width="2.4" marker-end="url(#ah)" fill="none"/>
 
-          <rect x="168" y="58" width="124" height="66" rx="10" fill="#DCE7F7" stroke="#1B5FA8" stroke-width="1.6"/>
-          <text x="230" y="82" fill="#14213D" text-anchor="middle">Lateral, 3rd</text>
-          <text x="230" y="100" fill="#14213D" text-anchor="middle">&amp; 4th</text>
-          <text x="230" y="117" fill="#5A6474" font-size="13" font-weight="600" text-anchor="middle">ventricles</text>
+          <!-- 2 lateral ventricles -->
+          <rect x="20" y="90" width="300" height="44" rx="10" fill="#DCE7F7" stroke="#1B5FA8" stroke-width="1.6"/>
+          <text x="170" y="118" font-size="14.5" font-weight="700" fill="#14213D" text-anchor="middle">Lateral ventricles (R &amp; L)</text>
+          <path d="M170,134 V170" stroke="#5A6474" stroke-width="2.4" marker-end="url(#ah)" fill="none"/>
+          <text x="336" y="157" font-size="13" font-weight="700" fill="#A8123E">Foramen of Monro ×2</text>
+          <text x="336" y="173" font-size="12" font-weight="600" fill="#5A6474">(interventricular foramen)</text>
 
-          <path d="M297,91 H320" stroke="#5A6474" stroke-width="2.2" marker-end="url(#ah)" fill="none"/>
+          <!-- 3 third ventricle -->
+          <rect x="20" y="178" width="300" height="44" rx="10" fill="#DCE7F7" stroke="#1B5FA8" stroke-width="1.6"/>
+          <text x="170" y="206" font-size="14.5" font-weight="700" fill="#14213D" text-anchor="middle">Third ventricle</text>
+          <path d="M170,222 V258" stroke="#5A6474" stroke-width="2.4" marker-end="url(#ah)" fill="none"/>
+          <text x="336" y="245" font-size="13" font-weight="700" fill="#A8123E">Aqueduct of Sylvius</text>
+          <text x="336" y="261" font-size="12" font-weight="600" fill="#5A6474">(cerebral aqueduct — narrowest point)</text>
 
-          <rect x="328" y="58" width="124" height="66" rx="10" fill="#E7DCF7" stroke="#7A3B9E" stroke-width="1.6"/>
-          <text x="390" y="88" fill="#14213D" text-anchor="middle">Subarachnoid</text>
-          <text x="390" y="106" fill="#14213D" text-anchor="middle">space</text>
+          <!-- 4 fourth ventricle -->
+          <rect x="20" y="266" width="300" height="44" rx="10" fill="#DCE7F7" stroke="#1B5FA8" stroke-width="1.6"/>
+          <text x="170" y="294" font-size="14.5" font-weight="700" fill="#14213D" text-anchor="middle">Fourth ventricle</text>
+          <path d="M170,310 V362" stroke="#5A6474" stroke-width="2.4" marker-end="url(#ah)" fill="none"/>
+          <text x="336" y="330" font-size="13" font-weight="700" fill="#A8123E">Foramina of Luschka ×2</text>
+          <text x="336" y="346" font-size="12" font-weight="600" fill="#5A6474">(lateral) — Luschka = Lateral</text>
+          <text x="336" y="364" font-size="13" font-weight="700" fill="#A8123E">Foramen of Magendie ×1</text>
+          <text x="336" y="380" font-size="12" font-weight="600" fill="#5A6474">(median) — Magendie = Median</text>
 
-          <path d="M457,91 H480" stroke="#5A6474" stroke-width="2.2" marker-end="url(#ah)" fill="none"/>
+          <!-- 5 subarachnoid space -->
+          <rect x="20" y="370" width="300" height="56" rx="10" fill="#E7DCF7" stroke="#7A3B9E" stroke-width="1.6"/>
+          <text x="170" y="394" font-size="14.5" font-weight="700" fill="#14213D" text-anchor="middle">Subarachnoid space</text>
+          <text x="170" y="413" font-size="12.5" font-weight="600" fill="#5A6474" text-anchor="middle">around brain and spinal cord</text>
+          <path d="M170,426 V462" stroke="#5A6474" stroke-width="2.4" marker-end="url(#ah)" fill="none"/>
+          <text x="336" y="449" font-size="13" font-weight="700" fill="#0E7A66">Arachnoid granulations (villi)</text>
+          <text x="336" y="465" font-size="12" font-weight="600" fill="#5A6474">bulk flow, pressure-dependent</text>
 
-          <rect x="488" y="58" width="124" height="66" rx="10" fill="#D9F0E6" stroke="#0E7A66" stroke-width="1.6"/>
-          <text x="550" y="82" fill="#14213D" text-anchor="middle">Arachnoid</text>
-          <text x="550" y="100" fill="#14213D" text-anchor="middle">granulations</text>
-          <text x="550" y="117" fill="#5A6474" font-size="13" font-weight="600" text-anchor="middle">→ venous sinus</text>
+          <!-- 6 sinus -->
+          <rect x="20" y="470" width="300" height="56" rx="10" fill="#D9F0E6" stroke="#0E7A66" stroke-width="1.6"/>
+          <text x="170" y="494" font-size="14.5" font-weight="700" fill="#14213D" text-anchor="middle">Superior sagittal sinus</text>
+          <text x="170" y="513" font-size="12.5" font-weight="600" fill="#5A6474" text-anchor="middle">→ venous blood</text>
 
-          <g font-size="13" font-weight="600" fill="#5A6474">
-            <text x="70" y="40" text-anchor="middle">active secretion</text>
-            <text x="230" y="40" text-anchor="middle">via foramina</text>
-            <text x="390" y="40" text-anchor="middle">circulates</text>
-            <text x="550" y="40" text-anchor="middle">bulk flow</text>
-            <text x="310" y="166" text-anchor="middle">0.35 ml/min · 500 ml/day · 150 ml total · turns over 3–4× daily</text>
-          </g>
+          <text x="310" y="546" font-size="13" font-weight="600" fill="#5A6474" text-anchor="middle">0.35 ml/min · 500 ml/day · 150 ml total · turns over 3–4× daily</text>
         </g>
       </svg>
     </div>
@@ -164,6 +177,24 @@
       <div class="fact"><div class="v">500 ml/day</div><div class="n">production</div></div>
       <div class="fact"><div class="v">5–15 mmHg</div><div class="n">normal pressure</div></div>
       <div class="fact"><div class="v">1.003–1.008</div><div class="n">specific gravity</div></div>
+    </div>
+
+    <div class="note blue">
+      <h3>The pathway in words</h3>
+      <ul>
+        <li>Produced by <b>ependymal cells of the choroid plexus</b> → <b>lateral ventricles</b> → <b>foramen of Monro</b> → <b>third ventricle</b> → <b>aqueduct of Sylvius</b> → <b>fourth ventricle</b> → <b>foramina of Luschka and Magendie</b> → <b>subarachnoid space</b> → reabsorbed by <b>arachnoid granulations into the superior sagittal sinus</b>.</li>
+        <li><b>Luschka = Lateral</b> (two of them). <b>Magendie = Median</b> (one, in the midline). That pairing is the whole memory problem solved.</li>
+        <li>Absorption is <b>passive and pressure-dependent</b> through one-way valves — flow only occurs when CSF pressure exceeds venous sinus pressure. Production, by contrast, is <b>active and largely pressure-independent</b>, which is why CSF keeps being made even when ICP is dangerously high.</li>
+      </ul>
+    </div>
+
+    <div class="note warn">
+      <h3>Where obstruction causes hydrocephalus</h3>
+      <ul>
+        <li><b>Non-communicating (obstructive)</b> — a blockage anywhere within the ventricular system. The <b>aqueduct of Sylvius is the commonest site</b>, being the narrowest point in the pathway. Also at the foramen of Monro or the fourth ventricular outlets.</li>
+        <li><b>Communicating</b> — flow through the ventricles is intact but <b>absorption</b> at the arachnoid granulations fails. Classically after subarachnoid haemorrhage or meningitis, where blood or exudate blocks the villi.</li>
+        <li>Practical point: in obstructive hydrocephalus, <b>lumbar puncture risks coning</b> — CSF is removed below a blockage while pressure above it stays high. Image first.</li>
+      </ul>
     </div>
 
     <div class="note hook">

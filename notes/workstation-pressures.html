@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anaesthetic Workstation &amp; Cylinders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="notes.css">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+
+  <header class="top">
+    <h1>Workstation pressures &amp; cylinders</h1>
+    <p>The three pressure zones of the anaesthetic machine, what lives in each, and the cylinder data that goes with them.</p>
+  </header>
+
+  <!-- ============ THREE ZONES ============ -->
+  <section class="card">
+    <h2 class="kicker">The three pressure systems</h2>
+    <p class="sub">The machine is divided by <b>where the pressure drops occur</b>. Learn the zones by their boundaries and the components fall into place.</p>
+
+    <div class="plot">
+      <svg viewBox="0 0 620 250" role="img" aria-label="Diagram of the three pressure zones of the anaesthetic workstation from cylinder to common gas outlet">
+        <defs>
+          <marker id="a2" markerWidth="10" markerHeight="10" refX="7.5" refY="3.4" orient="auto">
+            <path d="M0,0 L8,3.4 L0,6.8 z" fill="#5C6E66"/>
+          </marker>
+        </defs>
+        <g font-family="Public Sans, sans-serif">
+          <rect x="14" y="70" width="176" height="80" rx="10" fill="#FDEFF3" stroke="#A8123E" stroke-width="1.8"/>
+          <text x="102" y="96" font-size="14" font-weight="700" fill="#A8123E" text-anchor="middle">HIGH pressure</text>
+          <text x="102" y="116" font-size="12.5" font-weight="600" fill="#5C6E66" text-anchor="middle">cylinder → 1st-stage</text>
+          <text x="102" y="133" font-size="12.5" font-weight="600" fill="#5C6E66" text-anchor="middle">regulator</text>
+          <text x="102" y="56" font-size="13" font-weight="800" fill="#A8123E" text-anchor="middle">1900–2200 psig</text>
+
+          <path d="M196,110 H222" stroke="#5C6E66" stroke-width="2.4" marker-end="url(#a2)" fill="none"/>
+          <text x="209" y="98" font-size="11.5" font-weight="700" fill="#5C6E66" text-anchor="middle">45</text>
+          <text x="209" y="134" font-size="11" font-weight="600" fill="#5C6E66" text-anchor="middle">psig</text>
+
+          <rect x="228" y="70" width="176" height="80" rx="10" fill="#EAF4F8" stroke="#1B5FA8" stroke-width="1.8"/>
+          <text x="316" y="96" font-size="14" font-weight="700" fill="#1B5FA8" text-anchor="middle">INTERMEDIATE</text>
+          <text x="316" y="116" font-size="12.5" font-weight="600" fill="#5C6E66" text-anchor="middle">regulator / pipeline →</text>
+          <text x="316" y="133" font-size="12.5" font-weight="600" fill="#5C6E66" text-anchor="middle">flowmeter valves</text>
+          <text x="316" y="56" font-size="13" font-weight="800" fill="#1B5FA8" text-anchor="middle">~50 psig (345 kPa)</text>
+
+          <path d="M410,110 H436" stroke="#5C6E66" stroke-width="2.4" marker-end="url(#a2)" fill="none"/>
+          <text x="423" y="98" font-size="11.5" font-weight="700" fill="#5C6E66" text-anchor="middle">14–16</text>
+          <text x="423" y="134" font-size="11" font-weight="600" fill="#5C6E66" text-anchor="middle">psig</text>
+
+          <rect x="442" y="70" width="164" height="80" rx="10" fill="#EAF3EC" stroke="#0E7A66" stroke-width="1.8"/>
+          <text x="524" y="96" font-size="14" font-weight="700" fill="#0E7A66" text-anchor="middle">LOW pressure</text>
+          <text x="524" y="116" font-size="12.5" font-weight="600" fill="#5C6E66" text-anchor="middle">flowmeters →</text>
+          <text x="524" y="133" font-size="12.5" font-weight="600" fill="#5C6E66" text-anchor="middle">common gas outlet</text>
+          <text x="524" y="56" font-size="13" font-weight="800" fill="#0E7A66" text-anchor="middle">~atmospheric</text>
+
+          <text x="310" y="196" font-size="12.5" font-weight="700" fill="#B4690E" text-anchor="middle">Cylinder regulator is set to 45 psig — deliberately BELOW the 50 psig pipeline,</text>
+          <text x="310" y="214" font-size="12.5" font-weight="700" fill="#B4690E" text-anchor="middle">so the machine draws from the pipeline when both are open.</text>
+          <text x="310" y="238" font-size="12.5" font-weight="600" fill="#5C6E66" text-anchor="middle">The low-pressure system is what the negative pressure leak test checks.</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="scroll">
+      <table class="w2">
+        <thead><tr><th>Zone</th><th>Boundaries</th><th>Components</th></tr></thead>
+        <tbody>
+          <tr>
+            <th>High pressure</th>
+            <td class="c5">Cylinder → first-stage regulator. The <b>only</b> part exposed to full cylinder pressure</td>
+            <td class="c5">Hanging yoke, yoke block with check valve, cylinder pressure gauge, first-stage regulator</td>
+          </tr>
+          <tr>
+            <th>Intermediate pressure</th>
+            <td class="c2">Pipeline inlet / first-stage regulator → flowmeter valves. About <b>37–55 psig</b>, nominally 50</td>
+            <td class="c2">Pipeline inlets and gauges, pipeline check valves, ventilator power inlet, <b>oxygen supply pressure alarm</b>, <b>fail-safe valve</b>, <b>oxygen flush</b>, second-stage regulators, flowmeter valves</td>
+          </tr>
+          <tr>
+            <th>Low pressure</th>
+            <td class="c4">Flowmeter tubes → common gas outlet. Only slightly above atmospheric</td>
+            <td class="c4">Flowmeter tubes, vaporisers, one-way check valve (some machines), common gas outlet</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note hook">
+      <h3>The details that get asked</h3>
+      <ul>
+        <li><b>Why 45 psig from the cylinder regulator?</b> It is set below the 50 psig pipeline pressure, so with both supplies open the machine preferentially draws from the <b>pipeline</b> and spares the cylinder.</li>
+        <li><b>Oxygen flush delivers 35–75 L/min at ~50 psig</b>, bypassing the flowmeters AND the vaporisers. Hence its two dangers: <b>barotrauma</b>, and <b>dilution of the volatile agent with risk of awareness</b>.</li>
+        <li><b>Second-stage regulators</b> reduce pressure further — to about 14–16 psig for oxygen and 26 psig for nitrous oxide — so flowmeter accuracy is preserved despite supply fluctuations.</li>
+        <li>The <b>low-pressure system is the most vulnerable to leaks</b>: thin-walled components, downstream of every safety device. That is exactly what the <b>negative pressure leak test</b> interrogates.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CYLINDERS ============ -->
+  <section class="card">
+    <h2 class="kicker">Cylinder data (E-size, as hung on the machine)</h2>
+
+    <div class="scroll">
+      <table class="w2">
+        <thead><tr><th>Gas</th><th>ISO colour</th><th>Capacity</th><th>Pressure</th><th>State in cylinder</th></tr></thead>
+        <tbody>
+          <tr><th>Oxygen</th><td class="c4">White body and shoulder</td><td class="c4">625–700 L</td><td class="c4"><b>137–155 bar</b> (1900–2200 psig)</td><td class="c4"><b>Gas</b></td></tr>
+          <tr><th>Nitrous oxide</th><td class="c2">Blue</td><td class="c2">1590 L</td><td class="c2"><b>51 bar</b> (745 psig)</td><td class="c2"><b>Liquid + vapour</b></td></tr>
+          <tr><th>Medical air</th><td class="c1">White/black quartered shoulder</td><td class="c1">625–640 L</td><td class="c1">137 bar</td><td class="c1">Gas</td></tr>
+          <tr><th>Carbon dioxide</th><td class="c3">Grey</td><td class="c3">1590 L</td><td class="c3"><b>57 bar</b> (838 psig)</td><td class="c3"><b>Liquid + vapour</b></td></tr>
+          <tr><th>Entonox (50:50)</th><td class="c5">Blue with white shoulder</td><td class="c5">~1800 L</td><td class="c5">137 bar</td><td class="c5">Gas</td></tr>
+          <tr><th>Helium</th><td class="c1">Brown</td><td class="c1">~500 L</td><td class="c1">137 bar</td><td class="c1">Gas</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sub" style="margin-top:12px">Larger <b>H cylinders</b> used as pipeline backup: oxygen ~6600 L at 2200 psig; nitrous oxide ~15 900 L at 745 psig.</p>
+
+    <div class="note">
+      <h3>Why the gauge lies for nitrous oxide</h3>
+      <ul>
+        <li><b>Oxygen's critical temperature is −118 °C</b>, so at room temperature it is a true gas obeying Boyle's law. A half-empty cylinder reads half pressure — the gauge tells you the contents.</li>
+        <li><b>Nitrous oxide's critical temperature is 36.5 °C</b> (carbon dioxide's is 31 °C), so it sits as <b>liquid in equilibrium with vapour</b>. The gauge stays fixed at 745 psig until the last liquid evaporates — at which point only about <b>250 L remain</b> and pressure then falls rapidly.</li>
+        <li>The only reliable way to assess N₂O content is to <b>weigh the cylinder</b> against its tare weight.</li>
+        <li><b>Cooling on use:</b> rapid withdrawal causes latent heat loss, frosting, and a fall in vapour pressure — so a gauge read during heavy use <b>underestimates</b> the contents.</li>
+      </ul>
+    </div>
+
+    <div class="note warn">
+      <h3>Filling ratio — check this one against your local convention</h3>
+      <ul>
+        <li>Filling ratio = <b>weight of liquid ÷ weight of water the cylinder would hold</b>. Overfilling risks a dangerous pressure rise as temperature rises.</li>
+        <li>The conventional UK/exam figures are <b>0.75 in temperate climates and 0.67 in tropical climates</b>. Your source PDF states these the other way round — the 0.75-temperate / 0.67-tropical pairing is the one to quote.</li>
+      </ul>
+    </div>
+
+    <div class="note blue">
+      <h3>Pin Index Safety System</h3>
+      <ul>
+        <li>Prevents misconnection at the yoke. <b>Oxygen 2,5 · Nitrous oxide 3,5 · Air 1,5 · Carbon dioxide 1,6 · Helium/oxygen 2,4 or 4,6.</b></li>
+        <li>Pipelines instead use <b>non-interchangeable DISS or Schrader quick-connect</b> fittings — a different system for a different pressure zone.</li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="src">Built from anesthesia_notes.pdf, pages 1–2.</p>
+  <footer>High yield notes · EDAIC revision</footer>
+</div>
+</body>
+</html>

@@ -15,6 +15,16 @@ window.DECKS.push({
     {cat:"CSF basics", q:"What is normal CSF pressure and specific gravity?", a:"Pressure 5–15 mmHg; specific gravity 1.003–1.008."},
     {cat:"CSF basics", q:"Why does CSF specific gravity matter in spinal anaesthesia?", a:"It is the reference against which solutions are hyperbaric, isobaric or hypobaric. Heavy bupivacaine with 8% dextrose sinks; plain bupivacaine is roughly isobaric at body temperature."},
 
+    {cat:"CSF circulation", q:"Which cells produce CSF, and where?", a:"Ependymal cells of the choroid plexus, in the lateral, third and fourth ventricles."},
+    {cat:"CSF circulation", q:"Trace the full CSF circulation pathway.", a:"Choroid plexus → lateral ventricles → foramen of Monro → third ventricle → aqueduct of Sylvius → fourth ventricle → foramina of Luschka and Magendie → subarachnoid space → arachnoid granulations → superior sagittal sinus."},
+    {cat:"CSF circulation", q:"What connects the lateral ventricles to the third ventricle?", a:"The foramen of Monro (interventricular foramen) — there are two, one for each lateral ventricle."},
+    {cat:"CSF circulation", q:"What connects the third and fourth ventricles?", a:"The aqueduct of Sylvius (cerebral aqueduct) — the narrowest point in the whole pathway."},
+    {cat:"CSF circulation", q:"How does CSF leave the fourth ventricle?", a:"Through the two lateral foramina of Luschka and the single median foramen of Magendie, into the subarachnoid space. Luschka = Lateral, Magendie = Median."},
+    {cat:"CSF circulation", q:"Where and how is CSF reabsorbed?", a:"By arachnoid granulations (villi) projecting into the superior sagittal sinus. Absorption is passive, pressure-dependent and one-way — it only occurs when CSF pressure exceeds venous sinus pressure."},
+    {cat:"CSF circulation", q:"Why does CSF continue to be produced when ICP is dangerously high?", a:"Production is ACTIVE and largely pressure-independent, whereas absorption is passive and pressure-dependent. Secretion does not switch off as pressure rises."},
+    {cat:"CSF circulation", q:"Distinguish communicating from non-communicating hydrocephalus.", a:"Non-communicating (obstructive): blockage within the ventricular system, commonest at the aqueduct of Sylvius. Communicating: ventricular flow is intact but absorption at the arachnoid granulations fails — classically after subarachnoid haemorrhage or meningitis."},
+    {cat:"CSF circulation", q:"Why is lumbar puncture dangerous in obstructive hydrocephalus?", a:"Removing CSF below the blockage while pressure above remains high creates a pressure gradient and risks coning. Image first."},
+
     {cat:"CSF vs plasma", q:"How does CSF protein compare with plasma?", a:"Dramatically lower — 0.15–0.45 g/L versus 60–80 g/L, about 200 times less. A raised CSF protein means blood-brain barrier breakdown."},
     {cat:"CSF vs plasma", q:"How does CSF glucose compare with plasma?", a:"About 60% of plasma — 2.5–4.5 mmol/L. A CSF glucose is meaningless without a paired plasma sample."},
     {cat:"CSF vs plasma", q:"How do CSF potassium and chloride compare with plasma?", a:"Potassium is LOWER (2.8–3.0 vs 3.5–5.0 mmol/L) and tightly regulated. Chloride is HIGHER (115–125 vs 95–105 mmol/L), balancing the low protein for electroneutrality."},
