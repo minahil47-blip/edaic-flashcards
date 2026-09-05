@@ -17,6 +17,8 @@
   let idx = 0;
 
   const el = (sel) => document.querySelector(sel);
+  const sceneEl = el('.scene');
+  const faceEls = document.querySelectorAll('.face');
   const deckTabsEl = el('#deckTabs');
   const deckSubtitleEl = el('#deckSubtitle');
   const chipsEl = el('#chips');
@@ -88,11 +90,50 @@
       return;
     }
     const item = filtered[order[idx]];
-    qtextEl.textContent = item.q;
-    atextEl.textContent = item.a;
+    renderCard(item);
     tagFrontEl.textContent = item.cat;
     tagBackEl.textContent = item.cat;
-    progressEl.textContent = `Card ${idx + 1} of ${filtered.length}`;
+    progressEl.textContent = `${item.opts ? 'Question' : 'Card'} ${idx + 1} of ${filtered.length}`;
+  }
+
+  // Two card shapes are supported:
+  //   simple   { cat, q, a }
+  //   grouped  { cat, stem, opts:[5 statements], ans:[5 "TRUE …"/"FALSE …"] }
+  // Grouped cards render the EDAIC multiple-true/false layout: one stem with
+  // five independently marked sub-statements.
+  const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+
+  function esc(s) {
+    return String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  }
+
+  function listHTML(item, withAnswers) {
+    const rows = item.opts.map((opt, i) => {
+      const letter = `<span class="mcq-let">${LETTERS[i]}</span>`;
+      if (!withAnswers) return `<li>${letter}<span>${esc(opt)}</span></li>`;
+      const raw = item.ans[i] || '';
+      const isTrue = /^TRUE/i.test(raw);
+      const verdict = isTrue ? 'TRUE' : 'FALSE';
+      const rest = raw.replace(/^(TRUE|FALSE)[.\s—-]*/i, '');
+      return `<li>${letter}<span><span class="mcq-v ${isTrue ? 't' : 'f'}">${verdict}</span>` +
+             `<span class="mcq-opt">${esc(opt)}</span>` +
+             (rest ? `<span class="mcq-exp">${esc(rest)}</span>` : '') + `</span></li>`;
+    }).join('');
+    return `<div class="mcq-stem">${esc(item.stem)}</div><ul class="mcq-list">${rows}</ul>`;
+  }
+
+  function renderCard(item) {
+    const grouped = Array.isArray(item.opts);
+    sceneEl.classList.toggle('mcq', grouped);
+    faceEls.forEach(f => f.classList.toggle('mcqface', grouped));
+    if (grouped) {
+      qtextEl.innerHTML = listHTML(item, false);
+      atextEl.innerHTML = listHTML(item, true);
+    } else {
+      qtextEl.textContent = item.q;
+      atextEl.textContent = item.a;
+    }
+    faceEls.forEach(f => { f.scrollTop = 0; });
   }
 
   function loadDeck() {
