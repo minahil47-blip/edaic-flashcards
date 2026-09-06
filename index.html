@@ -143,7 +143,37 @@
   </div>
 </details>
 
-<div class="deck-tabs" id="deckTabs"></div>
+<!--
+  DECK PICKER — the 27 deck tabs live inside a dropdown so they don't fill
+  the home page. app.js still renders every tab into #deckTabs exactly as
+  before; the small script at the foot of this file moves the MCQ tabs into
+  their own sub-dropdown and closes the picker once a deck is chosen.
+-->
+<details id="deckPicker" style="max-width:760px;width:100%;margin:0 auto 14px;padding:0 16px">
+  <summary style="cursor:pointer;list-style:none;font-weight:800;font-size:15.5px;color:#fff;
+                  background:rgba(203,184,255,.14);border:1px solid rgba(203,184,255,.3);
+                  border-radius:12px;padding:11px 16px;user-select:none">
+    🗂 Decks — <span id="deckLabel" style="color:#ffd93d">choose a deck</span>
+  </summary>
+
+  <div style="margin-top:10px;background:rgba(0,0,0,.22);border-radius:12px;padding:10px 12px">
+
+    <details open style="margin:2px 0">
+      <summary style="cursor:pointer;list-style:none;font-weight:700;font-size:14.5px;color:#ffd93d;padding:9px 10px;border-radius:9px;background:rgba(255,217,61,.08)">
+        📚 Topic decks <span id="nTopic" style="opacity:.65;font-weight:600"></span>
+      </summary>
+      <div class="deck-tabs" id="deckTabs"></div>
+    </details>
+
+    <details style="margin:6px 0 2px">
+      <summary style="cursor:pointer;list-style:none;font-weight:700;font-size:14.5px;color:#ff9a3d;padding:9px 10px;border-radius:9px;background:rgba(255,154,61,.10);border:1px solid rgba(255,154,61,.3)">
+        🎯 MCQ decks <span id="nMcq" style="opacity:.65;font-weight:600"></span>
+      </summary>
+      <div class="deck-tabs" id="mcqTabs"></div>
+    </details>
+
+  </div>
+</details>
 <div class="deck-subtitle" id="deckSubtitle"></div>
 
 <div class="chips" id="chips"></div>
@@ -210,5 +240,55 @@
 <script src="decks/deck27-exam-mcq1.js"></script>
 
 <script src="app.js"></script>
+
+<!--
+  Deck picker helper. Runs AFTER app.js so the tabs already exist.
+  app.js rebuilds #deckTabs from scratch on every deck change, so a
+  MutationObserver re-sorts the MCQ tabs each time rather than doing it once.
+  Nothing here touches app.js or style.css.
+-->
+<script>
+(function () {
+  var src    = document.getElementById('deckTabs');
+  var mcq    = document.getElementById('mcqTabs');
+  var picker = document.getElementById('deckPicker');
+  var label  = document.getElementById('deckLabel');
+  var nTopic = document.getElementById('nTopic');
+  var nMcq   = document.getElementById('nMcq');
+  if (!src || !mcq) return;
+
+  var observer;
+
+  function sortTabs() {
+    if (observer) observer.disconnect();
+
+    // app.js re-renders every tab into #deckTabs, so clear the MCQ column
+    // first or stale buttons accumulate here.
+    mcq.innerHTML = '';
+    Array.prototype.slice.call(src.children).forEach(function (btn) {
+      if (/MCQ/i.test(btn.textContent)) mcq.appendChild(btn);
+    });
+
+    nTopic.textContent = '· ' + src.children.length;
+    nMcq.textContent   = '· ' + mcq.children.length;
+
+    var active = document.querySelector('.deck-tab.active');
+    if (active) label.textContent = active.textContent.trim();
+
+    if (observer) observer.observe(src, { childList: true });
+  }
+
+  observer = new MutationObserver(sortTabs);
+  observer.observe(src, { childList: true });
+  sortTabs();
+
+  // Choosing a deck collapses the picker again.
+  document.addEventListener('click', function (e) {
+    var tab = e.target && e.target.closest ? e.target.closest('.deck-tab') : null;
+    if (!tab) return;
+    setTimeout(function () { sortTabs(); picker.open = false; }, 0);
+  });
+})();
+</script>
 </body>
 </html>
