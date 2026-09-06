@@ -108,3 +108,12 @@ footer{color:var(--soft);font-size:13px;text-align:center;padding-top:6px}
   header.top p{color:#444}
   .backlink{display:none}
 }
+
+/* ---- Marker for content added to close syllabus gaps ---- */
+.newflag{
+  display:flex;align-items:center;gap:10px;
+  background:#FFF4E0;border:1px solid #E8B84B;border-left:5px solid #E8B84B;
+  border-radius:10px;padding:10px 14px;margin:0 0 16px;font-size:14px;color:#6B4E10;
+}
+.newflag b{background:#E8B84B;color:#3D2C05;border-radius:5px;padding:1px 8px;font-size:12px;letter-spacing:.4px}
+@media print{.newflag{display:none}}
