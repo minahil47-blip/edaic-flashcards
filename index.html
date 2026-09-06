@@ -262,12 +262,16 @@
   function sortTabs() {
     if (observer) observer.disconnect();
 
-    // app.js re-renders every tab into #deckTabs, so clear the MCQ column
-    // first or stale buttons accumulate here.
-    mcq.innerHTML = '';
-    Array.prototype.slice.call(src.children).forEach(function (btn) {
-      if (/MCQ/i.test(btn.textContent)) mcq.appendChild(btn);
+    // Only rebuild the MCQ column when app.js has actually re-rendered —
+    // that is, when MCQ tabs are sitting in #deckTabs again. Clearing it
+    // unconditionally wipes the column on a second, no-op call.
+    var fresh = Array.prototype.slice.call(src.children).filter(function (btn) {
+      return /MCQ/i.test(btn.textContent);
     });
+    if (fresh.length) {
+      mcq.innerHTML = '';
+      fresh.forEach(function (btn) { mcq.appendChild(btn); });
+    }
 
     nTopic.textContent = '· ' + src.children.length;
     nMcq.textContent   = '· ' + mcq.children.length;
