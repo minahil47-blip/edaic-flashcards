@@ -14,71 +14,132 @@
 </div>
 
 <!--
-  CONTENTS — collapsible index of every note, grouped by syllabus area.
-  Items marked NEW were added to close gaps against the official EDAIC syllabus.
+  CONTENTS — every note, grouped by syllabus area, as nested dropdowns.
+  Items marked 🆕 were written to close gaps against the official EDAIC
+  syllabus; everything else came from the user's own notes and materials.
   Pure HTML <details>; no JS, no app.js dependency.
 -->
 <details style="max-width:760px;width:100%;margin:0 auto 18px;padding:0 16px">
   <summary style="cursor:pointer;list-style:none;font-weight:800;font-size:15.5px;color:#fff;
                   background:rgba(203,184,255,.14);border:1px solid rgba(203,184,255,.3);
                   border-radius:12px;padding:11px 16px;user-select:none">
-    📑 Contents — jump to any topic
+    📑 Notes — 38 topics · tap to browse
   </summary>
-  <div style="margin-top:12px;background:rgba(0,0,0,.22);border-radius:12px;padding:14px 16px;font-size:14px;line-height:1.9">
 
-    <div style="color:#ffd93d;font-weight:800;margin:2px 0 4px">Physiology</div>
-    <a href="notes/cardiac-action-potentials.html" style="color:#cbb8ff">Cardiac action potentials</a> ·
-    <a href="notes/cardiac-cycle.html" style="color:#cbb8ff">Cardiac cycle</a> ·
-    <a href="notes/coronary-circulation.html" style="color:#cbb8ff">Coronary circulation</a> ·
-    <a href="notes/regional-blood-flow-exercise.html" style="color:#cbb8ff">Regional flow &amp; exercise</a> ·
-    <a href="notes/lung-volumes.html" style="color:#cbb8ff">Lung volumes</a> ·
-    <a href="notes/renal-physiology.html" style="color:#cbb8ff">Renal physiology</a> ·
-    <a href="notes/nerve-ap-reflexes.html" style="color:#cbb8ff">Nerve AP &amp; reflexes</a> ·
-    <a href="notes/skeletal-muscle.html" style="color:#cbb8ff">Sarcomere &amp; fibre types</a> ·
-    <a href="notes/autonomic-adrenoceptors.html" style="color:#cbb8ff">Autonomic &amp; adrenoceptors</a> ·
-    <a href="notes/csf-and-meningitis.html" style="color:#cbb8ff">CSF &amp; meningitis</a> ·
-    <a href="notes/coagulation-transfusion.html" style="color:#ffd07a">Coagulation &amp; transfusion 🆕</a> ·
-    <a href="notes/physiology-pregnancy-child-ageing.html" style="color:#ffd07a">Pregnancy, childhood &amp; ageing 🆕</a> ·
-    <a href="notes/immunology-anaphylaxis.html" style="color:#ffd07a">Immunology &amp; anaphylaxis 🆕</a>
+  <div style="margin-top:10px;background:rgba(0,0,0,.22);border-radius:12px;padding:10px 12px">
 
-    <div style="color:#ffd93d;font-weight:800;margin:12px 0 4px">Pharmacology</div>
-    <a href="notes/iv-induction-agents.html" style="color:#cbb8ff">IV induction agents</a> ·
-    <a href="notes/opioids.html" style="color:#cbb8ff">Opioids</a> ·
-    <a href="notes/inhalational-agents.html" style="color:#cbb8ff">Inhalational agents</a> ·
-    <a href="notes/nmb-anticholinesterases.html" style="color:#cbb8ff">NMBs &amp; anticholinesterases</a> ·
-    <a href="notes/antiarrhythmics.html" style="color:#cbb8ff">Antiarrhythmics</a> ·
-    <a href="notes/antimicrobials.html" style="color:#cbb8ff">Antimicrobials</a> ·
-    <a href="notes/drug-lists.html" style="color:#cbb8ff">Drug lists</a> ·
-    <a href="notes/drugs-internal-medicine.html" style="color:#ffd07a">Drugs from internal medicine 🆕</a> ·
-    <a href="notes/poisoning-toxicology.html" style="color:#ffd07a">Acute poisoning 🆕</a>
+    <details style="margin:2px 0">
+      <summary style="cursor:pointer;list-style:none;font-weight:700;font-size:14.5px;color:#ffd93d;padding:9px 10px;border-radius:9px;background:rgba(255,217,61,.08)">
+        🫀 Physiology <span style="opacity:.65;font-weight:600">· 13</span>
+      </summary>
+      <div style="padding:8px 12px 12px;font-size:14px;line-height:1.95">
+        <a href="notes/cardiac-action-potentials.html" style="color:#cbb8ff">Cardiac action potentials</a> ·
+        <a href="notes/cardiac-cycle.html" style="color:#cbb8ff">Cardiac cycle</a> ·
+        <a href="notes/coronary-circulation.html" style="color:#cbb8ff">Coronary circulation</a> ·
+        <a href="notes/regional-blood-flow-exercise.html" style="color:#cbb8ff">Regional flow &amp; exercise</a> ·
+        <a href="notes/lung-volumes.html" style="color:#cbb8ff">Lung volumes</a> ·
+        <a href="notes/renal-physiology.html" style="color:#cbb8ff">Renal physiology</a> ·
+        <a href="notes/nerve-ap-reflexes.html" style="color:#cbb8ff">Nerve AP &amp; reflexes</a> ·
+        <a href="notes/skeletal-muscle.html" style="color:#cbb8ff">Sarcomere &amp; fibre types</a> ·
+        <a href="notes/autonomic-adrenoceptors.html" style="color:#cbb8ff">Autonomic &amp; adrenoceptors</a> ·
+        <a href="notes/csf-and-meningitis.html" style="color:#cbb8ff">CSF &amp; meningitis</a> ·
+        <a href="notes/coagulation-transfusion.html" style="color:#ffd07a">Coagulation &amp; transfusion 🆕</a> ·
+        <a href="notes/physiology-pregnancy-child-ageing.html" style="color:#ffd07a">Pregnancy, childhood &amp; ageing 🆕</a> ·
+        <a href="notes/immunology-anaphylaxis.html" style="color:#ffd07a">Immunology &amp; anaphylaxis 🆕</a>
+      </div>
+    </details>
 
-    <div style="color:#ffd93d;font-weight:800;margin:12px 0 4px">Anatomy</div>
-    <a href="notes/larynx-airway-anatomy.html" style="color:#cbb8ff">Larynx: anatomy &amp; nerves</a> ·
-    <a href="notes/tongue-pharynx-reflexes.html" style="color:#cbb8ff">Tongue, pharynx &amp; reflexes</a> ·
-    <a href="notes/anatomy-thorax-abdomen.html" style="color:#ffd07a">Thorax, abdomen &amp; access 🆕</a>
+    <details style="margin:2px 0">
+      <summary style="cursor:pointer;list-style:none;font-weight:700;font-size:14.5px;color:#ffd93d;padding:9px 10px;border-radius:9px;background:rgba(255,217,61,.08)">
+        💊 Pharmacology <span style="opacity:.65;font-weight:600">· 9</span>
+      </summary>
+      <div style="padding:8px 12px 12px;font-size:14px;line-height:1.95">
+        <a href="notes/iv-induction-agents.html" style="color:#cbb8ff">IV induction agents</a> ·
+        <a href="notes/opioids.html" style="color:#cbb8ff">Opioids</a> ·
+        <a href="notes/inhalational-agents.html" style="color:#cbb8ff">Inhalational agents</a> ·
+        <a href="notes/nmb-anticholinesterases.html" style="color:#cbb8ff">NMBs &amp; anticholinesterases</a> ·
+        <a href="notes/antiarrhythmics.html" style="color:#cbb8ff">Antiarrhythmics</a> ·
+        <a href="notes/antimicrobials.html" style="color:#cbb8ff">Antimicrobials</a> ·
+        <a href="notes/drug-lists.html" style="color:#cbb8ff">Drug lists</a> ·
+        <a href="notes/drugs-internal-medicine.html" style="color:#ffd07a">Drugs from internal medicine 🆕</a> ·
+        <a href="notes/poisoning-toxicology.html" style="color:#ffd07a">Acute poisoning 🆕</a>
+      </div>
+    </details>
 
-    <div style="color:#ffd93d;font-weight:800;margin:12px 0 4px">Physics &amp; equipment</div>
-    <a href="notes/workstation-pressures.html" style="color:#cbb8ff">Workstation &amp; cylinders</a> ·
-    <a href="notes/sga-cuff-pressures.html" style="color:#cbb8ff">SGA cuff pressures</a> ·
-    <a href="notes/mapleson-systems.html" style="color:#cbb8ff">Mapleson systems</a> ·
-    <a href="notes/theatre-safety-physics.html" style="color:#ffd07a">Theatre safety &amp; physics extras 🆕</a>
+    <details style="margin:2px 0">
+      <summary style="cursor:pointer;list-style:none;font-weight:700;font-size:14.5px;color:#ffd93d;padding:9px 10px;border-radius:9px;background:rgba(255,217,61,.08)">
+        🦴 Anatomy <span style="opacity:.65;font-weight:600">· 3</span>
+      </summary>
+      <div style="padding:8px 12px 12px;font-size:14px;line-height:1.95">
+        <a href="notes/larynx-airway-anatomy.html" style="color:#cbb8ff">Larynx: anatomy &amp; nerves</a> ·
+        <a href="notes/tongue-pharynx-reflexes.html" style="color:#cbb8ff">Tongue, pharynx &amp; reflexes</a> ·
+        <a href="notes/anatomy-thorax-abdomen.html" style="color:#ffd07a">Thorax, abdomen &amp; access 🆕</a>
+      </div>
+    </details>
 
-    <div style="color:#ffd93d;font-weight:800;margin:12px 0 4px">Clinical anaesthesia</div>
-    <a href="notes/myasthenia-lems-cholinergic.html" style="color:#cbb8ff">Myasthenia · LEMS · cholinergic</a> ·
-    <a href="notes/preoperative-assessment.html" style="color:#ffd07a">Preoperative assessment 🆕</a> ·
-    <a href="notes/obstetric-anaesthesia.html" style="color:#ffd07a">Obstetric anaesthesia 🆕</a> ·
-    <a href="notes/paediatric-neonatal.html" style="color:#ffd07a">Paediatric &amp; neonatal 🆕</a> ·
-    <a href="notes/cardiothoracic-neuroanaesthesia.html" style="color:#ffd07a">Cardiothoracic &amp; neuro 🆕</a> ·
-    <a href="notes/complications-positioning.html" style="color:#ffd07a">Complications &amp; positioning 🆕</a> ·
-    <a href="notes/pain.html" style="color:#ffd07a">Pain 🆕</a>
+    <details style="margin:2px 0">
+      <summary style="cursor:pointer;list-style:none;font-weight:700;font-size:14.5px;color:#ffd93d;padding:9px 10px;border-radius:9px;background:rgba(255,217,61,.08)">
+        ⚙️ Physics &amp; equipment <span style="opacity:.65;font-weight:600">· 4</span>
+      </summary>
+      <div style="padding:8px 12px 12px;font-size:14px;line-height:1.95">
+        <a href="notes/workstation-pressures.html" style="color:#cbb8ff">Workstation &amp; cylinders</a> ·
+        <a href="notes/sga-cuff-pressures.html" style="color:#cbb8ff">SGA cuff pressures</a> ·
+        <a href="notes/mapleson-systems.html" style="color:#cbb8ff">Mapleson systems</a> ·
+        <a href="notes/theatre-safety-physics.html" style="color:#ffd07a">Theatre safety &amp; physics extras 🆕</a>
+      </div>
+    </details>
 
-    <div style="color:#ffd93d;font-weight:800;margin:12px 0 4px">ICU &amp; emergency</div>
-    <a href="notes/resuscitation-als.html" style="color:#ffd07a">Resuscitation: BLS &amp; ALS 🆕</a> ·
-    <a href="notes/ethics-decision-making.html" style="color:#ffd07a">Ethics &amp; decision-making 🆕</a>
+    <details style="margin:2px 0">
+      <summary style="cursor:pointer;list-style:none;font-weight:700;font-size:14.5px;color:#ffd93d;padding:9px 10px;border-radius:9px;background:rgba(255,217,61,.08)">
+        🩺 Clinical anaesthesia <span style="opacity:.65;font-weight:600">· 7</span>
+      </summary>
+      <div style="padding:8px 12px 12px;font-size:14px;line-height:1.95">
+        <a href="notes/myasthenia-lems-cholinergic.html" style="color:#cbb8ff">Myasthenia · LEMS · cholinergic</a> ·
+        <a href="notes/preoperative-assessment.html" style="color:#ffd07a">Preoperative assessment 🆕</a> ·
+        <a href="notes/obstetric-anaesthesia.html" style="color:#ffd07a">Obstetric anaesthesia 🆕</a> ·
+        <a href="notes/paediatric-neonatal.html" style="color:#ffd07a">Paediatric &amp; neonatal 🆕</a> ·
+        <a href="notes/cardiothoracic-neuroanaesthesia.html" style="color:#ffd07a">Cardiothoracic &amp; neuro 🆕</a> ·
+        <a href="notes/complications-positioning.html" style="color:#ffd07a">Complications &amp; positioning 🆕</a> ·
+        <a href="notes/pain.html" style="color:#ffd07a">Pain 🆕</a>
+      </div>
+    </details>
 
-    <div style="color:#9d8fc4;font-size:12.5px;margin-top:14px;line-height:1.5">
-      <b style="color:#ffd07a">🆕 = new</b> — written to close gaps against the official EDAIC syllabus. Everything else was built from your own notes and materials.
-    </div>
+    <details style="margin:2px 0">
+      <summary style="cursor:pointer;list-style:none;font-weight:700;font-size:14.5px;color:#ffd93d;padding:9px 10px;border-radius:9px;background:rgba(255,217,61,.08)">
+        🏥 ICU &amp; emergency <span style="opacity:.65;font-weight:600">· 2</span>
+      </summary>
+      <div style="padding:8px 12px 12px;font-size:14px;line-height:1.95">
+        <a href="notes/resuscitation-als.html" style="color:#ffd07a">Resuscitation: BLS &amp; ALS 🆕</a> ·
+        <a href="notes/ethics-decision-making.html" style="color:#ffd07a">Ethics &amp; decision-making 🆕</a>
+      </div>
+    </details>
+
+    <details style="margin:6px 0 2px">
+      <summary style="cursor:pointer;list-style:none;font-weight:700;font-size:14.5px;color:#ffd07a;padding:9px 10px;border-radius:9px;background:rgba(232,184,75,.14);border:1px solid rgba(232,184,75,.35)">
+        🆕 New — syllabus gaps <span style="opacity:.65;font-weight:600">· 15</span>
+      </summary>
+      <div style="padding:8px 12px 12px;font-size:14px;line-height:1.95">
+        <a href="notes/coagulation-transfusion.html" style="color:#ffd07a">Coagulation &amp; transfusion</a> ·
+        <a href="notes/obstetric-anaesthesia.html" style="color:#ffd07a">Obstetric anaesthesia</a> ·
+        <a href="notes/paediatric-neonatal.html" style="color:#ffd07a">Paediatric &amp; neonatal</a> ·
+        <a href="notes/resuscitation-als.html" style="color:#ffd07a">Resuscitation: BLS &amp; ALS</a> ·
+        <a href="notes/pain.html" style="color:#ffd07a">Pain</a> ·
+        <a href="notes/preoperative-assessment.html" style="color:#ffd07a">Preoperative assessment</a> ·
+        <a href="notes/anatomy-thorax-abdomen.html" style="color:#ffd07a">Thorax, abdomen &amp; access</a> ·
+        <a href="notes/physiology-pregnancy-child-ageing.html" style="color:#ffd07a">Pregnancy, childhood &amp; ageing</a> ·
+        <a href="notes/drugs-internal-medicine.html" style="color:#ffd07a">Drugs from internal medicine</a> ·
+        <a href="notes/immunology-anaphylaxis.html" style="color:#ffd07a">Immunology &amp; anaphylaxis</a> ·
+        <a href="notes/poisoning-toxicology.html" style="color:#ffd07a">Acute poisoning</a> ·
+        <a href="notes/theatre-safety-physics.html" style="color:#ffd07a">Theatre safety &amp; physics</a> ·
+        <a href="notes/cardiothoracic-neuroanaesthesia.html" style="color:#ffd07a">Cardiothoracic &amp; neuro</a> ·
+        <a href="notes/complications-positioning.html" style="color:#ffd07a">Complications &amp; positioning</a> ·
+        <a href="notes/ethics-decision-making.html" style="color:#ffd07a">Ethics &amp; decision-making</a>
+        <div style="color:#9d8fc4;font-size:12.5px;margin-top:10px;line-height:1.5">
+          These 15 were written to close gaps against the official EDAIC syllabus. Every other note came from your own materials. Each new page carries a NEW banner at the top.
+        </div>
+      </div>
+    </details>
+
   </div>
 </details>
 
@@ -108,300 +169,6 @@
     <button class="btn nav big" id="prevBtn">‹</button>
     <button class="btn shuffle" id="shuffleBtn">🔀 Shuffle</button>
     <button class="btn nav big" id="nextBtn">›</button>
-  </div>
-</div>
-
-<!--
-  HIGH YIELD NOTES
-  Full-page illustrated notes that don't fit the flashcard format.
-  To add one: drop the .html file in /notes and copy an <a> line below.
-  Styles are inline here on purpose so style.css stays deck-agnostic.
--->
-<div style="max-width:760px;margin:34px auto 0;padding:0 16px">
-  <div style="font-weight:800;font-size:18px;letter-spacing:.3px;margin-bottom:4px">📗 High Yield Notes</div>
-  <div style="color:#cbb8ff;font-size:14px;margin-bottom:14px">Illustrated one-sheets · diagrams, tables and traps</div>
-  <div style="display:flex;flex-wrap:wrap;gap:10px">
-
-    <a href="notes/cardiac-action-potentials.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🫀 Cardiac Action Potentials</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">Fast vs slow AP · phases 0–4 · refractory periods · ECG correlation · autonomic control</div>
-    </a>
-
-    <a href="notes/csf-and-meningitis.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🧪 CSF &amp; Meningitis</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">CSF vs plasma · production &amp; circulation · bacterial vs viral vs TB · LP safety</div>
-    </a>
-
-    <a href="notes/myasthenia-lems-cholinergic.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">⚡ Myasthenia · LEMS · Cholinergic</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">Site of lesion · exercise response · relaxant sensitivity · myasthenic vs cholinergic crisis</div>
-    </a>
-
-    <a href="notes/renal-physiology.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🫘 Renal Physiology</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">Nephron map · ions in and out by segment · countercurrent · every diuretic site</div>
-    </a>
-
-    <a href="notes/cardiac-cycle.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">💓 Cardiac Cycle</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">Seven phases · PV loop · heart sounds · CVP waveform · preload/afterload · systolic vs diastolic failure</div>
-    </a>
-
-    <a href="notes/lung-volumes.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🎈 Lung Volumes</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">Volumes &amp; capacities · what spirometry can't measure · helium, washout, plethysmography · closing capacity</div>
-    </a>
-
-    <a href="notes/coronary-circulation.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🩸 Coronary Circulation</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">CPP · RCA/LAD/LCx territories · nodal supply · venous drainage &amp; Thebesian shunt</div>
-    </a>
-
-    <a href="notes/autonomic-adrenoceptors.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🔀 Autonomic &amp; Adrenoceptors</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">Fibre lengths &amp; transmitters · α/β subtypes · G-protein coupling · sympathomimetics</div>
-    </a>
-
-    <a href="notes/nerve-ap-reflexes.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🧠 Nerve AP &amp; Reflexes</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">Neuronal action potential · mono vs polysynaptic · stretch reflex · spinal shock</div>
-    </a>
-
-    <a href="notes/skeletal-muscle.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">💪 Sarcomere &amp; Fibre Types</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">Z/A/I/H/M bands · what shortens on contraction · type I vs IIa vs IIb</div>
-    </a>
-
-    <a href="notes/antiarrhythmics.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">⚡ Antiarrhythmics</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">Vaughan Williams I–IV · drugs by rhythm · amiodarone · digoxin toxicity</div>
-    </a>
-
-    <a href="notes/antimicrobials.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🦠 Antimicrobials</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">Static vs cidal · mechanism classes · NMB interactions · toxicities · prophylaxis</div>
-    </a>
-
-    <a href="notes/drug-lists.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">📋 Drug Lists</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">MH triggers · porphyria safe/unsafe · protein binding % · volume of distribution</div>
-    </a>
-
-    <a href="notes/regional-blood-flow-exercise.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🏃 Regional Flow &amp; Exercise</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">CO distribution at rest and in exercise · O₂ consumption · RQ · BMR · anaerobic threshold</div>
-    </a>
-
-    <a href="notes/workstation-pressures.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">⚙️ Workstation &amp; Cylinders</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">Three pressure zones · O₂ flush · cylinder data &amp; colours · why the N₂O gauge lies · pin index</div>
-    </a>
-
-    <a href="notes/sga-cuff-pressures.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🫧 SGA Cuff Pressures</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">60 vs 34 cmH₂O · max volumes by size · seal pressures · the nitrous oxide problem</div>
-    </a>
-
-    <a href="notes/mapleson-systems.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🔄 Mapleson Systems</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">A–F configurations · efficiency reversal · why A fails on IPPV · Bain &amp; the Pethick test</div>
-    </a>
-
-    <a href="notes/iv-induction-agents.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">💉 IV Induction Agents</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">Propofol vs thiopentone · etomidate vs ketamine · full PK tables · indications &amp; contraindications</div>
-    </a>
-
-    <a href="notes/opioids.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">💊 Opioids</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">The alfentanil paradox · pKa vs lipid solubility · potency ladder · receptor effects</div>
-    </a>
-
-    <a href="notes/inhalational-agents.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🌬️ Inhalational Agents</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">MAC · blood:gas &amp; oil:gas · SVP · Iso/Sevo/Des properties · what alters onset</div>
-    </a>
-
-    <a href="notes/nmb-anticholinesterases.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">⛓️ NMBs &amp; Anticholinesterases</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">Where each drug hits the ACh pathway · dibucaine number · sugammadex doses · anticholinergics</div>
-    </a>
-
-    <a href="notes/larynx-airway-anatomy.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🗣️ Larynx: Anatomy &amp; Nerves</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">Cartilages · intrinsic muscles · RLN vs SLN · sensory supply · nerve injury table</div>
-    </a>
-
-    <a href="notes/tongue-pharynx-reflexes.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#14213D,#2a1a5c);border:1px solid rgba(203,184,255,.28)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">👅 Tongue, Pharynx &amp; Reflexes</div>
-      <div style="color:#cbb8ff;font-size:13px;line-height:1.45">Intrinsic vs extrinsic muscles · four innervations · oculocardiac reflex · eye-drop colours</div>
-    </a>
-
-  </div>
-</div>
-
-<!--
-  SYLLABUS GAPS — content written to cover parts of the official EDAIC
-  syllabus that were not represented in the notes above. Amber accent so
-  it is visually separable from the material built from your own notes.
--->
-<div style="max-width:760px;margin:38px auto 0;padding:0 16px">
-  <div style="font-weight:800;font-size:18px;letter-spacing:.3px;margin-bottom:4px;color:#ffd07a">🆕 Syllabus Gaps</div>
-  <div style="color:#cbb8ff;font-size:14px;margin-bottom:4px">New — written to cover syllabus areas not in your notes above</div>
-  <div style="color:#9d8fc4;font-size:12.5px;margin-bottom:14px">Every page in this section carries a NEW banner at the top, so you can always tell it apart from your own material.</div>
-  <div style="display:flex;flex-wrap:wrap;gap:10px">
-
-    <a href="notes/coagulation-transfusion.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#2E2411,#3D2C05);border:1px solid rgba(232,184,75,.45)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🩸 Coagulation &amp; Transfusion</div>
-      <div style="color:#e8c98a;font-size:13px;line-height:1.45">Cascade &amp; tests · anticoagulant reversal · TEG · blood products · transfusion reactions</div>
-    </a>
-
-    <a href="notes/obstetric-anaesthesia.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#2E2411,#3D2C05);border:1px solid rgba(232,184,75,.45)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🤰 Obstetric Anaesthesia</div>
-      <div style="color:#e8c98a;font-size:13px;line-height:1.45">Labour analgesia · caesarean · pre-eclampsia &amp; magnesium · uterotonics · AFE</div>
-    </a>
-
-    <a href="notes/paediatric-neonatal.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#2E2411,#3D2C05);border:1px solid rgba(232,184,75,.45)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">👶 Paediatric &amp; Neonatal</div>
-      <div style="color:#e8c98a;font-size:13px;line-height:1.45">How children differ · numbers &amp; formulas · neonatal resuscitation · classic conditions</div>
-    </a>
-
-    <a href="notes/resuscitation-als.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#2E2411,#3D2C05);border:1px solid rgba(232,184,75,.45)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">⚡ Resuscitation: BLS &amp; ALS</div>
-      <div style="color:#e8c98a;font-size:13px;line-height:1.45">Shockable vs non-shockable · 4Hs &amp; 4Ts · special circumstances · post-arrest care</div>
-    </a>
-
-    <a href="notes/pain.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#2E2411,#3D2C05);border:1px solid rgba(232,184,75,.45)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🔥 Pain</div>
-      <div style="color:#e8c98a;font-size:13px;line-height:1.45">Pathway &amp; modulation · gate control · definitions · WHO ladder · chronic &amp; cancer pain</div>
-    </a>
-
-    <a href="notes/preoperative-assessment.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#2E2411,#3D2C05);border:1px solid rgba(232,184,75,.45)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">📋 Preoperative Assessment</div>
-      <div style="color:#e8c98a;font-size:13px;line-height:1.45">ASA &amp; RCRI · METs &amp; CPET · airway tests · ECG, PFTs &amp; cath data</div>
-    </a>
-
-    <a href="notes/anatomy-thorax-abdomen.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#2E2411,#3D2C05);border:1px solid rgba(232,184,75,.45)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🦴 Anatomy: Thorax &amp; Abdomen</div>
-      <div style="color:#e8c98a;font-size:13px;line-height:1.45">Surface markings · diaphragm &amp; intercostals · vascular access · cranial nerves</div>
-    </a>
-
-    <a href="notes/physiology-pregnancy-child-ageing.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#2E2411,#3D2C05);border:1px solid rgba(232,184,75,.45)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🔄 Pregnancy, Childhood &amp; Ageing</div>
-      <div style="color:#e8c98a;font-size:13px;line-height:1.45">Term physiology · fetal circulation &amp; transition · the ageing patient</div>
-    </a>
-
-    <a href="notes/drugs-internal-medicine.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#2E2411,#3D2C05);border:1px solid rgba(232,184,75,.45)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">💊 Drugs from Internal Medicine</div>
-      <div style="color:#e8c98a;font-size:13px;line-height:1.45">Continue or stop · MAOIs &amp; lithium · steroids · SGLT2 · herbal medicines</div>
-    </a>
-
-    <a href="notes/immunology-anaphylaxis.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#2E2411,#3D2C05);border:1px solid rgba(232,184,75,.45)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🛡️ Immunology &amp; Anaphylaxis</div>
-      <div style="color:#e8c98a;font-size:13px;line-height:1.45">Four hypersensitivity types · immunoglobulins · perioperative anaphylaxis drill</div>
-    </a>
-
-    <a href="notes/poisoning-toxicology.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#2E2411,#3D2C05);border:1px solid rgba(232,184,75,.45)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">☠️ Acute Poisoning</div>
-      <div style="color:#e8c98a;font-size:13px;line-height:1.45">Antidote table · toxidromes · what dialyses and what doesn't</div>
-    </a>
-
-    <a href="notes/theatre-safety-physics.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#2E2411,#3D2C05);border:1px solid rgba(232,184,75,.45)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🔦 Theatre Safety &amp; Physics</div>
-      <div style="color:#e8c98a;font-size:13px;line-height:1.45">Fire triad &amp; lasers · ultrasound physics · defibrillators · scavenging · MRI</div>
-    </a>
-
-    <a href="notes/cardiothoracic-neuroanaesthesia.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#2E2411,#3D2C05);border:1px solid rgba(232,184,75,.45)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">🫀 Cardiothoracic &amp; Neuro</div>
-      <div style="color:#e8c98a;font-size:13px;line-height:1.45">One-lung ventilation · cardiopulmonary bypass · neuro targets &amp; VAE</div>
-    </a>
-
-    <a href="notes/complications-positioning.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#2E2411,#3D2C05);border:1px solid rgba(232,184,75,.45)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">⚠️ Complications &amp; Positioning</div>
-      <div style="color:#e8c98a;font-size:13px;line-height:1.45">Awareness · aspiration · laryngospasm · PONV · nerve injury by position</div>
-    </a>
-
-    <a href="notes/ethics-decision-making.html"
-       style="flex:1 1 260px;display:block;padding:14px 16px;border-radius:14px;text-decoration:none;
-              background:linear-gradient(135deg,#2E2411,#3D2C05);border:1px solid rgba(232,184,75,.45)">
-      <div style="color:#fff;font-weight:700;font-size:15.5px;margin-bottom:3px">⚖️ Ethics &amp; Decision-Making</div>
-      <div style="color:#e8c98a;font-size:13px;line-height:1.45">Four principles · consent &amp; capacity · withdrawal &amp; futility · organ donation</div>
-    </a>
-
   </div>
 </div>
 
