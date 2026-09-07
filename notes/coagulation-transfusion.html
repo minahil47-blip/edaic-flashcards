@@ -151,7 +151,12 @@
     <p class="sub">Six shapes worth recognising on sight. Compare each against the <b>normal</b> in the top left — what has changed is the width, the delay, or the tail.</p>
 
     <div class="plot">
-      <svg viewBox="0 0 620 420" role="img" aria-label="Six thromboelastography traces: normal, anticoagulant or factor deficiency, low platelets, fibrinolysis, hypercoagulable and DIC">
+      <svg viewBox="0 0 648 420" role="img" aria-label="Six thromboelastography traces: normal, anticoagulant or factor deficiency, low platelets, fibrinolysis, hypercoagulable and DIC">
+        <defs>
+          <marker id="ar2" markerWidth="9" markerHeight="9" refX="4.5" refY="3.2" orient="auto">
+            <path d="M0,0 L8,3.2 L0,6.4 z" fill="#A8123E"/>
+          </marker>
+        </defs>
         <g font-family="Public Sans,sans-serif">
 
           <!-- ============ 1 NORMAL ============ -->
@@ -175,7 +180,7 @@
           <path d="M418,64 H600" stroke="#DCE2DC" stroke-width="1" stroke-dasharray="4 4" fill="none"/>
           <path d="M418,64 H456 C472,62 482,52 494,48 C522,40 556,40 596,42" fill="none" stroke="#A8123E" stroke-width="2.6" stroke-linecap="round"/>
           <path d="M418,64 H456 C472,66 482,76 494,80 C522,88 556,88 596,86" fill="none" stroke="#A8123E" stroke-width="2.6" stroke-linecap="round"/>
-          <path d="M568,42 V86" stroke="#A8123E" stroke-width="1.6" marker-start="url(#ar)" marker-end="url(#ar)" fill="none"/>
+          <path d="M568,42 V86" stroke="#A8123E" stroke-width="1.6" marker-start="url(#ar2)" marker-end="url(#ar2)" fill="none"/>
           <text x="418" y="140" font-size="11.5" font-weight="700" fill="#A8123E">Narrow — low or dysfunctional platelets</text>
           <text x="418" y="155" font-size="11.5" font-weight="600" fill="#5C6E66">→ platelets</text>
 
@@ -203,8 +208,8 @@
           <text x="418" y="322" font-size="11.5" font-weight="700" fill="#14213D">Long R AND narrow MA</text>
           <text x="418" y="337" font-size="11.5" font-weight="600" fill="#5C6E66">consumption of factors and platelets</text>
 
-          <path d="M14,392 H600" stroke="#DCE2DC" stroke-width="1" fill="none"/>
-          <text x="307" y="410" font-size="12" font-weight="700" fill="#5C6E66" text-anchor="middle">Width = clot strength · delay before opening = R time · tapering tail = lysis</text>
+          <path d="M14,392 H634" stroke="#DCE2DC" stroke-width="1" fill="none"/>
+          <text x="324" y="410" font-size="12" font-weight="700" fill="#5C6E66" text-anchor="middle">Width = clot strength · delay before opening = R time · tapering tail = lysis</text>
         </g>
       </svg>
     </div>
