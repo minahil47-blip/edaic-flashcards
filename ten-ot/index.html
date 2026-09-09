@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ten OT Curriculum</title>
+<meta name="description" content="Twenty-five single-best-answer questions on the Ten OT academic curriculum.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="mast">
+  <div class="mast-in">
+    <div class="mark">Ten <em>OT</em> Curriculum</div>
+    <div class="eyebrow">Assessment &middot; 25 SBA</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- 1. name -->
+  <section id="s-start">
+    <h1>Sign in to start</h1>
+    <p class="lede">Twenty-five single-best-answer questions. Choose your name — the paper you get is set for you. Answers and scores are not shown; the consultant holds the key.</p>
+    <div class="roster" id="roster"></div>
+    <p class="note">Allow about 30 minutes. You can move back and forth between questions and change answers until you submit. Once submitted, the paper is closed.</p>
+  </section>
+
+  <!-- 2. questions -->
+  <section id="s-quiz" class="hide">
+    <div class="rail" id="rail"></div>
+    <div class="qmeta"><span id="qnum">Question 1 of 25</span><span id="qtopic">ENT</span></div>
+    <p class="stem" id="stem"></p>
+    <div class="opts" id="opts"></div>
+    <div class="nav">
+      <button class="btn" id="prev">Back</button>
+      <button class="btn primary" id="next">Next</button>
+    </div>
+  </section>
+
+  <!-- 3. review -->
+  <section id="s-review" class="hide">
+    <h1>Before you submit</h1>
+    <p class="lede" id="revline"></p>
+    <div class="grid" id="grid"></div>
+    <div class="nav">
+      <button class="btn" id="back-review">Keep working</button>
+      <button class="btn primary" id="submit">Submit paper</button>
+    </div>
+  </section>
+
+  <!-- 4. done -->
+  <section id="s-done" class="hide">
+    <h1>Paper submitted</h1>
+    <p class="lede" id="doneline"></p>
+    <p>Send this receipt to Dr Zaman. It carries your name and your answers, and only the key can open it.</p>
+    <div class="code" id="receipt"></div>
+    <button class="btn" id="copy">Copy receipt</button>
+    <p class="note">Your score is deliberately not shown here. It will be released with the answers afterwards.</p>
+  </section>
+
+  <footer>Ten OT academic curriculum &middot; ENT, Neurosurgery, Thoracic</footer>
+</main>
+
+<script src="questions.js"></script>
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var LETTERS = ["A","B","C","D"];
+  var student = null, bank = null, answers = [], idx = 0;
+
+  /* ---- roster ---- */
+  var rosterEl = $("roster");
+  window.ROSTER.forEach(function(r){
+    var b = document.createElement("button");
+    b.className = "who";
+    b.innerHTML = '<span class="nm"></span><span class="tag"></span>';
+    b.querySelector(".nm").textContent = r.name;
+    var t = b.querySelector(".tag");
+    t.textContent = r.pool === "senior" ? "Senior paper" : "Junior paper";
+    if (r.pool === "junior") t.className = "tag amber";
+    b.addEventListener("click", function(){ begin(r); });
+    rosterEl.appendChild(b);
+  });
+
+  function show(id){
+    ["s-start","s-quiz","s-review","s-done"].forEach(function(s){
+      $(s).classList.toggle("hide", s !== id);
+    });
+    window.scrollTo(0,0);
+  }
+
+  function begin(r){
+    if (localStorage.getItem("tenot.done." + r.name)) {
+      if (!confirm(r.name + " has already submitted on this device. Start a new attempt?")) return;
+    }
+    student = r;
+    bank = window.BANKS[r.pool];
+    answers = new Array(bank.q.length).fill(null);
+    idx = 0;
+    buildRail();
+    render();
+    show("s-quiz");
+  }
+
+  function buildRail(){
+    var rail = $("rail");
+    rail.innerHTML = "";
+    for (var i = 0; i < bank.q.length; i++) rail.appendChild(document.createElement("i"));
+  }
+
+  function paintRail(){
+    var bars = $("rail").children;
+    for (var i = 0; i < bars.length; i++){
+      bars[i].className = i === idx ? "here" : (answers[i] !== null ? "done" : "");
+    }
+  }
+
+  function render(){
+    var q = bank.q[idx];
+    $("qnum").textContent = "Question " + (idx + 1) + " of " + bank.q.length;
+    $("qtopic").textContent = q.t;
+    $("stem").textContent = q.q;
+    var box = $("opts");
+    box.innerHTML = "";
+    q.o.forEach(function(text, i){
+      var b = document.createElement("button");
+      b.className = "opt";
+      b.type = "button";
+      b.setAttribute("aria-pressed", answers[idx] === i ? "true" : "false");
+      var l = document.createElement("span");
+      l.className = "ltr"; l.textContent = LETTERS[i];
+      var s = document.createElement("span");
+      s.textContent = text;
+      b.appendChild(l); b.appendChild(s);
+      b.addEventListener("click", function(){
+        answers[idx] = i;
+        paintRail();
+        Array.prototype.forEach.call(box.children, function(c, ci){
+          c.setAttribute("aria-pressed", ci === i ? "true" : "false");
+        });
+      });
+      box.appendChild(b);
+    });
+    $("prev").disabled = idx === 0;
+    $("next").textContent = idx === bank.q.length - 1 ? "Review" : "Next";
+    paintRail();
+  }
+
+  $("prev").addEventListener("click", function(){ if (idx > 0){ idx--; render(); } });
+  $("next").addEventListener("click", function(){
+    if (idx < bank.q.length - 1){ idx++; render(); } else review();
+  });
+
+  function review(){
+    var left = answers.filter(function(a){ return a === null; }).length;
+    $("revline").textContent = left === 0
+      ? "All " + answers.length + " answered. Tap any number to look again."
+      : left + " question" + (left === 1 ? "" : "s") + " still unanswered — these will be marked wrong. Tap a number to go there.";
+    var g = $("grid");
+    g.innerHTML = "";
+    answers.forEach(function(a, i){
+      var c = document.createElement("button");
+      c.className = "cell" + (a !== null ? " ans" : "");
+      c.type = "button";
+      c.textContent = (i + 1) + (a !== null ? " " + LETTERS[a] : "");
+      c.addEventListener("click", function(){ idx = i; render(); show("s-quiz"); });
+      g.appendChild(c);
+    });
+    show("s-review");
+  }
+
+  $("back-review").addEventListener("click", function(){ render(); show("s-quiz"); });
+
+  $("submit").addEventListener("click", function(){
+    if (!confirm("Submit final answers for " + student.name + "? This cannot be undone.")) return;
+    var key = atob(bank.k);
+    var score = 0;
+    answers.forEach(function(a, i){ if (a !== null && a === parseInt(key[i], 10)) score++; });
+
+    var rec = {
+      n: student.name,
+      p: student.pool,
+      s: score,
+      m: bank.q.length,
+      a: answers.map(function(a){ return a === null ? "-" : a; }).join(""),
+      d: new Date().toISOString()
+    };
+    var payload = btoa(unescape(encodeURIComponent(JSON.stringify(rec))));
+
+    try {
+      var all = JSON.parse(localStorage.getItem("tenot.results") || "[]");
+      all.push(rec);
+      localStorage.setItem("tenot.results", JSON.stringify(all));
+      localStorage.setItem("tenot.done." + student.name, rec.d);
+    } catch(e){}
+
+    $("doneline").textContent = "Thank you, " + student.name + ". Your " + bank.label.toLowerCase() +
+      " is recorded — " + answers.filter(function(a){ return a !== null; }).length +
+      " of " + bank.q.length + " questions answered.";
+    $("receipt").textContent = payload;
+    show("s-done");
+  });
+
+  $("copy").addEventListener("click", function(){
+    var t = $("receipt").textContent;
+    if (navigator.clipboard) navigator.clipboard.writeText(t);
+    else {
+      var r = document.createRange(); r.selectNode($("receipt"));
+      window.getSelection().removeAllRanges(); window.getSelection().addRange(r);
+      document.execCommand("copy");
+    }
+    $("copy").textContent = "Copied";
+    setTimeout(function(){ $("copy").textContent = "Copy receipt"; }, 1800);
+  });
+})();
+</script>
+</body>
+</html>

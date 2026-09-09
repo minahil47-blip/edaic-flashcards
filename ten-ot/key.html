@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ten OT Marking Key</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+  .gate{max-width:22rem;margin:3rem auto}
+  .gate input{font:inherit;width:100%;padding:.65rem .8rem;border-radius:.45rem;
+    border:1px solid var(--line);background:var(--surface);color:var(--ink);margin-bottom:.75rem}
+  textarea{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.82rem;width:100%;
+    min-height:6rem;padding:.75rem;border-radius:.5rem;border:1px solid var(--line);
+    background:var(--surface);color:var(--ink);resize:vertical}
+  table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.92rem}
+  th,td{text-align:left;padding:.55rem .5rem;border-bottom:1px solid var(--line)}
+  th{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.66rem;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
+  td.num{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums;
+    font-weight:600;white-space:nowrap}
+  .scroller{overflow-x:auto}
+  .ans{margin:0 0 1.6rem;padding-bottom:1.1rem;border-bottom:1px solid var(--line)}
+  .ans .n{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.68rem;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .ans .qq{margin:.3rem 0 .55rem;max-width:62ch}
+  .ans .right{display:flex;gap:.6rem;align-items:flex-start;max-width:62ch;
+    background:var(--green-soft);border-left:2px solid var(--green);
+    padding:.6rem .8rem;border-radius:0 .35rem .35rem 0}
+  .ans .right b{font-family:"IBM Plex Mono",ui-monospace,monospace;color:var(--green)}
+  .ans .why{color:var(--muted);font-size:.92rem;margin:.6rem 0 0;max-width:62ch}
+  .tabs{display:flex;gap:.5rem;margin:1.5rem 0 .5rem;flex-wrap:wrap}
+  .tabs button{font:inherit;font-size:.9rem;cursor:pointer;padding:.45rem 1rem;
+    border-radius:2rem;border:1px solid var(--line);background:var(--surface);color:var(--muted)}
+  .tabs button[aria-selected="true"]{border-color:var(--green);color:var(--green);background:var(--green-soft)}
+  @media print{ .noprint{display:none} body{background:#fff;color:#000} }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="mast-in">
+    <div class="mark">Ten <em>OT</em> Marking Key</div>
+    <div class="eyebrow">Confidential</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="gate" class="gate">
+    <h1>Key</h1>
+    <p class="lede">Enter the passcode.</p>
+    <input id="pw" type="password" autocomplete="off" placeholder="Passcode" aria-label="Passcode">
+    <button class="btn primary" id="unlock">Unlock</button>
+    <p class="note hide" id="bad">That passcode is not right. Check the case — it is all lower case.</p>
+  </section>
+
+  <section id="body" class="hide">
+
+    <h2>Scores</h2>
+    <p class="lede">Papers submitted on this device appear automatically. For a paper taken on someone else's phone, paste the receipt they were given.</p>
+    <div class="scroller">
+      <table id="scores"><thead><tr>
+        <th>Name</th><th>Paper</th><th>Score</th><th>%</th><th>Blank</th><th>Submitted</th>
+      </tr></thead><tbody></tbody></table>
+    </div>
+    <p class="lede" id="empty">No papers recorded on this device yet.</p>
+
+    <div class="noprint">
+      <h2>Add a receipt</h2>
+      <textarea id="paste" placeholder="Paste one receipt per line"></textarea>
+      <div class="nav"><span></span><button class="btn primary" id="decode">Add to table</button></div>
+      <p class="note" id="decodemsg"></p>
+    </div>
+
+    <h2>Answers</h2>
+    <div class="tabs noprint">
+      <button id="t-senior" aria-selected="true">Senior paper</button>
+      <button id="t-junior" aria-selected="false">Junior paper</button>
+      <button id="t-break" aria-selected="false">Per-question breakdown</button>
+    </div>
+    <div id="keybody"></div>
+
+    <footer>Ten OT academic curriculum &middot; marking key &middot; do not circulate before release</footer>
+  </section>
+</main>
+
+<script src="questions.js"></script>
+<script src="rationales.js"></script>
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var LETTERS = ["A","B","C","D"];
+  var PASS = "dGVub3Qta2V5LTIwMjY=";
+  var records = [];
+
+  /* ---- gate ---- */
+  function tryUnlock(){
+    if ($("pw").value.trim() === atob(PASS)){
+      $("gate").classList.add("hide");
+      $("body").classList.remove("hide");
+      load();
+      renderKey("senior");
+    } else {
+      $("bad").classList.remove("hide");
+    }
+  }
+  $("unlock").addEventListener("click", tryUnlock);
+  $("pw").addEventListener("keydown", function(e){ if (e.key === "Enter") tryUnlock(); });
+
+  /* ---- scores ---- */
+  function load(){
+    try { records = JSON.parse(localStorage.getItem("tenot.results") || "[]"); }
+    catch(e){ records = []; }
+    paint();
+  }
+
+  function paint(){
+    var tb = $("scores").querySelector("tbody");
+    tb.innerHTML = "";
+    records.sort(function(a,b){ return a.d < b.d ? 1 : -1; });
+    records.forEach(function(r){
+      var blank = (r.a.match(/-/g) || []).length;
+      var tr = document.createElement("tr");
+      tr.innerHTML = "<td>" + r.n + "</td>" +
+        "<td>" + (r.p === "senior" ? "Senior" : "Junior") + "</td>" +
+        '<td class="num">' + r.s + " / " + r.m + "</td>" +
+        '<td class="num">' + Math.round(r.s / r.m * 100) + "%</td>" +
+        '<td class="num">' + blank + "</td>" +
+        "<td>" + new Date(r.d).toLocaleString() + "</td>";
+      tb.appendChild(tr);
+    });
+    $("empty").classList.toggle("hide", records.length > 0);
+    $("scores").classList.toggle("hide", records.length === 0);
+  }
+
+  $("decode").addEventListener("click", function(){
+    var lines = $("paste").value.split(/\s+/).filter(function(s){ return s.length > 10; });
+    var added = 0, bad = 0;
+    lines.forEach(function(line){
+      try {
+        var r = JSON.parse(decodeURIComponent(escape(atob(line))));
+        if (!r.n || typeof r.s !== "number") throw 0;
+        var dup = records.some(function(x){ return x.n === r.n && x.d === r.d; });
+        if (!dup){ records.push(r); added++; }
+      } catch(e){ bad++; }
+    });
+    try { localStorage.setItem("tenot.results", JSON.stringify(records)); } catch(e){}
+    $("decodemsg").textContent = added + " paper" + (added === 1 ? "" : "s") + " added" +
+      (bad ? ", " + bad + " receipt" + (bad === 1 ? "" : "s") + " could not be read" : "") + ".";
+    $("paste").value = "";
+    paint();
+  });
+
+  /* ---- answer key ---- */
+  function renderKey(which){
+    ["senior","junior","break"].forEach(function(k){
+      $("t-" + k).setAttribute("aria-selected", String(k === which));
+    });
+    var box = $("keybody");
+    box.innerHTML = "";
+
+    if (which === "break"){ renderBreakdown(box); return; }
+
+    var bank = window.BANKS[which];
+    var key = atob(bank.k);
+    var why = window.RATIONALES[which];
+    bank.q.forEach(function(q, i){
+      var a = parseInt(key[i], 10);
+      var d = document.createElement("div");
+      d.className = "ans";
+      var n = document.createElement("div");
+      n.className = "n";
+      n.textContent = "Q" + (i + 1) + " · " + q.t;
+      var qq = document.createElement("p");
+      qq.className = "qq";
+      qq.textContent = q.q;
+      var r = document.createElement("div");
+      r.className = "right";
+      var b = document.createElement("b"); b.textContent = LETTERS[a];
+      var s = document.createElement("span"); s.textContent = q.o[a];
+      r.appendChild(b); r.appendChild(s);
+      var w = document.createElement("p");
+      w.className = "why";
+      w.textContent = why[i];
+      d.appendChild(n); d.appendChild(qq); d.appendChild(r); d.appendChild(w);
+      box.appendChild(d);
+    });
+  }
+
+  function renderBreakdown(box){
+    if (!records.length){
+      box.innerHTML = '<p class="lede">No papers recorded yet, so there is nothing to break down.</p>';
+      return;
+    }
+    var wrap = document.createElement("div");
+    wrap.className = "scroller";
+    var t = document.createElement("table");
+    var head = "<tr><th>Question</th>";
+    records.forEach(function(r){ head += "<th>" + r.n + "</th>"; });
+    head += "</tr>";
+    var rows = "";
+    var maxQ = Math.max.apply(null, records.map(function(r){ return r.m; }));
+    for (var i = 0; i < maxQ; i++){
+      rows += '<tr><td class="num">Q' + (i + 1) + "</td>";
+      records.forEach(function(r){
+        var key = atob(window.BANKS[r.p].k);
+        var got = r.a[i];
+        if (got === undefined) { rows += "<td>—</td>"; return; }
+        if (got === "-") { rows += "<td>blank</td>"; return; }
+        var ok = got === key[i];
+        rows += "<td>" + LETTERS[+got] + (ok ? " ✓" : " ✗ (" + LETTERS[+key[i]] + ")") + "</td>";
+      });
+      rows += "</tr>";
+    }
+    t.innerHTML = "<thead>" + head + "</thead><tbody>" + rows + "</tbody>";
+    wrap.appendChild(t);
+    box.appendChild(wrap);
+    var note = document.createElement("p");
+    note.className = "note";
+    note.textContent = "Seniors and juniors sit different papers, so a question number does not mean the same question across columns.";
+    box.appendChild(note);
+  }
+
+  ["senior","junior","break"].forEach(function(k){
+    $("t-" + k).addEventListener("click", function(){ renderKey(k); });
+  });
+})();
+</script>
+</body>
+</html>
