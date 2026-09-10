@@ -165,10 +165,31 @@
 
   // keyboard support
   document.addEventListener('keydown', (e) => {
+    // Ignore keystrokes aimed at a text field — otherwise Space would flip the
+    // card instead of typing a space in the search box.
+    const t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
     if (e.key === 'ArrowRight') el('#nextBtn').click();
     if (e.key === 'ArrowLeft') el('#prevBtn').click();
     if (e.key === ' ') { e.preventDefault(); cardEl.classList.toggle('flipped'); }
   });
+
+  // Minimal public API, used only by the search box in index.html.
+  // goTo(deckIndex, cardIndex) switches deck, clears the category filter and
+  // lands on that exact card, unflipped. cardIndex is the index within
+  // deck.cards, which with activeCat "All" is also the index within `filtered`.
+  window.EDAIC = {
+    get decks() { return DECKS; },
+    goTo: function (di, cardIndex) {
+      if (di < 0 || di >= DECKS.length) return;
+      deckIndex = di;
+      activeCat = "All";
+      loadDeck();
+      buildDeckTabs();
+      var pos = order.indexOf(cardIndex);
+      if (pos >= 0) { idx = pos; showCard(); }
+    }
+  };
 
   buildDeckTabs();
   loadDeck();

@@ -13,6 +13,13 @@
   <div class="site-subtitle">Tap a card to flip · Switch decks above · Filter by topic below</div>
 </div>
 
+<!-- SEARCH — indexes every note title and every card in every deck. -->
+<div id="searchWrap">
+  <input id="searchBox" type="search" placeholder="🔍 Search notes and cards…" autocomplete="off" spellcheck="false">
+  <button id="searchClear" type="button" hidden aria-label="Clear search">×</button>
+  <div id="searchResults" hidden></div>
+</div>
+
 <!--
   CONTENTS — every note, grouped by syllabus area, as nested dropdowns.
   Items marked 🆕 were written to close gaps against the official EDAIC
@@ -23,14 +30,14 @@
   <summary style="cursor:pointer;list-style:none;font-weight:800;font-size:15.5px;color:#fff;
                   background:rgba(203,184,255,.14);border:1px solid rgba(203,184,255,.3);
                   border-radius:12px;padding:11px 16px;user-select:none">
-    📑 Notes — 52 topics · tap to browse
+    📑 Notes — 53 topics · tap to browse
   </summary>
 
   <div style="margin-top:10px;background:rgba(0,0,0,.22);border-radius:12px;padding:10px 12px">
 
     <details style="margin:2px 0">
       <summary style="cursor:pointer;list-style:none;font-weight:700;font-size:14.5px;color:#ffd93d;padding:9px 10px;border-radius:9px;background:rgba(255,217,61,.08)">
-        🫀 Physiology <span style="opacity:.65;font-weight:600">· 16</span>
+        🫀 Physiology <span style="opacity:.65;font-weight:600">· 17</span>
       </summary>
       <div style="padding:8px 12px 12px;font-size:14px;line-height:1.95">
         <a href="notes/cardiac-action-potentials.html" style="color:#cbb8ff">Cardiac action potentials</a> ·
@@ -48,7 +55,8 @@
         <a href="notes/immunology-anaphylaxis.html" style="color:#ffd07a">Immunology &amp; anaphylaxis 🆕</a> ·
         <a href="notes/pulmonary-function-tests.html" style="color:#6fd8bb">Pulmonary function tests 🟢</a> ·
         <a href="notes/hypoxaemia-a-a-gradient.html" style="color:#6fd8bb">Hypoxaemia &amp; A–a gradient 🟢</a> ·
-        <a href="notes/sodium-fluid-compartments.html" style="color:#6fd8bb">Sodium &amp; fluid compartments 🟢</a>
+        <a href="notes/sodium-fluid-compartments.html" style="color:#6fd8bb">Sodium &amp; fluid compartments 🟢</a> ·
+        <a href="notes/blood-groups-crossmatching.html" style="color:#6fd8bb">Blood groups &amp; crossmatching 🟢</a>
       </div>
     </details>
 
@@ -130,7 +138,7 @@
 
     <details style="margin:6px 0 2px">
       <summary style="cursor:pointer;list-style:none;font-weight:700;font-size:14.5px;color:#6fd8bb;padding:9px 10px;border-radius:9px;background:rgba(14,122,102,.20);border:1px solid rgba(111,216,187,.45)">
-        🟢 Sept 10 upload <span style="opacity:.65;font-weight:600">· 12</span>
+        🟢 Sept 10 upload <span style="opacity:.65;font-weight:600">· 13</span>
       </summary>
       <div style="padding:8px 12px 12px;font-size:14px;line-height:1.95">
         <a href="notes/pulmonary-function-tests.html" style="color:#6fd8bb">Pulmonary function tests</a> ·
@@ -144,7 +152,8 @@
         <a href="notes/massive-transfusion-electrolytes.html" style="color:#6fd8bb">Massive transfusion &amp; electrolyte ECG</a> ·
         <a href="notes/obstetric-emergencies.html" style="color:#6fd8bb">Obstetric emergencies</a> ·
         <a href="notes/co-poisoning-burns.html" style="color:#6fd8bb">CO poisoning &amp; burns</a> ·
-        <a href="notes/lung-resection-thoracic.html" style="color:#6fd8bb">Lung resection &amp; thoracic</a>
+        <a href="notes/lung-resection-thoracic.html" style="color:#6fd8bb">Lung resection &amp; thoracic</a> ·
+        <a href="notes/blood-groups-crossmatching.html" style="color:#6fd8bb">Blood groups &amp; crossmatching</a>
         <div style="color:#9d8fc4;font-size:12.5px;margin-top:10px;line-height:1.5">
           These 12 were built from the handwritten pages you uploaded on 10 September 2026. Each carries a <b style="color:#6fd8bb">teal SEPT 10 banner</b> at the top — as opposed to the <b style="color:#ffd07a">amber NEW banner</b> on the 16 syllabus-gap notes I wrote from scratch.
         </div>
@@ -334,6 +343,139 @@
     var tab = e.target && e.target.closest ? e.target.closest('.deck-tab') : null;
     if (!tab) return;
     setTimeout(function () { sortTabs(); picker.open = false; }, 0);
+  });
+})();
+</script>
+
+<!--
+  SEARCH — builds two indexes at load:
+    · notes, scraped from the contents dropdown links above
+    · cards, from window.DECKS (both {q,a} and grouped {stem,opts,ans} shapes)
+  Clicking a note result opens it; clicking a card result jumps the app
+  straight to that card via window.EDAIC.goTo().
+-->
+<script>
+(function () {
+  var box     = document.getElementById('searchBox');
+  var clearBt = document.getElementById('searchClear');
+  var panel   = document.getElementById('searchResults');
+  var picker  = document.getElementById('deckPicker');
+  if (!box || !panel) return;
+
+  // ---- build the note index from the contents links ----
+  var seen = {}, NOTES = [];
+  Array.prototype.forEach.call(document.querySelectorAll('a[href^="notes/"]'), function (a) {
+    var href = a.getAttribute('href');
+    if (seen[href]) return;
+    seen[href] = 1;
+    NOTES.push({
+      title: a.textContent.replace(/[🆕🟢]/g, '').trim(),
+      href: href
+    });
+  });
+
+  // ---- build the card index ----
+  var CARDS = [];
+  (window.DECKS || []).forEach(function (deck, di) {
+    deck.cards.forEach(function (c, ci) {
+      var text = Array.isArray(c.opts)
+        ? [c.stem].concat(c.opts, c.ans).join(' ')
+        : (c.q + ' ' + c.a);
+      CARDS.push({
+        deck: di,
+        card: ci,
+        deckTitle: (deck.emoji ? deck.emoji + ' ' : '') + deck.title,
+        cat: c.cat || '',
+        disp: text,                 // original case, for the snippet
+        hay: text.toLowerCase()     // lower case, for matching
+      });
+    });
+  });
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (ch) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch];
+    });
+  }
+
+  // Highlight the query inside a snippet, escaping first so we never inject markup.
+  function mark(text, q) {
+    var out = esc(text);
+    var needle = esc(q).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    try { out = out.replace(new RegExp(needle, 'ig'), function (m) { return '<mark>' + m + '</mark>'; }); }
+    catch (e) { /* leave unhighlighted */ }
+    return out;
+  }
+
+  // Pull ~140 characters of the card around the first hit, so the match is visible.
+  function snippet(card, q) {
+    var i = card.hay.indexOf(q);
+    if (i < 0) i = 0;
+    var start = Math.max(0, i - 50);
+    var end   = Math.min(card.disp.length, start + 140);
+    return (start > 0 ? '…' : '') + card.disp.slice(start, end) + (end < card.disp.length ? '…' : '');
+  }
+
+  function close() { panel.hidden = true; panel.innerHTML = ''; }
+
+  function run() {
+    var q = box.value.trim().toLowerCase();
+    clearBt.hidden = !box.value;
+    if (q.length < 2) { close(); return; }
+
+    var noteHits = NOTES.filter(function (n) { return n.title.toLowerCase().indexOf(q) >= 0; }).slice(0, 8);
+    var cardHits = CARDS.filter(function (c) { return c.hay.indexOf(q) >= 0; });
+    var total = cardHits.length;
+    cardHits = cardHits.slice(0, 25);
+
+    if (!noteHits.length && !total) {
+      panel.innerHTML = '<div class="sr-empty">No matches for “' + esc(box.value) + '”</div>';
+      panel.hidden = false;
+      return;
+    }
+
+    var html = '';
+    if (noteHits.length) {
+      html += '<div class="sr-group">Notes · ' + noteHits.length + '</div>';
+      noteHits.forEach(function (n) {
+        html += '<a class="sr-item" href="' + esc(n.href) + '">' +
+                '<span class="sr-title">' + mark(n.title, box.value.trim()) + '</span>' +
+                '<span class="sr-sub">Note</span></a>';
+      });
+    }
+    if (cardHits.length) {
+      html += '<div class="sr-group">Cards · ' + total + (total > cardHits.length ? ' (showing ' + cardHits.length + ')' : '') + '</div>';
+      cardHits.forEach(function (c) {
+        html += '<button class="sr-item" type="button" data-d="' + c.deck + '" data-c="' + c.card + '">' +
+                '<span class="sr-title">' + mark(snippet(c, q), box.value.trim()) + '</span>' +
+                '<span class="sr-sub">' + esc(c.deckTitle) + (c.cat ? ' · ' + esc(c.cat) : '') + '</span></button>';
+      });
+    }
+    panel.innerHTML = html;
+    panel.hidden = false;
+  }
+
+  var timer;
+  box.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(run, 130); });
+
+  clearBt.addEventListener('click', function () { box.value = ''; clearBt.hidden = true; close(); box.focus(); });
+
+  panel.addEventListener('click', function (e) {
+    var btn = e.target.closest ? e.target.closest('button.sr-item') : null;
+    if (!btn || !window.EDAIC) return;
+    window.EDAIC.goTo(parseInt(btn.dataset.d, 10), parseInt(btn.dataset.c, 10));
+    close();
+    box.value = '';
+    clearBt.hidden = true;
+    if (picker) picker.open = false;
+    var scene = document.querySelector('.scene');
+    if (scene) scene.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  // Escape closes; clicking outside closes.
+  box.addEventListener('keydown', function (e) { if (e.key === 'Escape') { box.blur(); close(); } });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest || !e.target.closest('#searchWrap')) close();
   });
 })();
 </script>
