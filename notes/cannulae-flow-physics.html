@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cannulae &amp; Flow Physics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="notes.css">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+  <div class="newflag batch2"><b>SEPT 10</b> Built from the handwritten pages you uploaded on 10 September 2026.</div>
+
+  <header class="top">
+    <h1>Cannulae &amp; flow physics</h1>
+    <p>Laminar and turbulent flow, Reynolds number, pressure unit conversions — and the cannula flow rates they explain.</p>
+  </header>
+
+  <section class="card">
+    <h2 class="kicker">IV cannula gauges and flows</h2>
+    <div class="scroll">
+      <table class="w2">
+        <thead><tr><th>Gauge / colour</th><th>Ext. diameter · length</th><th>Flow (ml/min)</th></tr></thead>
+        <tbody>
+          <tr><th><b>14 G · Orange</b></th><td class="c5">2.0 mm · 45 mm</td><td class="c5"><b>300</b></td></tr>
+          <tr><th><b>16 G · Grey</b></th><td class="c4">1.6 mm · 45 mm</td><td class="c4"><b>150–200</b></td></tr>
+          <tr><th><b>18 G · Green</b></th><td class="c3">1.2 mm · 45 mm</td><td class="c3"><b>75–100</b></td></tr>
+          <tr><th><b>20 G · Pink</b></th><td class="c2">1.0 mm · 33 mm</td><td class="c2"><b>55</b></td></tr>
+          <tr><th><b>22 G · Blue</b></th><td class="c1">0.8 mm · 25 mm</td><td class="c1"><b>25–36</b></td></tr>
+          <tr><th><b>24 G · Yellow</b></th><td class="c1">0.7 mm · 19 mm</td><td class="c1"><b>15</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sub" style="margin-top:12px">Memorable sequence: <b>300 · 150 · 75 · 55 · 25 · 15</b>, and the colours <b>Orange, Grey, Green, Pink, Blue, Yellow</b> from largest to smallest. Note the gauge number runs <b>opposite</b> to the diameter.</p>
+
+    <div class="note blue">
+      <h3>Why a short wide cannula wins</h3>
+      <ul>
+        <li>Flow follows the <b>Hagen–Poiseuille</b> relationship: <b>Q = πΔPr⁴ / 8ηl</b>.</li>
+        <li><b>Radius to the fourth power</b> — doubling the radius increases flow <b>sixteen-fold</b>.</li>
+        <li><b>Length in the denominator</b> — halving the length doubles the flow. This is exactly why a long central line is a <b>worse</b> resuscitation route than a short peripheral 14 G, despite its larger-sounding calibre.</li>
+        <li>Raising ΔP with a pressure bag, and reducing viscosity by warming the fluid, both increase flow further.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Laminar versus turbulent flow</h2>
+    <div class="scroll">
+      <table class="w2">
+        <thead><tr><th></th><th>Laminar</th><th>Turbulent</th></tr></thead>
+        <tbody>
+          <tr><th><b>Occurs at</b></th><td class="c2">Low flow, smooth straight tube</td><td class="c5">High flow, orifices, branches, irregularity</td></tr>
+          <tr><th><b>Governed by</b></th><td class="c2"><b>Hagen–Poiseuille</b></td><td class="c5"><b>Graham's law</b></td></tr>
+          <tr><th><b>Depends on</b></th><td class="c2"><b>Viscosity (η)</b></td><td class="c5"><b>Density (ρ)</b></td></tr>
+          <tr><th><b>Flow ∝</b></th><td class="c2">ΔP (linear)</td><td class="c5">√ΔP — pressure must quadruple to double flow</td></tr>
+          <tr><th><b>Velocity profile</b></th><td class="c2">Parabolic — fastest at the centre, twice the mean</td><td class="c5">Flat, with eddies</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note pur">
+      <h3>Reynolds number</h3>
+      <ul>
+        <li><b>Re = ρvd / η</b> — density × velocity × diameter, over viscosity.</li>
+        <li><b>Dimensionless.</b> Below about <b>2000</b> flow is laminar; above about <b>2000</b> it becomes turbulent.</li>
+        <li><b>Clinical consequence:</b> where flow is turbulent — as in a narrowed upper airway — <b>density</b> is what matters, so replacing nitrogen with helium (<b>heliox</b>) reduces resistance and the work of breathing. Heliox has no benefit in small airway disease, where flow is laminar and it is viscosity, not density, that counts.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Pressure unit conversions</h2>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>1 atmosphere equals</th><th></th></tr></thead>
+        <tbody>
+          <tr><th><b>760</b></th><td class="c2">mmHg</td></tr>
+          <tr><th><b>760</b></th><td class="c2">torr</td></tr>
+          <tr><th><b>14.7</b></th><td class="c3">psi</td></tr>
+          <tr><th><b>101.325</b></th><td class="c4">kPa</td></tr>
+          <tr><th><b>1.013</b></th><td class="c4">bar</td></tr>
+          <tr><th><b>1033</b></th><td class="c5">cmH₂O</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sub" style="margin-top:12px">Working conversions: <b>1 kPa ≈ 7.5 mmHg</b> · <b>1 cmH₂O ≈ 0.74 mmHg</b> · <b>1 bar ≈ 100 kPa</b>.</p>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Flowmeters and altitude</h2>
+    <div class="note hook">
+      <ul>
+        <li>A <b>rotameter is a variable orifice, constant pressure device</b>. At <b>low flows</b> the annular gap behaves as a <b>tube</b>, so flow is laminar and governed by <b>viscosity</b>. At <b>high flows</b> it behaves as an <b>orifice</b>, so flow is turbulent and governed by <b>density</b>.</li>
+        <li>That is why rotameters are <b>calibrated for one specific gas</b> and are not interchangeable.</li>
+        <li><b>At altitude</b>, atmospheric pressure falls, so gas density falls. A rotameter then <b>under-reads</b> — the actual flow delivered is greater than indicated, because the less dense gas supports the bobbin less well.</li>
+        <li><b>Oxygen flush:</b> bypasses the vaporiser and delivers 35–75 L/min of pure oxygen — it <b>dilutes the anaesthetic gases and can cause awareness</b>, as well as barotrauma if used with a closed system.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Quick recall</h2>
+    <div class="facts">
+      <div class="fact"><span class="pill">r⁴</span> radius dominates</div>
+      <div class="fact"><span class="pill">300·150·75·55·25·15</span> cannula flows</div>
+      <div class="fact"><span class="pill">Re &gt;2000</span> turbulent</div>
+      <div class="fact"><span class="pill">Laminar</span> viscosity</div>
+      <div class="fact"><span class="pill">Turbulent</span> density → heliox</div>
+      <div class="fact"><span class="pill">1 kPa</span> ≈ 7.5 mmHg</div>
+    </div>
+  </section>
+
+  <p class="src">Built from your flow physics and IV cannula pages. See also <a href="theatre-safety-physics.html">Theatre safety &amp; physics</a>.</p>
+  <footer>High yield notes · EDAIC revision</footer>
+</div>
+</body>
+</html>

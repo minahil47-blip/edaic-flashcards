@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sodium &amp; Fluid Compartments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="notes.css">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+  <div class="newflag batch2"><b>SEPT 10</b> Built from the handwritten pages you uploaded on 10 September 2026.</div>
+
+  <header class="top">
+    <h1>Sodium &amp; fluid compartments</h1>
+    <p>The 42-litre man, the water deficit calculation, and SIADH versus cerebral salt wasting.</p>
+  </header>
+
+  <section class="card">
+    <h2 class="kicker">Body fluid compartments — the 70 kg adult</h2>
+
+    <div class="plot">
+      <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Body fluid compartments of a 70 kg adult">
+        <rect x="20" y="34" width="600" height="34" rx="5" fill="#3a3358"/>
+        <text x="320" y="56" fill="#fff" font-size="13.5" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">TOTAL BODY WATER ≈ 42 L  (60% of body weight)</text>
+
+        <rect x="20" y="88" width="392" height="34" rx="5" fill="#2f5c50"/>
+        <text x="216" y="110" fill="#c9f0e2" font-size="13" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">INTRACELLULAR ≈ 28 L   (⅔)</text>
+        <rect x="420" y="88" width="200" height="34" rx="5" fill="#5c4a2a"/>
+        <text x="520" y="110" fill="#f7e2bd" font-size="13" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">EXTRACELLULAR ≈ 14 L  (⅓)</text>
+
+        <path d="M470,124 L470,142" stroke="#8b7bb8" stroke-width="1.8" fill="none"/>
+        <path d="M570,124 L570,142" stroke="#8b7bb8" stroke-width="1.8" fill="none"/>
+
+        <rect x="420" y="146" width="62" height="34" rx="5" fill="#6b2340"/>
+        <text x="451" y="162" fill="#ffd3e0" font-size="10.5" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">PLASMA</text>
+        <text x="451" y="175" fill="#ffd3e0" font-size="10.5" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">3 L (¼)</text>
+
+        <rect x="490" y="146" width="130" height="34" rx="5" fill="#2b4c6b"/>
+        <text x="555" y="162" fill="#cfe7f7" font-size="10.5" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">EXTRAVASCULAR</text>
+        <text x="555" y="175" fill="#cfe7f7" font-size="10.5" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">11 L (¾)</text>
+
+        <path d="M520,184 L520,200" stroke="#8b7bb8" stroke-width="1.8" fill="none"/>
+        <text x="490" y="216" fill="#9fd0ee" font-size="11.5" font-family="system-ui,sans-serif">Interstitial ≈ 10.5 L · Transcellular ≈ 0.5 L</text>
+
+        <text x="20" y="248" fill="#ffd07a" font-size="12.5" font-weight="700" font-family="system-ui,sans-serif">The rule of thirds and quarters</text>
+        <text x="20" y="268" fill="#9d8fc4" font-size="12" font-family="system-ui,sans-serif">TBW is ⅔ intracellular. Of the ⅓ that is extracellular, ¼ is plasma and ¾ is outside the vessels.</text>
+        <text x="20" y="288" fill="#9d8fc4" font-size="12" font-family="system-ui,sans-serif">Blood volume ≈ 70 ml/kg (men) · 65 (women) · 80–90 (neonates). TBW is ~75% in neonates, lower in the elderly and obese.</text>
+      </svg>
+    </div>
+
+    <div class="note blue">
+      <h3>Where infused fluid goes</h3>
+      <ul>
+        <li><b>5% dextrose</b> — the glucose is metabolised, leaving free water that distributes across <b>all 42 L</b>. Only about <b>1/14</b> stays intravascular. Useless for resuscitation.</li>
+        <li><b>0.9% saline / Hartmann's</b> — distributes through the <b>extracellular 14 L</b>, so about <b>a quarter</b> stays intravascular.</li>
+        <li><b>Colloid</b> — in theory stays intravascular, but a damaged glycocalyx in sepsis lets it leak.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Water deficit</h2>
+    <div class="note pur">
+      <ul>
+        <li><b>Water deficit (L) = 0.6 × weight (kg) × [ (measured Na⁺ / normal Na⁺) − 1 ]</b></li>
+        <li>Use <b>0.6</b> for men, <b>0.5</b> for women and the elderly, <b>0.45</b> for elderly women. Normal Na⁺ is taken as 140.</li>
+        <li><b>Worked example:</b> a 70 kg man with Na⁺ 160 → 0.6 × 70 × (160/140 − 1) = 42 × 0.143 = <b>6 L deficit</b>.</li>
+        <li><b>Replace slowly.</b> Correct hypernatraemia at no more than about <b>10 mmol/L per 24 hours</b>, or the brain — which has adapted by generating idiogenic osmoles — will swell.</li>
+        <li>Remember this is the <b>free water</b> deficit only; add ongoing losses and any separate volume deficit on top.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">SIADH vs cerebral salt wasting</h2>
+    <p class="sub">Both present after neurosurgery, subarachnoid haemorrhage or head injury with <b>hyponatraemia</b>, <b>urine osmolality &gt; 100</b> and <b>serum osmolality &lt; 280</b>. The biochemistry alone will not separate them.</p>
+    <div class="scroll">
+      <table class="w2">
+        <thead><tr><th></th><th>SIADH</th><th>Cerebral salt wasting</th></tr></thead>
+        <tbody>
+          <tr><th><b>Volume status</b></th><td class="c4"><b>Normovolaemic</b></td><td class="c5"><b>Dehydrated / hypovolaemic</b></td></tr>
+          <tr><th><b>Urine sodium</b></th><td class="c4">&gt; 30 mmol/L</td><td class="c5"><b>&gt;&gt; 30 mmol/L</b> — markedly raised</td></tr>
+          <tr><th><b>Urine output</b></th><td class="c4"><b>Low or normal</b></td><td class="c5"><b>HIGH</b></td></tr>
+          <tr><th><b>Urine osmolality</b></th><td class="c4">&gt; serum osmolality</td><td class="c5">&gt; serum osmolality</td></tr>
+          <tr><th><b>24 h urinary Na⁺</b></th><td class="c4">Normal</td><td class="c5"><b>Raised</b></td></tr>
+          <tr><th><b>CVP / haematocrit / urea</b></th><td class="c4">Normal or low</td><td class="c5">Low CVP, raised haematocrit and urea</td></tr>
+          <tr><th><b>Primary problem</b></th><td class="c4"><b>Water retention</b></td><td class="c5"><b>Salt loss</b> (natriuretic peptides)</td></tr>
+          <tr><th><b>Treatment</b></th><td class="c4"><b>Fluid restriction</b> · demeclocycline · vaptans</td><td class="c5"><b>Salt and volume replacement</b> · fludrocortisone</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note warn">
+      <h3>Why the distinction matters so much</h3>
+      <ul>
+        <li><b>The treatments are opposites.</b> Fluid restricting a salt-wasting patient after subarachnoid haemorrhage worsens hypovolaemia and precipitates <b>cerebral vasospasm and infarction</b>.</li>
+        <li><b>Volume status is the discriminator</b> — assess it clinically and with CVP, haematocrit, urea and urine output, not from the sodium alone.</li>
+        <li><b>Urine output is the most useful single bedside clue:</b> high in CSW, low or normal in SIADH.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Treating symptomatic hyponatraemia</h2>
+    <div class="note hook">
+      <ul>
+        <li><b>Seizures or a falling GCS demand hypertonic saline</b>, whatever the cause. <b>3% NaCl</b>, aiming to raise sodium by <b>4–6 mmol/L</b> to stop the seizure — not to normalise it.</li>
+        <li><b>3% NaCl at about 100 ml/h</b>, or a correction of <b>6–8 mmol/L in 24 hours</b> where symptoms are milder.</li>
+        <li><b>Do not exceed 8–10 mmol/L per 24 hours</b> in chronic hyponatraemia — <b>osmotic demyelination (central pontine myelinolysis)</b> is the consequence, and it is irreversible.</li>
+        <li>Acute hyponatraemia (under 48 hours, as in TURP syndrome or exercise-associated) tolerates faster correction, because the brain has not yet adapted.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Quick recall</h2>
+    <div class="facts">
+      <div class="fact"><span class="pill">42 L</span> = 28 ICF + 14 ECF</div>
+      <div class="fact"><span class="pill">ECF</span> = 11 interstitial + 3 plasma</div>
+      <div class="fact"><span class="pill">0.6 × wt × (Na/140 − 1)</span></div>
+      <div class="fact"><span class="pill">SIADH</span> euvolaemic · restrict</div>
+      <div class="fact"><span class="pill">CSW</span> dry · high UO · give salt</div>
+      <div class="fact"><span class="pill">&lt;8–10/day</span> or demyelination</div>
+    </div>
+  </section>
+
+  <p class="src">Built from your body fluid compartments and SIADH/CSWS pages. See also <a href="renal-physiology.html">Renal physiology</a>.</p>
+  <footer>High yield notes · EDAIC revision</footer>
+</div>
+</body>
+</html>
