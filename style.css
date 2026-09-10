@@ -242,7 +242,8 @@ footer {
 .mcqface .mcq-exp { display: block; font-weight: 500; opacity: 0.9; margin-top: 3px; }
 
 /* ---- Search (notes + cards) ---- */
-#searchWrap { position: relative; width: 100%; max-width: 760px; margin: 0 auto 14px; padding: 0 16px; box-sizing: border-box; }
+#searchWrap { width: 100%; max-width: 760px; margin: 0 auto 14px; padding: 0 16px; box-sizing: border-box; }
+#searchRow { position: relative; }
 #searchBox {
   width: 100%; box-sizing: border-box;
   padding: 11px 40px 11px 16px;
@@ -256,7 +257,7 @@ footer {
 #searchBox::placeholder { color: rgba(255,255,255,.55); font-weight: 600; }
 #searchBox:focus { border-color: rgba(203,184,255,.75); background: rgba(203,184,255,.2); }
 #searchClear {
-  position: absolute; right: 26px; top: 50%; transform: translateY(-50%);
+  position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
   background: none; border: none; color: rgba(255,255,255,.6);
   font-size: 20px; line-height: 1; cursor: pointer; padding: 0 6px;
 }
