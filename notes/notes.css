@@ -124,3 +124,10 @@ footer{color:var(--soft);font-size:13px;text-align:center;padding-top:6px}
   background:#E6F7F2;border-color:#0E7A66;border-left-color:#0E7A66;color:#0A4E41;
 }
 .newflag.batch2 b{background:#0E7A66;color:#E6F7F2}
+
+/* Third-batch banner — notes built from the 13 Sept 2026 handwritten upload.
+   Blue, distinct from amber (syllabus gaps) and teal (10 Sept). */
+.newflag.batch3{
+  background:#EAF1FB;border-color:#1B5FA8;border-left-color:#1B5FA8;color:#0F3A6B;
+}
+.newflag.batch3 b{background:#1B5FA8;color:#EAF1FB}
