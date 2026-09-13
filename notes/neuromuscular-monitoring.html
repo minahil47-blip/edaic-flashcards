@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neuromuscular Monitoring</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="notes.css">
+</head>
+<body>
+<div class="wrap">
+
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+  <div class="newflag"><b>NEW</b> Written to fill a gap — nerve stimulation patterns, TOF, tetanus, post-tetanic count and double burst, in plain terms.</div>
+
+  <header class="top">
+    <h1>Neuromuscular monitoring</h1>
+    <p>How we check how "paralysed" a patient is: the nerve stimulator, the five stimulation patterns and their frequencies, what the twitches tell you, and how to judge recovery.</p>
+  </header>
+
+  <section class="card">
+    <h2 class="kicker">The basics</h2>
+    <p class="sub">We give a small electric shock to a nerve and watch the muscle it supplies. <b>The weaker the twitch, the deeper the block.</b></p>
+    <div class="note blue">
+      <h3>The usual set-up</h3>
+      <ul>
+        <li><b>Nerve:</b> the <b>ulnar nerve</b> at the wrist. <b>Muscle:</b> <b>adductor pollicis</b> — you watch or feel the <b>thumb</b> move in.</li>
+        <li><b>Current:</b> <b>supramaximal</b> — a bit stronger than needed to fire every nerve fibre, so a weaker twitch can only mean the drug. Usually <b>50–60 mA</b>.</li>
+        <li><b>Each pulse</b> is very short: <b>0.2 ms</b> (200 microseconds), square-shaped.</li>
+        <li><b>Electrodes:</b> black (negative) one <b>distal</b>, red (positive) one about 3 cm closer to the elbow.</li>
+      </ul>
+    </div>
+    <div class="note hook">
+      <h3>What "Hz" means — in one line</h3>
+      <ul>
+        <li><b>Hz = pulses per second.</b> So divide 1 by the number to get the gap between pulses:</li>
+        <li><b>0.1 Hz</b> = 1 pulse every <b>10 seconds</b></li>
+        <li><b>1 Hz</b> = 1 pulse every <b>second</b></li>
+        <li><b>2 Hz</b> = 2 pulses a second = 1 every <b>half second</b> — this is TOF</li>
+        <li><b>50 Hz</b> = 50 pulses a second — so fast the muscle cannot relax between them, so it stays contracted. That is <b>tetanus</b>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">The five patterns at a glance</h2>
+    <p class="sub">Drawn to show the shape of each pattern, not to exact scale.</p>
+    <div class="plot">
+      <svg viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stimulation patterns: single twitch, train-of-four, tetanus, double burst and post-tetanic count">
+        <!-- Row 1: single twitch -->
+        <text x="12" y="42" fill="#152420" font-size="13" font-weight="800" font-family="system-ui,sans-serif">Single twitch</text>
+        <text x="12" y="58" fill="#5C6E66" font-size="11.5" font-family="system-ui,sans-serif">0.1–1 Hz</text>
+        <line x1="140" y1="62" x2="628" y2="62" stroke="#C4CCC4" stroke-width="1.2"/>
+        <line x1="160" y1="62" x2="160" y2="30" stroke="#1B5FA8" stroke-width="3"/>
+        <line x1="290" y1="62" x2="290" y2="30" stroke="#1B5FA8" stroke-width="3"/>
+        <line x1="420" y1="62" x2="420" y2="30" stroke="#1B5FA8" stroke-width="3"/>
+        <text x="445" y="50" fill="#152420" font-size="12" font-family="system-ui,sans-serif">one pulse every 1–10 s</text>
+
+        <!-- Row 2: TOF -->
+        <text x="12" y="107" fill="#152420" font-size="13" font-weight="800" font-family="system-ui,sans-serif">Train-of-four</text>
+        <text x="12" y="123" fill="#5C6E66" font-size="11.5" font-family="system-ui,sans-serif">2 Hz</text>
+        <line x1="140" y1="127" x2="628" y2="127" stroke="#C4CCC4" stroke-width="1.2"/>
+        <line x1="160" y1="127" x2="160" y2="95" stroke="#0E7A66" stroke-width="3"/>
+        <line x1="190" y1="127" x2="190" y2="95" stroke="#0E7A66" stroke-width="3"/>
+        <line x1="220" y1="127" x2="220" y2="95" stroke="#0E7A66" stroke-width="3"/>
+        <line x1="250" y1="127" x2="250" y2="95" stroke="#0E7A66" stroke-width="3"/>
+        <text x="275" y="115" fill="#152420" font-size="12" font-family="system-ui,sans-serif">4 pulses, one every 0.5 s — 2 s in total</text>
+
+        <!-- Row 3: tetanus -->
+        <text x="12" y="172" fill="#152420" font-size="13" font-weight="800" font-family="system-ui,sans-serif">Tetanus</text>
+        <text x="12" y="188" fill="#5C6E66" font-size="11.5" font-family="system-ui,sans-serif">50 Hz</text>
+        <line x1="140" y1="192" x2="628" y2="192" stroke="#C4CCC4" stroke-width="1.2"/>
+        <rect x="160" y="160" width="230" height="32" fill="#A8123E" opacity="0.85"/>
+        <text x="405" y="180" fill="#152420" font-size="12" font-family="system-ui,sans-serif">50 pulses a second for 5 s</text>
+
+        <!-- Row 4: DBS -->
+        <text x="12" y="237" fill="#152420" font-size="13" font-weight="800" font-family="system-ui,sans-serif">Double burst</text>
+        <text x="12" y="253" fill="#5C6E66" font-size="11.5" font-family="system-ui,sans-serif">2 bursts at 50 Hz</text>
+        <line x1="140" y1="257" x2="628" y2="257" stroke="#C4CCC4" stroke-width="1.2"/>
+        <line x1="160" y1="257" x2="160" y2="225" stroke="#7A3B9E" stroke-width="2.5"/>
+        <line x1="166" y1="257" x2="166" y2="225" stroke="#7A3B9E" stroke-width="2.5"/>
+        <line x1="172" y1="257" x2="172" y2="225" stroke="#7A3B9E" stroke-width="2.5"/>
+        <line x1="222" y1="257" x2="222" y2="225" stroke="#7A3B9E" stroke-width="2.5"/>
+        <line x1="228" y1="257" x2="228" y2="225" stroke="#7A3B9E" stroke-width="2.5"/>
+        <line x1="234" y1="257" x2="234" y2="225" stroke="#7A3B9E" stroke-width="2.5"/>
+        <text x="197" y="273" fill="#7A3B9E" font-size="11" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">750 ms</text>
+        <text x="255" y="245" fill="#152420" font-size="12" font-family="system-ui,sans-serif">2 short bursts of 3 pulses, 0.75 s apart</text>
+
+        <!-- Row 5: PTC -->
+        <text x="12" y="302" fill="#152420" font-size="13" font-weight="800" font-family="system-ui,sans-serif">Post-tetanic</text>
+        <text x="12" y="318" fill="#5C6E66" font-size="11.5" font-family="system-ui,sans-serif">count (PTC)</text>
+        <line x1="140" y1="322" x2="628" y2="322" stroke="#C4CCC4" stroke-width="1.2"/>
+        <rect x="160" y="290" width="80" height="32" fill="#A8123E" opacity="0.85"/>
+        <text x="200" y="338" fill="#A8123E" font-size="11" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">50 Hz · 5 s</text>
+        <text x="262" y="310" fill="#5C6E66" font-size="11" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">3 s</text>
+        <line x1="290" y1="322" x2="290" y2="294" stroke="#B4690E" stroke-width="3"/>
+        <line x1="310" y1="322" x2="310" y2="298" stroke="#B4690E" stroke-width="3"/>
+        <line x1="330" y1="322" x2="330" y2="304" stroke="#B4690E" stroke-width="3"/>
+        <line x1="350" y1="322" x2="350" y2="310" stroke="#B4690E" stroke-width="3"/>
+        <line x1="370" y1="322" x2="370" y2="316" stroke="#B4690E" stroke-width="3"/>
+        <text x="395" y="310" fill="#152420" font-size="12" font-family="system-ui,sans-serif">then 1 Hz twitches — count them</text>
+      </svg>
+    </div>
+
+    <div class="scroll">
+      <table class="w2">
+        <thead><tr><th>Pattern</th><th>Frequency</th><th>What the machine does</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><th><b>Single twitch</b></th><td class="c2"><b>0.1 or 1 Hz</b></td><td class="c2">One pulse at a time</td><td class="c2">Watching <b>onset</b>. Needs a <b>baseline</b> twitch before the drug to compare against</td></tr>
+          <tr><th><b>Train-of-four (TOF)</b></th><td class="c4"><b>2 Hz</b> × 4</td><td class="c4">4 pulses, 0.5 s apart. Repeat <b>no more than every 12–15 s</b></td><td class="c4"><b>Routine monitoring</b> and <b>recovery</b> — no baseline needed, because the 4 twitches are compared with each other</td></tr>
+          <tr><th><b>Tetanus</b></th><td class="c5"><b>50 Hz</b> for <b>5 s</b></td><td class="c5">A continuous run of pulses</td><td class="c5">Seeing if the contraction <b>holds or fades</b>. <b>Painful</b> — only in anaesthetised patients</td></tr>
+          <tr><th><b>Post-tetanic count (PTC)</b></th><td class="c1"><b>50 Hz</b> 5 s → wait <b>3 s</b> → <b>1 Hz</b> twitches</td><td class="c1">Tetanus, a pause, then up to 20 single twitches; count how many you see</td><td class="c1"><b>Deep block</b>, when TOF shows <b>nothing</b>. Repeat <b>no more than every 6 min</b></td></tr>
+          <tr><th><b>Double burst (DBS)</b></th><td class="c3">Two mini-bursts at <b>50 Hz</b>, <b>750 ms</b> apart</td><td class="c3">Usually <b>3 pulses + 3 pulses</b> (DBS 3,3)</td><td class="c3">Feeling <b>fade by hand</b> — two strong jerks are easier to compare than four small twitches. Repeat no more than every 15 s</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Train-of-four in detail</h2>
+    <p class="sub">Two numbers come from one TOF: the <b>count</b> (how many twitches) and the <b>ratio</b> (how big the 4th is compared with the 1st).</p>
+
+    <div class="note">
+      <h3>1 · TOF count — how deep is the block?</h3>
+      <ul>
+        <li>The twitches disappear <b>from the 4th backwards</b> as the block deepens, and come back <b>1st first</b> on recovery.</li>
+      </ul>
+      <div class="scroll">
+        <table class="w1" style="margin-top:10px">
+          <thead><tr><th>Twitches seen</th><th>Receptors blocked (approx.)</th><th>What it means</th></tr></thead>
+          <tbody>
+            <tr><th><b>4</b></th><td class="c4">under 75%</td><td class="c4">Light block or recovering — but there may still be fade</td></tr>
+            <tr><th><b>3</b></th><td class="c1">75–80%</td><td class="c1">Moderate block</td></tr>
+            <tr><th><b>2</b></th><td class="c1">80–90%</td><td class="c1">Good surgical relaxation</td></tr>
+            <tr><th><b>1</b></th><td class="c5">90–95%</td><td class="c5">Deep</td></tr>
+            <tr><th><b>0</b></th><td class="c5">over 95%</td><td class="c5">Deep or intense — use the <b>post-tetanic count</b> to see how deep</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul style="margin-top:10px">
+        <li><b>Key idea:</b> the twitch looks <b>normal until about 75% of receptors are blocked</b>. There is a big safety margin, so "normal-looking" does not mean "drug-free".</li>
+      </ul>
+    </div>
+
+    <div class="note blue">
+      <h3>2 · TOF ratio — is recovery complete?</h3>
+      <ul>
+        <li><b>TOF ratio = height of 4th twitch ÷ height of 1st twitch.</b></li>
+        <li><b>≥ 0.9</b> — adequate recovery; <b>safe to extubate</b>.</li>
+        <li><b>0.7–0.9</b> — the patient may breathe and lift their head, but the <b>throat muscles are still weak</b> → aspiration and airway obstruction risk.</li>
+        <li><b>Your fingers and eyes cannot detect fade once the ratio is above about 0.4.</b> That is why a <b>quantitative monitor</b> (one that prints the number) is recommended.</li>
+      </ul>
+    </div>
+
+    <div class="note hook">
+      <h3>3 · Using it for reversal</h3>
+      <ul>
+        <li><b>Neostigmine:</b> give it once <b>all 4 twitches</b> are back — it cannot reverse a deep block.</li>
+        <li><b>Sugammadex (rocuronium or vecuronium):</b> <b>2 mg/kg</b> at <b>TOF count 2</b> · <b>4 mg/kg</b> at <b>PTC 1–2</b> · <b>16 mg/kg</b> for immediate reversal.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Fade — the pattern that tells you the type of block</h2>
+    <div class="plot">
+      <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Train-of-four twitch heights: no block, non-depolarising block with fade, depolarising block without fade">
+        <line x1="20" y1="150" x2="620" y2="150" stroke="#C4CCC4" stroke-width="1.2"/>
+        <!-- no block -->
+        <rect x="40" y="50" width="22" height="100" rx="3" fill="#0E7A66"/>
+        <rect x="76" y="50" width="22" height="100" rx="3" fill="#0E7A66"/>
+        <rect x="112" y="50" width="22" height="100" rx="3" fill="#0E7A66"/>
+        <rect x="148" y="50" width="22" height="100" rx="3" fill="#0E7A66"/>
+        <text x="40" y="172" fill="#152420" font-size="13" font-weight="800" font-family="system-ui,sans-serif">No block</text>
+        <text x="40" y="190" fill="#5C6E66" font-size="11.5" font-family="system-ui,sans-serif">4 equal twitches · ratio 1.0</text>
+        <!-- non-depolarising -->
+        <rect x="250" y="60" width="22" height="90" rx="3" fill="#1B5FA8"/>
+        <rect x="286" y="85" width="22" height="65" rx="3" fill="#1B5FA8"/>
+        <rect x="322" y="105" width="22" height="45" rx="3" fill="#1B5FA8"/>
+        <rect x="358" y="125" width="22" height="25" rx="3" fill="#1B5FA8"/>
+        <text x="250" y="172" fill="#152420" font-size="13" font-weight="800" font-family="system-ui,sans-serif">Non-depolarising</text>
+        <text x="250" y="190" fill="#5C6E66" font-size="11.5" font-family="system-ui,sans-serif">FADE · rocuronium, atracurium</text>
+        <text x="315" y="40" fill="#1B5FA8" font-size="12" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">each one smaller</text>
+        <!-- depolarising -->
+        <rect x="460" y="105" width="22" height="45" rx="3" fill="#A8123E"/>
+        <rect x="496" y="105" width="22" height="45" rx="3" fill="#A8123E"/>
+        <rect x="532" y="105" width="22" height="45" rx="3" fill="#A8123E"/>
+        <rect x="568" y="105" width="22" height="45" rx="3" fill="#A8123E"/>
+        <text x="460" y="172" fill="#152420" font-size="13" font-weight="800" font-family="system-ui,sans-serif">Depolarising</text>
+        <text x="460" y="190" fill="#5C6E66" font-size="11.5" font-family="system-ui,sans-serif">NO fade · suxamethonium</text>
+        <text x="525" y="90" fill="#A8123E" font-size="12" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">all smaller, equal</text>
+      </svg>
+    </div>
+
+    <div class="scroll">
+      <table class="w2">
+        <thead><tr><th>Response</th><th>Non-depolarising (roc, vec, atracurium)</th><th>Depolarising — phase I (sux)</th><th>Phase II (too much sux)</th></tr></thead>
+        <tbody>
+          <tr><th><b>TOF</b></th><td class="c2"><b>Fade</b></td><td class="c5"><b>No fade</b> — all 4 equally reduced</td><td class="c3">Fade</td></tr>
+          <tr><th><b>Tetanus</b></th><td class="c2"><b>Fades</b> — contraction not sustained</td><td class="c5"><b>Sustained</b> (but weaker)</td><td class="c3">Fades</td></tr>
+          <tr><th><b>Post-tetanic facilitation</b></th><td class="c2"><b>Yes</b> — twitches bigger after tetanus</td><td class="c5"><b>No</b></td><td class="c3">Yes</td></tr>
+          <tr><th><b>Effect of neostigmine</b></th><td class="c2">Reverses</td><td class="c5"><b>Makes it worse</b></td><td class="c3">Unpredictable</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note hook">
+      <h3>Why it happens — simply</h3>
+      <ul>
+        <li><b>Fade:</b> the nerve ending has its own nicotinic receptors that act as an <b>accelerator</b>, releasing more acetylcholine when stimulated fast. <b>Non-depolarising drugs block this accelerator</b>, so each pulse in a rapid series releases less acetylcholine → each twitch is smaller.</li>
+        <li><b>Suxamethonium does not block the accelerator</b> in the same way, so there is <b>no fade</b> — every twitch is smaller by the same amount.</li>
+        <li><b>Post-tetanic facilitation:</b> the 5 s of tetanus makes the nerve ending <b>stockpile acetylcholine</b> (and calcium). For a short while afterwards, each pulse releases extra → twitches you could not see before reappear. That is what the <b>post-tetanic count</b> uses.</li>
+        <li><b>Phase II block:</b> after large or repeated doses of suxamethonium (roughly &gt; 3–5 mg/kg, or an infusion), the block starts <b>behaving like a non-depolarising one</b>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Post-tetanic count — reading it</h2>
+    <div class="note">
+      <ul>
+        <li>Used only when the <b>TOF count is 0</b>.</li>
+        <li><b>PTC 0</b> = <b>intense</b> block — nothing will reverse it except high-dose sugammadex.</li>
+        <li><b>PTC 1–2</b> = <b>deep</b> block. Sugammadex <b>4 mg/kg</b> works here.</li>
+        <li><b>The higher the count, the closer the first TOF twitch is to returning.</b> With rocuronium, a PTC of about 8–10 usually means TOF twitches are about to come back.</li>
+        <li>Wait <b>6 minutes</b> before repeating — the tetanus leaves a stockpile that falsely strengthens the next measurement.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Double burst (DBS) — reading it</h2>
+    <p class="sub">Invented because <b>fingers are bad at spotting fade in four small twitches</b>. Two strong jerks are much easier to compare.</p>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Version</th><th>What is delivered</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><th><b>DBS 3,3</b> — the usual one</th><td class="c3">Burst of <b>3 pulses at 50 Hz</b> → gap of <b>750 ms</b> → another burst of <b>3 pulses at 50 Hz</b></td><td class="c3">Each burst feels like <b>one single jerk</b></td></tr>
+          <tr><th><b>DBS 3,2</b></th><td class="c3">3 pulses, then 750 ms later <b>only 2</b></td><td class="c3">Second jerk is naturally a little weaker — makes fade even easier to spot</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note pur">
+      <ul>
+        <li><b>Two equal jerks</b> = no fade you can feel. <b>Second jerk weaker</b> = fade = residual block.</li>
+        <li>By hand, DBS picks up fade up to a TOF ratio of about <b>0.6</b> — better than TOF by hand (about <b>0.4</b>).</li>
+        <li><b>But it still misses ratios between 0.6 and 0.9</b> — so "no fade on DBS" does <b>not</b> prove the patient is safe to extubate. Only a quantitative monitor showing <b>≥ 0.9</b> does.</li>
+        <li>Wait at least <b>15 s</b> between DBS tests.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Recovery — from deep block to extubation</h2>
+    <p class="sub">The block wears off in stages. <b>Each stage is measured with a different pattern</b>, and each has its own best reversal.</p>
+    <div class="plot">
+      <svg viewBox="0 0 640 196" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Depth of block from intense to recovered, with the monitoring finding and reversal for each stage">
+        <text x="20" y="18" fill="#A8123E" font-size="12" font-weight="800" font-family="system-ui,sans-serif">← DEEPER</text>
+        <text x="620" y="18" fill="#0E7A66" font-size="12" font-weight="800" text-anchor="end" font-family="system-ui,sans-serif">RECOVERED →</text>
+        <rect x="20" y="28" width="98" height="40" rx="5" fill="#6b2340"/>
+        <rect x="120" y="28" width="98" height="40" rx="5" fill="#8a2f4f"/>
+        <rect x="220" y="28" width="98" height="40" rx="5" fill="#7a4a12"/>
+        <rect x="320" y="28" width="98" height="40" rx="5" fill="#8a6a18"/>
+        <rect x="420" y="28" width="98" height="40" rx="5" fill="#2b5c6b"/>
+        <rect x="520" y="28" width="100" height="40" rx="5" fill="#0E7A66"/>
+        <text x="69" y="53" fill="#fff" font-size="12.5" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">Intense</text>
+        <text x="169" y="53" fill="#fff" font-size="12.5" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">Deep</text>
+        <text x="269" y="53" fill="#fff" font-size="12.5" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">Moderate</text>
+        <text x="369" y="53" fill="#fff" font-size="12.5" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">Shallow</text>
+        <text x="469" y="53" fill="#fff" font-size="12.5" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">Minimal</text>
+        <text x="570" y="53" fill="#fff" font-size="12.5" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">Recovered</text>
+
+        <text x="10" y="92" fill="#5C6E66" font-size="10.5" font-weight="700" font-family="system-ui,sans-serif">MONITOR</text>
+        <text x="69" y="110" fill="#152420" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">PTC 0</text>
+        <text x="169" y="110" fill="#152420" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">PTC ≥ 1</text>
+        <text x="169" y="124" fill="#152420" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">TOF count 0</text>
+        <text x="269" y="110" fill="#152420" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">TOF count 1–3</text>
+        <text x="369" y="110" fill="#152420" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">TOF count 4</text>
+        <text x="369" y="124" fill="#152420" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">ratio &lt; 0.4</text>
+        <text x="469" y="110" fill="#152420" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">ratio 0.4–0.9</text>
+        <text x="570" y="110" fill="#0E7A66" font-size="11" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">ratio ≥ 0.9</text>
+
+        <text x="10" y="150" fill="#5C6E66" font-size="10.5" font-weight="700" font-family="system-ui,sans-serif">REVERSE</text>
+        <text x="69" y="168" fill="#152420" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">Sugammadex</text>
+        <text x="69" y="182" fill="#152420" font-size="11" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">16 mg/kg</text>
+        <text x="169" y="168" fill="#152420" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">Sugammadex</text>
+        <text x="169" y="182" fill="#152420" font-size="11" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">4 mg/kg</text>
+        <text x="269" y="168" fill="#152420" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">Sugammadex</text>
+        <text x="269" y="182" fill="#152420" font-size="11" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">2 mg/kg</text>
+        <text x="369" y="168" fill="#152420" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">Sugammadex 2,</text>
+        <text x="369" y="182" fill="#152420" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">neostigmine slow</text>
+        <text x="469" y="168" fill="#152420" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">Neostigmine</text>
+        <text x="469" y="182" fill="#152420" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">works well</text>
+        <text x="570" y="168" fill="#0E7A66" font-size="11" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">Safe to</text>
+        <text x="570" y="182" fill="#0E7A66" font-size="11" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">extubate</text>
+      </svg>
+    </div>
+    <p class="sub">Sugammadex doses are for <b>rocuronium or vecuronium</b>. For atracurium and cisatracurium, wait for recovery and use neostigmine.</p>
+
+    <div class="note">
+      <h3>Residual block — why a ratio below 0.9 is dangerous</h3>
+      <ul>
+        <li><b>The throat muscles are weak</b> → the patient <b>cannot swallow properly</b> → <b>aspiration</b>.</li>
+        <li><b>The upper airway flops closed</b> → <b>obstruction</b>, especially in recovery.</li>
+        <li>The carotid bodies respond less to low oxygen → <b>the patient does not breathe harder when hypoxic</b>.</li>
+        <li>More <b>postoperative chest complications</b>, and a frightening feeling of weakness for the patient.</li>
+      </ul>
+    </div>
+
+    <div class="note warn">
+      <h3>Bedside tests — useful, but not good enough on their own</h3>
+      <ul>
+        <li><b>5-second head lift</b>, <b>sustained hand grip</b>, <b>leg lift</b>, <b>biting on a tongue depressor</b> against pull (the most sensitive of these).</li>
+        <li>Many patients <b>pass these tests with a TOF ratio of only 0.5</b>. They tell you recovery has started, not that it is complete.</li>
+      </ul>
+    </div>
+
+    <div class="note blue">
+      <h3>Which muscles recover first</h3>
+      <ul>
+        <li><b>Diaphragm and larynx first</b> — so a patient can breathe and cough while still partly paralysed.</li>
+        <li><b>Adductor pollicis next.</b></li>
+        <li><b>Pharyngeal and upper airway muscles last</b> — the ones that protect the airway. A thumb TOF ratio of <b>≥ 0.9</b> is used because by then these have usually recovered too.</li>
+      </ul>
+    </div>
+
+    <div class="note hook">
+      <h3>What makes a block last longer</h3>
+      <ul>
+        <li><b>Body state:</b> <b>hypothermia</b>, <b>acidosis</b>, <b>low potassium</b>, <b>low calcium</b>, <b>high magnesium</b>, dehydration.</li>
+        <li><b>Drugs:</b> <b>volatile agents</b>, <b>aminoglycosides</b> (gentamicin), clindamycin, <b>magnesium sulphate</b>, lithium, local anaesthetics, calcium channel blockers.</li>
+        <li><b>Organs:</b> <b>kidney or liver failure</b> (rocuronium, vecuronium), <b>old age</b>.</li>
+        <li><b>Disease:</b> <b>myasthenia gravis</b> (very sensitive to non-depolarisers), Lambert–Eaton.</li>
+        <li><b>Suxamethonium specifically:</b> <b>low or abnormal plasma cholinesterase</b> — genetic, pregnancy, liver disease, neostigmine.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Which muscle you watch matters</h2>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Site</th><th>Nerve</th><th>Behaviour</th></tr></thead>
+        <tbody>
+          <tr><th><b>Adductor pollicis</b> (thumb)</th><td class="c4">Ulnar</td><td class="c4"><b>The standard site.</b> Relatively sensitive — so when the thumb has recovered, the airway muscles usually have too</td></tr>
+          <tr><th><b>Corrugator supercilii</b> (eyebrow)</th><td class="c2">Facial</td><td class="c2">Behaves like the <b>diaphragm and larynx</b>: blocks <b>faster</b> and recovers <b>sooner</b>. Handy when the arms are tucked away, but can make recovery look <b>better than it is</b></td></tr>
+          <tr><th><b>Diaphragm, larynx</b></th><td class="c3">—</td><td class="c3"><b>Most resistant</b> muscles — onset quick, recover first. That is why a patient may breathe or cough while the thumb is still weak</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn">
+      <ul>
+        <li><b>At the eye, avoid stimulating the muscle directly</b> — it twitches even when the nerve is blocked, and falsely reassures you.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Types of monitor</h2>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Type</th><th>How it works</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><th><b>Subjective</b> (qualitative)</th><td class="c1">You <b>look</b> at or <b>feel</b> the thumb</td><td class="c1">Cannot detect fade above a ratio of about 0.4 — misses residual block</td></tr>
+          <tr><th><b>Acceleromyography</b></th><td class="c4">A sensor on the thumb measures its <b>acceleration</b></td><td class="c4"><b>The commonest quantitative monitor.</b> The baseline ratio can read above 1, so aim for <b>≥ 0.9 of baseline</b></td></tr>
+          <tr><th><b>Electromyography (EMG)</b></th><td class="c2">Measures the muscle's <b>electrical</b> response</td><td class="c2">The thumb need not move freely — works with arms tucked</td></tr>
+          <tr><th><b>Mechanomyography</b></th><td class="c3">Measures the <b>force</b> of thumb contraction</td><td class="c3"><b>Gold standard</b>, but research only</td></tr>
+          <tr><th><b>Kinemyography</b></th><td class="c3">A bending sensor between thumb and finger</td><td class="c3">Quantitative, less common</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note blue">
+      <ul>
+        <li>Current <b>AAGBI (2021) standards</b>: use a <b>quantitative</b> monitor whenever a neuromuscular blocker is given, <b>from induction until recovery is confirmed</b>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Quick recall</h2>
+    <div class="facts">
+      <div class="fact"><span class="pill" style="background:#0E7A66">TOF</span> 4 pulses at 2 Hz</div>
+      <div class="fact"><span class="pill" style="background:#0E7A66">0.5 s</span> between TOF pulses</div>
+      <div class="fact"><span class="pill" style="background:#A8123E">Tetanus</span> 50 Hz for 5 s</div>
+      <div class="fact"><span class="pill" style="background:#B4690E">PTC</span> 50 Hz 5 s, 3 s, then 1 Hz</div>
+      <div class="fact"><span class="pill" style="background:#7A3B9E">DBS</span> 2 × 50 Hz bursts, 750 ms apart</div>
+      <div class="fact"><span class="pill" style="background:#1B5FA8">Single</span> 0.1–1 Hz</div>
+      <div class="fact"><span class="pill" style="background:#1B5FA8">≥ 0.9</span> TOF ratio to extubate</div>
+      <div class="fact"><span class="pill" style="background:#A8123E">0.4</span> fade you can feel</div>
+      <div class="fact"><span class="pill" style="background:#0E7A66">75%</span> blocked before twitch falls</div>
+      <div class="fact"><span class="pill" style="background:#1B5FA8">Sux</span> no fade, no PTF</div>
+      <div class="fact"><span class="pill" style="background:#B4690E">0.2 ms</span> pulse, 50–60 mA</div>
+      <div class="fact"><span class="pill" style="background:#7A3B9E">Ulnar</span> → adductor pollicis</div>
+    </div>
+  </section>
+
+  <p class="src">See also <a href="nmb-anticholinesterases.html">NMBs &amp; anticholinesterases</a> and <a href="myasthenia-lems-cholinergic.html">Myasthenia · LEMS · cholinergic</a>.</p>
+  <footer>High yield notes · EDAIC revision</footer>
+</div>
+</body>
+</html>
