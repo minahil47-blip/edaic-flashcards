@@ -131,3 +131,9 @@ footer{color:var(--soft);font-size:13px;text-align:center;padding-top:6px}
   background:#EAF1FB;border-color:#1B5FA8;border-left-color:#1B5FA8;color:#0F3A6B;
 }
 .newflag.batch3 b{background:#1B5FA8;color:#EAF1FB}
+
+/* Fourth-batch banner — notes built from the 14 Sept 2026 handwritten upload. Purple. */
+.newflag.batch4{
+  background:#F4ECFA;border-color:#7A3B9E;border-left-color:#7A3B9E;color:#4A2163;
+}
+.newflag.batch4 b{background:#7A3B9E;color:#F4ECFA}

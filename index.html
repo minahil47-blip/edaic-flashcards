@@ -32,7 +32,7 @@
   <summary style="cursor:pointer;list-style:none;font-weight:800;font-size:15.5px;color:#fff;
                   background:rgba(203,184,255,.14);border:1px solid rgba(203,184,255,.3);
                   border-radius:12px;padding:11px 16px;user-select:none">
-    📑 Notes — 61 topics · tap to browse
+    📑 Notes — 62 topics · tap to browse
   </summary>
 
   <div style="margin-top:10px;background:rgba(0,0,0,.22);border-radius:12px;padding:10px 12px">
@@ -112,7 +112,7 @@
 
     <details style="margin:2px 0">
       <summary style="cursor:pointer;list-style:none;font-weight:700;font-size:14.5px;color:#ffd93d;padding:9px 10px;border-radius:9px;background:rgba(255,217,61,.08)">
-        🩺 Clinical anaesthesia <span style="opacity:.65;font-weight:600">· 11</span>
+        🩺 Clinical anaesthesia <span style="opacity:.65;font-weight:600">· 12</span>
       </summary>
       <div style="padding:8px 12px 12px;font-size:14px;line-height:1.95">
         <a href="notes/myasthenia-lems-cholinergic.html" style="color:#cbb8ff">Myasthenia · LEMS · cholinergic</a> ·
@@ -125,6 +125,7 @@
         <a href="notes/pain.html" style="color:#ffd07a">Pain 🆕</a> ·
         <a href="notes/asthma-bronchospasm.html" style="color:#6fd8bb">Asthma &amp; bronchospasm 🟢</a> ·
         <a href="notes/lung-resection-thoracic.html" style="color:#6fd8bb">Lung resection &amp; thoracic 🟢</a> ·
+        <a href="notes/pneumonectomy-vs-lobectomy.html" style="color:#d9b3ff">Pneumonectomy vs lobectomy criteria 🟣</a> ·
         <a href="notes/obstetric-emergencies.html" style="color:#6fd8bb">Obstetric emergencies 🟢</a>
       </div>
     </details>
@@ -143,6 +144,18 @@
         <a href="notes/rass-cam-icu.html" style="color:#8fc3ff">RASS &amp; CAM-ICU 🔵</a> ·
         <a href="notes/vap-cpis.html" style="color:#8fc3ff">VAP &amp; CPIS 🔵</a> ·
         <a href="notes/nutrition-fluids-refeeding.html" style="color:#8fc3ff">Nutrition, IV fluids &amp; refeeding 🔵</a>
+      </div>
+    </details>
+
+    <details style="margin:6px 0 2px">
+      <summary style="cursor:pointer;list-style:none;font-weight:700;font-size:14.5px;color:#d9b3ff;padding:9px 10px;border-radius:9px;background:rgba(122,59,158,.22);border:1px solid rgba(217,179,255,.45)">
+        🟣 Sept 14 upload <span style="opacity:.65;font-weight:600">· 1</span>
+      </summary>
+      <div style="padding:8px 12px 12px;font-size:14px;line-height:1.95">
+        <a href="notes/pneumonectomy-vs-lobectomy.html" style="color:#d9b3ff">Pneumonectomy vs lobectomy criteria</a>
+        <div style="color:#9d8fc4;font-size:12.5px;margin-top:10px;line-height:1.5">
+          Built from the thoracic pages you uploaded on 14 September 2026. Carries a <b style="color:#d9b3ff">purple SEPT 14 banner</b> at the top.
+        </div>
       </div>
     </details>
 
@@ -398,7 +411,7 @@
     if (seen[href]) return;
     seen[href] = 1;
     NOTES.push({
-      title: a.textContent.replace(/[🆕🟢🔵]/g, '').trim(),
+      title: a.textContent.replace(/[🆕🟢🔵🟣]/g, '').trim(),
       href: href
     });
   });
