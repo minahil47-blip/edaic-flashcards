@@ -137,3 +137,6 @@ footer{color:var(--soft);font-size:13px;text-align:center;padding-top:6px}
   background:#F4ECFA;border-color:#7A3B9E;border-left-color:#7A3B9E;color:#4A2163;
 }
 .newflag.batch4 b{background:#7A3B9E;color:#F4ECFA}
+
+/* Dark panel for diagrams drawn in light colours (the original dark-theme SVGs). */
+.plot.dark{background:#1F1A33}
