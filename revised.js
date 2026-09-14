@@ -57,10 +57,13 @@
       btns.push(b);
       return b;
     }
-    // One button under the title, one at the end of the note.
+    // One button under the title, one at the end of the note — above the
+    // "see also" line and the bottom "Back to flashcards" link.
     var header = document.querySelector('header.top');
     if (header) header.insertAdjacentElement('afterend', make());
-    var end = document.querySelector('.wrap > p.src') || document.querySelector('.wrap > footer');
+    var end = document.querySelector('.wrap > p.src') ||
+              document.querySelector('.wrap > a.backlink') ||
+              document.querySelector('.wrap > footer');
     if (end) end.insertAdjacentElement('beforebegin', make());
 
     function render() {
