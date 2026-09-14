@@ -59,7 +59,7 @@ td.c2{background:#EAF4F8}
 td.c3{background:#F1EBF7}
 td.c4{background:#EAF3EC}
 td.c5{background:#FDEFF3}
-.pill{display:inline-block;font-size:11.5px;font-weight:800;color:#fff;border-radius:20px;padding:1px 7px;margin-right:5px}
+.pill{display:inline-block;font-size:11.5px;font-weight:800;color:#fff;background:var(--trace);border-radius:20px;padding:1px 7px;margin-right:5px}
 
 ol.phases{list-style:none;margin:0;padding:0}
 ol.phases li{display:grid;grid-template-columns:38px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--hair)}
