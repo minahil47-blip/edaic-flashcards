@@ -16,7 +16,7 @@
 
   <header class="top">
     <h1>Drugs from internal medicine</h1>
-    <p>The chronic medications your patients arrive on — what they do, whether to continue them, and how they interact with anaesthesia.</p>
+    <p>The chronic medications your patients arrive on — what they do, whether to continue them, how they interact with anaesthesia, and which have a narrow therapeutic index.</p>
   </header>
 
   <section class="card">
@@ -86,6 +86,94 @@
         <li>The perioperative question is always the same trade-off: <b>thrombotic risk of stopping versus bleeding risk of continuing</b>, and for neuraxial blockade the timing intervals from the current national guideline.</li>
         <li><b>Aspirin</b> is usually continued for secondary prevention. <b>Clopidogrel</b> is typically stopped 7 days before, unless a recent coronary stent makes that unsafe — discuss with cardiology.</li>
       </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Drugs with a narrow therapeutic index</h2>
+    <p class="sub">The <b>therapeutic index (TI) = TD₅₀ ÷ ED₅₀</b> — the dose that is toxic in half of patients divided by the dose that works in half (LD₅₀ ÷ ED₅₀ in animal studies). <b>Narrow TI = the effective dose and the toxic dose are close together</b>, so a small change in dose, kidney function or a new interacting drug can tip a patient into toxicity.</p>
+    <div class="plot">
+      <svg viewBox="0 0 640 268" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dose-response curves: wide therapeutic index with effect and toxicity curves far apart, narrow therapeutic index with them close together">
+        <!-- wide panel -->
+        <text x="60" y="20" fill="#0E7A66" font-size="13" font-weight="800" font-family="system-ui,sans-serif">WIDE TI — e.g. penicillin</text>
+        <line x1="60" y1="30" x2="60" y2="200" stroke="#5C6E66" stroke-width="1.4"/>
+        <line x1="60" y1="200" x2="300" y2="200" stroke="#5C6E66" stroke-width="1.4"/>
+        <text x="48" y="115" fill="#5C6E66" font-size="11" text-anchor="middle" transform="rotate(-90 48 115)" font-family="system-ui,sans-serif">% of patients</text>
+        <path d="M70,190 C120,190 120,40 170,40" fill="none" stroke="#0E7A66" stroke-width="3"/>
+        <path d="M190,190 C240,190 240,40 290,40" fill="none" stroke="#A8123E" stroke-width="3"/>
+        <line x1="120" y1="115" x2="120" y2="200" stroke="#C4CCC4" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <line x1="240" y1="115" x2="240" y2="200" stroke="#C4CCC4" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <text x="120" y="214" fill="#0E7A66" font-size="11" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">ED₅₀</text>
+        <text x="240" y="214" fill="#A8123E" font-size="11" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">TD₅₀</text>
+        <text x="180" y="112" fill="#152420" font-size="11.5" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">big gap</text>
+
+        <!-- narrow panel -->
+        <text x="380" y="20" fill="#A8123E" font-size="13" font-weight="800" font-family="system-ui,sans-serif">NARROW TI — e.g. digoxin</text>
+        <line x1="380" y1="30" x2="380" y2="200" stroke="#5C6E66" stroke-width="1.4"/>
+        <line x1="380" y1="200" x2="620" y2="200" stroke="#5C6E66" stroke-width="1.4"/>
+        <text x="368" y="115" fill="#5C6E66" font-size="11" text-anchor="middle" transform="rotate(-90 368 115)" font-family="system-ui,sans-serif">% of patients</text>
+        <path d="M400,190 C450,190 450,40 500,40" fill="none" stroke="#0E7A66" stroke-width="3"/>
+        <path d="M430,190 C480,190 480,40 530,40" fill="none" stroke="#A8123E" stroke-width="3"/>
+        <line x1="450" y1="115" x2="450" y2="200" stroke="#C4CCC4" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <line x1="480" y1="115" x2="480" y2="200" stroke="#C4CCC4" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <text x="446" y="214" fill="#0E7A66" font-size="11" font-weight="700" text-anchor="end" font-family="system-ui,sans-serif">ED₅₀</text>
+        <text x="484" y="214" fill="#A8123E" font-size="11" font-weight="700" text-anchor="start" font-family="system-ui,sans-serif">TD₅₀</text>
+        <text x="548" y="100" fill="#152420" font-size="11.5" font-weight="700" font-family="system-ui,sans-serif">curves</text>
+        <text x="548" y="116" fill="#152420" font-size="11.5" font-weight="700" font-family="system-ui,sans-serif">overlap</text>
+
+        <!-- legend -->
+        <line x1="150" y1="238" x2="176" y2="238" stroke="#0E7A66" stroke-width="3"/>
+        <text x="182" y="242" fill="#152420" font-size="11.5" font-family="system-ui,sans-serif">wanted effect</text>
+        <line x1="290" y1="238" x2="316" y2="238" stroke="#A8123E" stroke-width="3"/>
+        <text x="322" y="242" fill="#152420" font-size="11.5" font-family="system-ui,sans-serif">toxicity</text>
+        <text x="320" y="262" fill="#5C6E66" font-size="11" text-anchor="middle" font-family="system-ui,sans-serif">x-axis = dose or plasma level</text>
+      </svg>
+    </div>
+
+    <div class="scroll">
+      <table class="w2">
+        <thead><tr><th>Drug</th><th>Usual target range</th><th>Signs of toxicity</th><th>Pushes the level up</th><th>Anaesthetic point</th></tr></thead>
+        <tbody>
+          <tr><th><b>Digoxin</b></th><td class="c5">0.8–2 ng/ml (1–2.6 nmol/L); lower (0.5–0.9) in heart failure</td><td class="c5">Nausea, vomiting, <b>yellow-green vision</b>, confusion; <b>any arrhythmia</b> — ectopics, AV block, <b>bidirectional VT</b>, atrial tachycardia with block</td><td class="c5"><b>Low K⁺</b>, low Mg²⁺, high Ca²⁺, <b>renal failure</b>, amiodarone, verapamil, macrolides</td><td class="c5">Keep <b>potassium normal</b>. Toxicity makes cardioversion dangerous. Antidote: <b>digoxin-specific Fab</b></td></tr>
+          <tr><th><b>Lithium</b></th><td class="c3">0.4–1.0 mmol/L; toxic &gt; 1.5</td><td class="c3">Coarse <b>tremor</b>, ataxia, confusion, seizures; also nephrogenic DI and hypothyroidism</td><td class="c3"><b>Dehydration</b>, <b>NSAIDs</b>, <b>ACE inhibitors</b>, <b>thiazides</b>, low sodium</td><td class="c3"><b>Prolongs neuromuscular block</b>. Consider stopping 24 h before major surgery; check the level; avoid NSAIDs</td></tr>
+          <tr><th><b>Theophylline</b> / aminophylline</th><td class="c2">10–20 mg/L (55–110 µmol/L)</td><td class="c2">Nausea, <b>tachyarrhythmias</b>, <b>seizures</b>, low K⁺</td><td class="c2"><b>Ciprofloxacin</b>, erythromycin, cimetidine, <b>stopping smoking</b>, heart or liver failure</td><td class="c2">Antagonises <b>adenosine</b>. Loading dose only if not already taking it</td></tr>
+          <tr><th><b>Phenytoin</b></th><td class="c1">10–20 mg/L (40–80 µmol/L) — <b>zero-order</b> kinetics</td><td class="c1"><b>Nystagmus</b>, ataxia, double vision, slurred speech, confusion. IV: hypotension, bradyarrhythmia</td><td class="c1">Enzyme inhibitors; <b>low albumin</b> raises the free (active) level even when the total looks normal</td><td class="c1">Give IV no faster than <b>50 mg/min</b> with ECG. An enzyme inducer → resistance to rocuronium and vecuronium</td></tr>
+          <tr><th><b>Carbamazepine</b></th><td class="c1">4–12 mg/L</td><td class="c1">Double vision, ataxia, drowsiness, <b>low sodium</b>, arrhythmias</td><td class="c1">Erythromycin, fluconazole, isoniazid</td><td class="c1">Enzyme inducer. Continue perioperatively — missed doses risk seizures</td></tr>
+          <tr><th><b>Warfarin</b></th><td class="c4">INR 2–3 (2.5–3.5 for mechanical valves)</td><td class="c4"><b>Bleeding</b></td><td class="c4"><b>Many</b> — amiodarone, metronidazole, macrolides, fluconazole, alcohol binge, liver disease</td><td class="c4">Stop ~5 days before surgery; urgent reversal with <b>vitamin K + prothrombin complex concentrate</b></td></tr>
+          <tr><th><b>Aminoglycosides</b> (gentamicin, amikacin) and <b>vancomycin</b></th><td class="c2">Trough levels guide dosing (gentamicin trough &lt; 1 mg/L)</td><td class="c2"><b>Kidney damage</b> and <b>deafness or balance loss</b> (ototoxicity)</td><td class="c2"><b>Renal impairment</b>, dehydration, loop diuretics, other nephrotoxins</td><td class="c2">Aminoglycosides <b>potentiate neuromuscular block</b></td></tr>
+          <tr><th><b>Ciclosporin</b> / tacrolimus</th><td class="c3">Trough levels, set by the transplant team</td><td class="c3"><b>Kidney damage</b>, hypertension, <b>high K⁺</b>, tremor, seizures</td><td class="c3"><b>CYP3A4 inhibitors</b> — macrolides, azoles, diltiazem, grapefruit</td><td class="c3">Never omit doses (rejection). Avoid NSAIDs and other nephrotoxins; ciclosporin potentiates relaxants</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sub" style="margin-top:12px">Target ranges vary between laboratories — use your lab's reference values in practice.</p>
+
+    <div class="note hook">
+      <h3>Remember them as "LTD WAP" — plus the two Cs</h3>
+      <ul>
+        <li><b>L</b>ithium · <b>T</b>heophylline · <b>D</b>igoxin · <b>W</b>arfarin · <b>A</b>minoglycosides (and vancomycin) · <b>P</b>henytoin — plus <b>C</b>arbamazepine and <b>C</b>iclosporin.</li>
+        <li>Also often listed: <b>insulin</b>, <b>heparin</b>, <b>methotrexate</b>, <b>levothyroxine</b>, <b>flecainide</b>, <b>sodium valproate</b> — and, in our world, <b>local anaesthetics</b> (the maximum safe dose).</li>
+      </ul>
+    </div>
+
+    <div class="note warn">
+      <h3>Why they catch patients out around surgery</h3>
+      <ul>
+        <li><b>Dehydration and fasting</b> — lithium and digoxin levels rise as kidney clearance falls.</li>
+        <li><b>New drugs on the ward</b> — antibiotics (macrolides, ciprofloxacin, fluconazole) and amiodarone push levels up.</li>
+        <li><b>Electrolyte shifts</b> — low potassium from diuretics or insulin makes digoxin toxic at a "normal" level.</li>
+        <li><b>Low albumin</b> in sick patients raises the active fraction of phenytoin.</li>
+        <li><b>Missed doses</b> — antiepileptics and transplant drugs cause seizures or rejection when stopped.</li>
+      </ul>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><span class="pill">TI</span> TD₅₀ ÷ ED₅₀</div>
+      <div class="fact"><span class="pill">LTD WAP</span> + 2 Cs</div>
+      <div class="fact"><span class="pill">Digoxin</span> low K⁺ = toxic</div>
+      <div class="fact"><span class="pill">Lithium</span> &gt; 1.5 toxic · prolongs block</div>
+      <div class="fact"><span class="pill">Theophylline</span> 10–20 mg/L</div>
+      <div class="fact"><span class="pill">Phenytoin</span> ≤ 50 mg/min IV</div>
+      <div class="fact"><span class="pill">Gentamicin</span> ears, kidneys, block ↑</div>
     </div>
   </section>
 
