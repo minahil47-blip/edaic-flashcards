@@ -252,8 +252,18 @@
       if (b.dataset.rp === 'copy') copyCode(); else pasteCode();
     }, true);
 
+    // Highlights (highlights.js) live under their own key; the code carries both.
+    var HL_KEY = 'edaic-highlights-v1';
+    function loadHighlights() {
+      try { return JSON.parse(localStorage.getItem(HL_KEY) || '{}') || {}; } catch (e) { return {}; }
+    }
+    // UTF-8 safe base64 — highlighted text contains arrows, subscripts, etc.
+    function encode(obj) { return btoa(unescape(encodeURIComponent(JSON.stringify(obj)))); }
+    function decode(str) { return JSON.parse(decodeURIComponent(escape(atob(str)))); }
+
     function copyCode() {
-      var code = 'EDAIC1:' + btoa(JSON.stringify(load()));
+      var s = load();
+      var code = 'EDAIC1:' + encode({ n: s.n, d: s.d, h: loadHighlights() });
       function fallback() { window.prompt('Copy this code, then paste it on your other device:', code); }
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(code).then(function () {
@@ -266,16 +276,28 @@
       var code = window.prompt('Paste your progress code:');
       if (!code) return;
       try {
-        var got = JSON.parse(atob(code.trim().replace(/^EDAIC1:/, '')));
-        var s = load(), added = 0;
+        var got = decode(code.trim().replace(/^EDAIC1:/, ''));
+        var s = load(), added = 0, addedHl = 0;
         ['n', 'd'].forEach(function (k) {
           Object.keys(got[k] || {}).forEach(function (id) {
             if (!s[k][id]) { s[k][id] = got[k][id]; added++; }
           });
         });
         save(s);
+        var hl = loadHighlights();
+        Object.keys(got.h || {}).forEach(function (note) {
+          var mine = hl[note] || [];
+          (got.h[note] || []).forEach(function (h) {
+            var dup = mine.some(function (x) { return x.id === h.id || (x.t === h.t && x.p === h.p); });
+            if (!dup) { mine.push(h); addedHl++; }
+          });
+          if (mine.length) hl[note] = mine;
+        });
+        try { localStorage.setItem(HL_KEY, JSON.stringify(hl)); } catch (e) { /* storage blocked */ }
         renderAll();
-        alert(added ? 'Done — ' + added + ' ticks added. Nothing already ticked here was removed.' : 'Nothing new — this device already has all of those ticks.');
+        alert(added || addedHl
+          ? 'Done — ' + added + ' ticks and ' + addedHl + ' highlights added. Nothing already here was removed.'
+          : 'Nothing new — this device already has all of that.');
       } catch (err) {
         alert('That code did not work. Copy it again in full and retry.');
       }
