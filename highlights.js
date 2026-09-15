@@ -65,15 +65,26 @@
   // --------------------------------------------------------- text index
   // Every highlightable text node in reading order, with its offset in the
   // concatenated text. Marks do not change the text, so offsets stay stable.
+  // A virtual space is added where the text moves into a new block (table
+  // cell, list item, paragraph) so neighbouring cells do not run together;
+  // it belongs to no node, so wrapping simply skips it.
+  var BLOCK = 'p, li, td, th, h1, h2, h3, summary, div, header, section';
   function textIndex() {
-    var nodes = [], pos = 0, n;
+    var nodes = [], text = '', pos = 0, lastBlock = null, n;
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode: function (t) {
         return t.parentElement && t.parentElement.closest(SKIP) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
       }
     });
-    while ((n = walker.nextNode())) { nodes.push({ node: n, start: pos }); pos += n.nodeValue.length; }
-    return { nodes: nodes, text: nodes.map(function (o) { return o.node.nodeValue; }).join('') };
+    while ((n = walker.nextNode())) {
+      var block = n.parentElement.closest(BLOCK);
+      if (lastBlock && block !== lastBlock) { text += ' '; pos += 1; }
+      lastBlock = block;
+      nodes.push({ node: n, start: pos });
+      text += n.nodeValue;
+      pos += n.nodeValue.length;
+    }
+    return { nodes: nodes, text: text };
   }
 
   // Collapse whitespace runs to one space, keeping a map back to raw offsets,
