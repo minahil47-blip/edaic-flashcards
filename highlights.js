@@ -43,6 +43,9 @@
       '-webkit-box-decoration-break:clone;box-decoration-break:clone}' +
     'header.top mark.hl{color:#152420}' +
     'mark.hl.hl-flash{outline:3px solid #7A3B9E;outline-offset:2px}' +
+    // display:flex below would otherwise beat the browser's own [hidden] rule,
+    // leaving the bars on screen after they are "hidden".
+    '.hl-ui[hidden]{display:none!important}' +
     '.hl-bar,.hl-pop{position:absolute;z-index:60;display:flex;align-items:center;gap:8px;padding:7px 8px 7px 10px;' +
       'background:#152420;border-radius:24px;box-shadow:0 6px 20px rgba(0,0,0,.28)}' +
     '.hl-dot{width:28px;height:28px;border-radius:50%;border:2px solid #fff;padding:0;cursor:pointer;flex:none}' +
