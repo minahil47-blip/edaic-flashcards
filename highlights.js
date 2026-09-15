@@ -3,7 +3,8 @@
 // Select text (drag on a computer; press-and-hold then drag the handles on a
 // phone) and a small bar appears: pick a colour. Tap a highlight to change its
 // colour or remove it. "My highlights", under the title, lists them all and
-// jumps to each one.
+// jumps to each one. Either bar closes with its × button, a right-click
+// anywhere, the Esc key, or a click elsewhere.
 //
 // Loaded by every notes/*.html page after revised.js. Saved in this browser's
 // localStorage only, under edaic-highlights-v1:
@@ -42,13 +43,16 @@
       '-webkit-box-decoration-break:clone;box-decoration-break:clone}' +
     'header.top mark.hl{color:#152420}' +
     'mark.hl.hl-flash{outline:3px solid #7A3B9E;outline-offset:2px}' +
-    '.hl-bar,.hl-pop{position:absolute;z-index:60;display:flex;align-items:center;gap:8px;padding:7px 10px;' +
+    '.hl-bar,.hl-pop{position:absolute;z-index:60;display:flex;align-items:center;gap:8px;padding:7px 8px 7px 10px;' +
       'background:#152420;border-radius:24px;box-shadow:0 6px 20px rgba(0,0,0,.28)}' +
     '.hl-dot{width:28px;height:28px;border-radius:50%;border:2px solid #fff;padding:0;cursor:pointer;flex:none}' +
     '.hl-dot.on{box-shadow:0 0 0 3px #7A3B9E}' +
     '.hl-lbl{color:#fff;font:700 13px "Public Sans",system-ui,sans-serif;margin:0 2px 0 2px;white-space:nowrap}' +
     '.hl-rm{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55);border-radius:14px;' +
       'padding:5px 11px;font:700 12.5px "Public Sans",system-ui,sans-serif;cursor:pointer;white-space:nowrap}' +
+    '.hl-x{flex:none;width:28px;height:28px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;' +
+      'font:700 18px/28px system-ui,sans-serif;padding:0;cursor:pointer;text-align:center}' +
+    '.hl-x:hover{background:rgba(255,255,255,.28)}' +
     '.hl-panel{background:#fff;border-radius:12px;margin:0 0 18px}' +
     '.hl-panel summary{cursor:pointer;list-style:none;padding:12px 16px;font:700 15px "Public Sans",system-ui,sans-serif;color:#152420}' +
     '.hl-panel summary::-webkit-details-marker{display:none}' +
@@ -171,6 +175,7 @@
         '" data-c="' + k.c + '" aria-label="Highlight ' + k.name + '"></button>';
     }).join('');
   }
+  var CLOSE = '<button type="button" class="hl-x" aria-label="Close" title="Close (or right-click)">×</button>';
   function place(box, rect) {
     box.hidden = false;
     var bw = box.offsetWidth, bh = box.offsetHeight;
@@ -185,8 +190,17 @@
     return String(s).replace(/[&<>"]/g, function (ch) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]; });
   }
 
+  // After highlighting, removing or closing, ignore selection events briefly
+  // so the bar cannot pop straight back up.
+  var quietUntil = 0;
+  function quiet() { quietUntil = Date.now() + 700; }
+  function clearSelection() {
+    var sel = window.getSelection();
+    if (sel && sel.rangeCount) sel.removeAllRanges();
+  }
+
   // ------------------------------------------------------ selection bar
-  var bar = el('div', 'hl-ui hl-bar', dots('') + '<span class="hl-lbl">Highlight</span>');
+  var bar = el('div', 'hl-ui hl-bar', dots('') + '<span class="hl-lbl">Highlight</span>' + CLOSE);
   bar.hidden = true;
   document.body.appendChild(bar);
   var pending = null;
@@ -194,6 +208,7 @@
   function hideBar() { bar.hidden = true; pending = null; }
 
   function checkSelection() {
+    if (Date.now() < quietUntil) return;
     var sel = window.getSelection();
     if (!sel || !sel.rangeCount || sel.isCollapsed) { hideBar(); return; }
     var range = sel.getRangeAt(0);
@@ -207,13 +222,14 @@
 
   var timer;
   document.addEventListener('selectionchange', function () { clearTimeout(timer); timer = setTimeout(checkSelection, 300); });
-  document.addEventListener('mouseup', function () { setTimeout(checkSelection, 0); });
+  document.addEventListener('mouseup', function (e) { if (e.button === 0) setTimeout(checkSelection, 0); });
   document.addEventListener('touchend', function () { setTimeout(checkSelection, 350); });
 
   // Keep the text selected while pressing a colour on a computer.
   bar.addEventListener('mousedown', function (e) { e.preventDefault(); });
 
   bar.addEventListener('click', function (e) {
+    if (e.target.closest('.hl-x')) { clearSelection(); hideBar(); quiet(); return; }
     var d = e.target.closest('.hl-dot');
     if (!d || !pending) return;
     var raw = textIndex().text, N = norm(raw);
@@ -233,9 +249,9 @@
     list.push(h);
     setList(list);
     wrap(pending.start, pending.end, h.c, h.id);
-    var sel = window.getSelection();
-    if (sel) sel.removeAllRanges();
+    clearSelection();
     hideBar();
+    quiet();
     renderPanel();
   });
 
@@ -250,11 +266,12 @@
   function showPop(mark) {
     popId = mark.dataset.hl;
     var item = getList().filter(function (h) { return h.id === popId; })[0];
-    pop.innerHTML = dots(item ? item.c : '') + '<button type="button" class="hl-rm">Remove</button>';
+    pop.innerHTML = dots(item ? item.c : '') + '<button type="button" class="hl-rm">Remove</button>' + CLOSE;
     place(pop, mark.getBoundingClientRect());
   }
 
   pop.addEventListener('click', function (e) {
+    if (e.target.closest('.hl-x')) { hidePop(); quiet(); return; }
     if (!popId) return;
     var list = getList();
     if (e.target.closest('.hl-rm')) {
@@ -270,6 +287,7 @@
       });
     }
     hidePop();
+    quiet();
     renderPanel();
   });
 
@@ -278,6 +296,25 @@
     var m = e.target.closest('mark.hl');
     var sel = window.getSelection();
     if (m && (!sel || sel.isCollapsed)) showPop(m); else hidePop();
+  });
+
+  // Right-click anywhere closes whichever bar is open (and, while one is open,
+  // takes the place of the browser's own right-click menu).
+  document.addEventListener('contextmenu', function (e) {
+    if (bar.hidden && pop.hidden) return;
+    e.preventDefault();
+    clearSelection();
+    hideBar();
+    hidePop();
+    quiet();
+  }, true);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape' || (bar.hidden && pop.hidden)) return;
+    clearSelection();
+    hideBar();
+    hidePop();
+    quiet();
   });
 
   window.addEventListener('resize', function () { hideBar(); hidePop(); });
@@ -297,7 +334,7 @@
     var html = '<summary>🖍 My highlights · ' + list.length +
       (list.length ? '' : ' <span class="hl-hint">— select any text to highlight it</span>') + '</summary><div class="hl-body">';
     if (!list.length) {
-      html += 'Select words anywhere in this note, then pick a colour. Tap a highlight later to change its colour or remove it.';
+      html += 'Select words anywhere in this note, then pick a colour. Tap a highlight later to change its colour or remove it. Close the colour bar with ×, a right-click or Esc.';
     } else {
       list.forEach(function (h) {
         var gone = !found[h.id];
