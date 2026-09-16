@@ -252,18 +252,22 @@
       if (b.dataset.rp === 'copy') copyCode(); else pasteCode();
     }, true);
 
-    // Highlights (highlights.js) live under their own key; the code carries both.
+    // Highlights and note boxes (highlights.js) live under their own keys;
+    // the code carries all three.
     var HL_KEY = 'edaic-highlights-v1';
-    function loadHighlights() {
-      try { return JSON.parse(localStorage.getItem(HL_KEY) || '{}') || {}; } catch (e) { return {}; }
+    var NB_KEY = 'edaic-notes-v1';
+    function loadKey(k) {
+      try { return JSON.parse(localStorage.getItem(k) || '{}') || {}; } catch (e) { return {}; }
     }
+    function loadHighlights() { return loadKey(HL_KEY); }
+    function loadNoteBoxes() { return loadKey(NB_KEY); }
     // UTF-8 safe base64 — highlighted text contains arrows, subscripts, etc.
     function encode(obj) { return btoa(unescape(encodeURIComponent(JSON.stringify(obj)))); }
     function decode(str) { return JSON.parse(decodeURIComponent(escape(atob(str)))); }
 
     function copyCode() {
       var s = load();
-      var code = 'EDAIC1:' + encode({ n: s.n, d: s.d, h: loadHighlights() });
+      var code = 'EDAIC1:' + encode({ n: s.n, d: s.d, h: loadHighlights(), b: loadNoteBoxes() });
       function fallback() { window.prompt('Copy this code, then paste it on your other device:', code); }
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(code).then(function () {
@@ -284,19 +288,26 @@
           });
         });
         save(s);
-        var hl = loadHighlights();
-        Object.keys(got.h || {}).forEach(function (note) {
-          var mine = hl[note] || [];
-          (got.h[note] || []).forEach(function (h) {
-            var dup = mine.some(function (x) { return x.id === h.id || (x.t === h.t && x.p === h.p); });
-            if (!dup) { mine.push(h); addedHl++; }
+        var addedNb = 0;
+        // Highlights and note boxes merge the same way: add what is missing,
+        // never remove what is already on this device.
+        function mergeInto(key, incoming, dup) {
+          var mine = loadKey(key), n = 0;
+          Object.keys(incoming || {}).forEach(function (note) {
+            var here = mine[note] || [];
+            (incoming[note] || []).forEach(function (item) {
+              if (!here.some(function (x) { return dup(x, item); })) { here.push(item); n++; }
+            });
+            if (here.length) mine[note] = here;
           });
-          if (mine.length) hl[note] = mine;
-        });
-        try { localStorage.setItem(HL_KEY, JSON.stringify(hl)); } catch (e) { /* storage blocked */ }
+          try { localStorage.setItem(key, JSON.stringify(mine)); } catch (e) { /* storage blocked */ }
+          return n;
+        }
+        addedHl = mergeInto(HL_KEY, got.h, function (x, h) { return x.id === h.id || (x.t === h.t && x.p === h.p); });
+        addedNb = mergeInto(NB_KEY, got.b, function (x, n) { return x.id === n.id || (x.t === n.t && x.body === n.body); });
         renderAll();
-        alert(added || addedHl
-          ? 'Done — ' + added + ' ticks and ' + addedHl + ' highlights added. Nothing already here was removed.'
+        alert(added || addedHl || addedNb
+          ? 'Done — ' + added + ' ticks, ' + addedHl + ' highlights and ' + addedNb + ' notes added. Nothing already here was removed.'
           : 'Nothing new — this device already has all of that.');
       } catch (err) {
         alert('That code did not work. Copy it again in full and retry.');
