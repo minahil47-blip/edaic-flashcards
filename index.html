@@ -288,7 +288,11 @@
 
   <div class="controls">
     <button class="btn nav big" id="prevBtn">‹</button>
-    <button class="btn shuffle" id="shuffleBtn">🔀 Shuffle</button>
+    <span class="jump">
+      <label for="jumpInput">Card</label>
+      <input id="jumpInput" type="number" min="1" inputmode="numeric" aria-label="Go to card number">
+      <button class="btn" id="jumpBtn">Go</button>
+    </span>
     <button class="btn nav big" id="nextBtn">›</button>
   </div>
 </div>

@@ -15,6 +15,8 @@
   let filtered = [];
   let order = [];
   let idx = 0;
+  // Card number to land on when the app reopens; read once at startup.
+  let pendingIdx = 0;
 
   const el = (sel) => document.querySelector(sel);
   const sceneEl = el('.scene');
@@ -28,14 +30,33 @@
   const atextEl = el('#atext');
   const tagFrontEl = el('#tagFront');
   const tagBackEl = el('#tagBack');
+  const jumpInput = el('#jumpInput');
 
-  function shuffleArr(arr) {
-    const a = arr.slice();
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
+  // ---- picking up where you left off --------------------------------------
+  // Cards sit in a FIXED order — there is no shuffle — so "Card 7 of 50" is
+  // the same card on every device, and two people can revise together by
+  // calling out card numbers. The deck, topic filter and card number are kept
+  // in this browser so the app reopens on the same card.
+  const POS_KEY = 'edaic-last-card-v1';
+
+  function savePosition() {
+    try {
+      localStorage.setItem(POS_KEY, JSON.stringify({
+        deck: DECKS[deckIndex].id, cat: activeCat, idx: idx, at: Date.now()
+      }));
+    } catch (e) { /* storage blocked */ }
+  }
+
+  function restorePosition() {
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(POS_KEY) || 'null'); } catch (e) { return; }
+    if (!saved) return;
+    const i = DECKS.findIndex(d => d.id === saved.deck);
+    if (i < 0) return;                       // that deck is no longer on the site
+    deckIndex = i;
+    const cats = DECKS[i].cards.map(c => c.cat);
+    activeCat = saved.cat && (saved.cat === 'All' || cats.indexOf(saved.cat) >= 0) ? saved.cat : 'All';
+    pendingIdx = Math.max(0, parseInt(saved.idx, 10) || 0);
   }
 
   function applyDeckColors(deck) {
@@ -76,8 +97,9 @@
   function applyFilter() {
     const deck = DECKS[deckIndex];
     filtered = activeCat === "All" ? deck.cards.slice() : deck.cards.filter(c => c.cat === activeCat);
-    order = shuffleArr(filtered.map((_, i) => i));
-    idx = 0;
+    order = filtered.map((_, i) => i);   // fixed order: same card numbers on every device
+    idx = Math.min(pendingIdx, Math.max(0, filtered.length - 1));
+    pendingIdx = 0;
     showCard();
   }
 
@@ -94,6 +116,12 @@
     tagFrontEl.textContent = item.cat;
     tagBackEl.textContent = item.cat;
     progressEl.textContent = `${item.opts ? 'Question' : 'Card'} ${idx + 1} of ${filtered.length}`;
+    if (jumpInput) {
+      jumpInput.max = filtered.length;
+      jumpInput.placeholder = String(idx + 1);
+      jumpInput.value = '';
+    }
+    savePosition();
   }
 
   // Two card shapes are supported:
@@ -156,12 +184,19 @@
     idx = (idx - 1 + filtered.length) % filtered.length;
     showCard();
   };
-  el('#shuffleBtn').onclick = () => {
-    if (!filtered.length) return;
-    order = shuffleArr(filtered.map((_, i) => i));
-    idx = 0;
+  // Jump straight to a card number — how two people on different devices land
+  // on the same card.
+  const jumpTo = () => {
+    const n = parseInt(jumpInput.value, 10);
+    if (!filtered.length || !n) return;
+    idx = Math.min(Math.max(n, 1), filtered.length) - 1;
     showCard();
+    jumpInput.blur();
   };
+  el('#jumpBtn').onclick = jumpTo;
+  jumpInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); jumpTo(); }
+  });
 
   // keyboard support
   document.addEventListener('keydown', (e) => {
@@ -191,6 +226,7 @@
     }
   };
 
+  restorePosition();
   buildDeckTabs();
   loadDeck();
 })();
