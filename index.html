@@ -8,9 +8,16 @@
 </head>
 <body>
 
+<!-- Mobile drawer toggle. Hidden on wide screens, where the sidebar is permanent. -->
+<button id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+<div id="overlay" hidden></div>
+
+<div id="layout">
+<aside id="sidebar">
+
 <div class="site-header">
   <div class="site-title">🩺 EDAIC Part I Flashcards</div>
-  <div class="site-subtitle">Tap a card to flip · Switch decks above · Filter by topic below</div>
+  <div class="site-subtitle">Tap a card to flip · Pick decks and notes here</div>
 </div>
 
 <!-- SEARCH — indexes every note title and every card in every deck. -->
@@ -265,9 +272,18 @@
 
   </div>
 </details>
-<div class="deck-subtitle" id="deckSubtitle"></div>
 
-<div class="chips" id="chips"></div>
+<!-- Category filter for the deck currently open. app.js fills #chips. -->
+<details id="catPicker" open>
+  <summary>🏷 Categories</summary>
+  <div class="chips" id="chips"></div>
+</details>
+
+</aside>
+
+<main id="main">
+
+<div class="deck-subtitle" id="deckSubtitle"></div>
 <div class="progress" id="progress"></div>
 
 <div id="app-root">
@@ -298,6 +314,9 @@
 </div>
 
 <footer>EDAIC Part I revision · Developed by Dr Minahil Zaman</footer>
+
+</main>
+</div><!-- /#layout -->
 
 <!--
   TO ADD A NEW DECK:
@@ -528,5 +547,44 @@
 })();
 </script>
 <script src="revised.js"></script>
+
+<!--
+  SIDEBAR DRAWER — only does anything below 980px, where the sidebar is
+  off-canvas. On wider screens the panel is permanent and these handlers
+  are harmless no-ops.
+-->
+<script>
+(function () {
+  var btn = document.getElementById('menuBtn');
+  var overlay = document.getElementById('overlay');
+  var sidebar = document.getElementById('sidebar');
+  if (!btn || !overlay || !sidebar) return;
+
+  function setOpen(open) {
+    document.body.classList.toggle('nav-open', open);
+    overlay.hidden = !open;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.textContent = open ? '✕' : '☰';
+  }
+  var isDrawer = function () { return window.matchMedia('(max-width:980px)').matches; };
+
+  btn.addEventListener('click', function () { setOpen(!document.body.classList.contains('nav-open')); });
+  overlay.addEventListener('click', function () { setOpen(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+
+  // Choosing a deck, a category or a note closes the drawer so the card is
+  // visible immediately. Ignore clicks on the <summary> toggles themselves.
+  sidebar.addEventListener('click', function (e) {
+    if (!isDrawer()) return;
+    var t = e.target;
+    if (!t.closest) return;
+    if (t.closest('summary')) return;
+    if (t.closest('.deck-tab, .chip, a[href], .sr-item')) setOpen(false);
+  });
+
+  // Leaving drawer width must not strand the page in the open state.
+  window.addEventListener('resize', function () { if (!isDrawer()) setOpen(false); });
+})();
+</script>
 </body>
 </html>
