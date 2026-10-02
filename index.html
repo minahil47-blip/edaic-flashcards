@@ -247,42 +247,39 @@
   before; the small script at the foot of this file moves the MCQ tabs into
   their own sub-dropdown and closes the picker once a deck is chosen.
 -->
-<details id="deckPicker" style="max-width:760px;width:100%;margin:0 auto 14px;padding:0 16px">
+<!--
+  DECKS — two independent top-level dropdowns. app.js renders every deck into
+  #deckTabs; the helper near the bottom of this file then moves the MCQ ones
+  across into #mcqTabs. #deckPicker keeps its id because revised.js hangs the
+  decks progress meter off it.
+-->
+<details id="deckPicker" style="max-width:760px;width:100%;margin:0 auto 10px;padding:0 16px">
   <summary style="cursor:pointer;list-style:none;font-weight:800;font-size:15.5px;color:#fff;
                   background:rgba(203,184,255,.14);border:1px solid rgba(203,184,255,.3);
                   border-radius:12px;padding:11px 16px;user-select:none">
-    🗂 Decks — <span id="deckLabel" style="color:#ffd93d">choose a deck</span>
+    📚 Flashcard decks <span id="nTopic" style="opacity:.65;font-weight:600"></span>
   </summary>
-
   <div style="margin-top:10px;background:rgba(0,0,0,.22);border-radius:12px;padding:10px 12px">
-
-    <details open style="margin:2px 0">
-      <summary style="cursor:pointer;list-style:none;font-weight:700;font-size:14.5px;color:#ffd93d;padding:9px 10px;border-radius:9px;background:rgba(255,217,61,.08)">
-        📚 Topic decks <span id="nTopic" style="opacity:.65;font-weight:600"></span>
-      </summary>
-      <div class="deck-tabs" id="deckTabs"></div>
-    </details>
-
-    <details style="margin:6px 0 2px">
-      <summary style="cursor:pointer;list-style:none;font-weight:700;font-size:14.5px;color:#ff9a3d;padding:9px 10px;border-radius:9px;background:rgba(255,154,61,.10);border:1px solid rgba(255,154,61,.3)">
-        🎯 MCQ decks <span id="nMcq" style="opacity:.65;font-weight:600"></span>
-      </summary>
-      <div class="deck-tabs" id="mcqTabs"></div>
-    </details>
-
+    <div class="deck-tabs" id="deckTabs"></div>
   </div>
 </details>
 
-<!-- Category filter for the deck currently open. app.js fills #chips. -->
-<details id="catPicker" open>
-  <summary>🏷 Categories</summary>
-  <div class="chips" id="chips"></div>
+<details id="mcqPicker" style="max-width:760px;width:100%;margin:0 auto 14px;padding:0 16px">
+  <summary style="cursor:pointer;list-style:none;font-weight:800;font-size:15.5px;color:#ff9a3d;
+                  background:rgba(255,154,61,.12);border:1px solid rgba(255,154,61,.32);
+                  border-radius:12px;padding:11px 16px;user-select:none">
+    🎯 MCQ decks <span id="nMcq" style="opacity:.65;font-weight:600"></span>
+  </summary>
+  <div style="margin-top:10px;background:rgba(0,0,0,.22);border-radius:12px;padding:10px 12px">
+    <div class="deck-tabs" id="mcqTabs"></div>
+  </div>
 </details>
 
 </aside>
 
 <main id="main">
 
+<div class="deck-name" id="deckLabel">choose a deck</div>
 <div class="deck-subtitle" id="deckSubtitle"></div>
 <div class="progress" id="progress"></div>
 
@@ -405,12 +402,15 @@
   observer.observe(src, { childList: true });
   sortTabs();
 
-  // Choosing a deck collapses the picker again.
+  // Choosing a deck collapses whichever of the two pickers it came from.
+  // Capture phase matters: app.js's own handler rebuilds #deckTabs and detaches
+  // the clicked button, and a detached node's closest('details') is null.
   document.addEventListener('click', function (e) {
     var tab = e.target && e.target.closest ? e.target.closest('.deck-tab') : null;
     if (!tab) return;
-    setTimeout(function () { sortTabs(); picker.open = false; }, 0);
-  });
+    var owner = tab.closest('details');
+    setTimeout(function () { sortTabs(); if (owner) owner.open = false; }, 0);
+  }, true);
 })();
 </script>
 
@@ -427,6 +427,7 @@
   var clearBt = document.getElementById('searchClear');
   var panel   = document.getElementById('searchResults');
   var picker  = document.getElementById('deckPicker');
+  var mcqPicker = document.getElementById('mcqPicker');
   if (!box || !panel) return;
 
   // ---- build the note index from the contents links ----
@@ -535,6 +536,7 @@
     box.value = '';
     clearBt.hidden = true;
     if (picker) picker.open = false;
+    if (mcqPicker) mcqPicker.open = false;
     var scene = document.querySelector('.scene');
     if (scene) scene.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });

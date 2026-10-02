@@ -55,7 +55,9 @@
     if (i < 0) return;                       // that deck is no longer on the site
     deckIndex = i;
     const cats = DECKS[i].cards.map(c => c.cat);
-    activeCat = saved.cat && (saved.cat === 'All' || cats.indexOf(saved.cat) >= 0) ? saved.cat : 'All';
+    // Without a chip UI there is no way to clear a restored filter, so a
+    // category saved by an earlier version must not be honoured.
+    activeCat = chipsEl && saved.cat && (saved.cat === 'All' || cats.indexOf(saved.cat) >= 0) ? saved.cat : 'All';
     pendingIdx = Math.max(0, parseInt(saved.idx, 10) || 0);
   }
 
@@ -81,6 +83,10 @@
   }
 
   function buildChips(deck) {
+    // The category filter was removed from the UI; keep the deck on "All" and
+    // skip rendering if the container is absent. Restoring a #chips element is
+    // all that is needed to bring the filter back.
+    if (!chipsEl) return;
     const cats = ["All", ...Array.from(new Set(deck.cards.map(c => c.cat)))];
     const palette = (deck.colors && deck.colors.chips) || ["#3d8bff","#a63dff","#ff3d81","#ff9a3d","#ffd93d","#3ddc97","#3dd6d6","#ff6b6b","#c6ff3d"];
     chipsEl.innerHTML = "";

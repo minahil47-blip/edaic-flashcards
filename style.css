@@ -403,3 +403,14 @@ body{display:block;align-items:stretch;padding:0}
 @media (max-width:980px){
   #sidebar{padding-top:60px}
 }
+
+/* ---- Two separate deck dropdowns; category chips removed from the UI ---- */
+#catPicker{display:none}
+#sidebar #mcqPicker{max-width:none !important;margin:0 0 10px !important}
+#sidebar #mcqPicker > summary::-webkit-details-marker{display:none}
+
+/* Active deck name, now shown above the card instead of in a picker summary. */
+.deck-name{
+  font-size:1.02rem;font-weight:800;color:var(--sun);
+  text-align:center;margin:0 0 2px;line-height:1.3;
+}
