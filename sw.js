@@ -7,7 +7,7 @@
  * which is what makes a new deck or note actually reach people who already
  * installed the app.
  */
-const CACHE = 'edaic-v4';
+const CACHE = 'edaic-v6';
 
 const PRECACHE = [
   './',
@@ -47,6 +47,12 @@ const PRECACHE = [
   './decks/deck32-exam-clinical-icu.js',
   './decks/deck33-statistics-research.js',
   './decks/deck34-airway.js',
+  './decks/deck35-ventilation.js',
+  './decks/deck36-sepsis-liver-trauma.js',
+  './decks/deck37-local-regional.js',
+  './decks/deck38-specialty-daycase.js',
+  './decks/deck39-acute-emergencies.js',
+  './decks/deck40-infusion-palliative.js',
   './decks/deck4-mixed-mcq.js',
   './decks/deck5-neurophysiology.js',
   './decks/deck6-physics-stats.js',
