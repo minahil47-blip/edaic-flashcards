@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EDAIC Part I Flashcards</title>
 <link rel="stylesheet" href="style.css">
+
+<!-- Installable / offline -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0d0a1f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Flashcards">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 </head>
 <body>
 
@@ -18,6 +27,12 @@
 <div class="site-header">
   <div class="site-title">🩺 EDAIC Part I Flashcards</div>
   <div class="site-subtitle">Tap a card to flip · Pick decks and notes here</div>
+</div>
+
+<!-- Offline status / install. Filled in by the service-worker script below. -->
+<div id="offlineBar" hidden>
+  <span id="offlineState"></span>
+  <button id="installBtn" type="button" hidden>Install</button>
 </div>
 
 <!-- SEARCH — indexes every note title and every card in every deck. -->
@@ -588,5 +603,72 @@
   window.addEventListener('resize', function () { if (!isDrawer()) setOpen(false); });
 })();
 </script>
+<!--
+  OFFLINE — registers the service worker, reports cache state, and offers the
+  install prompt where the browser supports it. Everything here degrades to
+  nothing if service workers are unavailable (including file:// previews).
+-->
+<script>
+(function () {
+  var bar   = document.getElementById('offlineBar');
+  var state = document.getElementById('offlineState');
+  var btn   = document.getElementById('installBtn');
+  if (!bar || !state) return;
+
+  function show(text, cls) {
+    bar.hidden = false;
+    bar.className = cls || '';
+    state.textContent = text;
+  }
+
+  // Service workers need a secure context; file:// and plain http (other than
+  // localhost) are not one, so say nothing rather than showing a broken state.
+  if (!('serviceWorker' in navigator) || !window.isSecureContext) return;
+
+  navigator.serviceWorker.register('sw.js').then(function (reg) {
+    if (navigator.serviceWorker.controller) {
+      show('✓ Saved for offline', 'ok');
+    } else {
+      show('Saving for offline…', 'busy');
+      // First visit: the worker is installing and filling the cache.
+      var sw = reg.installing || reg.waiting;
+      if (sw) {
+        sw.addEventListener('statechange', function () {
+          if (sw.state === 'activated') show('✓ Saved for offline', 'ok');
+        });
+      }
+    }
+  }).catch(function () {
+    show('Offline save unavailable', 'warn');
+  });
+
+  // Reflect real connectivity, so a cached visit with no signal is obvious.
+  function net() {
+    if (!navigator.onLine) show('✓ Offline — working from cache', 'ok');
+    else if (navigator.serviceWorker.controller) show('✓ Saved for offline', 'ok');
+  }
+  window.addEventListener('online', net);
+  window.addEventListener('offline', net);
+  net();
+
+  // Install prompt. Chrome/Edge/Android fire this; iOS Safari never does, so
+  // the button simply stays hidden there.
+  var deferred = null;
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    deferred = e;
+    if (btn) btn.hidden = false;
+  });
+  if (btn) {
+    btn.addEventListener('click', function () {
+      if (!deferred) return;
+      deferred.prompt();
+      deferred.userChoice.finally(function () { deferred = null; btn.hidden = true; });
+    });
+  }
+  window.addEventListener('appinstalled', function () { if (btn) btn.hidden = true; });
+})();
+</script>
+
 </body>
 </html>
