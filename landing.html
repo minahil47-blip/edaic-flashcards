@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Offline revision for the Part I anaesthesia exam</title>
+<meta name="description" content="1,728 cards, 1,575 marks of exam-format MTF practice and 63 illustrated notes. Works with no signal. Independent preparation for the EDAIC Part I examination.">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#0d0a1f; --bg2:#1c1240; --bg3:#2a1a5c;
+  --ink:#fff; --muted:#bcaae6; --dim:#8d7fb5;
+  --sun:#ffd93d; --mint:#3ddc97; --pink:#ff3d81; --purple:#a63dff;
+  --line:rgba(203,184,255,.22);
+  --panel:rgba(255,255,255,.045);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:linear-gradient(165deg,var(--bg1),var(--bg2) 55%,var(--bg3));
+  background-attachment:fixed;
+  color:var(--ink);
+  font-family:'Public Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  font-size:16px;line-height:1.6;
+}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+section{padding:46px 0}
+h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;letter-spacing:-.02em;margin:0}
+h1{font-size:clamp(30px,6vw,50px);line-height:1.08}
+h2{font-size:clamp(21px,3.6vw,28px);margin:0 0 16px}
+h3{font-size:17px;margin:0 0 6px}
+p{margin:0 0 14px}
+.lede{font-size:clamp(16px,2.3vw,19px);color:var(--muted);max-width:60ch}
+.grad{background:linear-gradient(90deg,#ff3d81,#ff9a3d,#ffd93d,#3ddc97,#3d8bff);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* hero */
+.hero{padding:56px 0 34px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mint);margin-bottom:14px}
+.hero h1{margin-bottom:16px}
+
+/* stat strip */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin:30px 0 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px 16px}
+.stat b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:26px;line-height:1;margin-bottom:5px}
+.stat span{font-size:12.5px;color:var(--dim);font-weight:600}
+.stat:nth-child(1) b{color:var(--sun)}
+.stat:nth-child(2) b{color:var(--pink)}
+.stat:nth-child(3) b{color:var(--mint)}
+.stat:nth-child(4) b{color:#6fb9ff}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}
+.card .ico{font-size:22px;margin-bottom:9px}
+.card p{font-size:14.5px;color:var(--muted);margin:0}
+
+/* price */
+.price{
+  background:linear-gradient(135deg,rgba(166,61,255,.18),rgba(255,61,129,.14));
+  border:1px solid rgba(203,184,255,.35);border-radius:20px;padding:28px;text-align:center;
+}
+.price .amt{font-family:'Bricolage Grotesque',sans-serif;font-size:50px;line-height:1;font-weight:800}
+.price .amt small{font-size:19px;font-weight:700;color:var(--muted)}
+.price .until{color:var(--muted);font-size:14.5px;margin-top:8px}
+.launch{display:inline-block;margin-top:14px;background:rgba(61,220,151,.16);border:1px solid rgba(61,220,151,.4);
+  color:#9bf0cb;border-radius:999px;padding:6px 15px;font-size:13px;font-weight:700}
+.ppp{font-size:13px;color:var(--dim);margin-top:14px}
+
+/* signup */
+#signup{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:26px}
+form{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+input[type=email]{
+  flex:1 1 230px;min-width:0;padding:13px 15px;border-radius:12px;
+  border:1px solid var(--line);background:rgba(0,0,0,.26);color:#fff;
+  font-family:inherit;font-size:15px;font-weight:600;outline:none;
+}
+input[type=email]::placeholder{color:#8578ad}
+input[type=email]:focus{border-color:rgba(203,184,255,.7);background:rgba(0,0,0,.36)}
+button{
+  padding:13px 24px;border:none;border-radius:12px;cursor:pointer;
+  background:var(--sun);color:#14102b;font-family:inherit;font-size:15px;font-weight:800;
+}
+button:active{transform:scale(.97)}
+button[disabled]{opacity:.55;cursor:not-allowed}
+.formnote{font-size:12.5px;color:var(--dim);margin-top:11px}
+#msg{margin-top:13px;font-size:14.5px;font-weight:700;display:none;border-radius:10px;padding:11px 14px}
+#msg.ok{display:block;background:rgba(61,220,151,.14);border:1px solid rgba(61,220,151,.4);color:#9bf0cb}
+#msg.err{display:block;background:rgba(255,107,107,.14);border:1px solid rgba(255,107,107,.4);color:#ffb3b3}
+
+/* honesty box */
+.honest{border-left:4px solid var(--sun);background:rgba(255,217,61,.07);border-radius:0 14px 14px 0;padding:17px 20px}
+.honest h3{color:var(--sun)}
+.honest p{font-size:14.5px;color:var(--muted);margin:0}
+
+ul.ticks{list-style:none;padding:0;margin:0}
+ul.ticks li{padding:7px 0 7px 27px;position:relative;font-size:15px;color:var(--muted)}
+ul.ticks li::before{content:'✓';position:absolute;left:0;color:var(--mint);font-weight:800}
+
+footer{border-top:1px solid var(--line);padding:26px 0 40px;font-size:12.5px;color:var(--dim)}
+footer p{margin:0 0 9px}
+a{color:var(--muted)}
+.demo{display:inline-block;margin-top:18px;padding:12px 22px;border-radius:12px;
+  border:1px solid var(--line);background:rgba(255,255,255,.06);
+  color:#fff;text-decoration:none;font-weight:700;font-size:15px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow">Independent · not affiliated with ESAIC</div>
+    <h1>Revision for the Part I anaesthesia exam that <span class="grad">works with no signal</span></h1>
+    <p class="lede">1,728 cards, 1,575 marks of exam-format multiple true/false practice, and 63 illustrated notes drawn from scratch. Install it once; it works on the ward, on a plane, anywhere.</p>
+
+    <div class="stats">
+      <div class="stat"><b>1,728</b><span>flashcards</span></div>
+      <div class="stat"><b>1,575</b><span>marks of MTF practice</span></div>
+      <div class="stat"><b>63</b><span>illustrated notes</span></div>
+      <div class="stat"><b>100%</b><span>works offline</span></div>
+    </div>
+
+    <a class="demo" href="index.html">Try it now — free, no sign-up →</a>
+  </section>
+
+  <section>
+    <h2>Why this one</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="ico">📴</div>
+        <h3>Genuinely offline</h3>
+        <p>Not "mobile friendly" — actually offline. Add it to your home screen and every card, note and diagram is on your phone. No signal needed, ever.</p>
+      </div>
+      <div class="card">
+        <div class="ico">✏️</div>
+        <h3>Diagrams, not walls of text</h3>
+        <p>TEG traces, fetal circulation, the rule of nines, ventilation–perfusion in the lateral position — all drawn specifically to be understood, not scanned from a textbook.</p>
+      </div>
+      <div class="card">
+        <div class="ico">🎯</div>
+        <h3>The real exam format</h3>
+        <p>One stem, five independently marked statements, exactly as Papers A and B are set. Every statement has a worked explanation for why it is true or false.</p>
+      </div>
+      <div class="card">
+        <div class="ico">💸</div>
+        <h3>A price a trainee can pay</h3>
+        <p>The serious alternatives start around €329. This is a fraction of that, with regional pricing so it costs less where salaries are lower.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What's inside</h2>
+    <ul class="ticks">
+      <li><b>32 decks</b> — cardiovascular, respiratory, neuro, renal, GI and endocrine, pharmacology, physics and statistics, regional, ICU, equipment, formulas</li>
+      <li><b>315 exam-format MTF questions</b> — 1,575 individually marked statements, each with an explanation</li>
+      <li><b>1,413 rapid-recall cards</b> for the facts that have to be automatic</li>
+      <li><b>63 illustrated notes</b> with original diagrams across physiology, pharmacology, anatomy, physics, clinical anaesthesia and intensive care</li>
+      <li><b>Progress tracking</b> that remembers which decks and notes you have worked through</li>
+      <li><b>Search</b> across every card and note at once</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="honest">
+      <h3>What this is not</h3>
+      <p>It is not the biggest question bank available — there are banks with tens of thousands of statements, and if sheer volume is what you want, buy one of those. This is a tight, well-explained core you can actually finish, with diagrams that make the hard topics stick, on a phone that doesn't need a connection.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="price">
+      <div class="amt">$35<small> once</small></div>
+      <div class="until">Full access through the September 2027 examination.<br>One payment. No subscription, nothing to cancel.</div>
+      <div class="launch">🚀 Launch price $19 for the first 50 — in exchange for honest feedback</div>
+      <div class="ppp">Regional pricing applies automatically: lower in South Asia, Africa and Latin America.</div>
+    </div>
+  </section>
+
+  <section>
+    <div id="signup">
+      <h2>Not on sale yet</h2>
+      <p class="lede" style="font-size:16px">It is being finished now. Leave your email and you'll get the launch price, and nothing else — no newsletter, no sharing your address with anyone.</p>
+
+      <form id="signupForm" novalidate>
+        <input id="email" type="email" name="email" placeholder="you@hospital.org" autocomplete="email" required>
+        <button id="submitBtn" type="submit">Notify me</button>
+      </form>
+      <div id="msg"></div>
+      <div class="formnote">One email when it launches. Unsubscribe is a reply saying stop.</div>
+    </div>
+  </section>
+
+  <footer>
+    <p><b>Independent study material.</b> Not affiliated with, endorsed by, or connected to the European Society of Anaesthesiology and Intensive Care (ESAIC). "EDAIC" is a trademark of ESAIC and is used here only to identify the examination this material is intended to help prepare for.</p>
+    <p><b>For examination preparation only.</b> Nothing here is clinical guidance and it must not be used to direct patient care. Always follow current local protocols and guidelines.</p>
+    <p>Developed by Dr Minahil Zaman.</p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  // ---------------------------------------------------------------------
+  // Where signups go. Until this is set, the form tells the visitor the
+  // truth rather than silently throwing their address away.
+  //
+  // Formspree:  https://formspree.io  →  create a form, paste its URL here.
+  //   SIGNUP_ENDPOINT = 'https://formspree.io/f/xxxxxxxx';
+  //
+  // Any endpoint accepting a JSON POST of {email, source} works.
+  // ---------------------------------------------------------------------
+  var SIGNUP_ENDPOINT = '';
+
+  var form = document.getElementById('signupForm');
+  var input = document.getElementById('email');
+  var btn = document.getElementById('submitBtn');
+  var msg = document.getElementById('msg');
+
+  function say(text, cls) { msg.textContent = text; msg.className = cls; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = input.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      say('That email address does not look right — check it and try again.', 'err');
+      return;
+    }
+
+    if (!SIGNUP_ENDPOINT) {
+      say('Signups are not connected yet. Nothing was sent.', 'err');
+      return;
+    }
+
+    btn.disabled = true;
+    say('Sending…', 'ok');
+
+    fetch(SIGNUP_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'landing' })
+    })
+      .then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        form.reset();
+        say("You're on the list. You'll get one email at launch.", 'ok');
+      })
+      .catch(function () {
+        say('That did not send — check your connection and try again.', 'err');
+      })
+      .finally(function () { btn.disabled = false; });
+  });
+})();
+</script>
+
+</body>
+</html>
