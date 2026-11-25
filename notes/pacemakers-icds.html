@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pacemakers &amp; ICDs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="notes.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="newflag batch5"><b>DECK NOTE</b> Written 25 November 2026 to close a PART row in the coverage audit.</div>
+
+  <header class="top">
+    <h1>Pacemakers &amp; implantable defibrillators for surgery</h1>
+    <p>The NBG code, what diathermy actually does to a device, and the decisions to make before, during and after the operation.</p>
+  </header>
+
+  <section class="card">
+    <h2 class="kicker">The NBG / NASPE-BPEG code</h2>
+    <p class="sub">Five positions. You are expected to read a code and say what the device will do.</p>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Position</th><th>Meaning</th><th>Letters</th></tr></thead>
+        <tbody>
+          <tr><th><b>I</b></th><td class="c4">Chamber <b>paced</b></td><td class="c4">O none · A atrium · V ventricle · <b>D dual</b></td></tr>
+          <tr><th><b>II</b></th><td class="c4">Chamber <b>sensed</b></td><td class="c4">O · A · V · D</td></tr>
+          <tr><th><b>III</b></th><td class="c1">Response to sensing</td><td class="c1">O none · <b>I inhibited</b> · T triggered · D both</td></tr>
+          <tr><th><b>IV</b></th><td class="c2">Rate modulation</td><td class="c2">O none · <b>R rate-responsive</b></td></tr>
+          <tr><th><b>V</b></th><td class="c3">Multisite pacing</td><td class="c3">O · A · V · D</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note hook">
+      <h3>Read these four without hesitating</h3>
+      <ul>
+        <li><b>VVI</b> — paces the ventricle, senses the ventricle, inhibited by a sensed beat. Single-chamber backup; no AV synchrony.</li>
+        <li><b>DDD</b> — paces and senses both chambers with both responses. <b>Maintains AV synchrony</b>, the physiological mode.</li>
+        <li><b>DDDR</b> — as above, with rate response to exercise, usually from an accelerometer or minute ventilation.</li>
+        <li><b>VOO / DOO</b> — <b>asynchronous</b>, no sensing at all. This is what a magnet produces, and what you want when diathermy would otherwise inhibit the device.</li>
+        <li><b>AAI</b> is only appropriate with intact AV conduction — it offers no ventricular backup if the patient blocks.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Why theatre is hostile to a device</h2>
+    <ul>
+      <li><b>Electromagnetic interference, chiefly from monopolar diathermy</b>, is the central problem. The device cannot distinguish diathermy current from intrinsic cardiac activity.</li>
+      <li><b>In a pacemaker</b>, interference is sensed as cardiac activity and <b>inhibits output</b> — so a dependent patient has no pacing and no output. Interference can also cause inappropriate rate increase, reversion to a noise mode, or, rarely, reprogramming.</li>
+      <li><b>In an ICD</b>, interference is sensed as ventricular fibrillation and triggers an <b>inappropriate shock</b> — dangerous for the patient and for anyone touching them.</li>
+      <li><b>Other sources</b>: nerve stimulators, evoked potential monitoring, electroconvulsive therapy, lithotripsy, radiofrequency ablation, MRI, radiotherapy, and surgical robots.</li>
+      <li><b>Suxamethonium fasciculation</b> can cause myopotential oversensing and inhibition. Shivering does the same.</li>
+    </ul>
+    <div class="note">
+      <h3>Diathermy rules</h3>
+      <ul>
+        <li><b>Use bipolar diathermy wherever possible</b> — the current path is confined between the forceps tips, so interference is minimal.</li>
+        <li>If monopolar is unavoidable: <b>short bursts at the lowest effective power</b>, with the <b>return plate placed so the current path does not cross the device or its leads</b> — generally on the thigh or buttock for upper-body surgery.</li>
+        <li><b>Keep diathermy at least 15 cm from the device.</b> Surgery on the chest wall near the generator is the highest-risk situation.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">The preoperative decisions</h2>
+    <ol class="phases">
+      <li><div class="num">1</div><div><p class="pname">Identify the device and the indication</p><p class="pbody">Pacemaker or ICD? Device card, chest radiograph, the latest technician check (ideally within 12 months for a pacemaker, 6 for an ICD). <b>Why was it implanted?</b> Complete heart block is a very different problem from intermittent syncope.</p></div></li>
+      <li><div class="num">2</div><div><p class="pname">Is the patient pacing-dependent?</p><p class="pbody">The single most important question. <b>Dependent</b> means there is no adequate underlying rhythm — inhibition causes asystole. Look at the ECG: if every complex is paced, assume dependence until the technician says otherwise.</p></div></li>
+      <li><div class="num">3</div><div><p class="pname">Decide: reprogramme or magnet?</p><p class="pbody"><b>Pacing-dependent patient having surgery above the umbilicus</b> → reprogramme to an <b>asynchronous mode (DOO or VOO)</b>, or apply a magnet. <b>Rate response must be turned off</b> — it can be driven by diathermy, ventilation or surgical movement. For <b>any ICD</b>, the tachyarrhythmia therapy must be <b>disabled</b> (by programming, or by a magnet).</p></div></li>
+      <li><div class="num">4</div><div><p class="pname">Have the backup ready</p><p class="pbody"><b>External pacing and defibrillation pads applied before draping</b>, in a position that does not overlie the generator, with atropine, isoprenaline or adrenaline immediately available. A technician contactable, and the device re-checked and reprogrammed before discharge.</p></div></li>
+    </ol>
+    <div class="note warn">
+      <h3>What a magnet actually does — and the trap</h3>
+      <ul>
+        <li><b>On a pacemaker</b>, a magnet usually switches it to <b>asynchronous pacing</b> at a fixed rate (often around 85 to 100/min, manufacturer-dependent). That protects against inhibition.</li>
+        <li><b>On an ICD</b>, a magnet <b>suspends tachyarrhythmia detection and shock therapy</b> but <b>does NOT make the pacing function asynchronous</b>. So a pacing-dependent patient with an ICD is still vulnerable to inhibition with a magnet on — that requires reprogramming.</li>
+        <li>Magnet response is <b>not universal</b>; some devices are programmed to ignore it, and the response can be switched off. Never assume — check the device or ask the technician.</li>
+        <li>A magnet is the <b>emergency</b> measure of choice if an ICD delivers an inappropriate shock intraoperatively: apply it immediately and stop the diathermy.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Specific situations</h2>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Situation</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><th><b>Emergency surgery, no device information</b></th><td class="c1">Chest radiograph to identify, ECG to judge dependence, pads on, magnet available, bipolar diathermy, technician as soon as possible afterwards</td></tr>
+          <tr><th><b>Defibrillating a patient with a device</b></th><td class="c5">Defibrillate as normal — <b>do not withhold it</b>. Place the pads <b>at least 8 to 15 cm from the generator</b>, preferably anteroposterior, and have the device checked afterwards for damage and reprogramming</td></tr>
+          <tr><th><b>Central line insertion</b></th><td class="c2">Guidewires can displace or dislodge leads, particularly within the first <b>6 weeks</b> of implantation when they are not yet fibrosed in. Use ultrasound and avoid deep wire insertion</td></tr>
+          <tr><th><b>MRI</b></th><td class="c5">Many modern devices are <b>MR conditional</b>, requiring specific programming and cardiology involvement. <b>Abandoned or epicardial leads</b> remain a hazard — they can heat and cause myocardial injury (see <a href="sedation-remote-transfer.html">MRI safety</a>)</td></tr>
+          <tr><th><b>Lithotripsy</b></th><td class="c3">Avoid focusing on the generator; some devices need the shock gated to the R wave, and rate-responsive and atrial pacing functions disabled</td></tr>
+          <tr><th><b>Cardiac resynchronisation (CRT)</b></th><td class="c4">Biventricular pacing for heart failure with LBBB. Loss of resynchronisation worsens cardiac output — these patients tolerate asynchronous VOO pacing poorly, so the plan needs cardiology input</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note blue">
+      <h3>Pacing modes and haemodynamics</h3>
+      <ul>
+        <li><b>Loss of AV synchrony costs roughly 15 to 30% of cardiac output</b> — more in a stiff, hypertrophied or diastolically impaired ventricle. So VOO is a compromise, not a neutral choice.</li>
+        <li><b>Pacemaker syndrome</b> — fatigue, dyspnoea and hypotension from ventricular pacing with retrograde atrial conduction and loss of synchrony.</li>
+        <li><b>Temporary transvenous pacing thresholds</b>: capture is confirmed by a paced QRS with a pulse; set output at about twice threshold to allow for displacement, and beware the rise in threshold with hypoxia, acidosis, hyperkalaemia and antiarrhythmics.</li>
+        <li><b>Transcutaneous pacing</b> is painful and needs sedation; confirm mechanical capture by a pulse or waveform, not by the monitor artefact.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Quick recall</h2>
+    <div class="facts">
+      <div class="fact"><span class="pill" style="background:#0E7A66">DDD</span> AV synchrony</div>
+      <div class="fact"><span class="pill" style="background:#0E7A66">DOO/VOO</span> asynchronous</div>
+      <div class="fact"><span class="pill" style="background:#A8123E">magnet on ICD</span> no shocks, pacing unchanged</div>
+      <div class="fact"><span class="pill" style="background:#A8123E">inhibition</span> pacemaker risk</div>
+      <div class="fact"><span class="pill" style="background:#A8123E">shock</span> ICD risk</div>
+      <div class="fact"><span class="pill" style="background:#B4690E">bipolar</span> diathermy of choice</div>
+      <div class="fact"><span class="pill" style="background:#B4690E">15 cm</span> diathermy clearance</div>
+      <div class="fact"><span class="pill" style="background:#1B5FA8">6 weeks</span> leads not yet fibrosed</div>
+      <div class="fact"><span class="pill" style="background:#7A3B9E">15–30%</span> output lost without synchrony</div>
+    </div>
+  </section>
+
+  <p class="src">See also <a href="antiarrhythmics.html">Antiarrhythmics</a>, <a href="cardiac-action-potentials.html">Cardiac action potentials</a>, <a href="resuscitation-als.html">Resuscitation</a> and <a href="preoperative-assessment.html">Preoperative assessment</a>.</p>
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+  <footer>High yield notes · EDAIC revision</footer>
+</div>
+<script src="../revised.js"></script>
+<script src="../highlights.js"></script>
+</body>
+</html>

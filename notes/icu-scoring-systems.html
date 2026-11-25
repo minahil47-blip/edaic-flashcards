@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICU Scoring Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="notes.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="newflag batch5"><b>DECK NOTE</b> Written 25 November 2026 to close the ICU scoring PART row — SOFA and qSOFA were covered, APACHE, SAPS and TISS were not.</div>
+
+  <header class="top">
+    <h1>ICU scoring systems</h1>
+    <p>APACHE, SAPS, SOFA, TISS and the rest — what each one measures, when it is measured, and the single conceptual point that unites them.</p>
+  </header>
+
+  <section class="card">
+    <h2 class="kicker">The one idea to hold onto</h2>
+    <div class="note hook">
+      <h3>Four different jobs</h3>
+      <ul>
+        <li><b>Severity-of-illness / outcome prediction</b> — APACHE, SAPS, MPM. Measured <b>on admission</b> from the worst values in the first 24 hours, and <b>never recalculated</b>.</li>
+        <li><b>Organ dysfunction</b> — SOFA, MODS, LODS. Measured <b>repeatedly</b> to describe the course of the illness.</li>
+        <li><b>Nursing and therapeutic workload</b> — TISS, NEMS, NAS. Measured for <b>staffing and costing</b>, not for prognosis.</li>
+        <li><b>Triage and early warning</b> — NEWS2, qSOFA, MEWS. <b>Bedside prompts</b> to escalate, not diagnostic tests.</li>
+        <li><b>The critical caveat</b>: all of these are <b>validated for populations, not individuals</b>. A score predicts the mortality of a group of similar patients; it must <b>never</b> be used alone to make a treatment-withdrawal decision for one patient. This is the single most examined point about scoring systems.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">APACHE</h2>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><th><b>Full name</b></th><td class="c4"><b>A</b>cute <b>P</b>hysiology <b>A</b>nd <b>C</b>hronic <b>H</b>ealth <b>E</b>valuation</td></tr>
+          <tr><th><b>Three components</b></th><td class="c4"><b>Acute physiology score</b> + <b>age points</b> + <b>chronic health points</b></td></tr>
+          <tr><th><b>APACHE II</b></th><td class="c1">The version to know. <b>12 physiological variables</b>, each scored 0 to 4 on the <b>worst value in the first 24 hours</b>; plus age (0 to 6) and chronic health (2 points if elective postoperative, <b>5 if emergency or non-operative</b>). <b>Maximum 71.</b> Converted to a predicted mortality by a coefficient for the <b>admission diagnosis</b></td></tr>
+          <tr><th><b>The 12 variables</b></th><td class="c2">Temperature · mean arterial pressure · heart rate · respiratory rate · oxygenation (A–a gradient or PaO₂) · arterial pH · sodium · potassium · creatinine · haematocrit · white cell count · <b>Glasgow Coma Score</b></td></tr>
+          <tr><th><b>APACHE III / IV</b></th><td class="c3">More variables, a much larger reference database, and better calibration — but the equations are proprietary, which is why II remains the one taught</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <h3>The limitations that get asked</h3>
+      <ul>
+        <li><b>It needs the admission diagnosis</b> to generate a mortality prediction — the physiology score alone is not enough.</li>
+        <li><b>It is calculated once, from the first 24 hours, and not repeated.</b> It therefore says nothing about response to treatment.</li>
+        <li><b>It performs badly after certain admissions</b> — burns, coronary artery bypass grafting, and transfers from another ICU (where the physiology has already been corrected, a problem called <b>lead-time bias</b>).</li>
+        <li><b>Treatment can improve the score and worsen the prediction's accuracy</b>: a patient resuscitated well before ICU admission scores lower than their true severity.</li>
+        <li><b>Calibration drifts over time</b> as practice improves, so old equations over-predict mortality in a modern cohort. This is why newer versions and recalibrations keep appearing.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">SAPS and MPM</h2>
+    <ul>
+      <li><b>SAPS — Simplified Acute Physiology Score.</b> A European development, designed to be simpler than APACHE and, importantly, <b>not to require the admission diagnosis</b>.</li>
+      <li><b>SAPS II</b>: <b>17 variables</b> — 12 physiological, plus age, type of admission (medical, scheduled surgical, unscheduled surgical) and three underlying diseases (<b>metastatic cancer, haematological malignancy, AIDS</b>). Gives a predicted mortality directly.</li>
+      <li><b>SAPS 3</b> adds information about the patient <b>before</b> ICU admission — comorbidity, location before admission, reason for admission — reflecting the recognition that pre-ICU events matter.</li>
+      <li><b>MPM — Mortality Probability Model.</b> Uses mostly <b>yes/no</b> variables and gives a probability of death <b>at the moment of admission (MPM₀)</b> rather than after 24 hours, which is its distinctive advantage: it is not contaminated by the first day's treatment.</li>
+      <li><b>ICNARC model</b> (UK) is the one used for national comparative audit, recalibrated on UK data.</li>
+    </ul>
+    <div class="note blue">
+      <h3>How a model is judged</h3>
+      <ul>
+        <li><b>Discrimination</b> — can it separate survivors from non-survivors? Measured by the <b>area under the ROC curve</b>; above 0.8 is good.</li>
+        <li><b>Calibration</b> — does the predicted mortality match the observed at every level of risk? Tested with the <b>Hosmer–Lemeshow</b> statistic.</li>
+        <li><b>Standardised mortality ratio = observed deaths ÷ predicted deaths.</b> Below 1 means fewer deaths than predicted. It is used to compare units — but it depends entirely on the model being well calibrated for <i>that</i> case mix, so a low SMR can reflect admission policy rather than better care.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">SOFA — organ dysfunction over time</h2>
+    <p class="sub"><b>Six organ systems, each scored 0 to 4, maximum 24.</b> Recorded daily, so the trend is the information.</p>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>System</th><th>Variable</th></tr></thead>
+        <tbody>
+          <tr><th><b>Respiratory</b></th><td class="c2">PaO₂/FiO₂ ratio (with a note of whether ventilated)</td></tr>
+          <tr><th><b>Coagulation</b></th><td class="c2"><b>Platelet count</b></td></tr>
+          <tr><th><b>Liver</b></th><td class="c2">Bilirubin</td></tr>
+          <tr><th><b>Cardiovascular</b></th><td class="c2">MAP, or the <b>dose of vasopressor</b> required</td></tr>
+          <tr><th><b>CNS</b></th><td class="c2"><b>Glasgow Coma Score</b></td></tr>
+          <tr><th><b>Renal</b></th><td class="c2">Creatinine <b>or urine output</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note hook">
+      <h3>SOFA, qSOFA and sepsis</h3>
+      <ul>
+        <li><b>Sepsis-3 defines sepsis as infection plus an acute rise in SOFA of ≥ 2</b>, which corresponds to a mortality of around 10%.</li>
+        <li><b>qSOFA</b> is the bedside screen, outside ICU, needing no laboratory tests: <b>respiratory rate ≥ 22</b>, <b>altered mentation</b>, <b>systolic BP ≤ 100</b>. Two or more flags risk. It is a <b>prompt, not a diagnosis</b>, and has poorer sensitivity than NEWS2 for detecting deterioration.</li>
+        <li><b>SIRS criteria are no longer part of the sepsis definition</b> — too non-specific, and absent in a significant minority of patients who went on to die of infection.</li>
+        <li><b>MODS</b> and <b>LODS</b> are alternative organ-failure scores; SOFA is the one that has stuck because it is simple and is embedded in the sepsis definition.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">TISS and workload scores</h2>
+    <ul>
+      <li><b>TISS — Therapeutic Intervention Scoring System.</b> It scores the <b>interventions the patient receives</b>, not their physiology. The original had 76 items weighted 1 to 4 points; <b>TISS-28</b> reduced it to 28 items for practicality.</li>
+      <li><b>What it is for</b>: measuring <b>nursing workload, staffing requirements and cost</b>, and for classifying the level of care a patient is receiving. Roughly, <b>one nurse per shift can deliver about 40 to 50 TISS points</b>.</li>
+      <li><b>The crucial distinction</b>: a high TISS means the patient is receiving a lot of treatment, which is <b>not</b> the same as being severely ill. A patient on multiple therapies may be improving; a patient on minimal therapy may be dying. <b>TISS is not a severity score and must not be used to predict outcome.</b></li>
+      <li><b>NEMS</b> (Nine Equivalents of Nursing Manpower Score) and <b>NAS</b> (Nursing Activities Score) are the successors, simpler and more nursing-focused.</li>
+      <li><b>Levels of care</b> (UK): Level 0 ward · Level 1 ward with critical care input · <b>Level 2 single organ support or one nurse to two patients</b> · <b>Level 3 advanced respiratory support or two or more organs supported, one nurse to one patient</b>.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">The other scores worth recognising</h2>
+    <div class="scroll">
+      <table class="w2">
+        <thead><tr><th>Score</th><th>Used for</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><th><b>NEWS2</b></th><td class="c4">Ward deterioration</td><td class="c4">Respiratory rate, oxygen saturation (with a <b>separate SpO₂ scale 2 for chronic hypercapnic patients</b>), supplemental oxygen, temperature, systolic BP, pulse, consciousness (<b>ACVPU — new confusion scores</b>). <b>Score ≥ 5, or any single parameter scoring 3, triggers urgent review</b></td></tr>
+          <tr><th><b>Glasgow Coma Score</b></th><td class="c1">Conscious level</td><td class="c1"><b>Eyes 4, Verbal 5, Motor 6 — minimum 3, maximum 15.</b> Report the components, not just the total, and <b>8 or less</b> is the airway threshold</td></tr>
+          <tr><th><b>RASS</b></th><td class="c2">Sedation depth</td><td class="c2">+4 to −5; gates the <b>CAM-ICU</b> delirium screen (see <a href="rass-cam-icu.html">RASS &amp; CAM-ICU</a>)</td></tr>
+          <tr><th><b>CPIS</b></th><td class="c2">Ventilator-associated pneumonia</td><td class="c2">See <a href="vap-cpis.html">VAP &amp; CPIS</a></td></tr>
+          <tr><th><b>CAM-ICU / ICDSC</b></th><td class="c3">Delirium</td><td class="c3">Hypoactive delirium is commoner and more often missed than hyperactive</td></tr>
+          <tr><th><b>Clinical Frailty Scale</b></th><td class="c3">Frailty, 1 to 9</td><td class="c3">An <b>independent</b> predictor of outcome in critical care and surgery, over and above age and comorbidity — increasingly central to admission and escalation decisions</td></tr>
+          <tr><th><b>KDIGO</b></th><td class="c5">Acute kidney injury</td><td class="c5">Creatinine <b>and</b> urine output, stages 1 to 3 (see <a href="sepsis-liver-trauma.html">Renal preop</a>)</td></tr>
+          <tr><th><b>Child–Pugh / MELD</b></th><td class="c5">Liver disease severity</td><td class="c5">MELD for transplant allocation and perioperative risk</td></tr>
+          <tr><th><b>P-POSSUM / NELA / SORT</b></th><td class="c1">Surgical risk</td><td class="c1">NELA risk documentation preoperatively is itself associated with improved outcome, because it changes the seniority and destination decisions</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn">
+      <h3>Four traps</h3>
+      <ul>
+        <li><b>APACHE / SAPS are calculated once; SOFA is repeated.</b> Mixing these up is the commonest error.</li>
+        <li><b>TISS measures workload, not severity.</b></li>
+        <li><b>APACHE II needs the admission diagnosis; SAPS II does not.</b></li>
+        <li><b>No score is valid for an individual decision.</b> They inform, benchmark and audit; they do not decide.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Quick recall</h2>
+    <div class="facts">
+      <div class="fact"><span class="pill" style="background:#0E7A66">12 + age + chronic</span> APACHE II</div>
+      <div class="fact"><span class="pill" style="background:#0E7A66">71</span> APACHE II max</div>
+      <div class="fact"><span class="pill" style="background:#1B5FA8">17</span> SAPS II variables</div>
+      <div class="fact"><span class="pill" style="background:#1B5FA8">no diagnosis</span> needed for SAPS</div>
+      <div class="fact"><span class="pill" style="background:#B4690E">6 × 4 = 24</span> SOFA max</div>
+      <div class="fact"><span class="pill" style="background:#B4690E">SOFA ≥ 2</span> sepsis</div>
+      <div class="fact"><span class="pill" style="background:#A8123E">TISS-28</span> workload only</div>
+      <div class="fact"><span class="pill" style="background:#A8123E">40–50</span> TISS points per nurse</div>
+      <div class="fact"><span class="pill" style="background:#7A3B9E">NEWS2 ≥ 5</span> urgent review</div>
+      <div class="fact"><span class="pill" style="background:#7A3B9E">O/P</span> standardised mortality ratio</div>
+    </div>
+  </section>
+
+  <p class="src">See also <a href="sepsis-liver-trauma.html">Sepsis</a>, <a href="rass-cam-icu.html">RASS &amp; CAM-ICU</a>, <a href="vap-cpis.html">VAP &amp; CPIS</a>, <a href="statistics-research.html">Statistics &amp; research</a> and <a href="ethics-decision-making.html">Ethics</a>.</p>
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+  <footer>High yield notes · EDAIC revision</footer>
+</div>
+<script src="../revised.js"></script>
+<script src="../highlights.js"></script>
+</body>
+</html>

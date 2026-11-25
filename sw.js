@@ -7,7 +7,7 @@
  * which is what makes a new deck or note actually reach people who already
  * installed the app.
  */
-const CACHE = 'edaic-v8';
+const CACHE = 'edaic-v9';
 
 const PRECACHE = [
   './',
@@ -63,6 +63,18 @@ const PRECACHE = [
   './decks/deck8-renal.js',
   './decks/deck9-regional.js',
   './notes/notes.css',
+  './notes/anatomy-heart-great-vessels.html',
+  './notes/anatomy-lower-limb-abdominal-wall.html',
+  './notes/chronic-pain.html',
+  './notes/eras-fasting-theatre-management.html',
+  './notes/extubation-pacu.html',
+  './notes/gi-failure-pancreatitis.html',
+  './notes/hyperbaric-medicine.html',
+  './notes/icu-scoring-systems.html',
+  './notes/neonatal-surgical-emergencies.html',
+  './notes/neuroanaesthesia.html',
+  './notes/pacemakers-icds.html',
+  './notes/placental-transfer-drugs-pregnancy.html',
   './notes/acute-emergencies.html',
   './notes/airway-rsi-das.html',
   './notes/cardiac-support-imaging.html',
