@@ -140,3 +140,10 @@ footer{color:var(--soft);font-size:13px;text-align:center;padding-top:6px}
 
 /* Dark panel for diagrams drawn in light colours (the original dark-theme SVGs). */
 .plot.dark{background:#1F1A33}
+
+/* Fifth-batch banner — the written notes for decks 33-43, 25 Nov 2026.
+   Crimson, distinct from amber (syllabus gaps), teal (10 Sept), blue (13 Sept) and purple (14 Sept). */
+.newflag.batch5{
+  background:#FDEFF3;border-color:#A8123E;border-left-color:#A8123E;color:#6E0C29;
+}
+.newflag.batch5 b{background:#A8123E;color:#FDEFF3}

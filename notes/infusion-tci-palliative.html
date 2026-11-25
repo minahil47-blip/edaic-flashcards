@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infusion Devices, TCI &amp; Palliative Pain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="notes.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="newflag batch5"><b>DECK NOTE</b> The written note for <b>deck 40 — Infusion &amp; Palliative</b>, 50 cards. Written 25 November 2026.</div>
+
+  <header class="top">
+    <h1>Infusion devices, TCI and cancer pain</h1>
+    <p>How pumps fail, what a TCI model actually does, and the opioid conversions and palliative principles that get examined.</p>
+  </header>
+
+  <section class="card">
+    <h2 class="kicker">Infusion devices</h2>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Device</th><th>Mechanism</th><th>Use and limitation</th></tr></thead>
+        <tbody>
+          <tr><th><b>Syringe driver</b></th><td class="c4"><b>Lead screw</b> advancing the plunger</td><td class="c4">Most accurate at <b>low flow</b> — vasoactive drugs, anaesthetic infusions. Limited by syringe volume</td></tr>
+          <tr><th><b>Volumetric pump</b></th><td class="c2">Linear or rotary <b>peristaltic</b>, or cassette</td><td class="c2">Larger volumes, higher rates. Less accurate at very low rates</td></tr>
+          <tr><th><b>Elastomeric</b></th><td class="c1">Elastic reservoir + flow restrictor</td><td class="c1">Portable, no power. <b>Flow varies with temperature, fill volume, viscosity and restrictor position</b> — simplicity traded for accuracy</td></tr>
+          <tr><th><b>PCA pump</b></th><td class="c3">Bolus on demand</td><td class="c3">Must have a <b>lockout</b>, a maximum dose limit, a secure reservoir and a <b>one-way valve</b> on any co-infused line</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note hook">
+      <h3>The four hazards to be able to explain</h3>
+      <ul>
+        <li><b>Siphoning</b> — pump above the patient plus a detached or cracked plunger delivers the whole syringe under gravity. Prevented by an <b>anti-siphon valve</b> and by keeping the pump at patient level.</li>
+        <li><b>Retrograde flow and bolusing</b> — during occlusion, drug is diverted up a parallel line and then delivered as a bolus when the occlusion clears. Prevented by a <b>one-way (anti-reflux) valve on each co-infused line</b> and minimal dead space.</li>
+        <li><b>Free flow</b> — a volumetric giving set removed from the pump without an <b>integral anti-free-flow clamp</b> allows unrestricted gravity flow.</li>
+        <li><b>Delayed occlusion alarm at low rates</b> — the pressure needed to trigger the alarm takes many minutes to build at 2 mL/h, so an occluded noradrenaline infusion can go undetected. Compliant tubing adds a further lag to any rate change.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Target-controlled infusion</h2>
+    <p class="sub">A TCI pump runs a <b>population pharmacokinetic model</b> to compute a bolus followed by exponentially decreasing rates. It <b>predicts</b> a concentration; it measures nothing.</p>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Model</th><th>Covariates</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><th><b>Marsh</b> (propofol)</th><td class="c1"><b>Weight only</b></td><td class="c1">Cannot be adjusted for age; not for children. Effect-site targeting with Marsh gives a <b>large induction bolus</b></td></tr>
+          <tr><th><b>Schnider</b> (propofol)</th><td class="c4">Age, height, weight, <b>lean body mass</b></td><td class="c4">Preferred for <b>effect-site</b> targeting, since its k<sub>e0</sub> was derived for that purpose. The LBM equation misbehaves at very high BMI</td></tr>
+          <tr><th><b>Eleveld</b> (propofol)</th><td class="c4">Age, weight, sex, and PMA</td><td class="c4">General-purpose: children to the elderly, lean to obese. Increasingly the default</td></tr>
+          <tr><th><b>Minto</b> (remifentanil)</th><td class="c2">Age, <b>lean body mass</b></td><td class="c2">Requirements fall substantially with age, so the adjustment matters</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note blue">
+      <h3>The kinetic terms</h3>
+      <ul>
+        <li><b>k<sub>e0</sub></b> — the rate constant for transfer between plasma and effect site. A large k<sub>e0</sub> means rapid equilibration (remifentanil); a small one means a long delay to peak effect.</li>
+        <li><b>Effect-site targeting deliberately overshoots the plasma</b> to drive drug into the brain faster: quicker induction, but a greater haemodynamic hit.</li>
+        <li><b>Context-sensitive half-time</b> — time for the plasma concentration to halve after stopping an infusion, and it <b>depends on how long the infusion ran</b>. Far more useful than elimination half-life for predicting wake-up.</li>
+        <li><b>Remifentanil's context-sensitive half-time stays at 3 to 5 minutes however long it runs</b>, because of organ-independent ester hydrolysis. That is its defining property — and it means analgesia must be established before it is stopped.</li>
+        <li><b>Propofol infusion syndrome</b> — above about 4 mg/kg/h beyond 48 h: metabolic acidosis, rhabdomyolysis, hyperkalaemia, lipaemia, cardiac failure.</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h3>TIVA safety — the NAP5 lesson</h3>
+      <ul>
+        <li><b>A dedicated cannula, or at least a visible infusion site, is mandatory.</b> Disconnection or extravasation is otherwise undetectable, and unrecognised infusion failure has caused awareness.</li>
+        <li><b>Processed EEG depth monitoring is recommended whenever TIVA is combined with neuromuscular blockade</b>, because the clinical signs of light anaesthesia are abolished and the pump's prediction becomes the only guide.</li>
+        <li><b>NAP5 found most accidental awareness occurred at induction and emergence</b> — around neuromuscular blockade, transfer and the gap between techniques — <b>not</b> during maintenance. Thiopentone, rapid sequence induction and obstetrics were over-represented.</li>
+        <li><b>A background infusion removes the intrinsic safety of PCA</b> in an opioid-naive patient: a sedated patient stops pressing, but a background infusion continues. Reserve it for the opioid-tolerant.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Cancer and palliative pain</h2>
+    <p class="sub">The <b>WHO ladder</b> — non-opioid, weak opioid, strong opioid, with adjuvants at every step. In cancer pain it is now acceptable to <b>start at the step the pain requires</b> rather than climb from the bottom.</p>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Conversion</th><th>Ratio</th></tr></thead>
+        <tbody>
+          <tr><th><b>Breakthrough dose</b></th><td class="c5"><b>One sixth of the 24-hour total</b> — not one tenth</td></tr>
+          <tr><th><b>Oral → subcutaneous morphine</b></th><td class="c4">≈ <b>2 : 1</b> (60 mg oral ≈ 30 mg SC/24 h)</td></tr>
+          <tr><th><b>Oral → intravenous morphine</b></th><td class="c4">≈ 3 : 1</td></tr>
+          <tr><th><b>Oxycodone</b></th><td class="c1">About <b>twice</b> as potent as oral morphine</td></tr>
+          <tr><th><b>Fentanyl patch</b></th><td class="c5"><b>25 µg/h ≈ 90 mg oral morphine daily</b> — an easy and dangerous place to under-estimate</td></tr>
+          <tr><th><b>Opioid rotation</b></th><td class="c2">Start the new drug <b>25 to 50% below</b> the calculated equianalgesic dose — cross-tolerance is incomplete</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note hook">
+      <h3>Choosing the opioid</h3>
+      <ul>
+        <li><b>Oral morphine remains first-line</b>: modified-release regularly, immediate-release for breakthrough.</li>
+        <li><b>Severe renal impairment</b> — morphine's active metabolites (morphine-6-glucuronide) accumulate. Use <b>alfentanil</b>, fentanyl, oxycodone or buprenorphine.</li>
+        <li><b>Transdermal fentanyl is for stable pain only.</b> It takes 12 to 24 h to reach steady state and as long to wear off, so it is never for titration or for an opioid-naive patient in crisis.</li>
+        <li><b>Methadone</b> has a half-life of 15 to 60 hours with accumulation, plus NMDA antagonism useful in neuropathic and opioid-tolerant pain — <b>specialist supervision only</b>.</li>
+        <li><b>Tolerance develops to nausea and sedation but never to constipation</b> — prescribe a stimulant laxative with every strong opioid and continue it.</li>
+        <li><b>Opioid-induced hyperalgesia</b> is made worse by escalation. The response is dose <b>reduction</b> or rotation, with ketamine or an alpha-2 agonist as adjunct.</li>
+      </ul>
+    </div>
+    <div class="note blue">
+      <h3>Adjuvants, interventions and the emergencies</h3>
+      <ul>
+        <li><b>Neuropathic pain</b>: amitriptyline, gabapentinoids, duloxetine — alongside the opioid, not instead of it. Dexamethasone where nerve or cord compression contributes.</li>
+        <li><b>Bone metastases</b>: NSAIDs, bisphosphonates or denosumab, and <b>single-fraction radiotherapy</b>, which relieves pain in most patients.</li>
+        <li><b>Blocks — the discrimination to memorise:</b> <b>coeliac plexus</b> for upper abdominal viscera (pancreatic cancer), <b>superior hypogastric (presacral) plexus</b> for pelvic viscera, <b>ganglion impar</b> for the perineum and rectum. Coeliac block causes hypotension and diarrhoea from sympathetic blockade.</li>
+        <li><b>Intrathecal drug delivery</b> for refractory pain — morphine with bupivacaine and clonidine, ziconotide in specialist practice; analgesia at a fraction of the systemic dose.</li>
+        <li><b>Metastatic spinal cord compression</b> is an emergency: high-dose dexamethasone and <b>whole-spine MRI within 24 hours</b>, then radiotherapy or surgery. Delay costs ambulation permanently.</li>
+        <li><b>Hypercalcaemia of malignancy</b>: confusion, nausea, constipation, polyuria and thirst — easily mistaken for disease progression or opioid effect. Rehydrate, then a bisphosphonate.</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h3>End-of-life principles</h3>
+      <ul>
+        <li><b>Total pain</b> (Cicely Saunders) — physical, psychological, social and spiritual. It explains why pain uncontrolled by escalating opioid may need an entirely different intervention.</li>
+        <li><b>Anticipatory prescribing</b>: an opioid for pain and breathlessness, <b>midazolam</b> for agitation, an <b>antimuscarinic</b> for secretions, and an antiemetic — all as required, subcutaneously.</li>
+        <li><b>Opioids relieve breathlessness independently of their analgesic action</b>; low-dose morphine reduces the sensation, with a benzodiazepine for associated anxiety.</li>
+        <li><b>Palliative sedation is not euthanasia.</b> The intent is relief of refractory symptoms, it is titrated to symptom control, and the evidence does not show that it shortens survival. Intent is what distinguishes it ethically.</li>
+        <li>Nausea is treated by <b>mechanism</b>, not interchangeably: haloperidol and levomepromazine, cyclizine, metoclopramide, ondansetron.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Quick recall</h2>
+    <div class="facts">
+      <div class="fact"><span class="pill" style="background:#A8123E">1/6</span> breakthrough dose</div>
+      <div class="fact"><span class="pill" style="background:#A8123E">25 µg/h ≈ 90 mg</span> patch to morphine</div>
+      <div class="fact"><span class="pill" style="background:#0E7A66">2 : 1</span> oral → SC morphine</div>
+      <div class="fact"><span class="pill" style="background:#B4690E">25–50% less</span> on rotation</div>
+      <div class="fact"><span class="pill" style="background:#1B5FA8">3–5 min</span> remifentanil CSHT</div>
+      <div class="fact"><span class="pill" style="background:#1B5FA8">weight only</span> Marsh</div>
+      <div class="fact"><span class="pill" style="background:#1B5FA8">LBM + age</span> Schnider</div>
+      <div class="fact"><span class="pill" style="background:#7A3B9E">4 mg/kg/h 48 h</span> PRIS risk</div>
+    </div>
+  </section>
+
+  <p class="src">Deck 40 covers infusion pumps &amp; TCI and cancer &amp; palliative pain at 25 cards each. See also <a href="pain.html">Pain</a>, <a href="opioids.html">Opioids</a>, <a href="iv-induction-agents.html">IV induction agents</a> and <a href="ethics-decision-making.html">Ethics</a>.</p>
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+  <footer>High yield notes · EDAIC revision</footer>
+</div>
+<script src="../revised.js"></script>
+<script src="../highlights.js"></script>
+</body>
+</html>

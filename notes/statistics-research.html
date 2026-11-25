@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Statistics &amp; Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="notes.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="newflag batch5"><b>DECK NOTE</b> The written note for <b>deck 33 — Statistics &amp; Research</b>, 150 cards. Written 25 November 2026.</div>
+
+  <header class="top">
+    <h1>Statistics &amp; research methods</h1>
+    <p>Study design, diagnostic test performance, p-values and power, risk measures, survival analysis and evidence appraisal — the whole of Paper A statistics in one place.</p>
+  </header>
+
+  <section class="card">
+    <h2 class="kicker">Study design</h2>
+    <p class="sub">The hierarchy runs from <b>case report</b> up to <b>systematic review of RCTs</b>. What the examiner wants is the <b>direction of enquiry</b>: does the study start from the exposure or from the outcome?</p>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Design</th><th>Direction</th><th>Gives you</th></tr></thead>
+        <tbody>
+          <tr><th><b>Cross-sectional</b></th><td class="c1">Snapshot, no time axis</td><td class="c1"><b>Prevalence</b>. Cannot establish causation</td></tr>
+          <tr><th><b>Case–control</b></th><td class="c2">Outcome → backwards to exposure</td><td class="c2"><b>Odds ratio only.</b> Good for rare diseases; prone to recall and selection bias</td></tr>
+          <tr><th><b>Cohort</b></th><td class="c4">Exposure → forwards to outcome</td><td class="c4"><b>Incidence, relative risk.</b> Good for rare exposures; loss to follow-up is the weakness</td></tr>
+          <tr><th><b>RCT</b></th><td class="c4">Allocated exposure → outcome</td><td class="c4">Causation. Randomisation balances <b>unknown</b> confounders — the thing no observational design can do</td></tr>
+          <tr><th><b>Crossover</b></th><td class="c3">Each patient is their own control</td><td class="c3">High power with few patients. Needs a <b>washout</b>; useless for conditions that progress or cure</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note hook">
+      <h3>The high-yield distinctions</h3>
+      <ul>
+        <li><b>Case–control gives an odds ratio, never a relative risk</b> — you cannot calculate incidence when you chose how many cases to recruit.</li>
+        <li><b>Randomisation</b> deals with confounding; <b>blinding</b> deals with measurement and performance bias. Different jobs, often confused.</li>
+        <li><b>Allocation concealment</b> (the recruiter cannot know the next assignment) is not the same as blinding, and matters more.</li>
+        <li><b>Intention-to-treat</b> analyses patients as randomised and preserves the benefit of randomisation. <b>Per-protocol</b> exaggerates efficacy. ITT is the primary analysis for a superiority trial; <b>non-inferiority</b> trials need both.</li>
+        <li><b>Equipoise</b> — genuine uncertainty about which arm is better — is the ethical precondition for randomising at all.</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h3>Bias, in the forms that get examined</h3>
+      <ul>
+        <li><b>Selection</b> — who got in. <b>Performance</b> — different care between arms. <b>Detection</b> — outcome assessed differently. <b>Attrition</b> — differential dropout. <b>Reporting</b> — selective outcomes.</li>
+        <li><b>Confounding</b> is a third variable associated with both exposure and outcome. Handled by randomisation, matching, stratification or multivariable adjustment — never by a bigger sample.</li>
+        <li><b>A larger sample reduces random error but not bias.</b> This single sentence answers a great many statements.</li>
+        <li><b>Hawthorne effect</b> — behaviour changes because of observation. <b>Regression to the mean</b> — extreme values drift back without any treatment.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Diagnostic tests</h2>
+    <p class="sub">Build the 2 × 2 table every time. Columns are the <b>disease</b> (the reference standard); rows are the <b>test</b>.</p>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th></th><th>Disease +</th><th>Disease −</th></tr></thead>
+        <tbody>
+          <tr><th><b>Test +</b></th><td class="c4"><b>TP</b> (a)</td><td class="c5"><b>FP</b> (b)</td></tr>
+          <tr><th><b>Test −</b></th><td class="c5"><b>FN</b> (c)</td><td class="c4"><b>TN</b> (d)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Measure</th><th>Formula</th><th>Reads down / across</th></tr></thead>
+        <tbody>
+          <tr><th><b>Sensitivity</b></th><td class="c4">a / (a + c)</td><td class="c4">Down the <b>disease-positive</b> column. Independent of prevalence</td></tr>
+          <tr><th><b>Specificity</b></th><td class="c4">d / (b + d)</td><td class="c4">Down the <b>disease-negative</b> column. Independent of prevalence</td></tr>
+          <tr><th><b>PPV</b></th><td class="c1">a / (a + b)</td><td class="c1">Across the <b>test-positive</b> row. <b>Depends heavily on prevalence</b></td></tr>
+          <tr><th><b>NPV</b></th><td class="c1">d / (c + d)</td><td class="c1">Across the <b>test-negative</b> row. <b>Depends on prevalence</b></td></tr>
+          <tr><th><b>LR+</b></th><td class="c2">sens / (1 − spec)</td><td class="c2">&gt; 10 is a strongly useful positive test</td></tr>
+          <tr><th><b>LR−</b></th><td class="c2">(1 − sens) / spec</td><td class="c2">&lt; 0.1 strongly argues against the disease</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note hook">
+      <h3>SnNOut and SpPIn</h3>
+      <ul>
+        <li><b>Sn</b>sitive test, <b>N</b>egative result → rules the disease <b>Out</b>. A sensitive test is the <b>screening</b> test.</li>
+        <li><b>Sp</b>ecific test, <b>P</b>ositive result → rules the disease <b>In</b>. A specific test is the <b>confirmatory</b> test.</li>
+        <li><b>Raising the cut-off raises specificity and lowers sensitivity</b>, and the reverse. They always trade against one another — the ROC curve is the picture of that trade.</li>
+        <li><b>Area under the ROC curve</b>: 0.5 is useless (the diagonal), 1.0 is perfect. It is a prevalence-independent summary of discrimination.</li>
+        <li><b>Likelihood ratios are the prevalence-proof way to express a test</b>, which is exactly why they are preferred to predictive values.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">p-values, errors and power</h2>
+    <ol class="phases">
+      <li><div class="num">p</div><div><p class="pname">What a p-value is</p><p class="pbody">The probability of observing data <b>at least as extreme as this</b> <em>if the null hypothesis were true</em>. It is <b>not</b> the probability that the null hypothesis is true, and <b>not</b> the probability the result arose by chance.</p></div></li>
+      <li><div class="num">I</div><div><p class="pname">Type I error — α</p><p class="pbody">Rejecting a true null: a <b>false positive</b>. Conventionally set at 0.05. Testing many outcomes inflates it, which is what Bonferroni and other corrections address.</p></div></li>
+      <li><div class="num">II</div><div><p class="pname">Type II error — β</p><p class="pbody">Failing to reject a false null: a <b>false negative</b>. Usually set at 0.1 to 0.2.</p></div></li>
+      <li><div class="num">1−β</div><div><p class="pname">Power</p><p class="pbody"><b>Power = 1 − β</b>, conventionally 80 to 90%. Increased by a <b>larger sample</b>, a <b>larger effect size</b>, <b>less variance</b>, a <b>higher α</b>, or paired/crossover design.</p></div></li>
+    </ol>
+    <div class="note">
+      <h3>Traps</h3>
+      <ul>
+        <li><b>"Not significant" does not mean "no difference"</b> — it may mean the study was underpowered. Absence of evidence is not evidence of absence.</li>
+        <li><b>Statistical significance is not clinical significance.</b> A huge trial can make a trivial difference significant.</li>
+        <li><b>The confidence interval is more informative than the p-value</b>, because it shows the size and precision of the effect. A 95% CI excluding the null is equivalent to p &lt; 0.05.</li>
+        <li><b>Power is calculated before the study, not after.</b> A post-hoc power calculation on one's own negative result is circular.</li>
+        <li><b>Confidence interval width</b> narrows with the <b>square root</b> of the sample size — quadrupling n halves the interval.</li>
+      </ul>
+    </div>
+    <div class="note blue">
+      <h3>Choosing the test</h3>
+      <ul>
+        <li><b>Parametric</b> (t-test, ANOVA, Pearson) needs <b>normally distributed, continuous</b> data with similar variances. Unpaired vs paired t-test for independent vs related samples; ANOVA for three or more groups.</li>
+        <li><b>Non-parametric</b> for ordinal data or non-normal distributions: <b>Mann–Whitney U</b> (unpaired), <b>Wilcoxon signed rank</b> (paired), <b>Kruskal–Wallis</b> (≥ 3 groups), <b>Spearman</b> for correlation.</li>
+        <li><b>Categorical</b>: chi-squared, with <b>Fisher's exact</b> when expected cell counts are small (&lt; 5).</li>
+        <li><b>SD describes the spread of the data; SEM describes the precision of the mean</b> — SEM = SD / √n, so SEM shrinks with sample size and SD does not. Quoting SEM to look tidy is a classic misuse.</li>
+        <li>Normal distribution: <b>±1 SD ≈ 68%, ±2 SD ≈ 95%, ±3 SD ≈ 99.7%</b>. Mean = median = mode; skew is zero.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Risk measures</h2>
+    <p class="sub">Work from two risks: <b>control event rate (CER)</b> and <b>experimental event rate (EER)</b>.</p>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Measure</th><th>Formula</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><th><b>Relative risk</b></th><td class="c2">EER / CER</td><td class="c2">A ratio. <b>Says nothing about baseline risk</b> — the usual way results are oversold</td></tr>
+          <tr><th><b>Relative risk reduction</b></th><td class="c2">(CER − EER) / CER</td><td class="c2">The headline percentage in press releases</td></tr>
+          <tr><th><b>Absolute risk reduction</b></th><td class="c4">CER − EER</td><td class="c4">The clinically meaningful number</td></tr>
+          <tr><th><b>Number needed to treat</b></th><td class="c4"><b>1 / ARR</b></td><td class="c4">Always round <b>up</b>. Quote with the time frame and the outcome</td></tr>
+          <tr><th><b>Odds ratio</b></th><td class="c1">(a/c) / (b/d) = ad / bc</td><td class="c1">Approximates RR <b>only when the outcome is rare</b>; otherwise it exaggerates</td></tr>
+          <tr><th><b>Number needed to harm</b></th><td class="c5">1 / absolute risk increase</td><td class="c5">The other half of the balance sheet</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note hook">
+      <h3>Worked example to carry into the exam</h3>
+      <ul>
+        <li>Mortality 10% control, 5% treated. <b>RR = 0.5</b>, <b>RRR = 50%</b>, <b>ARR = 5%</b>, <b>NNT = 20</b>.</li>
+        <li>Now mortality 0.2% vs 0.1%. <b>RRR is still 50%</b> — but <b>ARR = 0.1%</b> and <b>NNT = 1000</b>. Same relative claim, utterly different clinical value.</li>
+        <li>An <b>RR of 1</b>, an <b>OR of 1</b>, or a <b>95% CI that crosses 1</b> all mean no demonstrated effect. For a difference in means the null value is <b>0</b>, not 1.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Survival analysis</h2>
+    <ul>
+      <li><b>Kaplan–Meier</b> curves plot the probability of surviving over time as a step function, stepping down at each event. They handle <b>censoring</b> — patients lost to follow-up or still alive at the end contribute information up to the point they left.</li>
+      <li><b>Median survival</b> is read where the curve crosses 0.5. It is reportable even when many patients are still alive, which the mean is not — the single biggest advantage of the method.</li>
+      <li><b>Log-rank test</b> compares two or more curves. It tests whether the curves differ; it gives no estimate of the size of the difference.</li>
+      <li><b>Cox proportional hazards regression</b> gives a <b>hazard ratio</b> adjusted for covariates. Its central assumption is that the hazard ratio is <b>constant over time</b> — if the curves cross, that assumption fails.</li>
+      <li>A <b>hazard ratio</b> is an instantaneous relative risk of the event, not a ratio of total deaths, and <b>not</b> a ratio of survival times.</li>
+      <li><b>Censoring must be independent of outcome.</b> If patients drop out because they are dying, the curve is biased — this is informative censoring.</li>
+      <li>Numbers at risk should be printed beneath the curve: the right-hand tail of a Kaplan–Meier plot is usually built on very few patients and should not be over-interpreted.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Evidence &amp; meta-analysis</h2>
+    <div class="scroll">
+      <table class="w1">
+        <thead><tr><th>Concept</th><th>What to know</th></tr></thead>
+        <tbody>
+          <tr><th><b>Systematic review</b></th><td class="c4">A pre-specified protocol, explicit search, duplicate screening, risk-of-bias assessment. A <b>meta-analysis</b> is the optional statistical pooling on the end — a review need not have one, and should not if the studies are too heterogeneous</td></tr>
+          <tr><th><b>Forest plot</b></th><td class="c2">Each study a square (size = weight) with its CI; the <b>diamond</b> is the pooled estimate. The <b>vertical line of no effect</b> is at 1 for ratios and 0 for differences</td></tr>
+          <tr><th><b>Heterogeneity</b></th><td class="c1"><b>I²</b> is the proportion of variation due to real between-study difference, not chance: roughly &lt; 25% low, &gt; 75% high. Cochran's Q tests it. High I² pushes you to a <b>random-effects</b> model and to subgroup or sensitivity analysis</td></tr>
+          <tr><th><b>Fixed vs random effects</b></th><td class="c1">Fixed assumes one true effect; <b>random effects</b> assumes a distribution of true effects, gives <b>wider</b> intervals and weights small studies relatively more</td></tr>
+          <tr><th><b>Funnel plot</b></th><td class="c5">Effect against precision. <b>Asymmetry suggests publication bias</b> — small negative studies missing. It is a weak test with few studies, and asymmetry has other causes</td></tr>
+          <tr><th><b>GRADE</b></th><td class="c3">Rates certainty as high / moderate / low / very low. RCTs start high and are downgraded for risk of bias, inconsistency, indirectness, imprecision and publication bias; observational studies start low and can be upgraded</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note blue">
+      <h3>Reporting guidelines — know which is which</h3>
+      <ul>
+        <li><b>CONSORT</b> — randomised trials. <b>PRISMA</b> — systematic reviews. <b>STROBE</b> — observational studies. <b>STARD</b> — diagnostic accuracy. <b>CARE</b> — case reports.</li>
+        <li><b>Trial registration before recruitment</b> (ClinicalTrials.gov, ISRCTN) is what makes selective outcome reporting detectable, and is now a condition of publication.</li>
+        <li>Research governance: <b>Declaration of Helsinki</b>, ethics committee approval, informed consent, data protection, and declaration of conflicts of interest.</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h3>Two things that are not the same</h3>
+      <ul>
+        <li><b>Internal validity</b> — is the result true for the patients studied? <b>External validity / generalisability</b> — does it apply to yours? A flawless trial in fit 40-year-olds may be irrelevant to your 85-year-old.</li>
+        <li><b>Efficacy</b> — does it work under ideal trial conditions? <b>Effectiveness</b> — does it work in ordinary practice? Pragmatic trials target the second.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="kicker">Quick recall</h2>
+    <div class="facts">
+      <div class="fact"><span class="pill" style="background:#1B5FA8">OR only</span> case–control</div>
+      <div class="fact"><span class="pill" style="background:#0E7A66">SnNOut</span> sensitive rules out</div>
+      <div class="fact"><span class="pill" style="background:#0E7A66">SpPIn</span> specific rules in</div>
+      <div class="fact"><span class="pill" style="background:#A8123E">PPV/NPV</span> prevalence-dependent</div>
+      <div class="fact"><span class="pill" style="background:#B4690E">1/ARR</span> NNT</div>
+      <div class="fact"><span class="pill" style="background:#1B5FA8">1−β</span> power, 80–90%</div>
+      <div class="fact"><span class="pill" style="background:#7A3B9E">SD/√n</span> SEM</div>
+      <div class="fact"><span class="pill" style="background:#0E7A66">I² &gt; 75%</span> high heterogeneity</div>
+      <div class="fact"><span class="pill" style="background:#A8123E">crosses 1</span> not significant</div>
+      <div class="fact"><span class="pill" style="background:#B4690E">ITT</span> as randomised</div>
+    </div>
+  </section>
+
+  <p class="src">Deck 33 covers these six topics at 25 cards each. See also <a href="theatre-safety-physics.html">Theatre safety &amp; physics</a> for measurement and calibration.</p>
+  <a class="backlink" href="../index.html">← Back to flashcards</a>
+  <footer>High yield notes · EDAIC revision</footer>
+</div>
+<script src="../revised.js"></script>
+<script src="../highlights.js"></script>
+</body>
+</html>
