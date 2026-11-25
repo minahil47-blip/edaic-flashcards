@@ -7,7 +7,7 @@
  * which is what makes a new deck or note actually reach people who already
  * installed the app.
  */
-const CACHE = 'edaic-v11';
+const CACHE = 'edaic-v12';
 
 const PRECACHE = [
   './',

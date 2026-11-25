@@ -342,7 +342,7 @@
   <summary style="cursor:pointer;list-style:none;font-weight:800;font-size:15.5px;color:#ff9a3d;
                   background:rgba(255,154,61,.12);border:1px solid rgba(255,154,61,.32);
                   border-radius:12px;padding:11px 16px;user-select:none">
-    🎯 MCQ decks <span id="nMcq" style="opacity:.65;font-weight:600"></span>
+    🎯 MCQ &amp; MTF decks <span id="nMcq" style="opacity:.65;font-weight:600"></span>
   </summary>
   <div style="margin-top:10px;background:rgba(0,0,0,.22);border-radius:12px;padding:10px 12px">
     <div class="deck-tabs" id="mcqTabs"></div>
@@ -470,7 +470,7 @@
     // that is, when MCQ tabs are sitting in #deckTabs again. Clearing it
     // unconditionally wipes the column on a second, no-op call.
     var fresh = Array.prototype.slice.call(src.children).filter(function (btn) {
-      return /MCQ/i.test(btn.textContent);
+      return /MCQ|MTF/i.test(btn.textContent);
     });
     if (fresh.length) {
       mcq.innerHTML = '';
